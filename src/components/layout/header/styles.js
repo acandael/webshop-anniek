@@ -4,6 +4,8 @@ import is from 'styled-is';
 import { responsive } from 'ui';
 
 export const Outer = styled.header`
+  background-color: #FAC7B9;
+  opacity: 80%;
   text-align: center;
   padding: 20px 75px;
   max-width: 1600px;
@@ -19,7 +21,7 @@ export const Outer = styled.header`
 `;
 
 export const Logo = styled.a`
-  height: 84px;
+  height: 100px;
   display: block;
   object-fit: contain;
 
@@ -87,7 +89,9 @@ export const NavListItem = styled.li`
     text-transform: uppercase;
     letter-spacing: 1px;
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      color: #000;
+      transition: 0.3s;
     }
   }
 

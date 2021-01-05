@@ -43,18 +43,30 @@ export default function Header({ simple, preview }) {
       <Outer simple={simple}>
         <Link href="/" passHref>
           <Logo>
-            <img src="/static/shop-logo.svg" alt="" width="56" height="84" />
+            <img src="/static/anniek-lambrecht-logo.png" alt="" width="100" height="100" />
           </Logo>
         </Link>
         <Nav open={navOpen}>
           <NavList>
-            {mainNavigation?.map((category) => (
-              <NavListItem key={category.path}>
-                <Link href={category.path}>
-                  <a onClick={() => setNavOpen(false)}>{category.name}</a>
+            
+              <NavListItem>
+                <Link href="/behandelingen">
+                  <a onClick={() => setNavOpen(false)}>BEHANDELINGEN</a>
                 </Link>
               </NavListItem>
-            ))}
+
+              <NavListItem>
+                <Link href="/webshop">
+                  <a onClick={() => setNavOpen(false)}>WEBSHOP</a>
+                </Link>
+              </NavListItem>
+
+              <NavListItem>
+                <Link href="/contact">
+                  <a onClick={() => setNavOpen(false)}>CONTACT</a>
+                </Link>
+              </NavListItem>
+            
           </NavList>
         </Nav>
         <NavActions open={navOpen}>
