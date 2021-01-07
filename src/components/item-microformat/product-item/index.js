@@ -30,7 +30,7 @@ export default function ProductItem({ data }) {
       <Outer type={type}>
         <Inner>
           <ImageWrapper>
-            {images?.[0] && <Img {...images?.[0]} alt={name} sizes="250px" />}
+            {images?.[0] && <Img {...images?.[0]} alt={name} sizes="220px" />}
           </ImageWrapper>
 
           <Text>

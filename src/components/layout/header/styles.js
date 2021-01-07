@@ -8,7 +8,7 @@ export const Outer = styled.header`
   opacity: 80%;
   text-align: center;
   padding: 20px 75px;
-  max-width: 1600px;
+  max-width: 1440px;
   display: flex;
   justify-content: flex-start;
   align-items: center;

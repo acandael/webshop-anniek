@@ -4,7 +4,7 @@ import { responsive } from './responsive';
 
 export const Outer = styled.div`
   margin-bottom: 30px;
-  max-width: 1600px;
+  max-width: 1440px;
   padding: 0 0;
   margin: 0 auto;
   display: block;

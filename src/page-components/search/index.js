@@ -30,7 +30,7 @@ const H1 = styled(h1)`
 `;
 
 const ListOuter = styled.div`
-  max-width: 1600px;
+  max-width: 1440px;
   margin: 0 auto;
 
   ${responsive.mdPlus} {

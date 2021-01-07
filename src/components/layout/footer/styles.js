@@ -2,33 +2,17 @@ import styled from 'styled-components';
 
 export const Outer = styled.footer`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 1600px;
+  grid-template-columns: repeat(5, 1fr);
+  max-width: 1440px;
   margin: 50px auto;
   border-top: 2px solid var(--color-box-background);
   padding: 50px 50px;
   justify-content: space-between;
+  background-color: #EFEAEA;
 `;
 
 export const Logo = styled.div`
-  width: 70px;
-`;
-
-export const Powered = styled.div`
-  width: 100%;
-  display: block;
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  font-weight: 600;
-
-  p {
-    margin: 0;
-  }
-
-  svg {
-    width: 120px;
-  }
+  width: 100px;
 `;
 
 export const NavList = styled.footer`
@@ -36,14 +20,20 @@ export const NavList = styled.footer`
   font-weight: 500;
   font-size: 1rem;
   display: block;
-  margin: 0 0 0 auto;
+  margin: 0 0 0 5px;
 
   li {
-    line-height: 1.5rem;
+    line-height: 1.6rem;
   }
-  h5 {
-    font-size: 0.7rem;
+  h3 {
+    font-size: 20px;
     font-weight: 400;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
   }
 `;
+
+export const Legal = styled.div`
+  list-style: none;
+  display: block;
+
+`

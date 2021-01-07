@@ -5,8 +5,8 @@ export default createGlobalStyle`
     --content-padding: 50px;
     
     --color-main-background: #fff;
-    --color-text-main: #000;
-    --color-text-sub: #4c505b;
+    --color-text-main: #56443F;
+    --color-text-sub: #595554;
     --color-box-background: #efefef;
 
     --color-price: #d79b59;
@@ -30,7 +30,7 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    font: 16px/1 Helvetica, Arial, Verdana, sans-serif;
+    font: 16px/1 Open Sans, sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     background: var(--color-main-background);
@@ -61,6 +61,7 @@ export default createGlobalStyle`
   h3,
   h4 {
     font-size: inherit;
+    font-family: 'Playfair Display'
   }
   strong {
     font-weight: bold;

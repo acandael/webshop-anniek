@@ -1,42 +1,80 @@
 import React from 'react';
 import Link from 'next/link';
 
-import LogoCrystallize from 'ui/icons/logo-crystallize';
-import { useT } from 'lib/i18n';
 
-import { useSettings } from 'components/settings-context';
-
-import { Outer, Logo, NavList, Powered } from './styles';
+import { Outer, Logo, NavList, Legal } from './styles';
 
 export default function Footer() {
-  const t = useT();
-  const { mainNavigation } = useSettings();
+  
+
 
   return (
     <Outer>
+      <NavList>
       <Link href="/">
         <a>
           <Logo>
-            <img src="/static/shop-logo.svg" alt="" width="56" height="84" />
+            <img src="/static/anniek-lambrecht-logo.png" alt="logo anniek lambrecht" width="100" height="100" />
           </Logo>
         </a>
       </Link>
+      </NavList>
       <NavList>
-        <h5>{t('layout.menu')}</h5>
-        {mainNavigation?.map((category) => (
-          <li key={category.path}>
-            <Link href={category.path}>
-              <a>{category.name}</a>
+        <li>&copy; 2021 Copyright Anniek Lambrecht</li>
+        <li>Alle rechten voorbehouden</li>
+        <li>Voorwaarden - Disclaimer - Privacyverklaring</li>
+      </NavList>
+      <NavList>
+        <h3>MENU</h3>
+          <li>
+            <Link href="/behandelingen">
+              <a>Behandelingen</a>
             </Link>
           </li>
-        ))}
+          <Link href="/contact">
+              <a>Contact</a>
+          </Link>
+        
       </NavList>
-      <Powered>
-        <p>{t('layout.ecomBy')}</p>
-        <a href="https://crystallize.com" aria-label="crystallize.com">
-          <LogoCrystallize size={10} />
-        </a>
-      </Powered>
+      <NavList>
+        <h3>WEBSHOP</h3>
+        
+          <li>
+            <Link href="/merk/environ">
+              <a>Environ</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/merk/advanced-nutrition-programme">
+              <a>Advanced Nutrition Programme</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/merk/jane-iredale">
+              <a>Jane Iredale</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/kadobon">
+              <a>Kadobon</a>
+            </Link>
+          </li>
+        
+      </NavList>
+      <NavList>
+        <h3>CONTACT</h3>
+          <li>
+          Schoonheidsinstituut Anniek Lambrecht<br />
+          L. Dujardinstraat 9<br />
+          8370 Blankenberge
+          </li>
+          <li>
+          050 69.41.65<br />
+          info@anniek-lambrecht.be
+          </li>
+        
+      </NavList>
+      
     </Outer>
   );
 }
