@@ -6,7 +6,9 @@ import { simplyFetchFromGraph } from 'lib/graph';
 import fragments from 'lib/graph/fragments';
 import { useT } from 'lib/i18n';
 
-import { Outer } from './styles';
+import { Outer, Header, H1, HeroSection, HeroText, HeroImage } from './styles';
+import Image from 'next/image';
+
 
 export async function getData({ language, preview = null }) {
   try {
@@ -18,7 +20,6 @@ export async function getData({ language, preview = null }) {
             ...product
           }
         }
-
         ${fragments}
       `,
       variables: {
@@ -41,17 +42,26 @@ export default function FrontPage({ catalogue, preview }) {
       ?.grids || [];
 
   return (
-    <Layout title={t('frontpage.title')} preview={preview}>
+    <Layout preview={preview}>
       <Outer>
-        {grid && (
-          <Grid
-            model={grid}
-            cellComponent={({ cell }) => (
-              <GridItem data={cell.item} gridCell={cell} />
-            )}
-          />
-        )}
+        <Header>
+          <H1>skincoach anniek lambrecht</H1>
+        </Header>
+        <HeroSection>
+          <HeroText>
+          <p>Mijn zaak is geen klassiek schoonheidsinstituut 
+          maar een cosmedisch instituut waar de focus 
+          op huidverbetering en gelaatsverzorging ligt.</p>
+          <p>We starten met een kennismaking en we maken een 
+          huidfoto in 3D. Hierdoor is een perfecte huidanalyse 
+          mogelijk en kan ik jou de gepaste behandeling voorstellen.</p>
+          </HeroText>
+          <HeroImage>
+            <Image src="/static/hero-image.jpg" alt="anniek lambrecht" width={400} height={400} />
+          </HeroImage>
+        </HeroSection>
       </Outer>
     </Layout>
+
   );
 }

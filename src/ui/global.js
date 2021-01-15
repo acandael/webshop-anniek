@@ -78,6 +78,11 @@ export default createGlobalStyle`
     }
   }
 
+  p {
+    line-height: 1.6;
+    color: var(----color-text-main);
+  }
+
   p > a {
     border-bottom: 2px solid black;
     font-weight: 600;
