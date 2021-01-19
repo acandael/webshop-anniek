@@ -6,8 +6,9 @@ import { simplyFetchFromGraph } from 'lib/graph';
 import fragments from 'lib/graph/fragments';
 import { useT } from 'lib/i18n';
 
-import { Outer, Header, H1, HeroSection, HeroText, HeroImage } from './styles';
+import { Outer, Header, H1, H2, HeroSection, HeroText, HeroImage, CTAButton, CTAText, SubSection, SectionOne, SectionTwo, SubSectionText, SubSectionImage, StyledLink } from './styles';
 import Image from 'next/image';
+import Link from 'next/link'
 
 
 export async function getData({ language, preview = null }) {
@@ -55,11 +56,33 @@ export default function FrontPage({ catalogue, preview }) {
           <p>We starten met een kennismaking en we maken een 
           huidfoto in 3D. Hierdoor is een perfecte huidanalyse 
           mogelijk en kan ik jou de gepaste behandeling voorstellen.</p>
+          
+          <CTAButton>
+            Boek Nu
+          </CTAButton>
+          <CTAText>Verwen jezelf!</CTAText>
           </HeroText>
           <HeroImage>
             <Image src="/static/hero-image.jpg" alt="anniek lambrecht" width={400} height={400} />
           </HeroImage>
         </HeroSection>
+        <SubSection>
+          <SectionOne>
+            <H2>BEHANDELINGEN</H2>
+            <SubSectionImage src="/static/subsection-behandelingen.jpg" alt="anniek lambrecht - behandelingen" />
+            <SubSectionText>Ik heb een uitgebreid aanbod met verschillende huidverzorgingen, ook als je weinig tijd hebt kan je een korte behandeling kiezen om met een minimum aan tijd een maximum resultaat te halen.</SubSectionText>
+            <Link href="/behandelingen"><StyledLink>Ontdek alle behandelingen</StyledLink></Link>
+          </SectionOne>
+          <SectionTwo>
+            <H2>WEBSHOP</H2>
+            <SubSectionImage src="/static/subsection-webshop.jpg" alt="anniek lambrecht - webshop" />
+            <SubSectionText>
+              Ik werk met de huidproducten van Advanced nutricion programme en Environ.
+Met de minerale make-up producten van Jane Iredale maak ik van jou een echte beauty
+            </SubSectionText>
+            <Link href="/webshop"><StyledLink>Ontdek alle producten</StyledLink></Link>
+          </SectionTwo>
+        </SubSection>
       </Outer>
     </Layout>
 
