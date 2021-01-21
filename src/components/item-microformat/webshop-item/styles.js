@@ -9,8 +9,8 @@ export const Outer = styled.a`
   color: var(--color-main-background);
   position: relative;
   padding: 1em;
-  background: var(--color-box-background);
-  grid-column-end: span 4;
+  /* background: var(--color-box-background); */
+  grid-column-end: span 3;
   ${responsive.xs} {
     margin-bottom: 15px;
   }
@@ -20,13 +20,14 @@ export const ImageWrapper = styled.div`
   position: relative;
   z-index: 1;
   overflow: hidden;
-  height: 100%;
+  /* height: 100%; */
 `;
 
 export const Img = styled(Image)`
   width: 100%;
   height: 100%;
   overflow: hidden;
+
   > img {
     display: block;
     object-fit: contain;
@@ -34,7 +35,7 @@ export const Img = styled(Image)`
     width: 100%;
     height: 100%;
     overflow: hidden;
-    border-radius: 12px;
+    /* border-radius: 12px; */
   }
 `;
 
@@ -43,17 +44,18 @@ export const Text = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 1em;
+  /* padding: 1em; */
+  
   h3 {
-    position: absolute;
-    bottom: 4rem;
-    width: 100%;
-    left: 0%;
-    font-size: 1.4em;
-    text-transform: uppercase;
-    text-align: center;
-    margin: 0;
-    color: black;
+    font-size: 1.25em;
+    /* text-transform: uppercase; */
+    color: var(--color-text-sub);
+    margin-bottom: 64px;
+  }
+
+  p {
+    color: var(--color-text-main);
+    margin-top: 64px;
   }
 `;
 

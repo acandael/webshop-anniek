@@ -5,7 +5,7 @@ import { screen, H3 } from 'ui';
 
 import { Outer, Text, ImageWrapper, Img } from './styles';
 
-export default function FolderItem({ data, gridCell }) {
+export default function WebshopItem({ data, gridCell }) {
   if (!data) {
     return null;
   }
@@ -18,9 +18,16 @@ export default function FolderItem({ data, gridCell }) {
   const images = data.components?.find((c) => c.type === 'images');
   image = images?.content?.images?.[0];
 
+  let description;
+  const paragraphs = data.components?.find((c) => c.name === 'Beschrijving');
+  description = paragraphs?.content?.paragraphs?.[0].body.json[0].children[0].textContent;
+
   return (
     <Link href={path} passHref>
       <Outer>
+        <Text>
+          <H3>{name}</H3>
+        </Text>
         <ImageWrapper>
           {image && (
             <Img
@@ -31,8 +38,9 @@ export default function FolderItem({ data, gridCell }) {
           )}
         </ImageWrapper>
         <Text>
-          <H3>{name}</H3>
+          <p>{description}</p>
         </Text>
+        
       </Outer>
     </Link>
   );

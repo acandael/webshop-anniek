@@ -21,6 +21,8 @@ import DocPage, { getData as getDataDoc } from 'page-components/document';
 import FolderPage, { getData as getDataFolder } from 'page-components/folder';
 import ProdPage, { getData as getDataProd } from 'page-components/product';
 import SearchPage, { getData as getDataSearch } from 'page-components/search';
+import WebshopPage, { getData as getDataWebshop } from 'page-components/webshop';
+import { shape } from 'prop-types';
 
 const renderers = {
   document: {
@@ -38,6 +40,10 @@ const renderers = {
   search: {
     component: SearchPage,
     getData: getDataSearch
+  },
+  webshop: {
+    component: WebshopPage,
+    getData: getDataWebshop
   }
 };
 
@@ -66,6 +72,9 @@ export async function getStaticProps(context) {
             children {
               type
             }
+            shape {
+              name
+            }
           }
         }
       `,
@@ -74,11 +83,13 @@ export async function getStaticProps(context) {
         path: asPath
       }
     });
-    const { type, children } = getItemType.data.catalogue;
+    const { type, children, shape: {name: shapeName} } = getItemType.data.catalogue;
 
     let renderer = 'folder';
     if (type === 'folder' && childrenIsMostlyProducts(children || [])) {
       renderer = 'search';
+    } else if (shapeName === 'Webshop') {
+      renderer = 'webshop'
     } else if (type in renderers) {
       renderer = type;
     }

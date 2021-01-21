@@ -3,7 +3,6 @@ import React from 'react';
 import { simplyFetchFromGraph } from 'lib/graph';
 import { Outer, Header, H1 } from 'ui';
 import Layout from 'components/layout';
-import Grid, { GridItem } from 'components/grid';
 import ShapeComponents from 'components/shape/components';
 import ItemMicroformat from 'components/item-microformat';
 import toText from '@crystallize/content-transformer/toText';
@@ -23,8 +22,9 @@ export async function getData({ asPath, language, preview = null }) {
   return { ...data, preview };
 }
 
-export default function FolderPage({ folder, preview }) {
+export default function WebshopPage({ folder, preview }) {
   const { children } = folder;
+  console.log(children)
   const gridRelations = folder.components
     ?.filter((c) => c.type === 'gridRelations')
     ?.reduce((acc, g) => [...acc, ...(g?.content?.grids || [])], []);
@@ -44,19 +44,11 @@ export default function FolderPage({ folder, preview }) {
           <H1>{folder.name}</H1>
           <ShapeComponents components={rest} />
         </Header>
-        {gridRelations?.length > 0
-          ? gridRelations?.map((grid, index) => (
-              <Grid
-                key={index}
-                model={grid}
-                cellComponent={({ cell }) => (
-                  <GridItem data={cell.item} gridCell={cell} />
-                )}
-              />
-            ))
-          : children && (
+        { children && (
               <List>
                 {children.map((item, i) => (
+                  // change type from 'folder' to 'webshop'
+                  item.type = 'webshop',
                   <ItemMicroformat item={item} key={i} />
                 ))}
               </List>
