@@ -10,7 +10,7 @@ export const Outer = styled.a`
   position: relative;
   padding: 1em;
   /* background: var(--color-box-background); */
-  grid-column-end: span 3;
+  grid-column-end: span 4;
   ${responsive.xs} {
     margin-bottom: 15px;
   }

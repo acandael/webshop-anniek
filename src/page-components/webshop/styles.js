@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { Image } from '@crystallize/react-image';
 import { responsive } from 'ui';
 
 export const List = styled.div`
@@ -20,5 +20,31 @@ export const List = styled.div`
 
   ${responsive.lg} {
     grid-template-columns: repeat(12, 1fr);
+  }
+`;
+
+export const ImageWrapper = styled.div`
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  /* height: 100%; */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 112px;
+`;
+
+export const Img = styled(Image)`
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  > img {
+    display: block;
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* border-radius: 12px; */
   }
 `;

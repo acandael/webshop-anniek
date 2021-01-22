@@ -6,7 +6,7 @@ import Layout from 'components/layout';
 import ShapeComponents from 'components/shape/components';
 import ItemMicroformat from 'components/item-microformat';
 import toText from '@crystallize/content-transformer/toText';
-import { List } from './styles';
+import { List, ImageWrapper, Img } from './styles';
 import query from './query';
 
 export async function getData({ asPath, language, preview = null }) {
@@ -44,6 +44,9 @@ export default function WebshopPage({ folder, preview }) {
           <H1>{folder.name}</H1>
           <ShapeComponents components={rest} />
         </Header>
+        <ImageWrapper>
+          <img src="static/hero-webshop.jpg" width="1164" height="497" alt="webshop - anniek lambrecht" />
+        </ImageWrapper>
         { children && (
               <List>
                 {children.map((item, i) => (

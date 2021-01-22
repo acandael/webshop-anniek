@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import ContentTransformer from 'ui/content-transformer';
 
 import { screen, H3 } from 'ui';
 
@@ -38,7 +39,7 @@ export default function WebshopItem({ data, gridCell }) {
           )}
         </ImageWrapper>
         <Text>
-          <p>{description}</p>
+        <ContentTransformer {...paragraphs?.content?.paragraphs?.[0].body.json} />
         </Text>
         
       </Outer>
