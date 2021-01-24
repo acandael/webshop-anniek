@@ -6,7 +6,7 @@ import { screen, H3 } from 'ui';
 
 import { Outer, Text, ImageWrapper, Img } from './styles';
 
-export default function WebshopItem({ data, gridCell }) {
+export default function FolderItem({ data, gridCell }) {
   if (!data) {
     return null;
   }
@@ -37,9 +37,8 @@ export default function WebshopItem({ data, gridCell }) {
           )}
         </ImageWrapper>
         <Text>
-        <ContentTransformer {...paragraphs?.content?.paragraphs?.[0].body.json} />
+          <ContentTransformer {...paragraphs?.content?.paragraphs?.[0].body.json} />
         </Text>
-        
       </Outer>
     </Link>
   );

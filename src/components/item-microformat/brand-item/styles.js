@@ -20,6 +20,8 @@ export const ImageWrapper = styled.div`
   position: relative;
   z-index: 1;
   overflow: hidden;
+  margin-top: 32px;
+  margin-bottom: 32px;
   /* height: 100%; */
 `;
 
@@ -27,7 +29,6 @@ export const Img = styled(Image)`
   width: 100%;
   height: 100%;
   overflow: hidden;
-
   > img {
     display: block;
     object-fit: contain;
@@ -35,7 +36,6 @@ export const Img = styled(Image)`
     width: 100%;
     height: 100%;
     overflow: hidden;
-    /* border-radius: 12px; */
   }
 `;
 
@@ -44,17 +44,21 @@ export const Text = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  /* padding: 1em; */
-  
+  padding: 1em;
   h3 {
     font-size: 1.25em;
-    /* text-transform: uppercase; */
+    text-transform: uppercase;
+    margin: 0;
     color: var(--color-text-sub);
-    margin-bottom: 64px;
   }
 
   p {
     color: var(--color-text-main);
-    margin-top: 64px;
+    margin-top: 16px;
   }
+`;
+
+export const Price = styled.span`
+  color: inherit;
+  font-weight: bold;
 `;

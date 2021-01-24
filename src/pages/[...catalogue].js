@@ -22,6 +22,7 @@ import FolderPage, { getData as getDataFolder } from 'page-components/folder';
 import ProdPage, { getData as getDataProd } from 'page-components/product';
 import SearchPage, { getData as getDataSearch } from 'page-components/search';
 import WebshopPage, { getData as getDataWebshop } from 'page-components/webshop';
+import BrandPage, { getData as getDataBrand } from 'page-components/brand';
 import { shape } from 'prop-types';
 
 const renderers = {
@@ -44,6 +45,10 @@ const renderers = {
   webshop: {
     component: WebshopPage,
     getData: getDataWebshop
+  },
+  brand: {
+    component: BrandPage,
+    getData: getDataBrand
   }
 };
 
@@ -90,6 +95,8 @@ export async function getStaticProps(context) {
       renderer = 'search';
     } else if (shapeName === 'Webshop') {
       renderer = 'webshop'
+    } else if (shapeName === 'Merk') {
+      renderer = 'brand'
     } else if (type in renderers) {
       renderer = type;
     }

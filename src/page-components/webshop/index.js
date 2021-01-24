@@ -24,7 +24,6 @@ export async function getData({ asPath, language, preview = null }) {
 
 export default function WebshopPage({ folder, preview }) {
   const { children } = folder;
-  console.log(children)
   const gridRelations = folder.components
     ?.filter((c) => c.type === 'gridRelations')
     ?.reduce((acc, g) => [...acc, ...(g?.content?.grids || [])], []);
@@ -45,7 +44,7 @@ export default function WebshopPage({ folder, preview }) {
           <ShapeComponents components={rest} />
         </Header>
         <ImageWrapper>
-          <img src="static/hero-webshop.jpg" width="1164" height="497" alt="webshop - anniek lambrecht" />
+          <Img src="static/hero-webshop.jpg" width="1164" height="497" alt="webshop - anniek lambrecht" />
         </ImageWrapper>
         { children && (
               <List>
