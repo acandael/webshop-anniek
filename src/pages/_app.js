@@ -6,8 +6,7 @@ import { BasketProvider } from 'components/basket';
 import { simplyFetchFromGraph } from 'lib/graph';
 import { getLocaleFromContext, defaultLocale } from 'lib/app-config';
 import { I18nextProvider } from 'lib/i18n';
-import { ChakraProvider } from "@chakra-ui/react";
-import { extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 function MyApp({ Component, pageProps, commonData }) {
   const { mainNavigation, locale, localeResource } = commonData;
