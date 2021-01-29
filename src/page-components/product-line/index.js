@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { simplyFetchFromGraph } from 'lib/graph';
-import { Outer, H1 } from 'ui';
+import { Outer, H1, H3 } from 'ui';
 import Layout from 'components/layout';
 import Breadcrumb from 'components/breadcrumb'
 import ItemMicroformat from 'components/item-microformat';
 import toText from '@crystallize/content-transformer/toText';
-import { List, BrandHeader, Content, ImageWrapper, Img, Logo } from './styles';
+import { List, BrandHeader, Content, ImageWrapper, Img } from './styles';
 import query from './query';
 
 export async function getData({ asPath, language, preview = null }) {
@@ -22,17 +22,15 @@ export async function getData({ asPath, language, preview = null }) {
   return { ...data, preview };
 }
 
-export default function BrandPage({ folder, preview }) {
+export default function ProductLinePage({ folder, preview }) {
   const { children } = folder;
-  const rest = folder.components?.filter((c) => c.type !== 'gridRelations');
   const description = folder.components?.find((c) => c.name === 'Beschrijving')
-    ?.content?.paragraphs[0].body.json;
+    ?.content?.paragraphs?.[0]?.body.json;
   
   const images = folder.components?.find((c) => c.type === 'images')
   const image = images?.content?.images[0]
 
-  const logo = folder.components?.find((c) => c.name === 'Logo').content?.images?.[0]
-  
+  const subtitle = folder.components?.find((c) => c.name === 'Subtitel');
 
   return (
     <Layout
@@ -45,10 +43,8 @@ export default function BrandPage({ folder, preview }) {
         <BrandHeader>
           <Content>
             <H1>{folder.name}</H1>
-            <ImageWrapper>
-            {logo && <Logo src={logo.url} width="364" height="145" alt={folder.name} logo />}
-          </ImageWrapper>
-            <p>{toText(description)}</p>
+            {subtitle && <H3>{subtitle.content.text}</H3>}
+            {description && <p>{toText(description)}</p>}
           </Content>
           <ImageWrapper>
             <Img src={image.url} width="692" height="461" alt={folder.name} />
@@ -59,7 +55,7 @@ export default function BrandPage({ folder, preview }) {
               <List>
                 {children.map((item, i) => (
                   // change type from 'folder' to 'brand'
-                  item.type = 'brand',
+                  item.type = 'productline',
                   <ItemMicroformat item={item} key={i} />
                 ))}
               </List>

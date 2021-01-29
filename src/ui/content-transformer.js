@@ -66,7 +66,7 @@ const ContentTransformerOuter = styled.div`
         height: 8px;
         content: '';
         border-radius: 50%;
-        background: rgb(143, 222, 203);
+        background: var(--color-primary);
       }
     }
   }

@@ -8,7 +8,7 @@ import { useLocale } from 'lib/app-config';
 
 import { ProductFooter, Price } from './styles';
 
-export default function BuyButton({ product, selectedVariant }) {
+export default function BuyButton({ product, selectedVariant, quantity }) {
   const basket = useBasket();
   const layout = useContext(LayoutContext);
   const t = useT();
@@ -31,12 +31,14 @@ export default function BuyButton({ product, selectedVariant }) {
 
   return (
     <ProductFooter>
+      <Button width="200px" onClick={buy} disabled={!currency}>
+        Toevoegen
+      </Button>
       <Price>
         <strong>{t('common.price', { value: price, currency })}</strong>
+        {' '}
+         { quantity && <span> | {quantity}</span>}
       </Price>
-      <Button width="200px" onClick={buy} disabled={!currency}>
-        {t('product.addToBasket')}
-      </Button>
     </ProductFooter>
   );
 }

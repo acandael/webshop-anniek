@@ -39,6 +39,14 @@ export const BrandHeader = styled.div`
 export const Content = styled.div`
   width: 40vw;
   border-bottom: 1px solid #E0E0E0;
+
+  h1 {
+    margin-bottom: 24px;
+  }
+
+  p {
+    margin-top: 24px;
+  }
 `
 
 export const ImageWrapper = styled.div`
@@ -49,27 +57,11 @@ export const ImageWrapper = styled.div`
 `;
 
 export const Img = styled(Image)`
-  
-
   > img {
     object-fit: contain;
     object-position: center;
     width: 100%;
     height: 100%;
-    /* overflow: hidden; */
-    /* border-radius: 12px; */
-  }
-`;
-
-export const Logo = styled(Image)`
-  
-
-  > img {
-    object-fit: contain;
-    object-position: center;
-    width: 70%;
-    height: 100%;
-    margin-bottom: 36px;
     /* overflow: hidden; */
     /* border-radius: 12px; */
   }

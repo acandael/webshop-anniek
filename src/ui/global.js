@@ -7,7 +7,9 @@ export default createGlobalStyle`
     --color-main-background: #fff;
     --color-text-main: #56443F;
     --color-text-sub: #595554;
-    --color-box-background: #efefef;
+    --color-box-background: #DCA090;
+
+    --color-primary: #FAC7B9;
 
     --color-price: #d79b59;
     --color-error: #EF4836;

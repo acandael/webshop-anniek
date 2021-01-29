@@ -4,26 +4,24 @@ import ContentTransformer from 'ui/content-transformer';
 import { simplyFetchFromGraph } from 'lib/graph';
 import { screen } from 'ui';
 import Layout from 'components/layout';
-import ShapeComponents from 'components/shape/components';
+import Breadcrumb from 'components/breadcrumb'
 import toText from '@crystallize/content-transformer/toText';
-
+import { Outer} from 'ui';
 import VariantSelector from './variant-selector';
 import Buy from './buy';
 import query from './query';
 import SchemaOrg from './schema';
-import Topics from 'components/topics';
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react"
+
 
 import {
-  Outer,
   Sections,
   Media,
   MediaInner,
   Name,
   Info,
-  Summary,
-  Content,
-  Specs,
-  Description
+  Description,
+  Usage,
 } from './styles';
 
 export async function getData({ asPath, language, preview = null }) {
@@ -47,25 +45,59 @@ export default function ProductPage({ product, preview }) {
     setSelectedVariant(variant);
   }
 
-  const summaryComponent = product.components?.find(
-    (c) => c.name === 'Summary'
+  
+  const description = product.components?.find(
+    (c) => c.name === 'Beschrijving'
   );
-  const descriptionComponent = product.components?.find(
-    (c) => c.name === 'Description'
+
+  const usage = product.components?.find(
+    (c) => c.name === 'Gebruiksaanwijzing'
   );
-  const specs = product.components?.find((c) => c.name === 'Specs');
-  const componentsRest = product.components?.filter(
-    (c) => !['Summary', 'Description', 'Specs'].includes(c.name)
+
+  const ingredients = product.components?.find(
+    (c) => c.name === 'Ingredienten'
   );
+
+  const quantity = product.components?.find(
+    (c) => c.name === 'Hoeveelheid'
+  );
+
+  let tabs;
+
+    if (usage.content.paragraphs?.[0]?.body.json?.[0]?.children.length > 0 || ingredients.content.paragraphs?.[0]?.body.json?.[0]?.children.length > 0) {
+      tabs = (
+        <Usage>
+              <Tabs colorScheme="pink" isLazy size="md">
+                  <TabList>
+                    <Tab>Gebruiksaanwijzing</Tab>
+                    <Tab>Ingrediënten</Tab>
+                  </TabList>
+
+                  <TabPanels>
+                    <TabPanel>
+                      <ContentTransformer {...usage?.content?.paragraphs?.[0]?.body.json} />
+                    </TabPanel>
+                    <TabPanel>
+                    <ContentTransformer {...ingredients?.content?.paragraphs?.[0]?.body.json} />
+                    </TabPanel>
+                  </TabPanels>
+                </Tabs>
+            </Usage>
+      )
+      
+    
+  }
+  
   return (
     <Layout
       title={product.name}
       image={selectedVariant?.images?.[0]?.url}
-      description={toText(summaryComponent?.content?.json)}
+      description={toText(description)}
       preview={preview}
     >
-      <SchemaOrg {...product} summary={summaryComponent} />
+      <SchemaOrg {...product} summary={description} />
       <Outer>
+        <Breadcrumb path={product.path} />
         <Sections>
           <Media>
             <MediaInner>
@@ -78,10 +110,10 @@ export default function ProductPage({ product, preview }) {
           </Media>
           <Info>
             <Name>{product.name}</Name>
-            {summaryComponent && (
-              <Summary>
-                <ContentTransformer {...summaryComponent?.content?.json} />
-              </Summary>
+            {description && (
+              <Description>
+                <ContentTransformer {...description?.content?.paragraphs?.[0]?.body.json} />
+              </Description>
             )}
 
             {product.variants?.length > 1 && (
@@ -91,29 +123,10 @@ export default function ProductPage({ product, preview }) {
                 onVariantChange={onVariantChange}
               />
             )}
-
-            <Buy product={product} selectedVariant={selectedVariant} />
+            <Buy product={product} selectedVariant={selectedVariant} quantity={quantity && quantity.content.text} />
+            {tabs}
           </Info>
         </Sections>
-        <Content>
-          {descriptionComponent && (
-            <Description>
-              <ShapeComponents
-                className="description"
-                components={[descriptionComponent]}
-              />
-            </Description>
-          )}
-          {specs && (
-            <Specs>
-              <ShapeComponents components={[specs]} />
-            </Specs>
-          )}
-        </Content>
-
-        {product?.topics?.length && <Topics topicMaps={product.topics} />}
-
-        <ShapeComponents components={componentsRest} />
       </Outer>
     </Layout>
   );

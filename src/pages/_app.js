@@ -6,6 +6,8 @@ import { BasketProvider } from 'components/basket';
 import { simplyFetchFromGraph } from 'lib/graph';
 import { getLocaleFromContext, defaultLocale } from 'lib/app-config';
 import { I18nextProvider } from 'lib/i18n';
+import { ChakraProvider } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 
 function MyApp({ Component, pageProps, commonData }) {
   const { mainNavigation, locale, localeResource } = commonData;
@@ -28,6 +30,15 @@ function MyApp({ Component, pageProps, commonData }) {
     // }
   };
 
+  const theme = extendTheme({
+    colors: {
+      brand: {
+        100: "#FAC7B9",
+        900: "#DCA090",
+      },
+    },
+  })
+
   return (
     <>
       <DefaultSeo {...SEOSettings} />
@@ -35,7 +46,9 @@ function MyApp({ Component, pageProps, commonData }) {
         <SettingsProvider mainNavigation={mainNavigation}>
           <AuthProvider>
             <BasketProvider>
-              <Component {...pageProps} />
+              <ChakraProvider theme={theme}>
+                <Component {...pageProps} />
+              </ChakraProvider>
             </BasketProvider>
           </AuthProvider>
         </SettingsProvider>

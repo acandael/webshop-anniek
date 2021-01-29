@@ -1,12 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import ContentTransformer from 'ui/content-transformer';
-
 import { screen, H3 } from 'ui';
 
 import { Outer, Text, ImageWrapper, Img } from './styles';
 
-export default function BrandItem({ data, gridCell }) {
+export default function CategoryItem({ data, gridCell }) {
   if (!data) {
     return null;
   }

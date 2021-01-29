@@ -24,9 +24,7 @@ export async function getData({ asPath, language, preview = null }) {
 
 export default function WebshopPage({ folder, preview }) {
   const { children } = folder;
-  const gridRelations = folder.components
-    ?.filter((c) => c.type === 'gridRelations')
-    ?.reduce((acc, g) => [...acc, ...(g?.content?.grids || [])], []);
+  
   const rest = folder.components?.filter((c) => c.type !== 'gridRelations');
   const description = folder.components?.find((c) => c.name === 'Brief')
     ?.content?.json;

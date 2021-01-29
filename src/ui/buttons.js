@@ -11,12 +11,15 @@ const STATES = {
 const Inner = styled.span`
   flex: 1 1 auto;
   background: var(--color-box-background);
-  color: var(--color-text-main);
+  color: var(--color-main-background);
   font-weight: 600;
   text-decoration: none;
   text-align: center;
   padding: 16px 25px;
   position: relative;
+  border: 1px solid var(--color-box-background);
+  opacity: 0.8;
+  transition: 0.3s;
 `;
 
 const Outer = styled.button.attrs((p) => ({
@@ -26,14 +29,14 @@ const Outer = styled.button.attrs((p) => ({
   display: inline-flex;
   border-radius: 0;
   border: none;
-  border: 2px solid var(--color-text-main);
   padding: 0;
   appearance: none;
   cursor: pointer;
   text-decoration: none;
 
   &:hover ${Inner} {
-    background: var(--color-text-main);
+    /* background: var(--color-primary); */
+    opacity: 1;
     color: var(--color-main-background);
   }
 

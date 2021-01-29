@@ -2,10 +2,6 @@ import styled from 'styled-components';
 
 import { responsive, H1 } from 'ui';
 
-export const Outer = styled.div`
-  max-width: 1440px;
-  margin: 0 auto;
-`;
 
 export const ShapeContent = styled.div`
   max-width: 800px;
@@ -20,9 +16,10 @@ export const Loader = styled.div`
 
 export const Sections = styled.div`
   display: flex;
-  align-items: center;
-  background: var(--color-box-background);
-  padding: 50px;
+  align-items: top;
+  /* background: var(--color-box-background); */
+  margin-top: 130px;
+  margin-left: 0;
   flex-direction: row-reverse;
   justify-content: center;
 
@@ -41,22 +38,32 @@ export const Content = styled.div`
     display: block;
   }
 `;
-export const Specs = styled.div`
-  flex: 0 0 500px;
-  border-left: 15px solid var(--color-main-background);
-  background: var(--color-box-background);
-  ${responsive.xs} {
-    border-left: 0;
-    display: block;
-    margin-top: 15px;
-    padding: 20px 0;
-  }
-`;
 
 export const Description = styled.div`
   color: var(--color-text-sub);
   flex: 0 1 100%;
-  background: var(--color-box-background);
+  /* background: var(--color-box-background); */
+  margin-top: 32px;
+  margin-bottom: 0;
+  padding: 0 0;
+  h2:empty {
+    display: none;
+  }
+
+  ul {
+    margin: 1rem 0;
+    padding-left: 1.2rem;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+`;
+
+export const Usage = styled.div`
+  color: var(--color-text-sub);
+  flex: 0 1 100%;
+  /* background: var(--color-box-background); */
   padding: 5rem 0;
   h2:empty {
     display: none;
@@ -73,7 +80,7 @@ export const Description = styled.div`
 `;
 
 export const Media = styled.div`
-  flex: 0 0 65%;
+  flex: 0 0 50%;
   position: relative;
   padding: 3rem;
   ${responsive.mdAndLess} {
@@ -102,7 +109,7 @@ export const MediaInner = styled.div`
 
 export const Info = styled.div`
   flex: 1 1 auto;
-  margin: 0 50px 0 50px;
+  margin: 0;
 
   ${responsive.smAndLess} {
     margin: 2em;
@@ -123,10 +130,10 @@ export const Summary = styled.div`
 
 export const ProductFooter = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  padding: 45px 0 0;
+  
+  padding: 24px 0 0;
   justify-content: space-between;
-  border-top: 1px solid #cecece;
+  /* border-top: 1px solid #cecece; */
   align-items: center;
 
   ${responsive.xs} {
@@ -147,6 +154,10 @@ export const Price = styled.div`
   strong {
     display: inline-block;
     margin-left: 5px;
+  }
+
+  span {
+    font-size: 16px;
   }
 
   ${responsive.xs} {
