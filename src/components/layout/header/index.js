@@ -43,7 +43,7 @@ export default function Header({ simple, preview }) {
       <Outer simple={simple}>
         <Link href="/" passHref>
           <Logo>
-            <img src="/static/anniek-lambrecht-logo.png" alt="" width="100" height="100" />
+            <img src="/static/logo-anniek-lambrecht-header-2.png" alt="" width="240" height="133" />
           </Logo>
         </Link>
         <Nav open={navOpen}>

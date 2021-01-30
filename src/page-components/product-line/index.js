@@ -22,39 +22,39 @@ export async function getData({ asPath, language, preview = null }) {
   return { ...data, preview };
 }
 
-export default function ProductLinePage({ folder, preview }) {
-  const { children } = folder;
-  const description = folder.components?.find((c) => c.name === 'Beschrijving')
+export default function ProductLinePage({ productline, preview }) {
+  const { children } = productline;
+  const description = productline.components?.find((c) => c.name === 'Beschrijving')
     ?.content?.paragraphs?.[0]?.body.json;
   
-  const images = folder.components?.find((c) => c.type === 'images')
+  const images = productline.components?.find((c) => c.type === 'images')
   const image = images?.content?.images[0]
 
-  const subtitle = folder.components?.find((c) => c.name === 'Subtitel');
+  const subtitle = productline.components?.find((c) => c.name === 'Subtitel');
 
   return (
     <Layout
-      title={folder.name}
+      title={productline.name}
       description={toText(description)}
       preview={preview}
     >
       <Outer>
-        <Breadcrumb path={folder.path} />
+        <Breadcrumb path={productline.path} />
         <BrandHeader>
           <Content>
-            <H1>{folder.name}</H1>
+            <H1>{productline.name}</H1>
             {subtitle && <H3>{subtitle.content.text}</H3>}
             {description && <p>{toText(description)}</p>}
           </Content>
           <ImageWrapper>
-            <Img src={image.url} width="692" height="461" alt={folder.name} />
+            <Img src={image.url} width={image.width} height={image.height} alt={productline.name} />
           </ImageWrapper>
         </BrandHeader>
         {
           children && (
               <List>
                 {children.map((item, i) => (
-                  // change type from 'folder' to 'brand'
+                  // change type from 'folder' to 'productline'
                   item.type = 'productline',
                   <ItemMicroformat item={item} key={i} />
                 ))}

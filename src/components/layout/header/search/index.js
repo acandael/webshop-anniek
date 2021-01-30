@@ -9,14 +9,16 @@ import { SEARCH_QUERY } from 'lib/search';
 import { useLocale } from 'lib/app-config';
 
 import { Btn } from './../styles';
-import { Input, InputGroup, InputButton, InputSpinner } from 'ui';
+import { InputButton, InputSpinner } from 'ui';
 import {
   Outer,
   SearchWrapper,
   SearchLabel,
   BodyOverlay,
   CloseBtn,
-  Result
+  Result,
+  Input,
+  InputGroup
 } from './styles';
 
 const initialState = {

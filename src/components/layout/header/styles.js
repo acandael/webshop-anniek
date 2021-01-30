@@ -4,15 +4,17 @@ import is from 'styled-is';
 import { responsive } from 'ui';
 
 export const Outer = styled.header`
-  background-color: #FAC7B9;
-  opacity: 80%;
+  background-color: var(--color-primary);
+  opacity: 60%;
   text-align: center;
-  padding: 20px 75px;
+  padding: 20px 138px;
+  
   max-width: 1440px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin: 0 auto 0;
+  
 
   ${responsive.smAndLess} {
     padding: 10px 90px 10px 20px;
@@ -21,21 +23,18 @@ export const Outer = styled.header`
 `;
 
 export const Logo = styled.a`
-  height: 100px;
   display: block;
   object-fit: contain;
-
   position: relative;
   z-index: 99;
-  img,
-  svg {
-    height: 100%;
+  img {
+    display: block;
   }
 `;
 
 export const Nav = styled.nav`
   display: flex;
-  margin: 10px 0 0 15px;
+  margin: 0 0 0 15px;
   padding-left: 15px;
   width: 100%;
   ${responsive.mdPlus} {
@@ -85,12 +84,12 @@ export const NavListItem = styled.li`
     display: inline-block;
     padding: 10px 10px;
     transition: all 100ms;
-    font-weight: 600;
+    font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 1px;
     &:hover {
       text-decoration: none;
-      color: #000;
+      color: var(--color-text-main);
       transition: 0.3s;
     }
   }

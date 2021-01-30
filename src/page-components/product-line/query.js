@@ -1,8 +1,8 @@
 import fragments from 'lib/graph/fragments';
 
 export default `
-  query FOLDER_PAGE($language: String!, $path: String, $version: VersionLabel!) {
-    folder: catalogue(language: $language, path: $path, version: $version) {
+  query PRODUCT_LINE($language: String!, $path: String, $version: VersionLabel!) {
+    productline: catalogue(language: $language, path: $path, version: $version) {
       ...item
 
       children {

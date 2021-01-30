@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import is from 'styled-is';
-import { responsive } from 'ui';
+import { responsive, Input as I , InputGroup as IG } from 'ui';
 
 export const SearchWrapper = styled.div`
   position: absolute;
   left: 0;
   width: 100%;
   top: 0;
-  background: #fff;
+  background: rgba(0, 0, 0, 0.4);
   z-index: 10;
   box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.05);
   transform: translateY(-100%);
@@ -35,6 +35,15 @@ export const SearchLabel = styled.label`
   }
 `;
 
+export const Input = styled(I)`
+  background-color: #000;
+  color: #fff;
+`;
+
+export const InputGroup = styled(IG)`
+  background-color: #000;
+`;
+
 export const Outer = styled.div`
   max-width: 600px;
   margin: 0 auto;
@@ -56,7 +65,7 @@ export const Result = styled.div`
   top: 120px;
   left: 0;
   width: 100%;
-  background: #fff;
+  background: rgba(0, 0, 0, 0.4);
   text-align: left;
   > h3 {
     margin: 0;
@@ -84,6 +93,7 @@ export const Result = styled.div`
       display: block;
       padding: 10px 35px;
       background: transparent;
+      color: #fff;
       border-radius: 0;
       &:active,
       &:focus {
@@ -96,7 +106,7 @@ export const Result = styled.div`
   }
 `;
 export const BodyOverlay = styled.div`
-  background: rgba(0, 0, 0, 0.6);
+  background: #fff;
   position: fixed;
   left: 0%;
   top: 0;

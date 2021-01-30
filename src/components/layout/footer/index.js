@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 
-import { Outer, Logo, NavList, Legal } from './styles';
+import { Outer, Logo, NavList, Powered } from './styles';
 
 export default function Footer() {
   
@@ -10,20 +10,17 @@ export default function Footer() {
 
   return (
     <Outer>
-      <NavList>
-      <Link href="/">
-        <a>
+      <Powered>
+      <a>
           <Logo>
-            <img src="/static/anniek-lambrecht-logo.png" alt="logo anniek lambrecht" width="100" height="100" />
+            <img src="/static/logo-anniek-lambrecht-footer.png" alt="logo anniek lambrecht" width="100" height="100" />
           </Logo>
         </a>
-      </Link>
-      </NavList>
-      <NavList>
-        <li>&copy; 2021 Copyright Anniek Lambrecht</li>
-        <li>Alle rechten voorbehouden</li>
-        <li>Voorwaarden - Disclaimer - Privacyverklaring</li>
-      </NavList>
+        <p>&copy; 2021 Copyright Anniek Lambrecht<br />
+        Alle rechten voorbehouden<br />
+        Voorwaarden - Disclaimer - Privacyverklaring</p>
+        
+      </Powered>
       <NavList>
         <h3>MENU</h3>
           <li>
@@ -31,9 +28,11 @@ export default function Footer() {
               <a>Behandelingen</a>
             </Link>
           </li>
-          <Link href="/contact">
-              <a>Contact</a>
-          </Link>
+          <li>
+            <Link href="/contact">
+                <a>Contact</a>
+            </Link>
+          </li>
         
       </NavList>
       <NavList>

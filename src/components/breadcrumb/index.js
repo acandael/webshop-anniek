@@ -13,9 +13,10 @@ export default function Breadcrumb({path}) {
       <Crumb color="gray.500">
           {pathArray.map((breadcrumb, index) => {
             if (breadcrumb !== '') {
+              const regex = /(-)/g
               return (
                 <BreadcrumbItem key={breadcrumb}>
-                <BreadcrumbLink href={`/${pathArray.slice(1, index + 1).join('/')}`}>{breadcrumb}</BreadcrumbLink>
+                <BreadcrumbLink href={`/${pathArray.slice(1, index + 1).join('/')}`}>{breadcrumb.replace(regex, ' ')}</BreadcrumbLink>
                 </BreadcrumbItem>
               )
             }
