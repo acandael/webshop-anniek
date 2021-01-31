@@ -5,6 +5,7 @@ import WebshopItem from './webshop-item';
 import BrandItem from './brand-item';
 import ProductLineItem from './productline-item';
 import CategoryItem from './category-item';
+import BehandelingenItem from './behandelingen-item'
 
 export default function ItemMicroformat({ item }) {
   if (!item) {
@@ -18,7 +19,8 @@ export default function ItemMicroformat({ item }) {
     webshop: <WebshopItem data={item} key={item.path} />,
     brand: <BrandItem data={item} key={item.path} />,
     productline: <ProductLineItem data={item} key={item.path} />,
-    category: <CategoryItem data={item} key={item.path} />
+    category: <CategoryItem data={item} key={item.path} />,
+    behandelingen: <BehandelingenItem data={item} key={item.path} />
   };
   
   return types[item.type] || null;

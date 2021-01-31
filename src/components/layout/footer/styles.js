@@ -6,7 +6,7 @@ export const Outer = styled.footer`
   max-width: 1440px;
   margin: 50px auto;
   /* border-top: 2px solid var(--color-box-background); */
-  padding: 50px 50px;
+  padding: 50px 138px;
   justify-content: space-between;
   background-color: #EFEAEA;
 `;

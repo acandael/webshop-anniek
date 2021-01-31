@@ -3,24 +3,21 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ContentTransformer from 'ui/content-transformer';
 
-import { responsive } from 'ui';
+import { responsive, H3 } from 'ui';
 
 import ParagraphCollection from './paragraph-collection';
 import PropertiesTable from './properties-table';
-import Images from './images';
-import Videos from './videos';
 import ItemRelations from './item-relations';
 import GridRelations from './grid-relations';
 
 const ContentOuter = styled.div`
-  margin: 1em var(--content-padding);
 
   ${responsive.xs} {
     margin: 0;
   }
 `;
 
-const ShapeComponents = ({ components, overrides }) => {
+const BehandelingComponents = ({ components, overrides }) => {
   if (!components || !Array.isArray(components)) {
     return null;
   }
@@ -50,20 +47,6 @@ const ShapeComponents = ({ components, overrides }) => {
             );
           }
 
-          if (type === 'images') {
-            if (!component.content || !component.content.images) {
-              return null;
-            }
-            return <Images key={key} images={component.content.images} />;
-          }
-
-          if (type === 'videos') {
-            if (!component.content || !component.content.videos) {
-              return null;
-            }
-            return <Videos key={key} videos={component.content.videos} />;
-          }
-
           if (type === 'richText') {
             if (!component.content.json) {
               return null;
@@ -89,7 +72,7 @@ const ShapeComponents = ({ components, overrides }) => {
 
           if (type === 'propertiesTable') {
             Component = Component || PropertiesTable;
-            console.log(component)
+            
             return (
               <ContentOuter key={key}>
                 <Component {...component.content} />
@@ -118,9 +101,9 @@ const ShapeComponents = ({ components, overrides }) => {
   );
 };
 
-ShapeComponents.propTypes = {
+BehandelingComponents.propTypes = {
   components: PropTypes.array.isRequired,
   overrides: PropTypes.object
 };
 
-export default ShapeComponents;
+export default BehandelingComponents;
