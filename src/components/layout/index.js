@@ -99,7 +99,7 @@ export default function Layout({
       ) : (
         <CrystallizeLayout right={Aside}>
           <Header simple={simple} preview={preview} />
-          <Main>{loading ? <Loader /> : children}</Main>
+          <Main title={title}>{loading ? <Loader /> : children}</Main>
           <Footer />
         </CrystallizeLayout>
       )}

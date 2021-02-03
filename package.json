@@ -35,6 +35,7 @@
     ]
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.0.4",
     "@chakra-ui/react": "^1.1.5",
     "@crystallize/content-transformer": "^5.2.1",
     "@crystallize/grid-renderer": "^2.0.1",

@@ -14,11 +14,19 @@ export default function Breadcrumb({path}) {
           {pathArray.map((breadcrumb, index) => {
             if (breadcrumb !== '') {
               const regex = /(-)/g
-              return (
+              if (breadcrumb !== 'Home') {
+                return (
                 <BreadcrumbItem key={breadcrumb}>
                 <BreadcrumbLink href={`/${pathArray.slice(1, index + 1).join('/')}`}>{breadcrumb.replace(regex, ' ')}</BreadcrumbLink>
                 </BreadcrumbItem>
-              )
+                ) 
+              } else {
+                return (
+                <BreadcrumbItem key={breadcrumb}>
+                <BreadcrumbLink href={`/`}>{breadcrumb.replace(regex, ' ')}</BreadcrumbLink>
+                </BreadcrumbItem>
+                )
+              }
             }
           })}
           </Crumb>
