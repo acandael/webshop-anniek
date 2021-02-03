@@ -17,25 +17,26 @@ export async function getData({ asPath, language, preview = null }) {
       version: preview ? 'draft' : 'published'
     }
   });
-
+  console.log(data)
   return { ...data, preview };
 }
 
-export default function WebshopPage({ webshop, preview }) {
-  const { children } = webshop;
-  const description = webshop.components?.find((c) => c.name === 'Brief')
+
+export default function WebshopPage({ folder, preview }) {
+  const { children } = folder;
+  const description = folder.components?.find((c) => c.name === 'Brief')
     ?.content?.json;
-  const icon = webshop.components?.find((c) => c.name === 'Icon');
+  const icon = folder.components?.find((c) => c.name === 'Icon');
   return (
     <Layout
-      title={webshop.name}
+      title={folder.name}
       description={toText(description)}
       image={icon?.content?.images?.[0]?.url}
       preview={preview}
     >
       <Outer>
         <Header centerContent>
-          <H1>{webshop.name}</H1>
+          <H1>{folder.name}</H1>
         </Header>
         <ImageWrapper>
           <Img src="static/hero-webshop.jpg" width="1164" height="497" alt="webshop - anniek lambrecht" />
@@ -43,7 +44,7 @@ export default function WebshopPage({ webshop, preview }) {
         { children && (
               <List>
                 {children.map((item, i) => (
-                  // change type from 'folder' to 'webshop'
+                  // change type from 'folder' to 'folder'
                   item.type = 'webshop',
                   <ItemMicroformat item={item} key={i} />
                 ))}

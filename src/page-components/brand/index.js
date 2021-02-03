@@ -18,39 +18,39 @@ export async function getData({ asPath, language, preview = null }) {
       version: preview ? 'draft' : 'published'
     }
   });
-
+  console.log(data)
   return { ...data, preview };
 }
 
-export default function BrandPage({ brand, preview }) {
-  const { children } = brand;
+export default function BrandPage({ folder, preview }) {
+  const { children } = folder;
   
-  const description = brand.components?.find((c) => c.name === 'Beschrijving')
+  const description = folder.components?.find((c) => c.name === 'Beschrijving')
     ?.content?.paragraphs[0].body.json;
   
-  const images = brand.components?.find((c) => c.type === 'images')
+  const images = folder.components?.find((c) => c.type === 'images')
   const image = images?.content?.images[0]
-
-  const logo = brand.components?.find((c) => c.name === 'Logo').content?.images?.[0]
+  
+  const logo = folder.components?.find((c) => c.name === 'Logo').content?.images?.[0]
 
   return (
     <Layout
-      title={brand.name}
+      title={folder.name}
       description={toText(description)}
       preview={preview}
     >
       <Outer>
-        <Breadcrumb path={brand.path} />
+        <Breadcrumb path={folder.path} />
         <BrandHeader>
           <Content>
-            <H1>{brand.name}</H1>
+            <H1>{folder.name}</H1>
             <ImageWrapper>
-            {logo && <Logo src={logo.url} width={logo.width} height={logo.height} alt={brand.name} logo />}
+            {logo && <Logo src={logo.url} width={logo.width} height={logo.height} alt={folder.name} logo />}
           </ImageWrapper>
             <p>{toText(description)}</p>
           </Content>
           <ImageWrapper>
-            <Img src={image.url} width={image.width} height={image.height} alt={brand.name} />
+            <Img src={image.url} width={image.width} height={image.height} alt={folder.name} />
           </ImageWrapper>
         </BrandHeader>
         {

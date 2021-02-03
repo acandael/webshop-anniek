@@ -108,7 +108,7 @@ export async function getStaticProps(context) {
         path: asPath
       }
     });
-    const { type, children, shape: {name: shapeName} } = getItemType.data.catalogue;
+    const { type, shape: {name: shapeName} } = getItemType.data.catalogue;
 
     let renderer = 'folder';
     
@@ -139,6 +139,8 @@ export async function getStaticProps(context) {
         }
       })
     });
+
+    
 
     return {
       props: {

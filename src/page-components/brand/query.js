@@ -1,16 +1,60 @@
-import fragments from 'lib/graph/fragments';
-
 export default `
-  query BRAND($language: String!, $path: String, $version: VersionLabel!) {
-    brand: catalogue(language: $language, path: $path, version: $version) {
-      ...item
+  query FOLDER_PAGE($language: String!, $path: String, $version: VersionLabel!) {
+    folder: catalogue(language: $language, path: $path, version: $version) {
+      name
+      path
+      components {
+        ...component
+       }
+       children {
+         name
+         path
+         components {
+          ...component
+         }
+       }
+    }
+  }
 
-      children {
-        ...item
-        ...product
+  fragment image on Image {
+    url
+    altText
+    variants {
+      url
+      width
+      height
+    }
+  }
+
+  fragment imageContent on ImageContent {
+    images {
+      ...image
+    }
+  }
+
+  fragment singleLine on SingleLineContent {
+    text
+  }
+
+  fragment richText on RichTextContent {
+    json
+  }
+
+  fragment paragraphCollection on ParagraphCollectionContent {
+    paragraphs {
+      body {
+        ...richText
       }
     }
   }
 
-  ${fragments}
+  fragment component on Component {
+    name
+    type
+    content {
+      ...singleLine
+      ...imageContent
+      ...paragraphCollection
+    }
+  }
 `;

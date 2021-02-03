@@ -22,31 +22,31 @@ export async function getData({ asPath, language, preview = null }) {
   return { ...data, preview };
 }
 
-export default function CategoryPage({ category, preview }) {
-  const { children } = category;
+export default function CategoryPage({ folder, preview }) {
+  const { children } = folder;
   
-  const description = category.components?.find((c) => c.name === 'Beschrijving')
+  const description = folder.components?.find((c) => c.name === 'Beschrijving')
     ?.content?.paragraphs[0].body.json;
   
-  const images = category.components?.find((c) => c.type === 'images')
+  const images = folder.components?.find((c) => c.type === 'images')
   const image = images?.content?.images[0]
 
 
   return (
     <Layout
-      title={category.name}
+      title={folder.name}
       description={toText(description)}
       preview={preview}
     >
       <Outer>
-        <Breadcrumb path={category.path} />
+        <Breadcrumb path={folder.path} />
         <BrandHeader>
           <Content>
-            <H1>{category.name}</H1>
+            <H1>{folder.name}</H1>
             <p>{toText(description)}</p>
           </Content>
           <ImageWrapper>
-              <Img src={image.url} width={image.width} height={image.height} alt={category.name} />
+              <Img src={image.url} width={image.width} height={image.height} alt={folder.name} />
             </ImageWrapper>
           </BrandHeader>
         {

@@ -44,7 +44,6 @@ export default function ProductPage({ product, preview }) {
   function onVariantChange(variant) {
     setSelectedVariant(variant);
   }
-
   
   const description = product.components?.find(
     (c) => c.name === 'Beschrijving'
