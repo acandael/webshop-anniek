@@ -12,6 +12,7 @@ import Buy from './buy';
 import query from './query';
 import SchemaOrg from './schema';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react"
+import PropertiesTable from 'components/shape/behandeling-components/properties-table';
 
 
 import {
@@ -60,6 +61,8 @@ export default function ProductPage({ product, preview }) {
   const quantity = product.components?.find(
     (c) => c.name === 'Hoeveelheid'
   );
+
+  const ingredientstable = product.components?.find((c) => c.type === 'propertiesTable').content
 
   let tabs;
 
@@ -126,6 +129,7 @@ export default function ProductPage({ product, preview }) {
             {tabs}
           </Info>
         </Sections>
+        <PropertiesTable {...ingredientstable} />
       </Outer>
     </Layout>
   );
