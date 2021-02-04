@@ -11,8 +11,8 @@ export default {
       name: 'Naam',
       firstName: 'Voornaam',
       lastName: 'Familienaam',
-      streetAddress: 'Street address',
-      postalCode: 'Postal code',
+      streetAddress: 'Straat',
+      postalCode: 'Postcode',
       email: 'Email',
       emailPlaceholder: 'you@your.place',
       login: {

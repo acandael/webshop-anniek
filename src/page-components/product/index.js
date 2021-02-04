@@ -125,7 +125,7 @@ export default function ProductPage({ product, preview }) {
                 onVariantChange={onVariantChange}
               />
             )}
-            <Buy product={product} selectedVariant={selectedVariant} quantity={quantity && quantity.content.text} />
+            <Buy product={product} selectedVariant={selectedVariant} quantity={quantity && quantity.content?.text} />
             {tabs}
           </Info>
         </Sections>

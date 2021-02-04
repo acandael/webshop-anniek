@@ -43,7 +43,7 @@ export default function ProductLinePage({ folder, preview }) {
         <BrandHeader>
           <Content>
             <H1>{folder.name}</H1>
-            {subtitle && <H3>{subtitle.content.text}</H3>}
+            {subtitle && <H3>{subtitle.content?.text}</H3>}
             {description && <p>{toText(description)}</p>}
           </Content>
           <ImageWrapper>

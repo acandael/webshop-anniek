@@ -107,6 +107,8 @@ export const MediaInner = styled.div`
   }
 `;
 
+
+
 export const Info = styled.div`
   flex: 1 1 auto;
   margin: 0;

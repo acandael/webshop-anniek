@@ -88,7 +88,7 @@ export const NavListItem = styled.li`
     letter-spacing: 1px;
     &:hover {
       text-decoration: none;
-      color: var(--color-text-main);
+      color: #fff;
       transition: 0.3s;
     }
   }
