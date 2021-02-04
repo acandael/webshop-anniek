@@ -129,7 +129,7 @@ export const SectionHeader = styled(H3)`
 export const Container = styled.div`
   width: 100%;
   padding: 0 75px 50px 75px;
-  background: var(--color-box-background);
+  background: #EFEAEA;
 
   ${responsive.smAndLess} {
     margin-bottom: 25px;

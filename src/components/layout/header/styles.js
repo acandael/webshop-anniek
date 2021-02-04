@@ -5,7 +5,6 @@ import { responsive } from 'ui';
 
 export const Outer = styled.header`
   background-color: var(--color-primary);
-  opacity: 60%;
   text-align: center;
   padding: 20px 138px;
   

@@ -8,82 +8,82 @@ export default {
       title: 'Home'
     },
     customer: {
-      name: 'Name',
-      firstName: 'First name',
-      lastName: 'Last name',
+      name: 'Naam',
+      firstName: 'Voornaam',
+      lastName: 'Familienaam',
       streetAddress: 'Street address',
       postalCode: 'Postal code',
       email: 'Email',
       emailPlaceholder: 'you@your.place',
       login: {
         title: 'Login',
-        loggedIn: 'You are logged in',
+        loggedIn: 'Je bent ingelogd',
         instructions:
-          'Enter your email address and we’ll send a magic login link to your inbox.',
-        emailAddressInvalid: 'Please enter a valid email address',
-        sendMagicLink: 'Send me a magic link'
+          'Vul je emailadres in en we sturen een magic link naar je mailbox',
+        emailAddressInvalid: 'Gelieve een geldig emailadres in te geven',
+        sendMagicLink: 'Stuur me een magic link'
       }
     },
     product: {
-      relatedProduct: 'Related product',
-      relatedProduct_plural: 'Related products',
-      addToBasket: 'Add to Basket',
+      relatedProduct: 'Aanbevolen Combinatie',
+      relatedProduct_plural: 'Aanbevolen Combinaties',
+      addToBasket: 'Toevoegen aan Winkelmand',
       buy: 'BUY',
       attributes: {
-        color: 'Color',
-        green: 'Green',
-        blue: 'Blue',
-        black: 'Black'
+        color: 'Kleur',
+        green: 'Groen',
+        blue: 'Blauw',
+        black: 'Zwart'
       }
     },
     basket: {
-      title: 'Basket',
-      loading: 'Hold on. Getting your basket...',
-      removeItem: 'Remove {{name}} from basket',
-      empty: 'Your basket is empty',
-      empty_inCheckout: 'You have no items in your basket',
+      title: 'Winkelmand',
+      loading: 'Even geduld. We halen je winkelmand op...',
+      removeItem: 'Verwijder {{name}} uit winkelmand',
+      empty: 'Je winkelmand is leeg',
+      empty_inCheckout: 'Je hebt geen items in je winkelmand',
       remainingUntilFreeShipping:
         'Add another {{amount, currency}} to your order for free shipping.',
-      totalPrice: 'Total price',
-      discount: 'Discount',
-      totalPriceAfterDiscount: 'Total after discount',
+      totalPrice: 'Totaal',
+      discount: 'Korting',
+      totalPriceAfterDiscount: 'Totaal na korting',
       shippingPrice: 'Shipping',
-      vat: 'VAT',
-      totalToPay: 'To pay',
-      goToCheckout: 'Go to checkout'
+      vat: 'BTW',
+      totalToPay: 'Te betalen',
+      goToCheckout: 'Afrekenen'
     },
     checkout: {
-      title: 'Checkout',
-      payNow: 'Pay now',
-      choosePaymentMethod: 'Choose payment method',
-      noPaymentProvidersConfigured: 'No payment providers are configured',
+      title: 'Afrekenen',
+      payNow: 'Betaal nu',
+      choosePaymentMethod: 'Kies betaalmethode',
+      noPaymentProvidersConfigured: 'Er zijn geen betaal providers geconfigureerd',
       paymentProviderNotConfigured:
-        'Payment provider {{name}} is not configured',
+        'Betaal provider {{name}} is niet geconfigureerd',
       paymentProviderLogoAlt: 'Logo for {{name}}',
-      confirmingCardPayment: 'Please wait your card details are confirmed...',
-      loadingPaymentGateway: 'Initialising payment gateway...',
+      confirmingCardPayment: 'Een ogenblikje je kaartgegevens worden geverifieerd...',
+      loadingPaymentGateway: 'De betaal gateway wordt geïnitialiseerd...',
       loadingPaymentGatewayFailed:
-        'Oh no. Could not load the {{name}} payment gateway',
+        'Oei. De {{name}} payment gateway kon niet worden geladen',
       confirmation: {
-        title: 'Order confirmation',
-        shortStatus: `Your order has been confirmed.`,
-        shortStatus_withEmail: `Your order has been confirmed. A copy of your order has been sent to {{email}}`
+        title: 'Bestelbevestiging',
+        shortStatus: `Je bestelling werd bevestigd.`,
+        shortStatus_withEmail: `Je bestelling werd bevestigd. Een kopie van je bestelling werd verstuurd naar {{email}}`
       }
     },
     order: {
-      total: 'Total',
-      item: 'Order item',
-      item_plural: 'Order items'
+      total: 'Totaal',
+      item: 'Besteld item',
+      item_plural: 'Bestelde items'
     },
     layout: {
       menu: 'Menu',
-      searchPlaceholder: 'Find things',
+      searchPlaceholder: 'Zoek producten',
       ecomBy: 'eCommerce by',
       loadingVideo: 'Loading video'
     },
     search: {
-      foundResults: 'Found {{count}} matching result',
-      foundResults_plural: 'Found {{count}} matching results',
+      foundResults: '{{count}} gevonden resultaten',
+      foundResults_plural: '{{count}} gevonden resultaten',
       orderTitle: 'Order by',
       order: {
         ITEM_NAME_ASC: 'Name ascending',
