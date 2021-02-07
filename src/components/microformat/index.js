@@ -7,11 +7,10 @@ import ProductLineItem from './productline-item';
 import CategoryItem from './category-item';
 import BehandelingenItem from './behandelingen-item'
 
-export default function ItemMicroformat({ item }) {
+export default function Microformat({ item }) {
   if (!item) {
     return null;
   }
-
   const types = {
     product: <ProductItem data={item} key={item.path} />,
     folder: <FolderItem data={item} key={item.path} />,
@@ -22,6 +21,6 @@ export default function ItemMicroformat({ item }) {
     category: <CategoryItem data={item} key={item.path} />,
     behandelingen: <BehandelingenItem data={item} key={item.path} />
   };
-  
+
   return types[item.type] || null;
 }

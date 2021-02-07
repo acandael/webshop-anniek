@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { LayoutContext } from '@crystallize/react-layout';
 
 import { Button } from 'ui';
@@ -6,39 +6,95 @@ import { useBasket } from 'components/basket';
 import { useT } from 'lib/i18n';
 import { useLocale } from 'lib/app-config';
 
-import { ProductFooter, Price } from './styles';
+import {
+  ProductFooter,
+  Price,
+  DiscountDetails,
+  BeforePrice,
+  Percentage
+} from './styles';
 
-export default function BuyButton({ product, selectedVariant, quantity }) {
+export default function BuyButton({ product, selectedVariant, pricing }) {
+  const [buying, setBuying] = useState(false);
   const basket = useBasket();
   const layout = useContext(LayoutContext);
   const t = useT();
   const locale = useLocale();
 
-  const { identifier, price, currency } =
-    selectedVariant.priceVariants.find(
-      (pv) => pv.identifier === locale.crystallizePriceVariant
-    ) || {};
-
-  async function buy() {
-    await layout.actions.showRight();
+  function buy() {
+    /**
+     * Give user immidiate feedback that they've triggered
+     * the buy action. This is important for user gratification
+     * and conveys trust in the service
+     */
+    setBuying(true);
 
     basket.actions.addItem({
       sku: selectedVariant.sku,
       path: product.path,
-      priceVariantIdentifier: identifier || locale.crystallizePriceVariant
+      priceVariantIdentifier: pricing?.discountPrice
+        ? pricing?.discountPrice?.identifier
+        : pricing?.defaultPrice.identifier || locale.crystallizePriceVariant
     });
   }
 
+  const textDefaultPrice = t('common.price', {
+    value: pricing?.defaultPrice?.price,
+    currency: pricing?.defaultPrice?.currency
+  });
+
+  /**
+   * Draw attention to the item when the server state has
+   * been updated
+   */
+  useEffect(() => {
+    async function drawAttentionToItemInBasket() {
+      setBuying(false);
+
+      // Wait for the layout menu to open
+      await layout.actions.showRight();
+
+      /**
+       * Give the user time to rest their eyes after the
+       * right layou menu has been shown
+       */
+      setTimeout(() => {
+        basket.actions.drawAttention(selectedVariant.sku);
+      }, 250);
+    }
+    if (buying && basket.status === 'ready') {
+      drawAttentionToItemInBasket();
+    }
+  }, [buying, basket.status, basket.actions, selectedVariant, layout]);
+
   return (
     <ProductFooter>
-      <Button width="200px" onClick={buy} disabled={!currency}>
-        Toevoegen
+      {pricing?.discountPrice ? (
+        <Price discounted>
+          <strong>
+            {t('common.price', {
+              value: pricing?.discountPrice?.price,
+              currency: pricing?.discountPrice?.currency
+            })}
+          </strong>
+          <DiscountDetails>
+            <BeforePrice>{textDefaultPrice}</BeforePrice>
+            <Percentage>{`-${pricing?.discountPercentage}%`}</Percentage>
+          </DiscountDetails>
+        </Price>
+      ) : (
+        <Price>
+          <strong>{textDefaultPrice}</strong>
+        </Price>
+      )}
+      <Button
+        width="250px"
+        onClick={buy}
+        disabled={!pricing?.defaultPrice.currency}
+        state={buying && 'loading'}
+      >
+        {t('product.addToBasket')}
       </Button>
-      <Price>
-        <strong>{t('common.price', { value: price, currency })}</strong>
-        {' '}
-         { quantity && <span> | {quantity}</span>}
-      </Price>
     </ProductFooter>
   );
 }

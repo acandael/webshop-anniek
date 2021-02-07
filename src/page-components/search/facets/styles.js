@@ -4,12 +4,16 @@ import is from 'styled-is';
 import { responsive } from 'ui';
 
 export const Outer = styled.div`
+  width: 100%;
+`;
+
+export const FacetsDisplayer = styled.div`
   ${responsive.smAndLess} {
     display: none;
-
+    margin-top: 15px;
     ${is('$show')`
-      display: block;
       background: #fff;
+      display: block;
       position: fixed;
       z-index: 999;
       top: 0;
@@ -21,66 +25,35 @@ export const Outer = styled.div`
     `};
   }
   ${responsive.mdPlus} {
-    grid-area: facets;
-  }
-`;
-
-export const FacetTitle = styled.h4`
-  margin: 0 0 15px;
-  font-weight: 600;
-  font-size: 12px;
-  text-transform: uppercase;
-  color: #000;
-  display: flex;
-  justify-content: space-between;
-  min-height: 15px;
-
-  > span {
-    margin-right: 15px;
-  }
-
-  button {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 250ms;
-  }
-`;
-
-export const Facet = styled.div`
-  border-top: 1px solid #dfdfdf;
-  padding-top: 35px;
-
-  &:not(:last-child) {
-    margin-bottom: 35px;
-  }
-
-  ${responsive.smAndLess} {
-    &:first-child {
-      border: none;
-    }
-  }
-
-  &:hover ${FacetTitle} {
-    button {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-`;
-
-export const FacetMobileButton = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin: 15px 0;
-
-  ${responsive.mdPlus} {
     display: none;
+    ${is('$show')`
+      display: block;
+      display: grid;
+      margin-bottom: 2rem;
+      margin-top: 1rem;
+      padding: 0;
+      grid-gap: 1rem;
+      grid-template-columns: repeat(2, 1fr);
+    `};
+  }
+  > *:not(:first-child):not(:last-child) {
+    border-top: 1px solid #dfdfdf;
+    margin-top: 35px;
+    padding-top: 30px;
+    ${responsive.mdPlus} {
+      margin-top: 0;
+    }
   }
 `;
 
-export const FacetMobileCloseButton = styled.div`
-  display: none;
+export const FacetGroupOfAttributes = styled.div`
+  display: grid;
+  grid-gap: 0.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+`;
 
+export const ButtonCloseFacets = styled.div`
+  display: none;
   ${responsive.smAndLess} {
     display: block;
     position: fixed;

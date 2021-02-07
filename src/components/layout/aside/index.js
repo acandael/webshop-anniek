@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
-import { useBasket, TinyBasket } from 'components/basket';
+import { useBasket } from 'components/basket';
+import TinyBasket from 'components/basket/tiny-basket';
+import Totals from 'components/basket/totals';
 import { Button } from 'ui';
+import { Spinner } from 'ui/spinner';
 import { useT } from 'lib/i18n';
 
-import { Basket, Header, Footer } from './styles';
+import { Outer, Heading, Content, Footer } from './styles';
 
 const CheckoutBtn = styled(Button)`
   width: 100%;
@@ -17,13 +20,11 @@ const CheckoutBtn = styled(Button)`
   font-size: 16px;
   font-weight: 600;
   text-align: center;
-
   &:not([disabled]):hover {
     background: var(--color-text-main);
     color: var(--color-main-background);
     text-decoration: none;
   }
-
   &[disabled] {
     cursor: default;
     opacity: 0.5;
@@ -44,15 +45,23 @@ export default function Aside() {
     setGoing(true);
   };
 
-  if (basket.status !== 'ready') {
+  if (basket.status === 'not-hydrated') {
     return t('basket.loading');
   }
 
   return (
-    <Basket>
-      <Header>{t('basket.title')}</Header>
-      <TinyBasket />
+    <Outer>
+      <Heading>
+        {t('basket.title')}
+        {basket.status === 'server-state-is-stale' && (
+          <Spinner style={{ marginLeft: 15 }} />
+        )}
+      </Heading>
+      <Content>
+        <TinyBasket />
+      </Content>
       <Footer>
+        <Totals />
         <Link href="/checkout" passHref>
           <CheckoutBtn
             as="a"
@@ -64,6 +73,6 @@ export default function Aside() {
           </CheckoutBtn>
         </Link>
       </Footer>
-    </Basket>
+    </Outer>
   );
 }

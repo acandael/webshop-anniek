@@ -3,7 +3,7 @@ import React from 'react';
 import { simplyFetchFromGraph } from 'lib/graph';
 import { Outer, Header, H1 } from 'ui';
 import Layout from 'components/layout';
-import ItemMicroformat from 'components/item-microformat';
+import ItemMicroformat from 'components/microformat';
 import { List } from './styles';
 import query from './query';
 

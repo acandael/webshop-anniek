@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { responsive } from 'ui';
 
-import ItemMicroformat from 'components/item-microformat';
+import Listformat from 'components/listformat';
 
 const Outer = styled.ul`
   display: grid;
@@ -10,11 +10,9 @@ const Outer = styled.ul`
   margin: 0;
   padding: 0;
   grid-gap: 20px;
-
   ${responsive.sm} {
     grid-template-columns: 1fr 1fr;
   }
-
   ${responsive.mdPlus} {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -31,7 +29,7 @@ export default function ItemRelations({ items }) {
     <Outer>
       {items.map((item) => (
         <ListItem key={item.id}>
-          <ItemMicroformat {...item} />
+          <Listformat {...item} />
         </ListItem>
       ))}
     </Outer>

@@ -3,14 +3,30 @@ import styled from 'styled-components';
 import { responsive } from './responsive';
 
 export const Outer = styled.div`
-  margin-bottom: 30px;
-  max-width: 1440px;
-  padding: 0 138px;
+  padding: 0 1rem;
   margin: 0 auto;
   display: block;
   min-height: 75vh;
-  ${responsive.smAndLess} {
-    padding: 0 1rem;
+  ${responsive.mdPlus} {
+    max-width: 1600px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+`;
+
+export const Inner = styled.div`
+  margin: 0 auto;
+  display: block;
+  min-height: 100vh;
+  padding: 0 1rem;
+  ${responsive.smPlus} {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  ${responsive.mdPlus} {
+    max-width: 1800px;
+    padding-left: 100px;
+    padding-right: 100px;
   }
 `;
 
@@ -30,7 +46,6 @@ export const Header = styled.div`
     margin-bottom: 10px;
     text-transform: uppercase;
   }
-
   p {
     text-align: ${(p) => (p.centerContent ? 'center !important' : 'left')};
     font-size: 18px;

@@ -34,14 +34,15 @@ export default `
       }
     }
   }
-
   fragment item on Item {
     id
     name
     type
     path
     language
-
+    shape {
+      name
+    }
     components {
       name
       type
@@ -62,25 +63,25 @@ export default `
       }
     }
   }
-
   fragment singleLine on SingleLineContent {
     text
   }
-
   fragment richText on RichTextContent {
     json
   }
-
   fragment image on Image {
     url
     altText
+    caption {
+      plainText
+      html
+    }
     variants {
       url
       width
       height
     }
   }
-
   fragment video on Video {
     title
     playlists
@@ -93,19 +94,16 @@ export default `
       }
     }
   }
-
   fragment imageContent on ImageContent {
     images {
       ...image
     }
   }
-
   fragment videoContent on VideoContent {
     videos {
       ...video
     }
   }
-
   fragment paragraphCollection on ParagraphCollectionContent {
     paragraphs {
       title {
@@ -119,12 +117,20 @@ export default `
       }
     }
   }
-
   fragment itemRelations on ItemRelationsContent {
     items {
       id
       name
       path
+      type
+      shape {
+        name
+        id
+      }
+      topics {
+        id
+        name 	
+      }
       ... on Product {
         variants {
           priceVariants {
@@ -143,13 +149,56 @@ export default `
         name
         type
         content {
+          ...singleLine
+          ...richText
           ...imageContent
           ...videoContent
+          ...gridRelations
+          ... on BooleanContent {
+            value
+          }
+          ... on ItemRelationsContent {
+            items {
+              id
+              name
+              type
+              path
+              ... on Item {
+                components {
+                  name
+                  type
+                  meta {
+                    key
+                    value
+                  }
+                  content {
+                    ...singleLine
+                    ...richText
+                    ...imageContent
+                    ...videoContent
+                  }
+                }
+              }
+              ... on Product {
+                variants {
+                  priceVariants {
+                    identifier
+                    price
+                    currency
+                  }
+                  isDefault
+                  name
+                  image {
+                    ...image
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
   }
-
   fragment gridRelations on GridRelationsContent {
     grids {
       name
@@ -168,6 +217,31 @@ export default `
             type
             language
             ... on Product {
+              variants {
+                id
+                name
+                sku
+                priceVariants {
+                  identifier
+                  price
+                  currency
+                }
+                stock
+                isDefault
+                attributes {
+                  attribute
+                  value
+                }
+                images {
+                  url
+                  altText
+                  variants {
+                    url
+                    width
+                    height
+                  }
+                }
+              }
               defaultVariant {
                 priceVariants {
                   identifier
@@ -194,7 +268,6 @@ export default `
       }
     }
   }
-
   fragment propertiesTableContent on PropertiesTableContent {
     sections {
       title
@@ -204,7 +277,6 @@ export default `
       }
     }
   }
-
   fragment dateTimeContent on DatetimeContent {
     datetime
   }

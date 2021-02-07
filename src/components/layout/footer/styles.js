@@ -8,7 +8,7 @@ export const Outer = styled.footer`
   /* border-top: 2px solid var(--color-box-background); */
   padding: 50px 138px;
   justify-content: space-between;
-  background-color: #EFEAEA;
+  background-color: var(--color-primary);
 `;
 
 export const Logo = styled.div`

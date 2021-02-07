@@ -1,12 +1,20 @@
-import { fetchCrystallizeOrder } from 'lib-api/crystallize/order';
+import ServiceApi from 'lib/service-api';
 export { default } from 'page-components/checkout/confirmation';
 
 export async function getServerSideProps({ query: { orderId } }) {
-  const order = await fetchCrystallizeOrder(orderId);
+  const response = await ServiceApi({
+    query: `
+      {
+        orders {
+          get(id: "${orderId}")
+        }
+      }
+    `
+  });
 
   return {
     props: {
-      order,
-    },
+      order: response.data.orders.get
+    }
   };
 }

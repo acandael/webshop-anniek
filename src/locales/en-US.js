@@ -28,6 +28,8 @@ export default {
       relatedProduct: 'Aanbevolen Combinatie',
       relatedProduct_plural: 'Aanbevolen Combinaties',
       addToBasket: 'Toevoegen aan Winkelmand',
+      stock: '{{stockCount}} in voorraad',
+      outOfStock: 'Niet in voorraad',
       buy: 'BUY',
       attributes: {
         color: 'Kleur',

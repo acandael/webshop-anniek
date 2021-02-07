@@ -1,18 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { screen, H3 } from 'ui';
+import { screen } from 'ui';
 import ContentTransformer from 'ui/content-transformer';
 import VideoPlayer from 'components/video-player';
 
-import {
-  Outer,
-  Text,
-  MediaWrapper,
-  MediaInner,
-  Img,
-  Description
-} from './styles';
+import { Outer, Text, MediaWrapper, Img, Title, Description } from './styles';
 
 export default function DocumentItem({ data, colSpan = '4' }) {
   if (!data) {
@@ -20,14 +13,12 @@ export default function DocumentItem({ data, colSpan = '4' }) {
   }
 
   const { name, path } = data;
-
-  let image;
   const images = data.components?.find((c) => c.type === 'images');
-  image = images?.content?.images?.[0];
+  const image = images?.content?.images?.[0];
   const description = data.components?.find((c) => c.name === 'Intro');
   const video = data.components?.find((c) => c.name === 'Video');
 
-  let media;
+  let media = null;
 
   if (video?.content?.videos?.length) {
     media = (
@@ -46,29 +37,14 @@ export default function DocumentItem({ data, colSpan = '4' }) {
         sizes={`(min-width ${screen.md}px) 33vw, 100vw`}
       />
     );
-  } else {
-    return (
-      <Link href={path} passHref>
-        <Outer span={colSpan}>
-          <Text>
-            <H3>{name}</H3>
-            <Description>
-              <ContentTransformer {...description?.content?.json} />
-            </Description>
-          </Text>
-        </Outer>
-      </Link>
-    );
   }
 
   return (
     <Link href={path} passHref>
       <Outer span={colSpan}>
-        <MediaWrapper>
-          <MediaInner>{media && media}</MediaInner>
-        </MediaWrapper>
+        {Boolean(media) && <MediaWrapper>{media}</MediaWrapper>}
         <Text>
-          <H3>{name}</H3>
+          <Title>{name}</Title>
           <Description>
             <ContentTransformer {...description?.content?.json} />
           </Description>

@@ -10,16 +10,15 @@ const STATES = {
 
 const Inner = styled.span`
   flex: 1 1 auto;
-  background: var(--color-box-background);
-  color: var(--color-main-background);
+  font-size: 16px;
+  background: var(--color-primary-action);
+  color: var(--color-primary-action-content);
   font-weight: 600;
   text-decoration: none;
   text-align: center;
   padding: 16px 25px;
   position: relative;
-  border: 1px solid var(--color-box-background);
-  opacity: 0.8;
-  transition: 0.3s;
+  border-radius: 4px;
 `;
 
 const Outer = styled.button.attrs((p) => ({
@@ -33,17 +32,13 @@ const Outer = styled.button.attrs((p) => ({
   appearance: none;
   cursor: pointer;
   text-decoration: none;
-
   &:hover ${Inner} {
-    /* background: var(--color-primary); */
-    opacity: 1;
+    background: var(--color-text-main);
     color: var(--color-main-background);
   }
-
   &[disabled] {
     cursor: default;
     opacity: 0.5;
-
     ${Inner} {
       background: #aaa;
       color: #333;
@@ -56,7 +51,6 @@ const Text = styled.span`
   z-index: 2;
   transition: opacity 100ms, transform 100ms;
   white-space: nowrap;
-
   ${isNot('shown')`
     opacity: 0;
     transform: scale(0.7);
@@ -73,7 +67,6 @@ const Loading = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-
   svg {
     height: 50%;
     width: auto;

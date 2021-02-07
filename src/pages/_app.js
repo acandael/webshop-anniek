@@ -1,12 +1,14 @@
 import { DefaultSeo } from 'next-seo';
-
-import { AuthProvider } from 'components/auth-context';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { AuthProvider } from 'components/auth';
 import { SettingsProvider } from 'components/settings-context';
 import { BasketProvider } from 'components/basket';
 import { simplyFetchFromGraph } from 'lib/graph';
 import { getLocaleFromContext, defaultLocale } from 'lib/app-config';
 import { I18nextProvider } from 'lib/i18n';
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps, commonData }) {
   const { mainNavigation, locale, localeResource } = commonData;
@@ -41,17 +43,19 @@ function MyApp({ Component, pageProps, commonData }) {
   return (
     <>
       <DefaultSeo {...SEOSettings} />
-      <I18nextProvider locale={locale} localeResource={localeResource}>
-        <SettingsProvider mainNavigation={mainNavigation}>
-          <AuthProvider>
-            <BasketProvider>
-              <ChakraProvider theme={theme}>
-                <Component {...pageProps} />
-              </ChakraProvider>
-            </BasketProvider>
-          </AuthProvider>
-        </SettingsProvider>
-      </I18nextProvider>
+      <QueryClientProvider client={queryClient}>
+        <I18nextProvider locale={locale} localeResource={localeResource}>
+          <SettingsProvider mainNavigation={mainNavigation}>
+            <AuthProvider>
+              <BasketProvider locale={locale}>
+                <ChakraProvider theme={theme}>
+                  <Component {...pageProps} />
+                </ChakraProvider>
+              </BasketProvider>
+            </AuthProvider>
+          </SettingsProvider>
+        </I18nextProvider>
+      </QueryClientProvider>
     </>
   );
 }

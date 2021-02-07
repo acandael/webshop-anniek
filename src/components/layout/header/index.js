@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import { useAuth } from 'components/auth-context';
 import { useSettings } from 'components/settings-context';
-import { useT } from 'lib/i18n';
+import IconUser from 'ui/icons/user';
 
 import BurgerButton from './burger-button';
 import BasketButton from './basket-button';
@@ -13,8 +12,8 @@ import Search from './search';
 import {
   Outer,
   Nav,
+  Btn,
   Logo,
-  NavActions,
   NavList,
   NavListItem,
   PreviewBar,
@@ -22,9 +21,7 @@ import {
 } from './styles';
 
 export default function Header({ simple, preview }) {
-  const t = useT();
   const { mainNavigation } = useSettings();
-  const auth = useAuth();
   const router = useRouter();
 
   const [navOpen, setNavOpen] = useState(false);
@@ -43,50 +40,30 @@ export default function Header({ simple, preview }) {
       <Outer simple={simple}>
         <Link href="/" passHref>
           <Logo>
-            <img src="/static/logo-anniek-lambrecht-header-2.png" alt="" width="240" height="133" />
+            <img src="/static/shop-logo.svg" alt="" width="207" height="35" />
           </Logo>
         </Link>
         <Nav open={navOpen}>
           <NavList>
-            
-              <NavListItem>
-                <Link href="/behandelingen">
-                  <a onClick={() => setNavOpen(false)}>BEHANDELINGEN</a>
+            {mainNavigation?.map((category) => (
+              <NavListItem key={category.path}>
+                <Link href={category.path}>
+                  <a onClick={() => setNavOpen(false)}>{category.name}</a>
                 </Link>
               </NavListItem>
-
-              <NavListItem>
-                <Link href="/webshop">
-                  <a onClick={() => setNavOpen(false)}>WEBSHOP</a>
-                </Link>
-              </NavListItem>
-
-              <NavListItem>
-                <Link href="/contact">
-                  <a onClick={() => setNavOpen(false)}>CONTACT</a>
-                </Link>
-              </NavListItem>
-            
+            ))}
           </NavList>
         </Nav>
-        <NavActions open={navOpen}>
+        <IconBar>
           <LocaleSwitcher />
-          {auth.isLoggedIn ? (
-            <button type="button" onClick={auth.logout}>
-              Logout
-            </button>
-          ) : (
-            <Link href="/login">
-              <a>{t('customer.login.title')}</a>
-            </Link>
-          )}
-        </NavActions>
-        {!simple && (
-          <IconBar>
-            <Search />
-            <BasketButton />
-          </IconBar>
-        )}
+          <Link href="/account">
+            <Btn as="a" aria-label="User area">
+              <IconUser />
+            </Btn>
+          </Link>
+          <Search />
+          <BasketButton />
+        </IconBar>
         <BurgerButton active={navOpen} onClick={() => setNavOpen(!navOpen)} />
       </Outer>
     </>

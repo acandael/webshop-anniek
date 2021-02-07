@@ -31,7 +31,6 @@ export const ItemDelete = styled.button`
   right: 2px;
   font-size: 0px;
   display: none;
-
   &:before {
     content: '+';
     display: block;
@@ -46,7 +45,7 @@ export const Item = styled.div`
   padding: 15px 0;
   border-bottom: 1px solid #eee;
   position: relative;
-
+  column-gap: 10px;
   ${(p) =>
     p.animate &&
     css`
@@ -73,7 +72,6 @@ export const ItemImage = styled(CrystallizeImage).attrs(() => ({
 }))`
   width: 50px;
   position: relative;
-
   img {
     display: block;
     width: 100%;

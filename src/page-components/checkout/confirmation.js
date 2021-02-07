@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import is from 'styled-is';
+import { useRouter } from 'next/router';
 
 import Layout from 'components/layout';
 import { useBasket } from 'components/basket';
@@ -27,26 +28,38 @@ const Totals = styled.div`
 const TotalLine = styled.div`
   text-align: right;
   margin-top: 5px;
-
   ${is('bold')`
     font-size: 1.2rem;
     font-weight: 600;
   `};
 `;
 
-export default function Confirmation({ order: orderData }) {
+export default function Confirmation({ order }) {
   const basket = useBasket();
   const t = useT();
-  const [emptied, setEmptied] = useState(false);
+  const router = useRouter();
 
+  // Empty the basket
   useEffect(() => {
-    if (!emptied) {
-      basket.actions.empty();
-      setEmptied(true);
-    }
-  }, [emptied, basket.actions]);
+    if (router.query) {
+      if ('emptyBasket' in router.query) {
+        basket.actions.empty();
 
-  const order = orderData.data.orders?.get;
+        const url = new URL(location.href);
+
+        url.searchParams.delete('emptyBasket');
+
+        router.replace(
+          {
+            pathname: router.pathname,
+            query: Object.fromEntries(url.searchParams)
+          },
+          url.pathname + url.search,
+          { shallow: true }
+        );
+      }
+    }
+  });
 
   useEffect(() => {
     if (!order) {
@@ -94,7 +107,7 @@ export default function Confirmation({ order: orderData }) {
               })}
             </TotalLine>
             <TotalLine>
-              {t('common.vat', {
+              {t('common.tax', {
                 value: total.gross - total.net,
                 currency: total.currency
               })}

@@ -5,8 +5,28 @@ export default `
     document: catalogue(language: $language, path: $path, version: $version) {
       ...item
       ...product
-    }
+      publishedAt
+      topics {
+        id
+        name
+        parent {
+          name
+        }
+        items(first:2){
+          edges{
+            node{
+              ...item
+              ...product
+              id
+              topics {
+                id
+                name
+              }
+            }
+          }
+        }
+      }
+     }
   }
-
   ${fragments}
 `;
