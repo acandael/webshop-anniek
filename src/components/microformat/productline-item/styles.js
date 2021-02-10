@@ -21,7 +21,8 @@ export const ImageWrapper = styled.div`
   z-index: 1;
   overflow: hidden;
   margin-top: 0;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+  border: 1px solid var(--color-box-background);
   /* height: 100%; */
 `;
 
@@ -36,6 +37,10 @@ export const Img = styled(Image)`
     width: 100%;
     height: 100%;
     overflow: hidden;
+    transition: all .2s ease-in-out;
+    &:hover {
+    transform: scale(1.1);
+  }
   }
 `;
 
@@ -49,12 +54,12 @@ export const Text = styled.div`
     font-size: 1em;
     text-transform: uppercase;
     margin: 0;
+    margin-bottom: 32px;
     color: var(--color-text-sub);
   }
 
   p {
     color: var(--color-text-main);
-    margin-top: 16px;
   }
 `;
 

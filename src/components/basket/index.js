@@ -99,7 +99,6 @@ export function BasketProvider({ locale, children }) {
             basketModel
           }
         });
-
         if (!stale) {
           dispatch({
             action: 'set-server-state',
@@ -141,7 +140,7 @@ export function BasketProvider({ locale, children }) {
     if (!clientBasketCartItem) {
       return null;
     }
-
+    
     return {
       ...item,
       quantity: clientBasketCartItem.quantity

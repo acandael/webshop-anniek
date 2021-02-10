@@ -20,6 +20,8 @@ export const ImageWrapper = styled.div`
   position: relative;
   z-index: 1;
   overflow: hidden;
+  border: 1px solid var(--color-box-background);
+  margin-bottom: 24px;
   /* height: 100%; */
 `;
 
@@ -35,6 +37,9 @@ export const Img = styled(Image)`
     width: 100%;
     height: 100%;
     overflow: hidden;
+    transition: all .2s ease-in-out;
+    &:hover {
+    transform: scale(1.1);
     /* border-radius: 12px; */
   }
 `;
@@ -50,7 +55,7 @@ export const Text = styled.div`
     font-size: 1.25em;
     /* text-transform: uppercase; */
     color: var(--color-text-sub);
-    margin-bottom: 64px;
+    margin-bottom: 32px;
   }
 
   p {

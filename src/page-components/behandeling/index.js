@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { simplyFetchFromGraph } from 'lib/graph';
-import { Outer, H1 } from 'ui';
+import { Outer, H1} from 'ui';
 import Layout from 'components/layout';
 import toText from '@crystallize/content-transformer/toText';
 import query from './query';
-import {BehandelingHeader, H3, HeroSection, HeroText, HeroImage, Img, PriceList} from './styles'
+import {BehandelingHeader, H3, BehandelingButton, HeroSection, HeroText, HeroImage, Img, PriceList} from './styles'
 import BehandelingComponents from 'components/shape/behandeling-components';
 import Breadcrumb from 'components/breadcrumb';
 import PropertiesTable from 'components/shape/behandeling-components/properties-table';
@@ -48,8 +48,14 @@ export default function BehandelingPage({ folder, preview }) {
         <BehandelingHeader centerContent>
           <H1>{folder.name}</H1>
         </BehandelingHeader>
+      
         <HeroSection>
           <HeroText>
+          <BehandelingButton
+          width="221px"
+          >
+          Boek Nu
+          </BehandelingButton>
             <BehandelingComponents components={rest} />
           </HeroText>
           <HeroImage>

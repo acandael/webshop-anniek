@@ -5,7 +5,7 @@ import { useT } from 'lib/i18n';
 
 const Outer = styled.div`
   display: flex;
-  margin-top: 50px;
+  margin-top: 16px;
   align-items: center;
   font-size: var(--font-size-secondary);
   font-weight: 600;

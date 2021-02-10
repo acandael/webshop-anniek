@@ -3,12 +3,11 @@ import { Image as Img } from '@crystallize/react-image';
 import ContentTransformer from 'ui/content-transformer';
 import { simplyFetchFromGraph } from 'lib/graph';
 import Layout from 'components/layout';
-import ShapeComponents from 'components/shape/components';
 import toText from '@crystallize/content-transformer/toText';
 import getRelativePriceVariants from 'lib/pricing';
 import { useLocale } from 'lib/app-config';
 import Collection from 'components/item-collection';
-
+import Breadcrumb from 'components/breadcrumb'
 import TopicTag from 'components/topic-tag';
 import VariantSelector from './variant-selector';
 import Buy from './buy';
@@ -22,6 +21,7 @@ import PropertiesTable from 'components/shape/behandeling-components/properties-
 
 import {
   Inner,
+  BreadcrumbWrapper,
   Media,
   ImgContainer,
   Actions,
@@ -29,10 +29,9 @@ import {
   Title,
   Summary,
   Content,
-  Description,
   Usage,
-  DescriptionWrapper,
-  RelatedContainer
+  RelatedContainer,
+  Quantity
 } from './styles';
 
 export async function getData({ asPath, language, preview = null }) {
@@ -122,6 +121,9 @@ export default function ProductPage({ product, preview }) {
       preview={preview}
     >
       <SchemaOrg {...product} summary={summaryComponent} />
+      <BreadcrumbWrapper>
+        <Breadcrumb path={product.path} />
+      </BreadcrumbWrapper>
       <Inner>
         <Content>
           <Media>
@@ -135,24 +137,14 @@ export default function ProductPage({ product, preview }) {
               );
             })}
           </Media>
-          {descriptionComponent && (
-            <Description>
-              <DescriptionWrapper>
-                <ShapeComponents
-                  className="description"
-                  components={[descriptionComponent]}
-                />
-              </DescriptionWrapper>
-            </Description>
-          )}
           {tabs}
         </Content>
         <Actions>
           <ActionsSticky>
             <Title>{name}</Title>
-            {summaryComponent && (
+            {descriptionComponent && (
               <Summary>
-                <ContentTransformer {...descriptionComponent?.content?.json} />
+                <ContentTransformer {...descriptionComponent?.content?.paragraphs?.[0]?.body.json} />
               </Summary>
             )}
             {topics?.map((topic) => (
@@ -170,6 +162,7 @@ export default function ProductPage({ product, preview }) {
               selectedVariant={selectedVariant}
               pricing={pricing}
             />
+            <Quantity>{quantity && `Hoeveelheid: ${quantity.content?.text}`}</Quantity>
             <Stock selectedVariant={selectedVariant} />
           </ActionsSticky>
         </Actions>

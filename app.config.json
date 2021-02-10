@@ -1,11 +1,11 @@
 {
    "locales": [
       {
-         "locale": "en",
-         "displayName": "en",
-         "appLanguage": "en-US",
-         "crystallizeCatalogueLanguage": "en",
-         "crystallizePriceVariant": "default"
+      "locale": "en",
+      "displayName": "English - US",
+      "appLanguage": "en-US",
+      "crystallizeCatalogueLanguage": "en",
+      "crystallizePriceVariant": "default"
       }
    ],
    "paymentProviders": [

@@ -3,12 +3,12 @@ import { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle`
   :root {
     /* Typography */
-    --font-family-main: "Trebuchet MS", sans-serif;
+    --font-family-main: Open Sans, sans-serif;
     --font-size-xl: 40px;
     --font-size-lg: 32px;
     --font-size-md: 26px;
     --font-size-sm: 16px;
-    --font-size-body: 20px;
+    --font-size-body: 16px;
     --font-size-secondary: 16px;
     --font-size-tags: 14px;
     --font-listing-name-size: 16px;
@@ -16,14 +16,15 @@ export default createGlobalStyle`
     --font-max-width: 800px;
     /* Colors */
     --color-main-background: #fff;
-    --color-text-main: #080708;
-    --color-text-sub: #4c505b;
+    --color-text-main: #56443F;
+    --color-text-sub: #595554;
     --color-box-background: #efefef;
     --color-price: var(--color-text-main);
     --color-error: #EF4836;
     --color-discount:#EE6969;
     --color-blockquote: var(--color-text-main);
   
+    --color-primary: #FAC7B9;
     --color-primary-action: #FBDCCE;
     --color-primary-action-content:#080708;
     --color-icon-details: var(--color-primary-action);
@@ -77,7 +78,7 @@ export default createGlobalStyle`
   }
   body {
     margin: 0;
-    font: 14px/1 Helvetica, Arial, Verdana, sans-serif;
+    font: 16px/1 Open Sans, sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     background: var(--color-main-background);
@@ -111,6 +112,7 @@ export default createGlobalStyle`
   h3,
   h4 {
     font-size: inherit;
+    font-family: 'Playfair Display';
   }
   strong {
     font-weight: bold;

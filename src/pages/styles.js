@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-import { Header as H, H1 as h1, H2 as h2 } from 'ui';
+import { Outer as outer, Header as H, H1 as h1, H2 as h2 } from 'ui';
+
+export const Outer = styled(outer)`
+  padding-left: 138px;
+  padding-right: 138px;
+`
 
 export const Header = styled(H)`
   margin: 106px 0;
@@ -33,21 +38,6 @@ export const HeroText = styled.div`
 
 export const HeroImage = styled.div`
   
-`
-
-export const CTAButton = styled.button`
-  background-color: #DCA090;
-  color: white;
-  width: 221px;
-  height: 66px;
-  margin-top: 3.5rem;
-  margin-right: 1rem;
-  font-weight: 600;
-
-  :hover {
-    background-color: #FAC7B9;
-    transition: 0.2s;
-  }
 `
 
 export const CTAText = styled.span`

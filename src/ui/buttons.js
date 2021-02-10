@@ -13,6 +13,7 @@ const Inner = styled.span`
   font-size: 16px;
   background: var(--color-primary-action);
   color: var(--color-primary-action-content);
+  transition: background .3s ease-in-out;
   font-weight: 600;
   text-decoration: none;
   text-align: center;

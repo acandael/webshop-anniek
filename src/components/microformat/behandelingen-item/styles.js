@@ -22,6 +22,7 @@ export const ImageWrapper = styled.div`
   overflow: hidden;
   margin-top: 32px;
   margin-bottom: 32px;
+  border: 1px solid var(--color-box-background);
   /* height: 100%; */
 `;
 
@@ -36,6 +37,9 @@ export const Img = styled(Image)`
     width: 100%;
     height: 100%;
     overflow: hidden;
+    transition: all .2s ease-in-out;
+    &:hover {
+    transform: scale(1.1);
   }
 `;
 

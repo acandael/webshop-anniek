@@ -11,7 +11,7 @@ export const ContactHeader = styled(Header)`
   max-width: 1440px;
   padding: 0;
   margin-top: 98px;
-  margin-bottom: 102px;
+  margin-bottom: 32px;
   h1 {
     text-align: left;
   }

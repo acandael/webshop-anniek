@@ -38,7 +38,7 @@ export const BrandHeader = styled.div`
 
 export const Content = styled.div`
   width: 40vw;
-  border-bottom: 1px solid #E0E0E0;
+  padding: 0 16px;
 
   h1 {
     margin-bottom: 24px;
@@ -52,6 +52,7 @@ export const Content = styled.div`
 export const ImageWrapper = styled.div`
   position: relative;
   z-index: 1;
+  border: 1px solid var(--color-box-background);
   /* overflow: hidden; */
   /* height: 100%; */
 `;

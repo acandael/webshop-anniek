@@ -38,12 +38,13 @@ export const BrandHeader = styled.div`
 
 export const Content = styled.div`
   width: 40vw;
-  border-bottom: 1px solid #E0E0E0;
+  padding: 0 16px;
 `
 
 export const ImageWrapper = styled.div`
   position: relative;
   z-index: 1;
+  border: 1px solid var(--color-box-background);
   /* overflow: hidden; */
   /* height: 100%; */
 `;
@@ -72,5 +73,14 @@ export const Logo = styled(Image)`
     margin-bottom: 36px;
     /* overflow: hidden; */
     /* border-radius: 12px; */
+  }
+`;
+
+export const Item = styled.div`
+  &.item-product {
+    grid-column-end: span 1;
+  }
+  &.item-document {
+    grid-column-end: span 2;
   }
 `;

@@ -4,41 +4,48 @@ import is from 'styled-is';
 import { responsive } from 'ui';
 
 export const Outer = styled.header`
-  background-color: var(--color-primary);
   text-align: center;
-  padding: 20px 138px;
-  
-  max-width: 1440px;
+  background-color: var(--color-primary);
+  padding: 20px 100px;
+  max-width: var(--content-max-width);
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin: 0 auto 0;
-  
-
+  position: relative;
+  margin: 0 auto 50px;
   ${responsive.smAndLess} {
-    padding: 10px 90px 10px 20px;
+    padding: 10px 65px 10px 10px;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
   }
 `;
 
 export const Logo = styled.a`
+  height: 84px;
   display: block;
   object-fit: contain;
   position: relative;
   z-index: 99;
-  img {
+  img,
+  svg {
     display: block;
+    height: 100%;
+  }
+  ${responsive.xs} {
+    height: 40px;
+    width: 110px;
+    margin-left: 25px;
   }
 `;
 
 export const Nav = styled.nav`
   display: flex;
-  margin: 0 0 0 15px;
+  margin: 6px 0 0 15px;
   padding-left: 15px;
   width: 100%;
-  ${responsive.mdPlus} {
-    justify-content: center;
-  }
+  font-size: 18px;
+  font-family: var(--font-family-main);
   ${responsive.smAndLess} {
     display: none;
     position: absolute;
@@ -54,7 +61,6 @@ export const Nav = styled.nav`
     margin: 0;
     padding: 2em;
     font-size: 1.5rem;
-
     ${is('open')`
       display: block;
     `};
@@ -66,7 +72,6 @@ export const NavList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-
   /* Make space for logout button */
   ${responsive.smAndLess} {
     margin-top: 30px;
@@ -78,12 +83,12 @@ export const NavListItem = styled.li`
   padding: 0;
   display: inline-block;
   margin: 0 5px;
-
   > a {
     display: inline-block;
     padding: 10px 10px;
     transition: all 100ms;
     font-size: 16px;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     &:hover {
@@ -92,7 +97,6 @@ export const NavListItem = styled.li`
       transition: 0.3s;
     }
   }
-
   ${responsive.smAndLess} {
     display: block;
   }
@@ -103,33 +107,42 @@ export const Btn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   padding: 0;
   border-radius: 5px;
   justify-self: flex-end;
-  margin-left: 15px;
+  margin-left: 10px;
   img,
   svg {
-    width: 40px;
+    width: 45px;
   }
-  svg path {
-    stroke: var(--color-text-sub);
-  }
-
   &:hover,
   &:active {
     background: rgba(0, 0, 0, 0.05);
+  }
+  ${responsive.xs} {
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
   }
 `;
 
 export const BasketQuantity = styled.div`
   position: absolute;
-  font-weight: 500;
-  font-size: 14px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -25%);
+  font-weight: 600;
+  font-size: 11px;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  right: -6px;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  background: #080708;
+  border: 3px solid #fff;
 `;
 
 export const NavActions = styled.div`
@@ -137,7 +150,6 @@ export const NavActions = styled.div`
   display: flex;
   text-transform: uppercase;
   align-items: center;
-
   button,
   a {
     padding: 5px 10px;
@@ -146,16 +158,13 @@ export const NavActions = styled.div`
     border: 1.4px solid var(--color-text-main);
     color: var(--color-text-main);
     white-space: nowrap;
-
     cursor: pointer;
-
     &:hover {
       background: var(--color-text-main);
       color: var(--color-main-background);
       text-decoration: none;
     }
   }
-
   ${responsive.smAndLess} {
     display: none;
     position: absolute;
@@ -166,7 +175,6 @@ export const NavActions = styled.div`
     text-align: center;
     margin: 0;
     font-size: 1.5rem;
-
     ${is('open')`
       display: flex;
       justify-content: center;

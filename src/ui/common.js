@@ -8,7 +8,7 @@ export const Outer = styled.div`
   display: block;
   min-height: 75vh;
   ${responsive.mdPlus} {
-    max-width: 1600px;
+    max-width: 1440px;
     padding-left: 100px;
     padding-right: 100px;
   }
@@ -48,8 +48,8 @@ export const Header = styled.div`
   }
   p {
     text-align: ${(p) => (p.centerContent ? 'center !important' : 'left')};
-    font-size: 18px;
-    line-height: 1.8rem;
+    font-size: 16px;
+    line-height: 1.6rem;
     color: var(--color-text-sub);
     margin: 0;
   }

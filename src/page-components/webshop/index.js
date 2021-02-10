@@ -24,7 +24,7 @@ export async function getData({ asPath, language, preview = null }) {
 
 export default function WebshopPage({ folder, preview }) {
   const { children } = folder;
-  const description = folder.components?.find((c) => c.name === 'Brief')
+  const description = folder.components?.find((c) => c.name === 'Beschrijving')
     ?.content?.json;
   const icon = folder.components?.find((c) => c.name === 'Icon');
   return (

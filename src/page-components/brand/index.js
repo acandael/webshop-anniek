@@ -4,9 +4,9 @@ import { simplyFetchFromGraph } from 'lib/graph';
 import { Outer, H1 } from 'ui';
 import Layout from 'components/layout';
 import Breadcrumb from 'components/breadcrumb'
-import ItemMicroformat from 'components/microformat';
+import Microformat from 'components/microformat';
 import toText from '@crystallize/content-transformer/toText';
-import { List, BrandHeader, Content, ImageWrapper, Img, Logo } from './styles';
+import { List, BrandHeader, Content, ImageWrapper, Img, Item } from './styles';
 import query from './query';
 
 export async function getData({ asPath, language, preview = null }) {
@@ -23,16 +23,13 @@ export async function getData({ asPath, language, preview = null }) {
 }
 
 export default function BrandPage({ folder, preview }) {
-  const { children } = folder;
-  
-  const description = folder.components?.find((c) => c.name === 'Beschrijving')
+  const { children, components } = folder;
+  const description = components?.find((c) => c.name === 'Beschrijving')
     ?.content?.paragraphs[0].body.json;
   
-  const images = folder.components?.find((c) => c.type === 'images')
+  const images = components?.find((c) => c.type === 'images')
   const image = images?.content?.images[0]
   
-  const logo = folder.components?.find((c) => c.name === 'Logo').content?.images?.[0]
-
   return (
     <Layout
       title={folder.name}
@@ -44,9 +41,6 @@ export default function BrandPage({ folder, preview }) {
         <BrandHeader>
           <Content>
             <H1>{folder.name}</H1>
-            <ImageWrapper>
-            {logo && <Logo src={logo.url} width={logo.width} height={logo.height} alt={folder.name} logo />}
-          </ImageWrapper>
             <p>{toText(description)}</p>
           </Content>
           <ImageWrapper>
@@ -56,11 +50,11 @@ export default function BrandPage({ folder, preview }) {
         {
           children && (
               <List>
-                {children.map((item, i) => (
-                  // change type from 'folder' to 'brand'
-                  item.type = 'brand',
-                  <ItemMicroformat item={item} key={i} />
-                ))}
+              {children
+            ?.map((item, i) => (
+              item.type = 'brand',
+                <Microformat item={item} key={i} />
+            ))}
               </List>
             )
           }

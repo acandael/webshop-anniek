@@ -14,6 +14,7 @@ export const Inner = styled(I)`
     grid-template-areas: 'content content content content content content content actions actions actions actions actions';
   }
   ${responsive.mdPlus} {
+    margin-top: 64px;
     padding-left: 100px;
     padding-right: 100px;
     column-gap: initial;
@@ -23,6 +24,10 @@ export const Inner = styled(I)`
     margin-top: 0.5rem;
   }
 `;
+
+export const BreadcrumbWrapper = styled.div`
+  padding-left: 100px;
+`
 
 export const Content = styled.div`
   // vertical space between the actions and the content
@@ -208,3 +213,8 @@ export const Usage = styled.div`
     }
   }
 `;
+
+export const Quantity = styled.div`
+  margin-top: 50px;
+  font-weight: 600;
+`
