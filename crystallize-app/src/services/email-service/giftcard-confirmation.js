@@ -1,18 +1,19 @@
 const { sendEmail, mjml2html } = require("./utils");
 
-module.exports = async function sendGiftcardConfirmation({ email }) {
+module.exports = async function sendGiftcardConfirmation({ email, aanbieder, question = null, message, amount }) {
   try {
+    console.log(email)
     const { html } = mjml2html(`
-      <mjml>
-        <mj-body>
-          <mj-section>
-            <mj-column>
-              <mj-text>Your giftcard is succesfully ordered. You will receive it shortly.</mj-text>
-              
-            </mj-column>
-          </mj-section>
-        </mj-body>
-      </mjml>
+    <mjml>
+    <mj-body>
+      <mj-section>
+        <mj-column>
+          <mj-text>Hi there! Simply follow the link below to login.</mj-text>
+          <mj-button href="${email}" align="left">Click here to login</mj-button>
+        </mj-column>
+      </mj-section>
+    </mj-body>
+  </mjml>
     `);
 
     await sendEmail({

@@ -19,7 +19,7 @@ export const HeroSection = styled.div`
 export const HeroText = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 50%;
   p {
     font-size: 16px;
     margin-bottom: 36px;
@@ -93,5 +93,24 @@ export const Fields = styled.div`
       border-right-width: 2px;
       margin-bottom: 20px;
     }
+  }
+`;
+
+export const LoginStyle = styled.div`
+
+  form {
+    background: var(--color-box-background);
+    padding: 50px;
+    margin: 0 auto 0;
+    max-width: 700px;
+  }
+
+  h4 {
+    margin: 0 auto;
+    max-width: 400px;
+  }
+
+  p {
+    margin: 50px 20px;
   }
 `;

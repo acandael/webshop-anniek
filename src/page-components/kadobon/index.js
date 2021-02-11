@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { sendGiftcardConfirmation } from 'lib/rest-api';
 import { Outer, H1, Button } from 'ui';
 import Layout from 'components/layout';
-import {KadoHeader, HeroSection, HeroText, HeroImage, H3, Fields} from './styles'
+import {LoginStyle, KadoHeader, HeroSection, HeroText, HeroImage, H3, Fields} from './styles'
 import Breadcrumb from 'components/breadcrumb';
 import Image from 'next/image';
 
@@ -12,7 +12,6 @@ export default function KadobonPage() {
     loading: false,
     aanbieder: '',
     email: '',
-    question: '',
     message: '',
     amount: '',
     error: ''
@@ -22,10 +21,10 @@ export default function KadobonPage() {
     event.preventDefault();
 
     setUserData(Object.assign({}, userData, { loading: true, error: '' }));
-    const { email, aanbieder, question, message, amount  } = userData;
+    const { email, aanbieder, message, amount  } = userData;
 
     try {
-      const { error, message } = await sendGiftcardConfirmation(email);
+      const { error, msg } = await sendGiftcardConfirmation(email, aanbieder, message, amount);
 
       if (error) {
         console.error('Login failed');
@@ -35,7 +34,7 @@ export default function KadobonPage() {
       setUserData(
         Object.assign({}, userData, {
           loading: false,
-          message: message
+          message: msg
         })
       );
     } catch (error) {
@@ -67,7 +66,8 @@ export default function KadobonPage() {
         </KadoHeader>
         <HeroSection>
           <HeroText>
-          <form onSubmit={handleSubmit} action="/api/loging" method="post">
+          <LoginStyle>
+          <form onSubmit={handleSubmit} action="/api/kadobon" method="post">
               <H3>Bestel online je kadobon</H3>
               <Fields>
                 <label htmlFor="aanbieder">Aangeboden door:</label>
@@ -97,14 +97,14 @@ export default function KadobonPage() {
                     )
                   }
                 />
-                <label htmlFor="question">Extra vragen of info:</label>
+                <label htmlFor="message">Extra vragen of info:</label>
                 <textarea rows="5" cols="15"
                   type="text"
-                  name="question"
+                  name="message"
                   onChange={(event) =>
                     setUserData(
                       Object.assign({}, userData, {
-                        question: event.target.value
+                        message: event.target.value
                       })
                     )
                   }
@@ -131,6 +131,7 @@ export default function KadobonPage() {
                 </Button>
               </Fields>
             </form>
+            </LoginStyle>
           </HeroText>
           <HeroImage>
             <Image src="/static/kadobon.jpg" alt="kadobon" width={561} height={433} />

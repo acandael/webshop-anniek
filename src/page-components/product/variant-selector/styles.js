@@ -10,7 +10,9 @@ export const Variant = styled.div`
   margin-bottom: 15px;
 `;
 
-export const Values = styled.div``;
+export const Values = styled.div`
+  
+`;
 
 export const Button = styled.button.attrs(() => ({
   type: 'button'
@@ -46,21 +48,23 @@ export const AttributeName = styled.h4`
 
 export const AttributeSelector = styled.div`
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 0.5rem;
 `;
 
 export const AttributeButton = styled.button`
   align-items: flex-end;
+  outline: none;
   border: 1px solid #dfdfdf;
   display: flex;
   flex-wrap: wrap;
-  font-weight: bold;
+  font-size: 12px;
   justify-content: center;
   padding: 10px 0;
   text-transform: capitalize;
   width: 25%;
   ${is('selected')`
-    border-color: var(--color-text-main);
+    border-color: var(--color-text-sub);
   `};
   ${({ hasVariantForAttribute }) =>
     !hasVariantForAttribute &&
