@@ -38,34 +38,34 @@ export const HeroText = styled.div`
 
 export const HeroImage = styled.div`
   
-`
+`;
 
 export const CTAText = styled.span`
   font-size: .9rem;
-`
+`;
 
 export const SubSection = styled.section`
   display: flex;
   justify-content: space-between;
   
   margin-top: 189px;
-`
+`;
 
 export const SectionOne = styled.div`
   max-width: 456px;
   &:hover {
     cursor: pointer;
   }
-`
+`;
 export const SectionTwo = styled.div`
   max-width: 456px;
   &:hover {
     cursor: pointer;
   }
-`
+`;
 export const SubSectionText = styled.p`
   
-`
+`;
 
 export const SubSectionImage = styled.img`
   border: solid 1px #D4D4D4;
@@ -73,9 +73,9 @@ export const SubSectionImage = styled.img`
   margin-top: 48px;
   width: 456px;
   height: 304px;
-`
+`;
 
 export const StyledLink = styled.a`
   margin-top: 1rem;
   color: #DCA090;
-`
+`;
