@@ -25,7 +25,7 @@ export async function getData({ asPath, language, preview = null }) {
 export default function ProductLinePage({ folder, preview }) {
   const { children } = folder;
   const description = folder.components?.find((c) => c.name === 'Beschrijving')
-    ?.content?.paragraphs?.[0]?.body?.json;
+    ?.content?.paragraphs?.[0]?.body.json;
   
   const images = folder.components?.find((c) => c.type === 'images')
   const image = images?.content?.images[0]
