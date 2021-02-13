@@ -1,13 +1,17 @@
-import React, {useState} from 'react';
-import { sendGiftCardConfirmation } from 'lib/rest-api';
+import React, { useState } from 'react';
+
 import { Outer, H1, Button } from 'ui';
 import Layout from 'components/layout';
+import { useAuth, sendGiftCard } from 'components/auth';
+import { useT } from 'lib/i18n';
+
 import {LoginStyle, KadoHeader, HeroSection, HeroText, HeroImage, H3, Fields} from './styles'
 import Breadcrumb from 'components/breadcrumb';
 import Image from 'next/image';
 
-
 export default function KadobonPage() {
+  const t = useT();
+  const auth = useAuth();
   const [userData, setUserData] = useState({
     loading: false,
     aanbieder: '',
@@ -24,7 +28,7 @@ export default function KadobonPage() {
     const { email, aanbieder, message, amount  } = userData;
 
     try {
-      const { error, msg } = await sendGiftCardConfirmation(email, aanbieder, message, amount);
+      const { error, msg } = await sendGiftCard(email, aanbieder, message, amount);
       
       if (error) {
         console.error('Giftcard was not send');
@@ -52,7 +56,6 @@ export default function KadobonPage() {
       );
     }
   }
-
 
   return (
     <Layout

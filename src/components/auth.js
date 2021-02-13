@@ -31,6 +31,31 @@ export async function loginWithMagicLink(email) {
   };
 }
 
+export async function sendGiftCard(email, aanbieder, message, amount) {
+  const response = await ServiceApi({
+    query: `
+      mutation {
+        user {
+          sendGiftCard(
+            email: "${email}"
+            redirectURLAfterLogin: "${location.protocol}//${location.host}/kadobon"
+          ) {
+            success
+            error
+          }
+        }
+      }
+    `
+  });
+
+  const { success, error } = response.data.user.sendGiftCard;
+  
+  return {
+    success,
+    error
+  };
+}
+
 export function AuthProvider({ children }) {
   const [status, setStatus] = useState({});
 
