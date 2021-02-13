@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { sendGiftcardConfirmation } from 'lib/rest-api';
+import { sendGiftCardConfirmation } from 'lib/rest-api';
 import { Outer, H1, Button } from 'ui';
 import Layout from 'components/layout';
 import {LoginStyle, KadoHeader, HeroSection, HeroText, HeroImage, H3, Fields} from './styles'
@@ -24,10 +24,10 @@ export default function KadobonPage() {
     const { email, aanbieder, message, amount  } = userData;
 
     try {
-      const { error, msg } = await sendGiftcardConfirmation(email, aanbieder, message, amount);
-
+      const { error, msg } = await sendGiftCardConfirmation(email, aanbieder, message, amount);
+      
       if (error) {
-        console.error('Login failed');
+        console.error('Giftcard was not send');
         throw error;
       }
 

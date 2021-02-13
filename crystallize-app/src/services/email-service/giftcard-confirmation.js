@@ -1,8 +1,8 @@
 const { sendEmail, mjml2html } = require("./utils");
 
-module.exports = async function sendGiftcardConfirmation({ email, aanbieder, question = null, message, amount }) {
+module.exports = async function sendGiftCardConfirmation({ email, aanbieder, question = null, message, amount }) {
+  console.log(aanbieder)
   try {
-    console.log(email)
     const { html } = mjml2html(`
     <mjml>
     <mj-body>

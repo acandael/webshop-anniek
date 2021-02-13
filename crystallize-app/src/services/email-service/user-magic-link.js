@@ -1,6 +1,7 @@
 const { sendEmail } = require("./utils");
 
 module.exports = async function sendMagicLinkLogin({ loginLink, email }) {
+  
   try {
     const mjml2html = require("mjml");
     const { html } = mjml2html(`
