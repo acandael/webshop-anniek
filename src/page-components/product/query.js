@@ -102,6 +102,7 @@ export default `
   fragment itemRelations on ItemRelationsContent {
     items {
       id
+      type
       name
       path
       ... on Product {

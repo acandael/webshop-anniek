@@ -27,8 +27,8 @@ export default function ProductItem({ data }) {
   }
 
   const { name, path, type, variants, matchingVariant } = data;
-
-  const variant =
+  
+    const variant =
     matchingVariant || variants?.find((variant) => variant.isDefault) || {};
 
   const pricing = getRelativePriceVariants({
@@ -56,7 +56,6 @@ export default function ProductItem({ data }) {
 
           <Footer>
             <H3>{name}</H3>
-
             {pricing?.discountPrice ? (
               <Price discounted>
                 <strong>

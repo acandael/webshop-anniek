@@ -232,7 +232,6 @@ export default function ItemCollection({ title, description, items }) {
           <SliderInner ref={ref}>
             {items?.map((item) => (
               <Slide key={item.id} className={`type-${item?.type}`}>
-                {item.type = 'product'}
                 <Listformat item={item} />
               </Slide>
             ))}

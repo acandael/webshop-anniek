@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-
 import { Outer, H1, Button } from 'ui';
 import Layout from 'components/layout';
-import { useAuth, sendGiftCard } from 'components/auth';
+import { sendGiftCard } from 'components/auth';
 import { useT } from 'lib/i18n';
 
 import {LoginStyle, KadoHeader, HeroSection, HeroText, HeroImage, H3, Fields} from './styles'
@@ -10,8 +9,7 @@ import Breadcrumb from 'components/breadcrumb';
 import Image from 'next/image';
 
 export default function KadobonPage() {
-  const t = useT();
-  const auth = useAuth();
+  
   const [userData, setUserData] = useState({
     loading: false,
     aanbieder: '',
@@ -20,6 +18,8 @@ export default function KadobonPage() {
     amount: '',
     error: ''
   });
+
+  const [isSent, setIsSent] = useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -41,6 +41,7 @@ export default function KadobonPage() {
           message: msg
         })
       );
+      setIsSent(true);
     } catch (error) {
       console.error(
         'You have an error in your code or there are Network issues.',
@@ -69,7 +70,7 @@ export default function KadobonPage() {
         </KadoHeader>
         <HeroSection>
           <HeroText>
-          <LoginStyle>
+          {Boolean(isSent) === false ? <LoginStyle>
           <form onSubmit={handleSubmit} action="/api/kadobon" method="post">
               <H3>Bestel online je kadobon</H3>
               <Fields>
@@ -134,7 +135,16 @@ export default function KadobonPage() {
                 </Button>
               </Fields>
             </form>
-            </LoginStyle>
+            </LoginStyle> :
+            <>
+              <H3>Bedankt! Je geschenkenbon word klaargemaakt</H3>
+              <p>
+              Email: {userData.email}<br />
+              Aanbieder: {userData.aanbieder}<br />
+              Bedrag: {userData.amount}
+              </p>
+            </>
+            }
           </HeroText>
           <HeroImage>
             <Image src="/static/kadobon.jpg" alt="kadobon" width={561} height={433} />
