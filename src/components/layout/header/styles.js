@@ -33,8 +33,8 @@ export const Logo = styled.a`
     height: 100%;
   }
   ${responsive.xs} {
-    height: 40px;
-    width: 110px;
+    height: 66px;
+    width: 120px;
     margin-left: 25px;
   }
 `;
@@ -95,6 +95,9 @@ export const NavListItem = styled.li`
       text-decoration: none;
       color: #fff;
       transition: 0.3s;
+      ${responsive.smAndLess} {
+        color: #95908F;
+      }
     }
   }
   ${responsive.smAndLess} {
@@ -190,4 +193,5 @@ export const PreviewBar = styled.div`
 `;
 export const IconBar = styled.div`
   display: flex;
+  margin-right: 64px;
 `;

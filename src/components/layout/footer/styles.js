@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {responsive} from 'ui'
 
 export const Outer = styled.footer`
   display: grid;
@@ -9,6 +10,12 @@ export const Outer = styled.footer`
   padding: 50px 138px;
   justify-content: space-between;
   background-color: var(--color-primary);
+
+  ${responsive.smAndLess} {
+    display: flex;
+    flex-direction: column;
+    padding: 48px 24px;
+  }
 `;
 
 export const Logo = styled.div`
@@ -21,15 +28,24 @@ export const NavList = styled.footer`
   display: block;
   margin: 0 0 0 5px;
 
+  ${responsive.smAndLess} {
+    margin: 24px 0;
+  }
+
   li {
     line-height: 1.6rem;
     font-size: 0.9em;
-    color: var(--color-text-sub)
+    color: var(--color-text-sub);
+    
   }
   h3 {
     font-size: 20px;
     font-weight: 400;
     margin-bottom: 16px;
+
+    ${responsive.smAndLess} {
+      margin-bottom: 8px;
+    }
   }
 `;
 
@@ -45,5 +61,9 @@ export const Powered = styled.div`
   }
   svg {
     width: 120px;
+  }
+
+  ${responsive.smAndLess} {
+    margin-bottom: 32px;
   }
 `;

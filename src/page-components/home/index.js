@@ -4,8 +4,7 @@ import Layout from 'components/layout';
 import { simplyFetchFromGraph } from 'lib/graph';
 import fragments from 'lib/graph/fragments';
 import { useT } from 'lib/i18n';
-import { Button } from 'ui';
-import { Outer, Header, H1, H2, HeroSection, HeroText, HeroImage, SubSection, SectionOne, SectionTwo, SubSectionText, SubSectionImage, StyledLink } from './styles';
+import { Outer, Header, H1, H2, HeroSection, HeroText, HeroImage, Button, SubSection, SectionOne, SectionTwo, SubSectionText, SubSectionImage, StyledLink } from './styles';
 import Image from 'next/image';
 import Link from 'next/link'
 

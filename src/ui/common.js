@@ -7,6 +7,7 @@ export const Outer = styled.div`
   margin: 0 auto;
   display: block;
   min-height: 75vh;
+  
   ${responsive.mdPlus} {
     max-width: 1440px;
     padding-left: 100px;
