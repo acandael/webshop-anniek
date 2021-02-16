@@ -137,7 +137,7 @@ export default function KadobonPage() {
             </form>
             </LoginStyle> :
             <>
-              <H3>Bedankt! Je geschenkenbon word klaargemaakt</H3>
+              <H3>Bedankt! Je kadobon word klaargemaakt</H3>
               <p>
               Email: {userData.email}<br />
               Aanbieder: {userData.aanbieder}<br />
