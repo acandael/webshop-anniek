@@ -56,6 +56,11 @@ export const Text = styled.div`
     /* text-transform: uppercase; */
     color: var(--color-text-sub);
     margin-bottom: 32px;
+
+    ${responsive.smAndLess} {
+      text-align: center;
+      font-size: 1.5em;
+    }
   }
 
   p {
