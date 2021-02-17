@@ -29,6 +29,13 @@ export const BrandHeader = styled.div`
   width: 100vw;
   margin-top: 111px;
   margin-bottom: 164px;
+
+  ${responsive.smAndLess} {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    margin-bottom: 64px;
+  }
   
   h1 {
     margin-bottom: 72px;
@@ -39,6 +46,12 @@ export const BrandHeader = styled.div`
 export const Content = styled.div`
   width: 40vw;
   padding: 0 24px;
+
+  ${responsive.smAndLess} {
+    max-width: 100%;
+    width: 100vw;
+    padding: 0;
+  }
 
   h1 {
     margin-bottom: 24px;
