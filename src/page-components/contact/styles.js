@@ -14,6 +14,10 @@ export const ContactHeader = styled(Header)`
   margin-bottom: 32px;
   h1 {
     text-align: left;
+
+    ${responsive.smAndLess} {
+      text-align: center;
+    }
   }
 `
 
@@ -25,6 +29,11 @@ export const HeroText = styled.div`
   display: flex;
   flex-direction: column;
   width: 40%;
+
+  ${responsive.smAndLess} {
+    width: 100%;
+  }
+
   p {
     font-size: 16px;
     margin-bottom: 36px;
