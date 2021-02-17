@@ -20,6 +20,11 @@ export const Inner = styled(I)`
     column-gap: initial;
     grid-template-areas: 'content content content content content content content . actions actions actions actions';
   }
+  ${responsive.smAndLess} {
+    margin-left: 24px;
+    margin-right: 24px;
+    padding: 0;
+  }
   figcaption {
     margin-top: 0.5rem;
   }
@@ -27,6 +32,11 @@ export const Inner = styled(I)`
 
 export const BreadcrumbWrapper = styled.div`
   padding-left: 100px;
+
+  ${responsive.smAndLess} {
+    margin-left: 24px;
+    padding-left: 0;
+  }
 `
 
 export const Content = styled.div`
@@ -42,6 +52,10 @@ export const Content = styled.div`
 export const Actions = styled.div`
   ${responsive.smPlus} {
     grid-area: actions;
+  }
+
+  ${responsive.smAndLess} {
+    margin-top: 64px;
   }
 `;
 
