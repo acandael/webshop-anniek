@@ -17,6 +17,7 @@ export const Outer = styled.div`
   ${responsive.smAndLess} {
     padding-left: 24px;
     padding-right: 24px;
+    margin-bottom: 64px;
   }
 `;
 
