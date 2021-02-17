@@ -13,6 +13,11 @@ export const Outer = styled.div`
     padding-left: 100px;
     padding-right: 100px;
   }
+
+  ${responsive.smAndLess} {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 `;
 
 export const Inner = styled.div`

@@ -193,5 +193,5 @@ export const PreviewBar = styled.div`
 `;
 export const IconBar = styled.div`
   display: flex;
-  margin-right: 64px;
+  margin-right: 48px;
 `;

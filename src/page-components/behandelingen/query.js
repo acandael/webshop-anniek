@@ -4,6 +4,7 @@ export default `
       name
       children {
         name
+        type
         path
         components {
          ...component
