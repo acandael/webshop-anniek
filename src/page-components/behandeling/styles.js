@@ -16,12 +16,24 @@ export const BehandelingHeader = styled(Header)`
 export const HeroSection = styled.div`
   display: flex;
   justify-content: space-between;
+
+  ${responsive.smAndLess} {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 `
 export const HeroText = styled.div`
   display: flex;
   flex-direction: column;
   width: 40%;
   padding-right: 16px;
+
+  ${responsive.smAndLess} {
+    width: 100%;
+    padding-right: 0;
+  }
+
   p {
     font-size: 16px;
   }
@@ -33,11 +45,19 @@ export const HeroText = styled.div`
   h3 {
     margin-top: 0;
     margin-bottom: 16px;
+    ${responsive.smAndLess} {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
   }
 `;
 
 export const BehandelingButton = styled(Button)`
   margin-bottom: 48px;
+
+  ${responsive.smAndLess} {
+    margin-top: 64px;
+  }
 `
 
 export const HeroImage = styled.div`
