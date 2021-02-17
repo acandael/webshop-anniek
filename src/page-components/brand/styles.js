@@ -29,16 +29,34 @@ export const BrandHeader = styled.div`
   width: 100vw;
   margin-top: 111px;
   margin-bottom: 164px;
+
+  ${responsive.smAndLess} {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    margin-bottom: 64px;
+  }
   
   h1 {
     margin-bottom: 72px;
     text-transform: uppercase;
+
+    ${responsive.smAndLess} {
+      text-align: center;
+      margin-bottom: 32px;
+    }
   }
 `
 
 export const Content = styled.div`
   width: 40vw;
   padding: 0 16px;
+
+  ${responsive.smAndLess} {
+    width: 100vw;
+    max-width: 100%;
+    padding: 0 0;
+  }
 `
 
 export const ImageWrapper = styled.div`
@@ -47,6 +65,10 @@ export const ImageWrapper = styled.div`
   border: 1px solid var(--color-box-background);
   /* overflow: hidden; */
   /* height: 100%; */
+
+  ${responsive.smAndLess} {
+    margin-bottom: 64px;
+  }
 `;
 
 export const Img = styled(Image)`
