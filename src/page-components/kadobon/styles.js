@@ -9,17 +9,30 @@ export const KadoHeader = styled(Header)`
   margin-bottom: 32px;
   h1 {
     text-align: left;
+
+    ${responsive.smAndLess} {
+      text-align: center;
+    }
   }
 `
 
 export const HeroSection = styled.div`
   display: flex;
   justify-content: space-between;
+
+  ${responsive.smAndLess} {
+    display: flex;
+    flex-direction: column;
+  }
 `
 export const HeroText = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
+
+  ${responsive.smAndLess} {
+    width: 100%;
+  }
   p {
     font-size: 16px;
     margin-bottom: 36px;
@@ -38,7 +51,9 @@ export const HeroText = styled.div`
 `;
 
 export const HeroImage = styled.div`
-  
+  ${responsive.smAndLess} {
+    margin-top: 64px;
+  }
 `
 
 export const H3 = styled(h3)`
@@ -74,6 +89,10 @@ export const Fields = styled.div`
     margin-top: 8px;
     margin-bottom: 32px;
 
+    ${responsive.smAndLess} {
+      width: 100%;
+    }
+
     &:focus {
       outline: none;
       border: 1px solid var(--color-primary);
@@ -81,7 +100,9 @@ export const Fields = styled.div`
   }
 
   button {
-    
+    ${responsive.smAndLess} {
+      width: 100%;
+    }
   }
 
   ${responsive.smAndLess} {
