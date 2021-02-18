@@ -124,6 +124,10 @@ export const LoginStyle = styled.div`
     padding: 50px;
     margin: 0 auto 0;
     max-width: 700px;
+
+    ${responsive.smAndLess} {
+      padding: 25px;
+    }
   }
 
   h4 {

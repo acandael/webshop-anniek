@@ -30,8 +30,8 @@ export default function Login() {
         Object.assign({}, userData, {
           loading: false,
           message: success
-            ? 'Check your mail inbox for a login link'
-            : error || 'Could not send the login link email =('
+            ? 'Check je mailbox voor een login link'
+            : error || 'De login link kon niet worden verzonden =('
         })
       );
     } catch (error) {

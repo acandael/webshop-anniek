@@ -68,6 +68,7 @@ export const ImageWrapper = styled.div`
 
   ${responsive.smAndLess} {
     margin-bottom: 64px;
+    margin-top: 64px;
   }
 `;
 

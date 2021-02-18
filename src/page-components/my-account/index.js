@@ -1,9 +1,10 @@
 import React from 'react';
 
 import Layout from 'components/layout';
-import { H1 } from 'ui';
+import { H1, Button } from 'ui';
 import { useAuth } from 'components/auth';
 import { useT } from 'lib/i18n';
+import Router from 'next/router'
 
 import { Outer } from './styles';
 
@@ -16,11 +17,11 @@ export default function MyAccount() {
       <Outer>
         {auth.isLoggedIn === true && (
           <div>
-            <H1>Hi {auth.email}!</H1>
-            <a href={auth.logoutLink}>Logout</a>
+            <H1>Hallo {auth.email}!</H1>
+            <Button onClick={() => Router.push(auth.logoutLink)}>Uitloggen</Button>
           </div>
         )}
-        {auth.isLoggedIn === false && <div>You are not logged in</div>}
+        {auth.isLoggedIn === false && <div>Je bent niet ingelogd</div>}
       </Outer>
     </Layout>
   );

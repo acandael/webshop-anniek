@@ -7,6 +7,11 @@ export const Outer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  
+  ${responsive.smAndLess} {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
 `;
 
 export const LoginStyle = styled.div`
@@ -39,6 +44,7 @@ export const Fields = styled.div`
   }
   button {
     flex: 0 0 auto;
+    width: 100%;
   }
   ${responsive.smAndLess} {
     display: block;

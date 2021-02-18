@@ -14,6 +14,13 @@ export const Outer = styled.a`
   ${responsive.xs} {
     margin-bottom: 15px;
   }
+
+  ${responsive.smAndLess} {
+    margin-left: 24px;
+    margin-right: 24px;
+    margin-bottom: 64px;
+    padding: 0;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -48,6 +55,11 @@ export const Text = styled.div`
   left: 0;
   width: 100%;
   padding: 1em;
+
+  ${responsive.smAndLess} {
+    padding: 0;
+  }
+
   h3 {
     font-size: 1.25em;
     text-transform: uppercase;
