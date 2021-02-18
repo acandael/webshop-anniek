@@ -1,14 +1,16 @@
 import styled from 'styled-components';
-
+import Image from 'next/image';
 import { responsive, Outer as outer, Header as H, H1 as h1, H2 as h2, Button as button} from 'ui';
 
 export const Outer = styled(outer)`
+  margin-bottom: 64px;
   padding-left: 138px;
   padding-right: 138px;
 
   ${responsive.smAndLess} {
-    padding-left: 20px;
-    padding-right: 20px;
+    margin: 0 24px;
+    padding-left: 0;
+    padding-right: 0;
   }
 `
 
@@ -38,7 +40,7 @@ export const HeroSection = styled.section`
   margin-top: 84px;
   ${responsive.smAndLess} {
     flex-direction: column-reverse;
-    align-items: center;
+
   }
 `
 
@@ -50,27 +52,27 @@ export const HeroText = styled.div`
 
   ${responsive.smAndLess} {
     width: 100%;
+    margin-top: 48px;
   }
+
   p {
     font-size: 20px;
-  color: var(--color-text-sub);
+    color: var(--color-text-sub);
 
-  ${responsive.smAndLess} {
-    margin: 16px 24px;
+    ${responsive.smAndLess} {
+      margin-bottom: 16px;
     }
-
   }
 `;
 
 export const Button = styled(button)`
-  margin: 0 24px;
-  margin-top: 24px;
+  ${responsive.smAndLess} {
+    margin-top: 32px;
+  }
 `
 
-export const HeroImage = styled.div`
-  ${responsive.smAndLess} {
-    margin-bottom: 24px;
-  }
+export const HeroImage = styled(Image)`
+  
 `;
 
 export const CTAText = styled.span`
@@ -87,7 +89,7 @@ export const SubSection = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 128px 24px;
+    margin: 128px 0;
   }
 
   h2 {
@@ -117,12 +119,10 @@ export const SubSectionText = styled.p`
   
 `;
 
-export const SubSectionImage = styled.img`
+export const SubSectionImage = styled(Image)`
   border: solid 1px #D4D4D4;
   margin-bottom: 48px;
   margin-top: 48px;
-  width: 456px;
-  height: 304px;
 `;
 
 export const StyledLink = styled.a`

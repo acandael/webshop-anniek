@@ -60,15 +60,13 @@ export default function FrontPage({ catalogue, preview }) {
           Boek Nu
           </Button>
           </HeroText>
-          <HeroImage>
-            <Image src="/static/hero-image.jpg" alt="anniek lambrecht" width={400} height={400} />
-          </HeroImage>
+          <HeroImage src="/static/hero-image.jpg" alt="anniek lambrecht" width="400" height="400" />
         </HeroSection>
         <SubSection>
           <Link href="/behandelingen" passHref>
             <SectionOne>
               <H2>BEHANDELINGEN</H2>
-              <SubSectionImage src="/static/subsection-behandelingen.jpg" alt="anniek lambrecht - behandelingen" />
+              <SubSectionImage src="/static/subsection-behandelingen.jpg" alt="anniek lambrecht - behandelingen" width="456px" height="304px" />
               <SubSectionText>Ik heb een uitgebreid aanbod met verschillende huidverzorgingen, ook als je weinig tijd hebt kan je een korte behandeling kiezen om met een minimum aan tijd een maximum resultaat te halen.</SubSectionText>
               <Link href="/behandelingen"><StyledLink>Ontdek alle behandelingen</StyledLink></Link>
             </SectionOne>
@@ -76,7 +74,7 @@ export default function FrontPage({ catalogue, preview }) {
           <Link href="/webshop" passHref>
           <SectionTwo>
             <H2>WEBSHOP</H2>
-            <SubSectionImage src="/static/subsection-webshop.jpg" alt="anniek lambrecht - webshop" />
+            <SubSectionImage src="/static/subsection-webshop.jpg" alt="anniek lambrecht - webshop" width="456px" height="304px" />
             <SubSectionText>
               Ik werk met de huidproducten van Advanced nutricion programme en Environ.
 Met de minerale make-up producten van Jane Iredale maak ik van jou een echte beauty
