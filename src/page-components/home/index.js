@@ -48,12 +48,11 @@ export default function FrontPage({ catalogue, preview }) {
         </Header>
         <HeroSection>
           <HeroText>
-          <p>Mijn zaak is geen klassiek schoonheidsinstituut 
-          maar een cosmedisch instituut waar de focus 
-          op huidverbetering en gelaatsverzorging ligt.</p>
-          <p>We starten met een kennismaking en we maken een 
-          huidfoto in 3D. Hierdoor is een perfecte huidanalyse 
-          mogelijk en kan ik jou de gepaste behandeling voorstellen.</p>
+          <p>Hey Beauty!<br />
+          Wil jij een ook mooie gezonde huid? 
+          Dan ben je bij mij aan het juiste adres.  
+          Mijn zaak is geen klassiek schoonheidsinstituut maar een instituut waar de focus vooral op Huidverbetering of Skincare ligt.  Je krijgt een persoonlijke behandeling met professionele opvolging van jouw huidbehandelingen.  
+Volg je mij al op Facebook & Instagram?</p>
           <Button
           width="221px"
           >
@@ -67,7 +66,7 @@ export default function FrontPage({ catalogue, preview }) {
             <SectionOne>
               <H2>BEHANDELINGEN</H2>
               <SubSectionImage src="/static/subsection-behandelingen.jpg" alt="anniek lambrecht - behandelingen" width="456px" height="304px" />
-              <SubSectionText>Ik heb een uitgebreid aanbod met verschillende huidverzorgingen, ook als je weinig tijd hebt kan je een korte behandeling kiezen om met een minimum aan tijd een maximum resultaat te halen.</SubSectionText>
+              <SubSectionText>Op het menu staat niet alleen Huidanalyse, Peeling en Vitamine Gelaatsbehandelingen maar ook liften van de huid is mogelijk voor gelaat en lichaam met het LPG apparaat.  Ongewenste haren verwijderen we met de Lightsheer Diode Laser. </SubSectionText>
               <Link href="/behandelingen"><StyledLink>Ontdek alle behandelingen</StyledLink></Link>
             </SectionOne>
           </Link>
@@ -76,8 +75,7 @@ export default function FrontPage({ catalogue, preview }) {
             <H2>WEBSHOP</H2>
             <SubSectionImage src="/static/subsection-webshop.jpg" alt="anniek lambrecht - webshop" width="456px" height="304px" />
             <SubSectionText>
-              Ik werk met de huidproducten van Advanced nutricion programme en Environ.
-Met de minerale make-up producten van Jane Iredale maak ik van jou een echte beauty
+            Met de producten van Advanced Nutricion Programme, Environ Skincare en Jane Iredale houden we het huidverouderingsproces zoveel mogelijk tegen.  Ze zijn op basis van Vitamine A en Antioxidanten en compenseren het chronisch tekort hiervan in de huid.  
             </SubSectionText>
             <Link href="/webshop"><StyledLink>Ontdek alle producten</StyledLink></Link>
           </SectionTwo>
