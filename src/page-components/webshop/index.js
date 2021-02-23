@@ -28,9 +28,8 @@ export default function WebshopPage({ folder, preview }) {
   const description = folder.components?.find((c) => c.name === 'Beschrijving')
     ?.content?.json;
   const icon = folder.components?.find((c) => c.name === 'Icon');
-  const stacks = folder.components?.find((c) => c.name === 'Stackable content')
+  const stacks = folder.components?.find((c) => c.name === 'Stackable content')?.content?.items
 
-  console.log(stacks)
   return (
     <Layout
       title={folder.name}

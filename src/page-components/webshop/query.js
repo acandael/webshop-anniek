@@ -77,6 +77,7 @@ export default `
           ...singleLine
           ...richText
           ...imageContent
+          ...gridRelations
           ... on BooleanContent {
             value
           }
@@ -114,6 +115,75 @@ export default `
                     ...image
                   }
                 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  fragment gridRelations on GridRelationsContent {
+    grids {
+      name
+      rows {
+        columns {
+          layout {
+            rowspan
+            colspan
+          }
+          itemType
+          itemId
+          item {
+            id
+            name
+            path
+            type
+            language
+            ... on Product {
+              variants {
+                id
+                name
+                sku
+                priceVariants {
+                  identifier
+                  price
+                  currency
+                }
+                stock
+                isDefault
+                attributes {
+                  attribute
+                  value
+                }
+                image {
+                  url
+                  altText
+                  variants {
+                    url
+                    width
+                    height
+                  }
+                }
+              }
+              defaultVariant {
+                priceVariants {
+                  identifier
+                  price
+                  currency
+                }
+                isDefault
+                name
+                images {
+                  ...image
+                }
+              }
+            }
+            components {
+              name
+              type
+              content {
+                ...imageContent
               }
             }
           }
