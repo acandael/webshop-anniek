@@ -3,6 +3,7 @@ import GridCollection from 'components/grid-collection';
 import Banner from 'components/banner';
 
 const StackRenderer = ({ stack }) => {
+  
   switch (stack?.shape?.name) {
     case 'Item collection': {
       const title = stack?.components?.find(isTitleComponent)?.content?.text;
@@ -33,6 +34,7 @@ const StackRenderer = ({ stack }) => {
         ?.content?.json;
       const choice = stack?.components?.find(isChoiceComponent)?.content
         ?.selectedComponent;
+      
       if (choice?.name === 'Grid') {
         const grids = choice.content?.grids;
         return (
@@ -86,6 +88,7 @@ const StackRenderer = ({ stack }) => {
 };
 
 const Stackable = ({ stacks }) => {
+  
   return (
     <>
       {stacks?.map((stack) => (
