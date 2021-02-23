@@ -26,7 +26,7 @@ export default function CategoryPage({ folder, preview }) {
   const { children } = folder;
   
   const description = folder.components?.find((c) => c.name === 'Beschrijving')
-    ?.content?.paragraphs[0].body.json;
+    ?.content?.paragraphs[0]?.body?.json;
   
   const images = folder.components?.find((c) => c.type === 'images')
   const image = images?.content?.images[0]
