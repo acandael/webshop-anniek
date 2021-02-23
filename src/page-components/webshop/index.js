@@ -7,6 +7,7 @@ import ItemMicroformat from 'components/microformat';
 import toText from '@crystallize/content-transformer/toText';
 import { List, ImageWrapper, Img } from './styles';
 import query from './query';
+import Stackable from 'components/stackable';
 
 export async function getData({ asPath, language, preview = null }) {
   const { data } = await simplyFetchFromGraph({
@@ -27,6 +28,9 @@ export default function WebshopPage({ folder, preview }) {
   const description = folder.components?.find((c) => c.name === 'Beschrijving')
     ?.content?.json;
   const icon = folder.components?.find((c) => c.name === 'Icon');
+  const stacks = folder.components?.find((c) => c.name === 'Stackable content')
+
+  console.log(stacks)
   return (
     <Layout
       title={folder.name}
@@ -39,7 +43,7 @@ export default function WebshopPage({ folder, preview }) {
           <H1>{folder.name}</H1>
         </Header>
         <ImageWrapper>
-          <Img src="static/hero-webshop.jpg" width="1164" height="497" alt="webshop - anniek lambrecht" />
+          <Stackable stacks={stacks} />
         </ImageWrapper>
         { children && (
               <List>
