@@ -5,7 +5,7 @@ import { Outer, Header, H1 } from 'ui';
 import Layout from 'components/layout';
 import ItemMicroformat from 'components/microformat';
 import toText from '@crystallize/content-transformer/toText';
-import { List, ImageWrapper, Img } from './styles';
+import { List, PromotionWrapper, Img } from './styles';
 import query from './query';
 import Stackable from 'components/stackable';
 
@@ -41,9 +41,9 @@ export default function WebshopPage({ folder, preview }) {
         <Header centerContent>
           <H1>{folder.name}</H1>
         </Header>
-        <ImageWrapper>
+        <PromotionWrapper>
           <Stackable stacks={stacks} />
-        </ImageWrapper>
+        </PromotionWrapper>
         { children && (
               <List>
                 {children.map((item, i) => (

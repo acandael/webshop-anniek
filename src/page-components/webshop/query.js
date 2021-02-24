@@ -65,7 +65,7 @@ export default `
           }
           isDefault
           name
-          image {
+          images {
             ...image
           }
         }
@@ -77,7 +77,7 @@ export default `
           ...singleLine
           ...richText
           ...imageContent
-          ...gridRelations
+          ...choiceComponent
           ... on BooleanContent {
             value
           }
@@ -99,6 +99,7 @@ export default `
                     ...singleLine
                     ...richText
                     ...imageContent
+                    ...choiceComponent
                   }
                 }
               }
@@ -111,7 +112,7 @@ export default `
                   }
                   isDefault
                   name
-                  image {
+                  images {
                     ...image
                   }
                 }
@@ -123,50 +124,27 @@ export default `
     }
   }
 
-  fragment gridRelations on GridRelationsContent {
-    grids {
+  fragment choiceComponent on ComponentChoiceContent {
+    selectedComponent {
       name
-      rows {
-        columns {
-          layout {
-            rowspan
-            colspan
-          }
-          itemType
-          itemId
-          item {
+      type
+      content {
+        ...on ItemRelationsContent {
+          items {
             id
             name
             path
             type
-            language
+            shape {
+              name
+              id
+            }
+            topics {
+              id
+              name 	
+            }
             ... on Product {
               variants {
-                id
-                name
-                sku
-                priceVariants {
-                  identifier
-                  price
-                  currency
-                }
-                stock
-                isDefault
-                attributes {
-                  attribute
-                  value
-                }
-                image {
-                  url
-                  altText
-                  variants {
-                    url
-                    width
-                    height
-                  }
-                }
-              }
-              defaultVariant {
                 priceVariants {
                   identifier
                   price
@@ -183,7 +161,12 @@ export default `
               name
               type
               content {
+                ...singleLine
+                ...richText
                 ...imageContent
+                ... on BooleanContent {
+                  value
+                }
               }
             }
           }

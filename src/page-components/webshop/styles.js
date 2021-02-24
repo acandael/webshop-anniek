@@ -23,13 +23,12 @@ export const List = styled.div`
   }
 `;
 
-export const ImageWrapper = styled.div`
+export const PromotionWrapper = styled.div`
   position: relative;
   z-index: 1;
   overflow: hidden;
   /* height: 100%; */
   display: flex;
-  justify-content: center;
   margin-bottom: 112px;
 `;
 
