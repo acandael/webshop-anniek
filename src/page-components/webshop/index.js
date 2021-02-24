@@ -5,7 +5,7 @@ import { Outer, Header, H1 } from 'ui';
 import Layout from 'components/layout';
 import ItemMicroformat from 'components/microformat';
 import toText from '@crystallize/content-transformer/toText';
-import { List, PromotionWrapper, Img } from './styles';
+import { List, PromotionWrapper} from './styles';
 import query from './query';
 import Stackable from 'components/stackable';
 
