@@ -29,4 +29,8 @@ export const PromotionWrapper = styled.div`
   /* height: 100%; */
   display: flex;
   margin-bottom: 112px;
+
+  ${responsive.smAndLess} {
+    display: block;
+  }
 `;

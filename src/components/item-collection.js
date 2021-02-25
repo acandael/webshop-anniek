@@ -154,6 +154,11 @@ const Slide = styled.div`
       width: 50%;
       min-width: 50%;
     }
+    ${responsive.smAndLess} {
+      height: var(--listformat-product-height-sm);
+      width: 100%;
+      min-width: 100%;
+    }
   }
 `;
 
