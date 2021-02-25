@@ -24,7 +24,7 @@ const Title = styled(H1)`
     padding-right: 10px;
   }
   ${responsive.smAndLess} {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-md);
     margin: 0;
     padding-left: 0;
     text-align: center;
@@ -160,11 +160,6 @@ const Slide = styled.div`
       height: var(--listformat-product-height-sm);
       width: 50%;
       min-width: 50%;
-    }
-    ${responsive.smAndLess} {
-      height: var(--listformat-product-height-sm);
-      width: 100%;
-      min-width: 100%;
     }
   }
 `;
