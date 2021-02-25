@@ -23,6 +23,13 @@ const Title = styled(H1)`
     padding: var(--content-padding-xs);
     padding-right: 10px;
   }
+  ${responsive.smAndLess} {
+    font-size: var(--font-size-sm);
+    margin: 0;
+    padding-left: 0;
+    text-align: center;
+
+  }
 `;
 const Description = styled.div`
   margin: 0 4px 45px;

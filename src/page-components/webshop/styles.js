@@ -32,5 +32,7 @@ export const PromotionWrapper = styled.div`
 
   ${responsive.smAndLess} {
     display: block;
+    width: 100%;
+    min-width: 100%;
   }
 `;
