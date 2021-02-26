@@ -27,12 +27,17 @@ import ProductLinePage, { getData as getDataProductLine } from 'page-components/
 import CategoryPage, { getData as getDataCategory } from 'page-components/category';
 import BehandelingenPage, { getData as getDataBehandelingen } from 'page-components/behandelingen';
 import BehandelingPage, { getData as getDataBehandeling } from 'page-components/behandeling';
+import BrandArticlePage, { getData as getDataBrandArticle } from 'page-components/brand-article';
 import { shape } from 'prop-types';
 
 const renderers = {
   document: {
     component: DocPage,
     getData: getDataDoc
+  },
+  brandarticle: {
+    component: BrandArticlePage,
+    getData: getDataBrandArticle
   },
   folder: {
     component: FolderPage,
@@ -124,6 +129,8 @@ export async function getStaticProps(context) {
       renderer = 'behandelingen'
     } else if (shapeName === 'Behandeling') {
       renderer = 'behandeling'
+    } else if (shapeName === 'BrandArticle') {
+      renderer = 'brandarticle'
     } else if (type in renderers) {
       renderer = type;
     }
