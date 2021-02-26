@@ -1,12 +1,12 @@
 import React from 'react';
-
+import Link from 'next/link';
 import { simplyFetchFromGraph } from 'lib/graph';
 import { Outer, H1 } from 'ui';
 import Layout from 'components/layout';
 import Breadcrumb from 'components/breadcrumb'
 import Microformat from 'components/microformat';
 import toText from '@crystallize/content-transformer/toText';
-import { List, BrandHeader, Content, ImageWrapper, Img, Item } from './styles';
+import { List, BrandHeader, Content, ImageWrapper, Img, StyledLink} from './styles';
 import query from './query';
 
 export async function getData({ asPath, language, preview = null }) {
@@ -29,6 +29,10 @@ export default function BrandPage({ folder, preview }) {
   
   const images = components?.find((c) => c.type === 'images')
   const image = images?.content?.images[0]
+
+  const moreinfo = components?.find((c) => c.name === 'Meerinfo')?.content?.text;
+
+  console.log(moreinfo)
   
   return (
     <Layout
@@ -42,6 +46,7 @@ export default function BrandPage({ folder, preview }) {
           <Content>
             <H1>{folder.name}</H1>
             <p>{toText(description)}</p>
+            {moreinfo && <Link href={moreinfo}><StyledLink>Meer info</StyledLink></Link>}
           </Content>
           <ImageWrapper>
             <Img src={image.url} width={image.width} height={image.height} alt={folder.name} />

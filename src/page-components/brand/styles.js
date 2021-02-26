@@ -38,13 +38,16 @@ export const BrandHeader = styled.div`
   }
   
   h1 {
-    margin-bottom: 72px;
     text-transform: uppercase;
 
     ${responsive.smAndLess} {
       text-align: center;
       margin-bottom: 32px;
     }
+  }
+
+  p {
+    font-size: 20px;
   }
 `
 
@@ -106,4 +109,10 @@ export const Item = styled.div`
   &.item-document {
     grid-column-end: span 2;
   }
+`;
+
+export const StyledLink = styled.a`
+  cursor: pointer;
+  font-size: 20px;
+  color: #DCA090;
 `;
