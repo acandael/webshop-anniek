@@ -138,6 +138,7 @@ export default function ProductPage({ product, preview }) {
             })}
           </Media>
           {tabs}
+          <PropertiesTable {...ingredientstable} />
         </Content>
         <Actions>
           <ActionsSticky>
@@ -167,7 +168,7 @@ export default function ProductPage({ product, preview }) {
           </ActionsSticky>
         </Actions>
       </Inner>
-      <PropertiesTable {...ingredientstable} />
+      
       <RelatedContainer>
         {Boolean(relatedProducts) && (
           <Collection
