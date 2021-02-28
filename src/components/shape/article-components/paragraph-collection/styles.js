@@ -31,7 +31,6 @@ export const Text = styled.div`
   margin-bottom: 100px;
 `;
 export const Media = styled.div`
-  max-width: 60%;
   grid-area: media;
   margin-bottom: 100px;
 `;

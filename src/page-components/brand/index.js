@@ -31,8 +31,6 @@ export default function BrandPage({ folder, preview }) {
   const image = images?.content?.images[0]
 
   const moreinfo = components?.find((c) => c.name === 'Meerinfo')?.content?.text;
-
-  console.log(moreinfo)
   
   return (
     <Layout

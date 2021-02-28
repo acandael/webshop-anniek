@@ -28,6 +28,7 @@ import CategoryPage, { getData as getDataCategory } from 'page-components/catego
 import BehandelingenPage, { getData as getDataBehandelingen } from 'page-components/behandelingen';
 import BehandelingPage, { getData as getDataBehandeling } from 'page-components/behandeling';
 import BrandArticlePage, { getData as getDataBrandArticle } from 'page-components/brand-article';
+
 import { shape } from 'prop-types';
 
 const renderers = {

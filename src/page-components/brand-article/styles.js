@@ -12,6 +12,7 @@ export const Outer = styled(I)`
 
 export const Hero = styled.div`
   font-size: 20px;
+  margin-top: 111px;
   margin-bottom: 50px;
   ${responsive.mdPlus} {
     display: grid;
@@ -64,7 +65,7 @@ export const Img = styled(Image)`
     object-fit: cover;
     object-position: center;
     overflow: hidden;
-    width: 100%;
+    width: 70%;
   }
 `;
 
@@ -108,7 +109,7 @@ export const List = styled.div`
 
 export const H2 = styled(H)`
   color: var(--color-text-main);
-  font-size: 1rem;
+  font-size: 1.25rem;
 `;
 
 export const Sidebar = styled.div`

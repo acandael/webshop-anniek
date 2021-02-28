@@ -7,6 +7,7 @@ import Microformat from 'components/microformat';
 import toText from '@crystallize/content-transformer/toText';
 import query from './query';
 import { useRouter } from 'next/router';
+import Breadcrumb from 'components/breadcrumb'
 import {
   Img,
   List,
@@ -42,7 +43,6 @@ export default function BrandArticlePage({ document, preview }) {
   const images = document?.components?.find((c) => c.name === 'Afbeelding');
   const featured = document?.components?.find((c) => c.name === 'Featured');
   const body = document?.components?.find((c) => c.name === 'Body');
-  const published = new Date(document?.publishedAt);
   const topics = document?.topics;
 
   // Find all topic maps, as a parent, then filter on "document" type
@@ -111,6 +111,7 @@ export default function BrandArticlePage({ document, preview }) {
       preview={preview}
     >
       <Outer>
+        <Breadcrumb path={document.path} />
         <Hero>
           <HeroContent>
             <Title>{heading}</Title>
