@@ -28,6 +28,7 @@ import CategoryPage, { getData as getDataCategory } from 'page-components/catego
 import BehandelingenPage, { getData as getDataBehandelingen } from 'page-components/behandelingen';
 import BehandelingPage, { getData as getDataBehandeling } from 'page-components/behandeling';
 import BrandArticlePage, { getData as getDataBrandArticle } from 'page-components/brand-article';
+import MerkenPage, { getData as getDataMerken } from 'page-components/merken';
 
 import { shape } from 'prop-types';
 
@@ -75,6 +76,10 @@ const renderers = {
   behandeling: {
     component: BehandelingPage,
     getData: getDataBehandeling
+  },
+  merken: {
+    component: MerkenPage,
+    getData: getDataMerken
   }
 };
 
@@ -132,6 +137,8 @@ export async function getStaticProps(context) {
       renderer = 'behandeling'
     } else if (shapeName === 'BrandArticle') {
       renderer = 'brandarticle'
+    } else if (shapeName === 'Merken') {
+      renderer = 'merken'
     } else if (type in renderers) {
       renderer = type;
     }
