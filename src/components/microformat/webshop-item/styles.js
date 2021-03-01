@@ -21,7 +21,7 @@ export const ImageWrapper = styled.div`
   z-index: 1;
   overflow: hidden;
   border: 1px solid var(--color-box-background);
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   /* height: 100%; */
 `;
 

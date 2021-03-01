@@ -5,10 +5,11 @@ import { Outer, H1} from 'ui';
 import Layout from 'components/layout';
 import toText from '@crystallize/content-transformer/toText';
 import query from './query';
-import {BehandelingHeader, H3, BehandelingButton, HeroSection, HeroText, HeroImage, Img, PriceList} from './styles'
+import {BehandelingHeader, H3, Button, HeroSection, HeroText, HeroImage, Img, PriceList} from './styles'
 import BehandelingComponents from 'components/shape/behandeling-components';
 import Breadcrumb from 'components/breadcrumb';
 import PropertiesTable from 'components/shape/behandeling-components/properties-table';
+import Link from 'next/link';
 
 export async function getData({ asPath, language, preview = null }) {
   const { data } = await simplyFetchFromGraph({
@@ -51,11 +52,13 @@ export default function BehandelingPage({ folder, preview }) {
       
         <HeroSection>
           <HeroText>
-          <BehandelingButton
-          width="221px"
-          >
-          Boek Nu
-          </BehandelingButton>
+          <Link href="https://schoonheidsinstituut-anniek-lambrecht-1.salonized.com/bookings/new?" passHref>
+            <Button
+            width="221px"
+            >
+            Boek Nu
+            </Button>
+          </Link>
             <BehandelingComponents components={rest} />
           </HeroText>
           <HeroImage>

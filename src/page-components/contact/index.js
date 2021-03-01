@@ -21,7 +21,7 @@ export default function ContactPage() {
         <HeroSection>
           <HeroText>
             <p><EmailIcon color="brand.900" /><a href="mailto:info@anniek-lambrecht.be">info@anniek-lambrecht.be</a><br />
-            <PhoneIcon color="brand.900" /> 050 69.41.65
+            <PhoneIcon color="brand.900" /> <a href="tel:050694165">050 69.41.65</a>
             </p>
             <p>L. Dujardinstraat 9, 8370<br />
 Blankenberge</p>

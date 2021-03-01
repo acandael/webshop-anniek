@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { responsive } from 'ui';
 import { Image } from '@crystallize/react-image';
-import {Header, H3 as h3, Button} from 'ui';
+import {Header, H3 as h3, Button as button} from 'ui';
 
 export const BehandelingHeader = styled(Header)`
   max-width: 1440px;
@@ -52,7 +52,7 @@ export const HeroText = styled.div`
   }
 `;
 
-export const BehandelingButton = styled(Button)`
+export const Button = styled(button)`
   margin-bottom: 48px;
 
   ${responsive.smAndLess} {

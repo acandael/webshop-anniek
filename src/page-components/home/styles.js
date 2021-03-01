@@ -119,13 +119,17 @@ export const SubSectionText = styled.p`
   
 `;
 
+export const ImageWrapper = styled.div`
+  margin-top: 32px;
+  margin-bottom: 32px;
+`
+
 export const SubSectionImage = styled(Image)`
   border: solid 1px #D4D4D4;
-  margin-bottom: 48px;
-  margin-top: 48px;
 `;
 
 export const StyledLink = styled.a`
+  display: block;
   margin-top: 1rem;
   color: #DCA090;
 `;

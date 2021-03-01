@@ -6,16 +6,7 @@ export default function SocialBar() {
   return (
     <Outer>
       <Btn>
-        <Twitter />
-      </Btn>
-      <Btn>
         <Facebook />
-      </Btn>
-      <Btn>
-        <Pintrest />
-      </Btn>
-      <Btn>
-        <LinkedIn />
       </Btn>
     </Outer>
   );

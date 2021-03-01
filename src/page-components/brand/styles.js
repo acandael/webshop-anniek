@@ -112,6 +112,8 @@ export const Item = styled.div`
 `;
 
 export const StyledLink = styled.a`
+  display: block;
+  margin-top: 1rem;
   cursor: pointer;
   font-size: 20px;
   color: #DCA090;

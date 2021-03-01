@@ -4,9 +4,8 @@ import Layout from 'components/layout';
 import { simplyFetchFromGraph } from 'lib/graph';
 import fragments from 'lib/graph/fragments';
 import { useT } from 'lib/i18n';
-import { Outer, Header, H1, H2, HeroSection, HeroText, HeroImage, Button, SubSection, SectionOne, SectionTwo, SubSectionText, SubSectionImage, StyledLink } from './styles';
-import Image from 'next/image';
-import Link from 'next/link'
+import { Outer, Header, H1, H2, HeroSection, HeroText, HeroImage, Button, SubSection, SectionOne, SectionTwo, SubSectionText, ImageWrapper, SubSectionImage, StyledLink } from './styles';
+import Link from 'next/link';
 
 
 export async function getData({ language, preview = null }) {
@@ -52,12 +51,14 @@ export default function FrontPage({ catalogue, preview }) {
           Wil jij een ook mooie gezonde huid? 
           Dan ben je bij mij aan het juiste adres.  
           Mijn zaak is geen klassiek schoonheidsinstituut maar een instituut waar de focus vooral op Huidverbetering of Skincare ligt.  Je krijgt een persoonlijke behandeling met professionele opvolging van jouw huidbehandelingen.  
-Volg je mij al op Facebook & Instagram?</p>
+Volg je mij al op <a href="https://www.facebook.com/annieklambrechtskincoach/?ref=hl">Facebook</a> & <a href="https://www.instagram.com/annieklambrecht/">Instagram</a>?</p>
+          <Link href="https://schoonheidsinstituut-anniek-lambrecht-1.salonized.com/bookings/new?" passHref>
           <Button
           width="221px"
           >
           Boek Nu
           </Button>
+          </Link>
           </HeroText>
           <HeroImage src="/static/hero-image.jpg" alt="anniek lambrecht" width="400" height="400" />
         </HeroSection>
@@ -65,7 +66,9 @@ Volg je mij al op Facebook & Instagram?</p>
           <Link href="/behandelingen" passHref>
             <SectionOne>
               <H2>BEHANDELINGEN</H2>
+              <ImageWrapper>
               <SubSectionImage src="/static/subsection-behandelingen.jpg" alt="anniek lambrecht - behandelingen" width="456px" height="304px" />
+              </ImageWrapper>
               <SubSectionText>Op het menu staat niet alleen Huidanalyse, Peeling en Vitamine Gelaatsbehandelingen maar ook liften van de huid is mogelijk voor gelaat en lichaam met het LPG apparaat.  Ongewenste haren verwijderen we met de Lightsheer Diode Laser. </SubSectionText>
               <Link href="/behandelingen"><StyledLink>Ontdek alle behandelingen</StyledLink></Link>
             </SectionOne>
@@ -73,7 +76,9 @@ Volg je mij al op Facebook & Instagram?</p>
           <Link href="/webshop" passHref>
           <SectionTwo>
             <H2>WEBSHOP</H2>
+            <ImageWrapper>
             <SubSectionImage src="/static/subsection-webshop.jpg" alt="anniek lambrecht - webshop" width="456px" height="304px" />
+            </ImageWrapper>
             <SubSectionText>
             Met de producten van Advanced Nutricion Programme, Environ Skincare en Jane Iredale houden we het huidverouderingsproces zoveel mogelijk tegen.  Ze zijn op basis van Vitamine A en Antioxidanten en compenseren het chronisch tekort hiervan in de huid.  
             </SubSectionText>
