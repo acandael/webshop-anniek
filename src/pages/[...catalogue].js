@@ -119,6 +119,7 @@ export async function getStaticProps(context) {
         path: asPath
       }
     });
+
     const { type, shape: {name: shapeName} } = getItemType.data.catalogue;
 
     let renderer = 'folder';

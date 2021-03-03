@@ -1,9 +1,9 @@
 {
    "locales": [
       {
-      "locale": "en",
-      "displayName": "English - US",
-      "appLanguage": "en-US",
+      "locale": "nl",
+      "displayName": "Dutch - BE",
+      "appLanguage": "nl-BE",
       "crystallizeCatalogueLanguage": "en",
       "crystallizePriceVariant": "default"
       }
