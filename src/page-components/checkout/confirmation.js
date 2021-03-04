@@ -8,12 +8,12 @@ import { useBasket } from 'components/basket';
 import OrderItems from 'components/order-items';
 import { H1, H3, Outer, Header } from 'ui';
 import { useT } from 'lib/i18n';
-
 import BillingDetails from './billing-details';
 
 const CustomHeader = styled(Header)`
   margin-bottom: 0;
   padding-bottom: 0;
+  padding-left: 0;
 `;
 
 const Line = styled.div`
@@ -79,6 +79,7 @@ export default function Confirmation({ order }) {
       url: item.imageUrl
     }
   }));
+
   const email = order.customer.addresses?.[0]?.email;
   const { total } = order;
 
