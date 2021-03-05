@@ -13,8 +13,11 @@ export default {
       lastName: 'Familienaam',
       streetAddress: 'Straat',
       postalCode: 'Postcode',
+      city: 'Stad',
       email: 'Email',
       emailPlaceholder: 'you@your.place',
+      shipping: 'Opsturen (8 Euro)',
+      pickup: 'Afhalen',
       login: {
         title: 'Login',
         loggedIn: 'Je bent ingelogd',

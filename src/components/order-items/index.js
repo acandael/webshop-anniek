@@ -21,9 +21,14 @@ export default function OrderItems({ cart }) {
     <Items>
       {cart.map((item) => (
         <Item key={item.sku}>
+          {/* show product image on checkout page */}
+          {item.images && (
+            <ItemImage {...item.images[0]} alt={item.name} sizes="50vw" />
+          )}
+          {/* show product image on confirmation page */}
           {item.imageUrl && (
             <ItemImage src={item.imageUrl} alt={item.name} sizes="50vw" />
-          )}
+)}
           <ItemInfo>
             <ItemName>{item.name}</ItemName>
             {item.attributes ? (

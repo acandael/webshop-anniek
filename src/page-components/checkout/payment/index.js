@@ -10,6 +10,11 @@ import ServiceApi from 'lib/service-api';
 import { useT } from 'lib/i18n';
 import { useBasket } from 'components/basket';
 import { Spinner } from 'ui/spinner';
+import {useForm} from 'react-hook-form';
+
+const onSubmit = (data) => {
+  console.log(data)
+}
 
 import {
   Input,
@@ -44,7 +49,12 @@ export default function Payment() {
   const [state, setState] = useState({
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
+    street: '',
+    postalcode: '',
+    city: '',
+    shipping: false,
+    pickup: false
   });
 
   const paymentConfig = useQuery('paymentConfig', () =>
@@ -76,7 +86,7 @@ export default function Payment() {
     multilingualUrlPrefix = '/' + router.locale;
   }
 
-  const { firstName, lastName, email } = state;
+  const { firstName, lastName, email, street, streetNumber, postalCode, city, shipping, pickup } = state;
 
   function getURL(path) {
     return `${location.protocol}//${location.host}${multilingualUrlPrefix}${path}`;
@@ -96,6 +106,13 @@ export default function Payment() {
         {
           type: 'billing',
           email: email || null
+        },
+        {
+          type: 'delivery',
+          street,
+          streetNumber,
+          postalCode,
+          city
         }
       ]
     },
@@ -107,8 +124,8 @@ export default function Payment() {
   const paymentProviders = [
     {
       name: 'stripe',
-      color: '#6773E6',
-      logo: '/static/stripe-logo.png',
+      color: '#FFF',
+      logo: '/static/visa-mastercard.png',
       render: () => (
         <PaymentProvider>
           <StripeCheckout
@@ -191,6 +208,12 @@ export default function Payment() {
     }
   }
 
+  const { register, handleSubmit, errors } = useForm();
+
+  const onSubmit = data => {
+    console.log(data);
+  }
+
   return (
     <Inner>
       <CheckoutFormGroup>
@@ -201,13 +224,14 @@ export default function Payment() {
               <Label htmlFor="firstname">{t('customer.firstName')}</Label>
               <Input
                 name="firstname"
+                ref={register({required: true})}
                 type="text"
                 value={firstName}
                 onChange={(e) =>
                   setState({ ...state, firstName: e.target.value })
                 }
-                required
               />
+              {errors.firstname && <p>Dit is een verplicht veld</p>}
             </InputGroup>
             <InputGroup>
               <Label htmlFor="lastname">{t('customer.lastName')}</Label>
@@ -234,6 +258,84 @@ export default function Payment() {
               />
             </InputGroup>
           </Row>
+          <Row>
+            <InputGroup>
+              <Label htmlFor="shipping">{t('customer.shipping')}</Label>
+              <Input
+                name="shipping"
+                type="radio"
+                value="shipping"
+                checked={shipping}
+                onChange={(e) => setState({ ...state, shipping: true, pickup: false })}
+                required
+              />
+            </InputGroup>
+            <InputGroup>
+              <Label htmlFor="pickup">{t('customer.pickup')}</Label>
+              <Input
+                name="pickup"
+                type="radio"
+                value="pickup"
+                checked={pickup}
+                onChange={(e) => setState({ ...state, pickup: true, shipping: false })}
+                required
+              />
+            </InputGroup>
+          </Row>
+          {Boolean(shipping) && <><Row>
+          <InputGroup>
+              <Label htmlFor="street">{t('customer.streetAddress')}</Label>
+              <Input
+                name="street"
+                type="text"
+                value={street}
+                onChange={(e) =>
+                  setState({ ...state, street: e.target.value })
+                }
+                required
+              />
+            </InputGroup>
+            <InputGroup>
+              <Label htmlFor="streetNr">{t('customer.streetNumber')}</Label>
+              <Input
+                name="streetNumber"
+                type="text"
+                value={streetNumber}
+                onChange={(e) =>
+                  setState({ ...state, streetNumber: e.target.value })
+                }
+                required
+              />
+            </InputGroup>
+          </Row>
+          <Row>
+          <InputGroup>
+              <Label htmlFor="postcode">{t('customer.postalCode')}</Label>
+              <Input
+                name="postcode"
+                type="number"
+                value={postalCode}
+                onChange={(e) =>
+                  setState({ ...state, postalCode: e.target.value })
+                }
+                required
+              />
+            </InputGroup>
+          </Row>
+          <Row>
+          <InputGroup>
+              <Label htmlFor="city">{t('customer.city')}</Label>
+              <Input
+                name="city"
+                type="text"
+                value={city}
+                onChange={(e) =>
+                  setState({ ...state, city: e.target.value })
+                }
+                required
+              />
+            </InputGroup>
+          </Row></> }
         </form>
       </CheckoutFormGroup>
 
