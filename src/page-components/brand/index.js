@@ -42,7 +42,7 @@ export default function BrandPage({ folder, preview }) {
         <Breadcrumb path={folder.path} />
         <BrandHeader>
           <Content>
-            <H1>{folder.name}</H1>
+            <H1>{folder.name} Hello</H1>
             <p>{toText(description)}</p>
             {moreinfo && <Link href={moreinfo}><StyledLink>Meer info</StyledLink></Link>}
           </Content>

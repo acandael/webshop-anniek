@@ -12,13 +12,10 @@ import { useBasket } from 'components/basket';
 import { Spinner } from 'ui/spinner';
 import {useForm} from 'react-hook-form';
 
-const onSubmit = (data) => {
-  console.log(data)
-}
-
 import {
   Input,
   InputGroup,
+  ErrorMessage,
   Label,
   PaymentSelector,
   PaymentProviders,
@@ -51,6 +48,7 @@ export default function Payment() {
     lastName: '',
     email: '',
     street: '',
+    streetNumber: '',
     postalcode: '',
     city: '',
     shipping: false,
@@ -97,6 +95,10 @@ export default function Payment() {
    * It contains everything needed to make a purchase and complete
    * an order
    */
+
+  const { register, errors } = useForm({mode: "onBlur"});
+
+
   const checkoutModel = {
     basketModel,
     customer: {
@@ -208,10 +210,35 @@ export default function Payment() {
     }
   }
 
-  const { register, handleSubmit, errors } = useForm();
+  const isValid = () => {
+    if (firstName === "") {
+      return false;
+    }
 
-  const onSubmit = data => {
-    console.log(data);
+    if (lastName === "") {
+      return false;
+    }
+
+    if (email === "") {
+      return false;
+    }
+
+    if (shipping) {
+      if (street === "") {
+        return false;
+      }
+      if (streetNumber === "") {
+        return false;
+      }
+      if (postalCode === "") {
+        return false;
+      }
+      if (city === "") {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   return (
@@ -224,26 +251,28 @@ export default function Payment() {
               <Label htmlFor="firstname">{t('customer.firstName')}</Label>
               <Input
                 name="firstname"
-                ref={register({required: true})}
+                ref={register({required: "Voornaam is verplicht"})}
                 type="text"
                 value={firstName}
                 onChange={(e) =>
                   setState({ ...state, firstName: e.target.value })
                 }
               />
-              {errors.firstname && <p>Dit is een verplicht veld</p>}
+              {errors.firstname && <ErrorMessage>{errors.firstname.message}</ErrorMessage>}
             </InputGroup>
             <InputGroup>
               <Label htmlFor="lastname">{t('customer.lastName')}</Label>
               <Input
                 name="lastname"
                 type="text"
+                ref={register({required: "Familienaam is verplicht"})}
                 value={lastName}
                 onChange={(e) =>
                   setState({ ...state, lastName: e.target.value })
                 }
                 required
               />
+              {errors.lastname && <ErrorMessage>{errors.lastname.message}</ErrorMessage>}
             </InputGroup>
           </Row>
           <Row>
@@ -252,10 +281,15 @@ export default function Payment() {
               <Input
                 name="email"
                 type="email"
+                ref={register({required: "Email is verplicht", pattern: {
+                  value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: "ongeldig email adres"
+                }})}
                 value={email}
                 onChange={(e) => setState({ ...state, email: e.target.value })}
                 required
               />
+              {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
             </InputGroup>
           </Row>
           <Row>
@@ -288,38 +322,44 @@ export default function Payment() {
               <Input
                 name="street"
                 type="text"
+                ref={register({required: "Straat is verplicht"})}
                 value={street}
                 onChange={(e) =>
                   setState({ ...state, street: e.target.value })
                 }
                 required
               />
+              {errors.street && <ErrorMessage>{errors.street.message}</ErrorMessage>}
             </InputGroup>
             <InputGroup>
-              <Label htmlFor="streetNr">{t('customer.streetNumber')}</Label>
+              <Label htmlFor="streetNumber">{t('customer.streetNumber')}</Label>
               <Input
                 name="streetNumber"
-                type="text"
+                type="number"
+                ref={register({required: "Straatnummer is verplicht"})}
                 value={streetNumber}
                 onChange={(e) =>
                   setState({ ...state, streetNumber: e.target.value })
                 }
                 required
               />
+              {errors.streetNumber && <ErrorMessage>{errors.streetNumber.message}</ErrorMessage>}
             </InputGroup>
           </Row>
           <Row>
           <InputGroup>
-              <Label htmlFor="postcode">{t('customer.postalCode')}</Label>
+              <Label htmlFor="postalCode">{t('customer.postalCode')}</Label>
               <Input
-                name="postcode"
+                name="postalCode"
                 type="number"
+                ref={register({required: "Postcode is verplicht"})}
                 value={postalCode}
                 onChange={(e) =>
                   setState({ ...state, postalCode: e.target.value })
                 }
                 required
               />
+              {errors.postalCode && <ErrorMessage>{errors.postalCode.message}</ErrorMessage>}
             </InputGroup>
           </Row>
           <Row>
@@ -328,12 +368,14 @@ export default function Payment() {
               <Input
                 name="city"
                 type="text"
+                ref={register({required: "Stad is verplicht"})}
                 value={city}
                 onChange={(e) =>
                   setState({ ...state, city: e.target.value })
                 }
                 required
               />
+              {errors.city && <ErrorMessage>{errors.city.message}</ErrorMessage>}
             </InputGroup>
           </Row></> }
         </form>
@@ -341,7 +383,7 @@ export default function Payment() {
 
       <Voucher />
 
-      <CheckoutFormGroup withUpperMargin>
+      { isValid(checkoutModel) && <CheckoutFormGroup withUpperMargin>
         <div>
           <SectionHeader>{t('checkout.choosePaymentMethod')}</SectionHeader>
           {paymentConfig.loading ? (
@@ -398,7 +440,7 @@ export default function Payment() {
             </div>
           )}
         </div>
-      </CheckoutFormGroup>
+      </CheckoutFormGroup> }
     </Inner>
   );
 }
