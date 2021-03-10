@@ -39,6 +39,9 @@ export default function Confirmation({ order }) {
   const t = useT();
   const router = useRouter();
 
+  const additionalInformation = JSON.parse(order.additionalInformation)
+  const {shipping} = additionalInformation.order_metadata
+
   // Empty the basket
   useEffect(() => {
     if (router.query) {
@@ -103,10 +106,16 @@ export default function Confirmation({ order }) {
             <TotalLine bold>
               {t('order.total')}:{' '}
               {t('common.price', {
-                value: total.gross,
+                value: shipping ? total.gross + 8 : total.gross,
                 currency: total.currency
               })}
             </TotalLine>
+            {shipping && <TotalLine>
+              {t('common.shipping', {
+                value: 8,
+                currency: total.currency
+              })}
+            </TotalLine>}
             <TotalLine>
               {t('common.tax', {
                 value: total.gross - total.net,

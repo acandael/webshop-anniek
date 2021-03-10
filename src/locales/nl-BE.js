@@ -2,6 +2,7 @@ export default {
   translation: {
     common: {
       price: '{{value, currency}}',
+      shipping: 'Verzendkosten: {{value, currency}}',
       vat: 'VAT: {{value, currency}}'
     },
     frontpage: {

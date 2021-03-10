@@ -49,7 +49,7 @@ export default function Payment() {
     email: '',
     street: '',
     streetNumber: '',
-    postalcode: '',
+    postalCode: '',
     city: '',
     shipping: false,
     pickup: false
@@ -101,6 +101,10 @@ export default function Payment() {
 
   const checkoutModel = {
     basketModel,
+    metadata: {
+      shipping,
+      pickup
+    },
     customer: {
       firstName,
       lastName,
@@ -114,7 +118,7 @@ export default function Payment() {
           street,
           streetNumber,
           postalCode,
-          city
+          city,
         }
       ]
     },
@@ -318,7 +322,7 @@ export default function Payment() {
           </Row>
           {Boolean(shipping) && <><Row>
           <InputGroup>
-              <Label htmlFor="street">{t('customer.streetAddress')}</Label>
+              <Label htmlFor="street">{t('customer.street')}</Label>
               <Input
                 name="street"
                 type="text"
