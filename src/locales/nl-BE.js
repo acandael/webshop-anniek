@@ -19,7 +19,7 @@ export default {
       email: 'Email',
       emailPlaceholder: 'you@your.place',
       shipping: 'Opsturen (8 Euro)',
-      pickup: 'Afhalen',
+      pickup: 'Afhalen (gratis)',
       login: {
         title: 'Login',
         loggedIn: 'Je bent ingelogd',
@@ -111,6 +111,10 @@ export default {
           max: 'Maximum price'
         }
       }
+    },
+    vouchers: {
+      title: 'Kortingscode',
+      invalidCode: 'De kortingscode "{{code}}" kan niet toegepast worden'
     }
   }
 };

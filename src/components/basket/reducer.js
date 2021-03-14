@@ -42,7 +42,6 @@ export default produce(function reducer(draft, { action, ...rest }) {
    * different browser tab
    */
   draft.changeTriggeredByOtherTab = false;
-
   switch (action) {
     case 'hydrate': {
       if (draft.status === 'not-hydrated') {
@@ -76,7 +75,16 @@ export default produce(function reducer(draft, { action, ...rest }) {
       break;
     }
 
-    case 'server-update-failed':
+    case 'server-update-failed': {
+      draft.status = 'server-update-failed';
+      break;
+    }
+
+    case 'retry-server-update': {
+      draft.status = 'server-state-is-stale';
+      break;
+    }
+
     case 'empty': {
       draft.clientBasket = initialState.clientBasket;
       draft.status = 'server-state-is-stale';
@@ -155,6 +163,18 @@ export default produce(function reducer(draft, { action, ...rest }) {
         time: Date.now(),
         sku: rest.sku
       };
+      break;
+    }
+
+    case 'add-voucher': {
+      draft.clientBasket.voucherCode = rest.voucherCode;
+      draft.status = 'server-state-is-stale';
+      break;
+    }
+
+    case 'remove-voucher': {
+      draft.clientBasket.voucherCode = initialState.clientBasket.voucherCode;
+      draft.status = 'server-state-is-stale';
       break;
     }
 

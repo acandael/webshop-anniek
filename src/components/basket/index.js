@@ -80,7 +80,7 @@ export function BasketProvider({ locale, children }) {
     () => ({
       locale,
       cart: clientBasket.cart.map(clientCartItemForAPI),
-      voucher: clientBasket.voucher,
+      voucherCode: clientBasket.voucherCode,
       crystallizeOrderId: clientBasket.crystallizeOrderId,
       klarnaOrderId: clientBasket.klarnaOrderId
     }),
@@ -90,7 +90,7 @@ export function BasketProvider({ locale, children }) {
   // Get server state on cart change
   useEffect(() => {
     let stale = false;
-
+    
     async function getServerBasket() {
       try {
         const response = await ServiceApi({
@@ -99,6 +99,7 @@ export function BasketProvider({ locale, children }) {
             basketModel
           }
         });
+
         if (!stale) {
           dispatch({
             action: 'set-server-state',
@@ -129,6 +130,11 @@ export function BasketProvider({ locale, children }) {
   }
 
   function withLocalState(item) {
+    // Exclude voucher codes
+    if (item.sku.startsWith('--voucher--')) {
+      return item;
+    }
+
     const clientBasketCartItem = clientBasket.cart.find(
       (c) => c.sku === item.sku
     );
@@ -140,11 +146,46 @@ export function BasketProvider({ locale, children }) {
     if (!clientBasketCartItem) {
       return null;
     }
-    
+
     return {
       ...item,
       quantity: clientBasketCartItem.quantity
     };
+  }
+
+  const cart = (serverBasket?.cart || []).map(withLocalState).filter(Boolean);
+  const totalWithoutDiscounts = cart
+    .filter((c) => !c.sku.startsWith('--voucher--'))
+    .reduce(
+      (acc, curr) => {
+        return {
+          gross: acc.gross + curr.price.gross,
+          net: acc.net + curr.price.net,
+          quantity: acc.quantity + curr.quantity
+        };
+      },
+      {
+        gross: 0,
+        quantity: 0
+      }
+    );
+
+  /**
+   * Something went wrong when fetching the basket from the Service API
+   * You should not show this feedback in production, and rather deal
+   * with Service API errors in a more smooth fashion
+   */
+  if (status === 'server-update-failed') {
+    return (
+      <div style={{ margin: '0 auto', maxWidth: 400, padding: 50 }}>
+        Oh-uh. Something went wrong when getting data from the Service API
+        <br />
+        <br />
+        <button onClick={() => dispatch({ action: 'retry-server-update' })}>
+          Try again
+        </button>
+      </div>
+    );
   }
 
   return (
@@ -152,10 +193,14 @@ export function BasketProvider({ locale, children }) {
       value={{
         status,
         basketModel,
-        cart: (serverBasket?.cart || []).map(withLocalState).filter(Boolean),
+        cart,
         total: serverBasket?.total || {},
+        totalWithoutDiscounts,
         attentionCartItem,
         actions: {
+          addVoucherCode: (voucherCode) =>
+            dispatch({ action: 'add-voucher', voucherCode }),
+          removeVoucherCode: () => dispatch({ action: 'remove-voucher' }),
           empty: () => dispatch({ action: 'empty' }),
           addItem: dispatchCartItemAction('add-item'),
           removeItem: dispatchCartItemAction('remove-item'),

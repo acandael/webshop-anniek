@@ -13,6 +13,7 @@ import { Spinner } from 'ui/spinner';
 import {useForm} from 'react-hook-form';
 
 import {
+  Row,
   Input,
   InputGroup,
   ErrorMessage,
@@ -27,14 +28,6 @@ import {
 import Voucher from '../voucher';
 
 const StripeCheckout = dynamic(() => import('./stripe'));
-const KlarnaCheckout = dynamic(() => import('./klarna'));
-const VippsCheckout = dynamic(() => import('./vipps'));
-const MollieCheckout = dynamic(() => import('./mollie'));
-
-const Row = styled.div`
-  display: flex;
-  margin-bottom: 10px;
-`;
 
 const Inner = styled.div``;
 
@@ -98,7 +91,6 @@ export default function Payment() {
 
   const { register, errors } = useForm({mode: "onBlur"});
 
-
   const checkoutModel = {
     basketModel,
     metadata: {
@@ -148,67 +140,13 @@ export default function Payment() {
           />
         </PaymentProvider>
       )
-    },
-    {
-      name: 'klarna',
-      color: '#F8AEC2',
-      logo: '/static/klarna-logo.png',
-      render: () => (
-        <PaymentProvider>
-          <KlarnaCheckout
-            checkoutModel={checkoutModel}
-            basketActions={actions}
-            getURL={getURL}
-          />
-        </PaymentProvider>
-      )
-    },
-    {
-      name: 'vipps',
-      color: '#fff',
-      logo: '/static/vipps-logo.png',
-      render: () => (
-        <PaymentProvider>
-          <VippsCheckout
-            checkoutModel={checkoutModel}
-            basketActions={actions}
-            onSuccess={(url) => {
-              if (url) window.location = url;
-            }}
-          />
-        </PaymentProvider>
-      )
-    },
-    {
-      name: 'mollie',
-      color: '#fff',
-      logo: '/static/mollie-vector-logo.png',
-      render: () => (
-        <PaymentProvider>
-          <MollieCheckout
-            checkoutModel={checkoutModel}
-            basketActions={actions}
-            onSuccess={(url) => {
-              if (url) window.location = url;
-            }}
-          />
-        </PaymentProvider>
-      )
     }
   ];
 
   const enabledPaymentProviders = [];
   if (!paymentConfig.loading && paymentConfig.data) {
     const { paymentProviders } = paymentConfig.data.data;
-    if (paymentProviders.klarna.enabled) {
-      enabledPaymentProviders.push('klarna');
-    }
-    if (paymentProviders.mollie.enabled) {
-      enabledPaymentProviders.push('mollie');
-    }
-    if (paymentProviders.vipps.enabled) {
-      enabledPaymentProviders.push('vipps');
-    }
+    
     if (paymentProviders.stripe.enabled) {
       enabledPaymentProviders.push('stripe');
     }
@@ -249,6 +187,7 @@ export default function Payment() {
     <Inner>
       <CheckoutFormGroup>
         <SectionHeader>{t('checkout.title')}</SectionHeader>
+        <Voucher />
         <form noValidate>
           <Row>
             <InputGroup>
@@ -385,7 +324,7 @@ export default function Payment() {
         </form>
       </CheckoutFormGroup>
 
-      <Voucher />
+      
 
       { isValid(checkoutModel) && <CheckoutFormGroup withUpperMargin>
         <div>

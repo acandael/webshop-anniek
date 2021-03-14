@@ -19,6 +19,11 @@ export const Inner = styled.div`
   }
 `;
 
+export const Row = styled.div`
+  display: flex;
+  margin-bottom: 10px;
+`;
+
 export const Label = styled.div`
   font-size: 0.7rem;
   font-weight: 600;
