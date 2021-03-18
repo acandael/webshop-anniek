@@ -80,7 +80,7 @@ export default function Payment() {
   const { firstName, lastName, email, street, streetNumber, postalCode, city, shipping, pickup } = state;
 
   const basket = useBasket();
-  const shippingItem = basket.cart.find((cartItem) => cartItem.name === "shipping")
+  const shippingItem = basket.cart.find((cartItem) => cartItem.name === "verzenden")
 
   useEffect(() => {
     if (shippingItem) {
