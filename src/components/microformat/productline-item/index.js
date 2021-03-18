@@ -18,8 +18,7 @@ export default function FolderItem({ data, gridCell }) {
 
   const images = data.components?.find((c) => c.type === 'images');
   image = images?.content?.images?.[0];
-
-  const paragraphs = data.components?.find((c) => c.name === 'Beschrijving');
+  const samenvatting = data.components?.find((c) => c.name === 'Samenvatting')
 
   return (
     <Link href={path} passHref>
@@ -37,7 +36,7 @@ export default function FolderItem({ data, gridCell }) {
           )}
         </ImageWrapper>
         <Text>
-          <ContentTransformer {...paragraphs?.content?.paragraphs?.[0]?.body?.json} />
+          <p>{samenvatting && samenvatting.content?.text}</p>
         </Text>
       </Outer>
     </Link>

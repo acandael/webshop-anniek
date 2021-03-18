@@ -164,7 +164,7 @@ export default function ProductPage({ product, preview }) {
               pricing={pricing}
             />
             <Quantity>{quantity && `Hoeveelheid: ${quantity.content?.text}`}</Quantity>
-            <Stock selectedVariant={selectedVariant} />
+            {/* <Stock selectedVariant={selectedVariant} /> */}
           </ActionsSticky>
         </Actions>
       </Inner>
