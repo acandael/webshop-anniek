@@ -37,7 +37,7 @@ export default function WebshopItem({ data, gridCell }) {
           )}
         </ImageWrapper>
         <Text>
-        <ContentTransformer {...paragraphs?.content?.paragraphs?.[0].body.json} />
+        <ContentTransformer {...paragraphs?.content?.paragraphs?.[0]?.body?.json} />
         </Text>
         
       </Outer>

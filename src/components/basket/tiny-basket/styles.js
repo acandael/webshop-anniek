@@ -41,3 +41,10 @@ export const ItemIsSubscription = styled.strong`
   display: block;
   font-weight: bold;
 `;
+
+export const ShippingForm = styled.form`
+  margin-top: 32px;
+  label {
+    margin-left: 8px;
+  }
+`

@@ -9,6 +9,7 @@ import OrderItems from 'components/order-items';
 import { H1, H3, Outer, Header } from 'ui';
 import { useT } from 'lib/i18n';
 import BillingDetails from './billing-details';
+import DeliveryDetails from './delivery-details';
 
 const CustomHeader = styled(Header)`
   margin-bottom: 0;
@@ -99,6 +100,9 @@ export default function Confirmation({ order }) {
           </p>
           <Line />
           <BillingDetails order={order} />
+          {shipping ? <DeliveryDetails order={order} /> : <p><strong>bestelling zal opgehaald worden in de winkel</strong></p>
+          
+          }
           <Line />
           <H3>{t('order.item', { count: cart.length })}</H3>
           <OrderItems cart={cart} />
@@ -106,16 +110,10 @@ export default function Confirmation({ order }) {
             <TotalLine bold>
               {t('order.total')}:{' '}
               {t('common.price', {
-                value: shipping ? total.gross + 8 : total.gross,
+                value: total.gross,
                 currency: total.currency
               })}
             </TotalLine>
-            {shipping && <TotalLine>
-              {t('common.shipping', {
-                value: 8,
-                currency: total.currency
-              })}
-            </TotalLine>}
             <TotalLine>
               {t('common.tax', {
                 value: total.gross - total.net,

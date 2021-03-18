@@ -52,6 +52,27 @@ export default function TinyBasketItem({ item }) {
     actions.removeItem(item);
   }
 
+  if (item.sku.startsWith('shipping')) {
+    return (
+      <Item>
+        <ImageImageEmpty>{item.name}</ImageImageEmpty>
+        <PriceWrapper>
+          <PriceWrap>
+            <Price>
+              {t('common.price', {
+                value: item.price.gross,
+                currency: item.price.currency
+              })}
+            </Price>
+          </PriceWrap>
+        </PriceWrapper>
+        <ItemDelete onClick={remove}>
+          {t('basket.removeItem', item)}
+        </ItemDelete>
+      </Item>
+    );
+  }
+
   if (item.sku.startsWith('--voucher--')) {
     return (
       <Item>

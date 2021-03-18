@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
@@ -78,6 +78,17 @@ export default function Payment() {
   }
 
   const { firstName, lastName, email, street, streetNumber, postalCode, city, shipping, pickup } = state;
+
+  const basket = useBasket();
+  const shippingItem = basket.cart.find((cartItem) => cartItem.name === "shipping")
+
+  useEffect(() => {
+    if (shippingItem) {
+      setState({...state, shipping: true})
+    } else {
+      setState({...state, pickup: true})
+    }
+  }, [shippingItem])
 
   function getURL(path) {
     return `${location.protocol}//${location.host}${multilingualUrlPrefix}${path}`;
@@ -233,30 +244,6 @@ export default function Payment() {
                 required
               />
               {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
-            </InputGroup>
-          </Row>
-          <Row>
-            <InputGroup>
-              <Label htmlFor="shipping">{t('customer.shipping')}</Label>
-              <Input
-                name="shipping"
-                type="radio"
-                value="shipping"
-                checked={shipping}
-                onChange={(e) => setState({ ...state, shipping: true, pickup: false })}
-                required
-              />
-            </InputGroup>
-            <InputGroup>
-              <Label htmlFor="pickup">{t('customer.pickup')}</Label>
-              <Input
-                name="pickup"
-                type="radio"
-                value="pickup"
-                checked={pickup}
-                onChange={(e) => setState({ ...state, pickup: true, shipping: false })}
-                required
-              />
             </InputGroup>
           </Row>
           {Boolean(shipping) && <><Row>

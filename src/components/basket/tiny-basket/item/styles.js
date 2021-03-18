@@ -84,7 +84,7 @@ export const ItemImage = styled(CrystallizeImage).attrs(() => ({
 
 export const ImageImageEmpty = styled.div`
   display: inline-block;
-  width: 50px;
+  width: 100px;
 `;
 
 export const ItemName = styled.div`

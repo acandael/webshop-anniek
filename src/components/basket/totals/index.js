@@ -10,7 +10,7 @@ import { Outer, Rows, Row, RowValue, SpinnerWrap } from './styles';
 export default function Totals(props) {
   const t = useT();
   const { cart, total, totalWithoutDiscounts, status } = useBasket();
-
+  
   if (cart.length === 0) {
     return null;
   }
@@ -22,6 +22,8 @@ export default function Totals(props) {
 
   const hasDiscount = total?.discount > 0;
   const isLoading = status === 'server-state-is-stale';
+
+  
 
   return (
     <Outer {...props}>

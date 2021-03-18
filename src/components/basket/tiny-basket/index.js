@@ -5,7 +5,7 @@ import { useT } from 'lib/i18n';
 import { useBasket } from '../index';
 import TinyBasketItem from './item';
 
-import { Outer, Items, ItemOuter, BasketIsEmpty } from './styles';
+import { Outer, Items, ItemOuter, BasketIsEmpty, ShippingForm } from './styles';
 
 export default function TinyBasket() {
   const t = useT();
@@ -23,6 +23,17 @@ export default function TinyBasket() {
     );
   }
 
+  const basket = useBasket()
+
+  function addShipping() {
+    basket.actions.addItem({
+      sku: 'shipping-1615829277481',
+      path: '/shipping/verzenden',
+      quantity: 1,
+      priceVariantIdentifier: 'default'
+    })
+  }
+
   return (
     <Outer>
       <Items>
@@ -32,6 +43,12 @@ export default function TinyBasket() {
           </ItemOuter>
         ))}
       </Items>
+      <ShippingForm>
+        <input type="radio" id="ship" name="verzenden" value="ship" onClick={addShipping} />
+        <label htmlFor="ship">Verzenden (8 Euro)</label><br></br>
+        <input type="radio" id="pickup" name="verzenden" value="pickup" />
+        <label htmlFor="pickup">Ophalen (Gratis)</label><br></br>
+      </ShippingForm>
     </Outer>
   );
 }
