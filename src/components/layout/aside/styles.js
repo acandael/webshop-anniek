@@ -18,6 +18,7 @@ export const Heading = styled.h4`
   margin: 0;
   display: flex;
   align-items: center;
+  font-size: 1.6em;
 `;
 
 export const Content = styled.div`

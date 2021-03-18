@@ -31,3 +31,13 @@ export const H3 = styled.h3`
     font-size: 1.2rem;
   }
 `;
+
+export const H4 = styled.h4`
+  color: var(--color-text-main);
+  font-size: 1.2rem;
+  margin: 1rem 0;
+
+  ${responsive.smAndLess} {
+    font-size: 1.1rem;
+  }
+`;

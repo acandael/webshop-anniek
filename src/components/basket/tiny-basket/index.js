@@ -6,6 +6,7 @@ import { useBasket } from '../index';
 import TinyBasketItem from './item';
 
 import { Outer, Items, ItemOuter, BasketIsEmpty, ShippingForm } from './styles';
+import {H4} from 'ui';
 
 export default function TinyBasket() {
   const t = useT();
@@ -44,6 +45,7 @@ export default function TinyBasket() {
         ))}
       </Items>
       <ShippingForm>
+        <H4>Kies een verzendmethode</H4>
         <input type="radio" id="ship" name="verzenden" value="ship" onClick={addShipping} />
         <label htmlFor="ship">Verzenden (8 Euro)</label><br></br>
         <input type="radio" id="pickup" name="verzenden" value="pickup" />

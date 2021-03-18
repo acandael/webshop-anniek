@@ -46,5 +46,6 @@ export const ShippingForm = styled.form`
   margin-top: 32px;
   label {
     margin-left: 8px;
+    font-size: 13px;
   }
 `
