@@ -27,12 +27,23 @@ export default function TinyBasket() {
   const basket = useBasket()
 
   function addShipping() {
-    basket.actions.addItem({
-      sku: 'shipping-1615829277481',
-      path: '/shipping/verzenden',
-      quantity: 1,
-      priceVariantIdentifier: 'default'
-    })
+    // shipping can only be added once
+    const shipping = basket.cart.find((product) => product.name === 'verzenden');
+    if (!shipping) {
+      basket.actions.addItem({
+        sku: 'shipping-1615829277481',
+        path: '/shipping/verzenden',
+        quantity: 1,
+        priceVariantIdentifier: 'default'
+      })
+    }
+  }
+
+  function addPickup() {
+    const shipping = basket.cart.find((product) => product.name === 'verzenden');
+    if (shipping) {
+      basket.actions.removeItem(shipping)
+    }
   }
 
   return (
@@ -48,7 +59,7 @@ export default function TinyBasket() {
         <H4>Kies een verzendmethode</H4>
         <input type="radio" id="ship" name="verzenden" value="ship" onClick={addShipping} />
         <label htmlFor="ship">Verzenden (8 Euro)</label><br></br>
-        <input type="radio" id="pickup" name="verzenden" value="pickup" />
+        <input type="radio" id="pickup" name="verzenden" value="pickup" onClick={addPickup} />
         <label htmlFor="pickup">Ophalen (Gratis)</label><br></br>
       </ShippingForm>
     </Outer>
