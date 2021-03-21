@@ -69,6 +69,7 @@ export const Result = styled.div`
   text-align: left;
   > h3 {
     margin: 0;
+    color: var(--color-main-background);
     font-size: 14px;
     padding: 15px 35px;
     padding-bottom: 0;

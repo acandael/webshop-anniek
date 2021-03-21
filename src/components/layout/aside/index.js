@@ -37,8 +37,6 @@ export default function Aside() {
   const basket = useBasket();
   const [going, setGoing] = useState(false);
 
-  console.log(basket)
-
   const onCheckoutClick = (evt) => {
     if (!basket.cart.length) {
       evt.preventDefault();

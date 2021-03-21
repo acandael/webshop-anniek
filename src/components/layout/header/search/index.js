@@ -169,7 +169,7 @@ export default function Search() {
           </InputGroup>
           {status !== 'idle' && isOpen && searchTerm !== '' && (
             <Result>
-              <h3>{searchResult.totalCount} suggestions</h3>
+              <h3>{searchResult.totalCount} suggesties</h3>
               <ul style={{ height: 40 * (searchResult.edges.length + 1) }}>
                 {searchResult.edges.map(({ cursor, node }) => (
                   <li key={cursor}>
