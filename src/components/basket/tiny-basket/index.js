@@ -37,6 +37,7 @@ export default function TinyBasket() {
         priceVariantIdentifier: 'default'
       })
     }
+    basket.actions.setCanCheckout(true)
   }
 
   function addPickup() {
@@ -44,6 +45,7 @@ export default function TinyBasket() {
     if (shipping) {
       basket.actions.removeItem(shipping)
     }
+    basket.actions.setCanCheckout(true)
   }
 
   return (

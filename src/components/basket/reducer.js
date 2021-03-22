@@ -13,7 +13,6 @@ export const initialState = {
   clientBasket: {
     cart: [],
     voucherCode: null,
-
     /**
      * In some cases we create an order in Crystallize before
      * the checkout is completed. Currently, this is done for
@@ -27,6 +26,8 @@ export const initialState = {
      */
     klarnaOrderId: null
   },
+
+  canCheckout: false,
 
   // The validated basket sent back from the Service API
   serverBasket: null,
@@ -52,7 +53,7 @@ export default produce(function reducer(draft, { action, ...rest }) {
             draft.clientBasket.cart = initialState.clientBasket.cart;
           }
         }
-        draft.status = 'server-state-is-stale';
+        draft.status = 'server-basket-is-stale';
       }
       break;
     }
@@ -81,13 +82,13 @@ export default produce(function reducer(draft, { action, ...rest }) {
     }
 
     case 'retry-server-update': {
-      draft.status = 'server-state-is-stale';
+      draft.status = 'server-basket-is-stale';
       break;
     }
 
     case 'empty': {
       draft.clientBasket = initialState.clientBasket;
-      draft.status = 'server-state-is-stale';
+      draft.status = 'server-basket-is-stale';
       break;
     }
 
@@ -106,6 +107,7 @@ export default produce(function reducer(draft, { action, ...rest }) {
       if (itemIndex !== -1) {
         if (action === 'remove-item') {
           draft.clientBasket.cart.splice(itemIndex, 1);
+          
         } else {
           const item = draft.clientBasket.cart[itemIndex];
 
@@ -126,12 +128,12 @@ export default produce(function reducer(draft, { action, ...rest }) {
         }
       }
 
-      draft.status = 'server-state-is-stale';
+      draft.status = 'server-basket-is-stale';
 
       break;
     }
 
-    case 'set-server-state': {
+    case 'set-server-basket': {
       draft.serverBasket = rest.serverBasket;
       draft.status = 'ready';
 
@@ -168,13 +170,18 @@ export default produce(function reducer(draft, { action, ...rest }) {
 
     case 'add-voucher': {
       draft.clientBasket.voucherCode = rest.voucherCode;
-      draft.status = 'server-state-is-stale';
+      draft.status = 'server-basket-is-stale';
       break;
     }
 
     case 'remove-voucher': {
       draft.clientBasket.voucherCode = initialState.clientBasket.voucherCode;
-      draft.status = 'server-state-is-stale';
+      draft.status = 'server-basket-is-stale';
+      break;
+    }
+
+    case 'set-can-checkout': {
+      draft.canCheckout = rest.canCheckout
       break;
     }
 

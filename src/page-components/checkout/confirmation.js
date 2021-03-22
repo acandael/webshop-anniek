@@ -114,12 +114,6 @@ export default function Confirmation({ order }) {
                 currency: total.currency
               })}
             </TotalLine>
-            <TotalLine>
-              {t('common.tax', {
-                value: total.gross - total.net,
-                currency: total.currency
-              })}
-            </TotalLine>
           </Totals>
         </CustomHeader>
       </Outer>

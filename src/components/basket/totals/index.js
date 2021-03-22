@@ -21,7 +21,7 @@ export default function Totals(props) {
   }
 
   const hasDiscount = total?.discount > 0;
-  const isLoading = status === 'server-state-is-stale';
+  const isLoading = status === 'server-basket-is-stale';
 
   
 
@@ -47,14 +47,6 @@ export default function Totals(props) {
             </RowValue>
           </Row>
         )}
-        <Row modifier="total-tax">
-          <span>{t('basket.tax')}:</span>
-          <RowValue hide={isLoading}>
-            {printCurrencyAmount(
-              parseInt((total.gross - total.net) * 100, 10) / 100
-            )}
-          </RowValue>
-        </Row>
         <Row modifier="to-pay">
           <span>{t('basket.totalToPay')}:</span>
           <RowValue hide={isLoading}>

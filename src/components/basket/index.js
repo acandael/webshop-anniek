@@ -19,6 +19,7 @@ export function BasketProvider({ locale, children }) {
   const [
     {
       status,
+      canCheckout,
       clientBasket,
       serverBasket,
       changeTriggeredByOtherTab,
@@ -82,7 +83,7 @@ export function BasketProvider({ locale, children }) {
       cart: clientBasket.cart.map(clientCartItemForAPI),
       voucherCode: clientBasket.voucherCode,
       crystallizeOrderId: clientBasket.crystallizeOrderId,
-      klarnaOrderId: clientBasket.klarnaOrderId
+      klarnaOrderId: clientBasket.klarnaOrderId,
     }),
     [locale, clientBasket]
   );
@@ -100,9 +101,9 @@ export function BasketProvider({ locale, children }) {
           }
         });
 
-        if (!stale) {
+        if (!stale && response.data) {
           dispatch({
-            action: 'set-server-state',
+            action: 'set-server-basket',
             serverBasket: response.data.basket
           });
         }
@@ -115,7 +116,7 @@ export function BasketProvider({ locale, children }) {
     }
 
     let timeout;
-    if (status === 'server-state-is-stale') {
+    if (status === 'server-basket-is-stale') {
       timeout = setTimeout(getServerBasket, 250);
     }
 
@@ -192,6 +193,7 @@ export function BasketProvider({ locale, children }) {
     <BasketContext.Provider
       value={{
         status,
+        canCheckout,
         basketModel,
         cart,
         total: serverBasket?.total || {},
@@ -213,7 +215,8 @@ export function BasketProvider({ locale, children }) {
               crystallizeOrderId
             }),
           setKlarnaOrderId: (klarnaOrderId) =>
-            dispatch({ action: 'set-klarna-order-id', klarnaOrderId })
+            dispatch({ action: 'set-klarna-order-id', klarnaOrderId }),
+          setCanCheckout: (canCheckout) => dispatch({action: 'set-can-checkout', canCheckout})
         }
       }}
     >

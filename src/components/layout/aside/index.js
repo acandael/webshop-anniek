@@ -37,8 +37,10 @@ export default function Aside() {
   const basket = useBasket();
   const [going, setGoing] = useState(false);
 
+  const canCheckout = basket.canCheckout;
+
   const onCheckoutClick = (evt) => {
-    if (!basket.cart.length) {
+    if (!basket.cart.length || canCheckout === false) {
       evt.preventDefault();
       return;
     }
@@ -53,7 +55,7 @@ export default function Aside() {
     <Outer>
       <Heading>
         {t('basket.title')}
-        {basket.status === 'server-state-is-stale' && (
+        {basket.status === 'server-basket-is-stale' && (
           <Spinner style={{ marginLeft: 15 }} />
         )}
       </Heading>
@@ -66,8 +68,8 @@ export default function Aside() {
           <CheckoutBtn
             as="a"
             state={going ? 'loading' : null}
-            disabled={!basket.cart.length}
-            onClick={onCheckoutClick}
+            disabled={!basket.cart.length || canCheckout === false}
+            onClick={ onCheckoutClick}
           >
             {t('basket.goToCheckout')}
           </CheckoutBtn>

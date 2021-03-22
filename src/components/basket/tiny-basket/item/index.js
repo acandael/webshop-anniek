@@ -49,6 +49,10 @@ export default function TinyBasketItem({ item }) {
   }
 
   function remove() {
+    // if shipping product is removed the user should not be able to checkout
+    if (item.name === 'verzenden') {
+      actions.setCanCheckout(false)
+    }
     actions.removeItem(item);
   }
 
