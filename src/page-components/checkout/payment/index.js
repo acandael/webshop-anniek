@@ -15,6 +15,7 @@ import {useForm} from 'react-hook-form';
 import {
   Row,
   Input,
+  TextArea,
   InputGroup,
   ErrorMessage,
   Label,
@@ -313,7 +314,7 @@ export default function Payment() {
             <Row>
               <InputGroup>
               <Label htmlFor="message">Extra vragen of info:</Label>
-                <textarea rows="5" cols="50"
+                <TextArea rows="5"
                   type="text"
                   name="message"
                   onChange={(e) =>
