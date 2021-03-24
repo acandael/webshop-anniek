@@ -69,7 +69,7 @@ Volg je mij al op <a href="https://www.facebook.com/annieklambrechtskincoach/?re
               <ImageWrapper>
               <SubSectionImage src="/static/subsection-behandelingen.jpg" alt="anniek lambrecht - behandelingen" width="456px" height="304px" />
               </ImageWrapper>
-              <SubSectionText>Op het menu staat niet alleen Huidanalyse, Peeling en Vitamine Gelaatsbehandelingen maar ook liften van de huid is mogelijk voor gelaat en lichaam met het LPG apparaat.  Ongewenste haren verwijderen we met de Lightsheer Diode Laser. </SubSectionText>
+              <SubSectionText>Op het menu staan niet alleen Huidanalyse, Peeling en Vitamine Gelaatsbehandelingen maar ook Microneedling.  Liften van de huid is mogelijk voor gelaat en lichaam met het LPG apparaat. Ongewenste haren verwijderen we met de Lightsheer Diode Laser. </SubSectionText>
               <Link href="/behandelingen"><StyledLink>Ontdek alle behandelingen</StyledLink></Link>
             </SectionOne>
           </Link>
