@@ -20,6 +20,7 @@ export function BasketProvider({ locale, children }) {
     {
       status,
       canCheckout,
+      deliveryMethod,
       clientBasket,
       serverBasket,
       changeTriggeredByOtherTab,
@@ -194,6 +195,7 @@ export function BasketProvider({ locale, children }) {
       value={{
         status,
         canCheckout,
+        deliveryMethod,
         basketModel,
         cart,
         total: serverBasket?.total || {},
@@ -216,6 +218,7 @@ export function BasketProvider({ locale, children }) {
             }),
           setKlarnaOrderId: (klarnaOrderId) =>
             dispatch({ action: 'set-klarna-order-id', klarnaOrderId }),
+          setDeliveryMethod: (deliveryMethod) => dispatch({action: 'set-delivery-method', deliveryMethod}),
           setCanCheckout: (canCheckout) => dispatch({action: 'set-can-checkout', canCheckout})
         }
       }}

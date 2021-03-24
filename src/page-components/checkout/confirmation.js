@@ -41,7 +41,7 @@ export default function Confirmation({ order }) {
   const router = useRouter();
 
   const additionalInformation = JSON.parse(order.additionalInformation)
-  const {shipping} = additionalInformation.order_metadata
+  const {deliveryMethod} = additionalInformation.order_metadata
 
   // Empty the basket
   useEffect(() => {
@@ -87,6 +87,16 @@ export default function Confirmation({ order }) {
   const email = order.customer.addresses?.[0]?.email;
   const { total } = order;
 
+  function setDeliveryMessage() {
+    if (deliveryMethod === 'shipping') {
+      return <DeliveryDetails order={order} />
+    } else if (deliveryMethod === 'email') {
+      return <p><strong>De geschenkenbon wordt gemaild naar {email}</strong></p>
+    } else if (deliveryMethod === 'pickup') {
+      return <p><strong>bestelling zal opgehaald worden in de winkel</strong></p>;
+    }
+  }
+
   return (
     <Layout title={t('checkout.confirmation.title')}>
       <Outer>
@@ -100,8 +110,8 @@ export default function Confirmation({ order }) {
           </p>
           <Line />
           <BillingDetails order={order} />
-          {shipping ? <DeliveryDetails order={order} /> : <p><strong>bestelling zal opgehaald worden in de winkel</strong></p>
-          
+          {
+            setDeliveryMessage()
           }
           <Line />
           <H3>{t('order.item', { count: cart.length })}</H3>

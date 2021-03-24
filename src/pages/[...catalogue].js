@@ -29,6 +29,7 @@ import BehandelingenPage, { getData as getDataBehandelingen } from 'page-compone
 import BehandelingPage, { getData as getDataBehandeling } from 'page-components/behandeling';
 import BrandArticlePage, { getData as getDataBrandArticle } from 'page-components/brand-article';
 import MerkenPage, { getData as getDataMerken } from 'page-components/merken';
+import KadobonnenPage, { getData as getDataKadobonnen } from 'page-components/kadobonnen';
 
 import { shape } from 'prop-types';
 
@@ -80,6 +81,10 @@ const renderers = {
   merken: {
     component: MerkenPage,
     getData: getDataMerken
+  },
+  kadobonnen: {
+    component: KadobonnenPage,
+    getData: getDataKadobonnen
   }
 };
 
@@ -140,6 +145,8 @@ export async function getStaticProps(context) {
       renderer = 'brandarticle'
     } else if (shapeName === 'Merken') {
       renderer = 'merken'
+    } else if (shapeName === 'Kadobonnen') {
+      renderer = 'kadobonnen'
     } else if (type in renderers) {
       renderer = type;
     }

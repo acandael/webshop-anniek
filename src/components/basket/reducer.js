@@ -28,6 +28,7 @@ export const initialState = {
   },
 
   canCheckout: false,
+  deliveryMethod: '',
 
   // The validated basket sent back from the Service API
   serverBasket: null,
@@ -182,6 +183,11 @@ export default produce(function reducer(draft, { action, ...rest }) {
 
     case 'set-can-checkout': {
       draft.canCheckout = rest.canCheckout
+      break;
+    }
+
+    case 'set-delivery-method': {
+      draft.deliveryMethod = rest.deliveryMethod
       break;
     }
 

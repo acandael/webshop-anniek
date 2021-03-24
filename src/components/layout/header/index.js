@@ -57,11 +57,6 @@ export default function Header({ simple, preview }) {
                   <a onClick={() => setNavOpen(false)}>CONTACT</a>
                 </Link>
             </NavListItem>
-            <NavListItem>
-                <Link href="/kadobon">
-                  <a onClick={() => setNavOpen(false)}>KADOBON</a>
-                </Link>
-            </NavListItem>
           </NavList>
         </Nav>
         <IconBar>

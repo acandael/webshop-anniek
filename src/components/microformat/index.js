@@ -7,6 +7,7 @@ import ProductLineItem from './productline-item';
 import CategoryItem from './category-item';
 import BehandelingenItem from './behandelingen-item'
 import MerkenItem from './merken-item'
+import KadobonItem from './kadobon-item'
 
 export default function Microformat({ item }) {
   if (!item) {
@@ -21,7 +22,8 @@ export default function Microformat({ item }) {
     productline: <ProductLineItem data={item} key={item.path} />,
     category: <CategoryItem data={item} key={item.path} />,
     behandelingen: <BehandelingenItem data={item} key={item.path} />,
-    merken: <MerkenItem data={item} key={item.path} />
+    merken: <MerkenItem data={item} key={item.path} />,
+    kadobon: <KadobonItem data={item} key={item.path} />
   };
 
   return types[item.type] || null;

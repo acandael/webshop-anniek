@@ -37,6 +37,7 @@ export default function TinyBasket() {
         priceVariantIdentifier: 'default'
       })
     }
+    basket.actions.setDeliveryMethod('shipping')
     basket.actions.setCanCheckout(true)
   }
 
@@ -45,8 +46,22 @@ export default function TinyBasket() {
     if (shipping) {
       basket.actions.removeItem(shipping)
     }
+    basket.actions.setDeliveryMethod('pickup')
     basket.actions.setCanCheckout(true)
   }
+
+  function addEmail() {
+    const shipping = basket.cart.find((product) => product.name === 'verzenden');
+    
+    if (shipping) {
+      basket.actions.removeItem(shipping)
+    }
+    basket.actions.setDeliveryMethod('email')
+    basket.actions.setCanCheckout(true)
+  }
+
+  const giftcard = basket.cart.find((product) => product.sku.startsWith('kadobon'))
+  const otherProduct = basket.cart.find((product) => !product.sku.startsWith('kadobon'))
 
   return (
     <Outer>
@@ -63,6 +78,12 @@ export default function TinyBasket() {
         <label htmlFor="ship">Verzenden (8 Euro)</label><br></br>
         <input type="radio" id="pickup" name="verzenden" value="pickup" onClick={addPickup} />
         <label htmlFor="pickup">Ophalen (Gratis)</label><br></br>
+        {Boolean(giftcard && !otherProduct) && 
+          <>
+          <input type="radio" id="pickup" name="verzenden" value="email" onClick={addEmail} />
+          <label htmlFor="pickup">Email (Enkel voor kadobon)</label><br></br>
+          </>
+        }
       </ShippingForm>
     </Outer>
   );

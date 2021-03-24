@@ -77,18 +77,19 @@ export default function Payment() {
     multilingualUrlPrefix = '/' + router.locale;
   }
 
-  const { firstName, lastName, email, street, streetNumber, postalCode, city, shipping, pickup } = state;
+  const { firstName, lastName, email, message, street, streetNumber, postalCode, city } = state;
 
   const basket = useBasket();
-  const shippingItem = basket.cart.find((cartItem) => cartItem.name === "verzenden")
+
+  const giftcard = basket.cart.find((p) => p.sku.startsWith('kadobon'));
+
+  const deliveryMethod = basket.deliveryMethod;
 
   useEffect(() => {
-    if (shippingItem) {
-      setState({...state, shipping: true})
-    } else {
-      setState({...state, pickup: true})
-    }
-  }, [shippingItem])
+    
+    setState({...state, delivery: deliveryMethod})
+    
+  }, [deliveryMethod])
 
   function getURL(path) {
     return `${location.protocol}//${location.host}${multilingualUrlPrefix}${path}`;
@@ -105,8 +106,8 @@ export default function Payment() {
   const checkoutModel = {
     basketModel,
     metadata: {
-      shipping,
-      pickup
+      deliveryMethod: deliveryMethod,
+      message: message
     },
     customer: {
       firstName,
@@ -176,7 +177,7 @@ export default function Payment() {
       return false;
     }
 
-    if (shipping) {
+    if (deliveryMethod === 'shipping') {
       if (street === "") {
         return false;
       }
@@ -246,7 +247,7 @@ export default function Payment() {
               {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
             </InputGroup>
           </Row>
-          {Boolean(shipping) && <><Row>
+          {deliveryMethod === 'shipping' && <><Row>
           <InputGroup>
               <Label htmlFor="street">{t('customer.street')}</Label>
               <Input
@@ -308,6 +309,21 @@ export default function Payment() {
               {errors.city && <ErrorMessage>{errors.city.message}</ErrorMessage>}
             </InputGroup>
           </Row></> }
+          { Boolean(giftcard) && <>
+            <Row>
+              <InputGroup>
+              <Label htmlFor="message">Extra vragen of info:</Label>
+                <textarea rows="5" cols="50"
+                  type="text"
+                  name="message"
+                  onChange={(e) =>
+                  setState({ ...state, message: e.target.value })
+                }
+                />
+              </InputGroup>
+            </Row>
+          </>
+          }
         </form>
       </CheckoutFormGroup>
 
