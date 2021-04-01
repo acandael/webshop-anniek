@@ -29,6 +29,7 @@ import {
 import Voucher from '../voucher';
 
 const StripeCheckout = dynamic(() => import('./stripe'));
+const BancontactCheckout = dynamic(() => import('./bancontact'));
 
 const Inner = styled.div``;
 
@@ -56,14 +57,8 @@ export default function Payment() {
         paymentProviders {
           stripe {
             enabled
-          }
-          klarna {
-            enabled
-          }
-          mollie {
-            enabled
-          }
-          vipps {
+          },
+          bancontact {
             enabled
           }
         }
@@ -71,7 +66,6 @@ export default function Payment() {
     `
     })
   );
-
   // Handle locale with sub-path routing
   let multilingualUrlPrefix = '';
   if (window.location.pathname.startsWith(`/${router.locale}/`)) {
@@ -153,13 +147,37 @@ export default function Payment() {
           />
         </PaymentProvider>
       )
+    },
+    {
+      name: 'bancontact',
+      color: '#FFF',
+      logo: '/static/bancontact.png',
+      render: () => (
+        <PaymentProvider>
+          <BancontactCheckout
+            checkoutModel={checkoutModel}
+            onSuccess={(crystallizeOrderId) => {
+              router.push(
+                checkoutModel.confirmationURL.replace(
+                  '{crystallizeOrderId}',
+                  crystallizeOrderId
+                )
+              );
+              scrollTo(0, 0);
+            }}
+          />
+        </PaymentProvider>
+      )
     }
   ];
 
   const enabledPaymentProviders = [];
   if (!paymentConfig.loading && paymentConfig.data) {
     const { paymentProviders } = paymentConfig.data.data;
-    
+
+    if (paymentProviders.bancontact.enabled) {
+      enabledPaymentProviders.push('bancontact');
+    }
     if (paymentProviders.stripe.enabled) {
       enabledPaymentProviders.push('stripe');
     }

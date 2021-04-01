@@ -3,7 +3,6 @@ import Head from 'next/head';
 import { useQuery } from 'react-query';
 import { loadStripe } from '@stripe/stripe-js';
 import {
-  CardElement,
   Elements,
   useStripe,
   useElements
@@ -13,13 +12,13 @@ import ServiceApi from 'lib/service-api';
 import { Button, Spinner } from 'ui';
 import { useT } from 'lib/i18n';
 
-function Form({ stripeClientSecret, checkoutModel, onSuccess, onError }) {
+function Form({ stripeClientSecret, checkoutModel, onSuccess, onError}) {
   const t = useT();
   const stripe = useStripe();
   const elements = useElements();
   const [status, setStatus] = useState('idle');
 
-
+  const checkoutModelString = JSON.stringify(checkoutModel)
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -36,18 +35,17 @@ function Form({ stripeClientSecret, checkoutModel, onSuccess, onError }) {
 
       const { customer } = checkoutModel;
 
-      const { error, paymentIntent } = await stripe.confirmCardPayment(
+      await stripe.confirmBancontactPayment(
         stripeClientSecret,
         {
           payment_method: {
-            card: elements.getElement(CardElement),
             billing_details: {
               name: `${customer.firstName} ${customer.lastName}`
             }
-          }
+          },
+          return_url: `http://localhost:3000/confirmation-bancontact?checkout_model=${checkoutModelString}`,
         }
-      );
-      
+      )
 
       if (error) {
         setStatus({ error });
@@ -59,6 +57,7 @@ function Form({ stripeClientSecret, checkoutModel, onSuccess, onError }) {
           // execution. Set up a webhook or plugin to listen for the
           // payment_intent.succeeded event that handles any business critical
           // post-payment actions.
+
           const response = await ServiceApi({
             query: `
               mutation confirmStripeOrder($checkoutModel: CheckoutModelInput!, $paymentIntentId: String!) {
@@ -81,7 +80,7 @@ function Form({ stripeClientSecret, checkoutModel, onSuccess, onError }) {
           const {
             success,
             orderId
-          } = response.data.paymentProviders.stripe.confirmOrder;
+          } = response.data.paymentProviders.bancontact.confirmOrder;
 
           if (success) {
             onSuccess(orderId);
@@ -95,7 +94,6 @@ function Form({ stripeClientSecret, checkoutModel, onSuccess, onError }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <CardElement />
       <div style={{ marginTop: 25 }}>
         <Button
           type="submit"
@@ -111,12 +109,12 @@ function Form({ stripeClientSecret, checkoutModel, onSuccess, onError }) {
 
 export default function StripeWrapper({ checkoutModel, ...props }) {
   const [stripeLoader, setStripeLoader] = useState(null);
-  const stripeConfig = useQuery('stripeConfig', () =>
+  const bancontactConfig = useQuery('bancontactConfig', () =>
     ServiceApi({
       query: `
       {
         paymentProviders {
-          stripe {
+          bancontact {
             config
           }
         }
@@ -126,22 +124,22 @@ export default function StripeWrapper({ checkoutModel, ...props }) {
   );
 
   useEffect(() => {
-    if (stripeConfig.data && !stripeLoader) {
+    if (bancontactConfig.data && !stripeLoader) {
       setStripeLoader(
         loadStripe(
-          stripeConfig.data.data.paymentProviders.stripe.config.publishableKey
+          bancontactConfig.data.data.paymentProviders.bancontact.config.publishableKey
         )
       );
     }
-  }, [stripeConfig, stripeLoader]);
+  }, [bancontactConfig, stripeLoader]);
 
   // Get new paymentIntent
-  const stripePaymentIntent = useQuery('stripePaymentIntent', () =>
+  const bancontactPaymentIntent = useQuery('stripePaymentIntent', () =>
     ServiceApi({
       query: `
-        mutation StripePaymentIntent($checkoutModel: CheckoutModelInput!) {
+        mutation BancontactPaymentIntent($checkoutModel: CheckoutModelInput!) {
           paymentProviders {
-            stripe {
+            bancontact {
               createPaymentIntent(checkoutModel: $checkoutModel)
             }
           }
@@ -154,10 +152,11 @@ export default function StripeWrapper({ checkoutModel, ...props }) {
   );
 
   const stripeClientSecret =
-    stripePaymentIntent?.data?.data?.paymentProviders?.stripe
+    bancontactPaymentIntent?.data?.data?.paymentProviders?.bancontact
       ?.createPaymentIntent?.client_secret;
 
-  if (stripeConfig.loading || !stripeLoader || !stripeClientSecret) {
+
+  if (bancontactConfig.loading || !stripeLoader || !stripeClientSecret) {
     return <Spinner />;
   }
 
