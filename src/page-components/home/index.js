@@ -60,7 +60,7 @@ Volg je mij al op <a href="https://www.facebook.com/annieklambrechtskincoach/?re
           </Button>
           </Link>
           </HeroText>
-          <HeroImage src="/static/hero-image.jpg" alt="anniek lambrecht" width="400" height="400" />
+          <HeroImage src="/static/homepage.jpg" alt="anniek lambrecht" width="576" height="548" />
         </HeroSection>
         <SubSection>
           <Link href="/behandelingen" passHref>
