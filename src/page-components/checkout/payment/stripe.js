@@ -19,8 +19,6 @@ function Form({ stripeClientSecret, checkoutModel, onSuccess, onError }) {
   const elements = useElements();
   const [status, setStatus] = useState('idle');
 
-
-
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -47,7 +45,6 @@ function Form({ stripeClientSecret, checkoutModel, onSuccess, onError }) {
           }
         }
       );
-      
 
       if (error) {
         setStatus({ error });
