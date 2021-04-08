@@ -43,7 +43,7 @@ function Form({ stripeClientSecret, checkoutModel, onError }) {
               name: `${customer.firstName} ${customer.lastName}`
             }
           },
-          return_url: `https://webshop-anniek-93xc5pcu2-acandael.vercel.app/confirmation-bancontact?checkout_model=${checkoutModelString}`
+          return_url: `http://localhost:3000/confirmation-bancontact?checkout_model=${checkoutModelString}`
         })
         .then((response) => {
           if (response.error) {
