@@ -11,7 +11,7 @@ export async function getServerSideProps({
     return {
       redirect: {
         permanent: false,
-        destination: '/checkout?failed=true'
+        destination: '/checkout?redirect_status=failed'
       }
     };
   }

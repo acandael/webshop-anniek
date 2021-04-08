@@ -15,7 +15,17 @@ import {
   CheckoutFormGroup
 } from './styles';
 
-function Checkout() {
+function Checkout({ redirect_status = null }) {
+  if (redirect_status === 'failed') {
+    return (
+      <Outer>
+        <Container>
+          <p>Er was een probleem met de betaling</p>
+        </Container>
+      </Outer>
+    );
+  }
+
   const basket = useBasket();
   const t = useT();
 

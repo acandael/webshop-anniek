@@ -43,7 +43,7 @@ function Form({ stripeClientSecret, checkoutModel, onError }) {
               name: `${customer.firstName} ${customer.lastName}`
             }
           },
-          return_url: `http://localhost:3000/confirmation-bancontact?checkout_model=${checkoutModelString}`
+          return_url: `http://webshop-anniek.vercel.app/confirmation-bancontact?checkout_model=${checkoutModelString}`
         })
         .then((response) => {
           if (response.error) {
@@ -56,7 +56,6 @@ function Form({ stripeClientSecret, checkoutModel, onError }) {
   return (
     <form onSubmit={handleSubmit}>
       <div style={{ marginTop: 25 }}>
-        <CardElement />
         <Button
           type="submit"
           state={status === 'confirming' ? 'loading' : null}
