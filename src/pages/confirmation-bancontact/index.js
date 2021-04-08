@@ -2,10 +2,20 @@ export { default } from 'page-components/checkout/confirmation';
 import ServiceApi from 'lib/service-api';
 
 export async function getServerSideProps({
-  query: { payment_intent, checkout_model }
+  query: { payment_intent, checkout_model, redirect_status }
 }) {
   const paymentIntent = payment_intent;
   const checkoutModel = JSON.parse(checkout_model);
+
+  if (redirect_status === 'failed') {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/checkout?failed=true'
+      }
+    };
+  }
+
   // Show a success message to your customer
   // There's a risk of the customer closing the window before callback
   // execution. Set up a webhook or plugin to listen for the
