@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import is from 'styled-is';
 import { Image } from '@crystallize/react-image';
 
 import { responsive } from 'ui';
@@ -41,10 +42,10 @@ export const Img = styled(Image)`
     width: 100%;
     height: 100%;
     overflow: hidden;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     &:hover {
-    transform: scale(1.1);
-  }
+      transform: scale(1.1);
+    }
   }
 `;
 
@@ -73,6 +74,15 @@ export const Text = styled.div`
 `;
 
 export const Price = styled.span`
-  color: inherit;
+  color: var(--color-price);
+  position: relative;
+  margin-top: 16px;
   font-weight: bold;
+  display: flex;
+  font-size: var(--font-listing-price-size);
+  padding-bottom: 5px;
+  align-items: center;
+  ${is('discounted')`
+    color:var(--color-discount);
+  `}
 `;
