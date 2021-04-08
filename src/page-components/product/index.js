@@ -7,16 +7,15 @@ import toText from '@crystallize/content-transformer/toText';
 import getRelativePriceVariants from 'lib/pricing';
 import { useLocale } from 'lib/app-config';
 import Collection from 'components/item-collection';
-import Breadcrumb from 'components/breadcrumb'
+import Breadcrumb from 'components/breadcrumb';
 import TopicTag from 'components/topic-tag';
 import VariantSelector from './variant-selector';
 import Buy from './buy';
 import query from './query';
 import SchemaOrg from './schema';
-import Stock from './stock';
 import { useT } from 'lib/i18n';
 
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react"
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import PropertiesTable from 'components/shape/behandeling-components/properties-table';
 
 import {
@@ -79,39 +78,44 @@ export default function ProductPage({ product, preview }) {
     (c) => c.name === 'Gebruiksaanwijzing'
   );
 
-  const quantity = product.components?.find(
-    (c) => c.name === 'Hoeveelheid'
-  );
+  const quantity = product.components?.find((c) => c.name === 'Hoeveelheid');
 
-  const ingredientstable = product.components?.find((c) => c.type === 'propertiesTable')?.content
+  const ingredientstable = product.components?.find(
+    (c) => c.type === 'propertiesTable'
+  )?.content;
 
   const hasMoreThanOneVariant = variants.length > 1;
 
   let tabs;
 
-  if (usage?.content?.paragraphs?.[0]?.body.json?.[0]?.children.length > 0 || ingredients?.content?.paragraphs?.[0]?.body.json?.[0]?.children.length > 0) {
+  if (
+    usage?.content?.paragraphs?.[0]?.body.json?.[0]?.children.length > 0 ||
+    ingredients?.content?.paragraphs?.[0]?.body.json?.[0]?.children.length > 0
+  ) {
     tabs = (
       <Usage>
         <Tabs colorScheme="brand" isLazy size="md">
-            <TabList>
-              <Tab>Gebruiksaanwijzing</Tab>
-              <Tab>Ingrediënten</Tab>
-            </TabList>
+          <TabList>
+            <Tab>Gebruiksaanwijzing</Tab>
+            <Tab>Ingrediënten</Tab>
+          </TabList>
 
-            <TabPanels>
-              <TabPanel>
-                <ContentTransformer {...usage?.content?.paragraphs?.[0]?.body.json} />
-              </TabPanel>
-              <TabPanel>
-              <ContentTransformer {...ingredients?.content?.paragraphs?.[0]?.body.json} />
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
+          <TabPanels>
+            <TabPanel>
+              <ContentTransformer
+                {...usage?.content?.paragraphs?.[0]?.body.json}
+              />
+            </TabPanel>
+            <TabPanel>
+              <ContentTransformer
+                {...ingredients?.content?.paragraphs?.[0]?.body.json}
+              />
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       </Usage>
-    )
-    
-  
-}
+    );
+  }
 
   return (
     <Layout
@@ -145,7 +149,9 @@ export default function ProductPage({ product, preview }) {
             <Title>{name}</Title>
             {descriptionComponent && (
               <Summary>
-                <ContentTransformer {...descriptionComponent?.content?.paragraphs?.[0]?.body.json} />
+                <ContentTransformer
+                  {...descriptionComponent?.content?.paragraphs?.[0]?.body.json}
+                />
               </Summary>
             )}
             {topics?.map((topic) => (
@@ -163,12 +169,16 @@ export default function ProductPage({ product, preview }) {
               selectedVariant={selectedVariant}
               pricing={pricing}
             />
-            <Quantity>{quantity && `Hoeveelheid: ${quantity.content?.text}`}</Quantity>
+            {quantity.content && (
+              <Quantity>
+                {quantity && `Hoeveelheid: ${quantity.content?.text}`}
+              </Quantity>
+            )}
             {/* <Stock selectedVariant={selectedVariant} /> */}
           </ActionsSticky>
         </Actions>
       </Inner>
-      
+
       <RelatedContainer>
         {Boolean(relatedProducts) && (
           <Collection
