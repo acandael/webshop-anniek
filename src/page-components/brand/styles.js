@@ -36,7 +36,7 @@ export const BrandHeader = styled.div`
     max-width: 100%;
     margin-bottom: 64px;
   }
-  
+
   h1 {
     text-transform: uppercase;
 
@@ -49,18 +49,19 @@ export const BrandHeader = styled.div`
   p {
     font-size: 20px;
   }
-`
+`;
 
 export const Content = styled.div`
   width: 40vw;
-  padding: 0 16px;
+  padding: 0;
+  padding-right: 24px;
 
   ${responsive.smAndLess} {
     width: 100vw;
     max-width: 100%;
     padding: 0 0;
   }
-`
+`;
 
 export const ImageWrapper = styled.div`
   position: relative;
@@ -76,8 +77,6 @@ export const ImageWrapper = styled.div`
 `;
 
 export const Img = styled(Image)`
-  
-
   > img {
     object-fit: contain;
     object-position: center;
@@ -89,8 +88,6 @@ export const Img = styled(Image)`
 `;
 
 export const Logo = styled(Image)`
-  
-
   > img {
     object-fit: contain;
     object-position: center;
@@ -116,5 +113,5 @@ export const StyledLink = styled.a`
   margin-top: 1rem;
   cursor: pointer;
   font-size: 20px;
-  color: #DCA090;
+  color: #dca090;
 `;
