@@ -18,7 +18,7 @@ export default function BehandelingenItem({ data }) {
   const images = data.components?.find((c) => c.type === 'images');
   image = images?.content?.images?.[0];
 
-  const samenvatting = data.components?.find((c) => c.name === 'Samenvatting')
+  const samenvatting = data.components?.find((c) => c.name === 'Samenvatting');
 
   return (
     <Link href={path} passHref>

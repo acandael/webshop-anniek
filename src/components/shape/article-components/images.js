@@ -11,7 +11,7 @@ const Outer = styled.div`
 const ImgContainer = styled.div`
   border: 4px solid #fff;
   width: 50%;
-  max-width: 100%;
+  max-width: 50%;
   flex-grow: 1;
   position: relative;
   figure {
@@ -22,7 +22,7 @@ const ImgContainer = styled.div`
     overflow: hidden;
     width: 100%;
     height: 100%;
-    border: 1px solid #dfdfdf;
+    /* border: 1px solid #dfdfdf; */
   }
   ${is('portrait')`
     width:33.333%;
@@ -62,7 +62,9 @@ export default function Images({ images }) {
   if (images.length === 1) {
     return (
       <Outer>
-        <Image {...images[0]} sizes="80vw" />
+        <ImgContainer>
+          <Image {...images[0]} sizes="80vw" />
+        </ImgContainer>
       </Outer>
     );
   }

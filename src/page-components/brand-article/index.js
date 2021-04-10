@@ -7,7 +7,7 @@ import Microformat from 'components/microformat';
 import toText from '@crystallize/content-transformer/toText';
 import query from './query';
 import { useRouter } from 'next/router';
-import Breadcrumb from 'components/breadcrumb'
+import Breadcrumb from 'components/breadcrumb';
 import {
   Img,
   List,
@@ -78,7 +78,6 @@ export default function BrandArticlePage({ document, preview }) {
   }
 
   const heading = title || document.name;
-
 
   const featuredContent = featured?.content?.items?.length && (
     <SidebarBlock>
