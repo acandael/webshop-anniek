@@ -2,12 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useQuery } from 'react-query';
 import { loadStripe } from '@stripe/stripe-js';
-import {
-  CardElement,
-  Elements,
-  useStripe,
-  useElements
-} from '@stripe/react-stripe-js';
+import { Elements, useStripe, useElements } from '@stripe/react-stripe-js';
 
 import ServiceApi from 'lib/service-api';
 import { Button, Spinner } from 'ui';
