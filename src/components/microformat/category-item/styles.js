@@ -56,6 +56,7 @@ export const Text = styled.div`
   left: 0;
   width: 100%;
   padding: 1em;
+  padding-left: 0;
 
   ${responsive.smAndLess} {
     padding: 0;
