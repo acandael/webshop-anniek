@@ -37,7 +37,7 @@ export const BreadcrumbWrapper = styled.div`
     margin-left: 24px;
     padding-left: 0;
   }
-`
+`;
 
 export const Content = styled.div`
   // vertical space between the actions and the content
@@ -231,4 +231,4 @@ export const Usage = styled.div`
 export const Quantity = styled.div`
   margin-top: 50px;
   font-weight: 600;
-`
+`;

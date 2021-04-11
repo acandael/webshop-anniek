@@ -42,17 +42,17 @@ export default function Footer() {
         <h3>WEBSHOP</h3>
 
         <li>
-          <Link href="/merk/environ">
+          <Link href="/merken/environ">
             <a>Environ</a>
           </Link>
         </li>
         <li>
-          <Link href="/merk/advanced-nutrition-programme">
+          <Link href="/merken/advanced-nutrition-programme">
             <a>Advanced Nutrition Programme</a>
           </Link>
         </li>
         <li>
-          <Link href="/merk/jane-iredale">
+          <Link href="/merken/jane-iredale">
             <a>Jane Iredale</a>
           </Link>
         </li>
