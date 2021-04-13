@@ -66,10 +66,11 @@ export default function CategoryItem({ data, gridCell }) {
           ) : (
             <Price>
               <strong>
-                {t('common.price', {
-                  value: pricing?.defaultPrice?.price,
-                  currency: pricing?.defaultPrice?.currency
-                })}
+                {pricing?.defaultPrice.price &&
+                  t('common.price', {
+                    value: pricing?.defaultPrice?.price,
+                    currency: pricing?.defaultPrice?.currency
+                  })}
               </strong>
             </Price>
           )}

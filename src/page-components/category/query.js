@@ -3,17 +3,14 @@ export default `
     folder: catalogue(language: $language, path: $path, version: $version) {
       name
       path
-      components {
+      children {
+        name
+        path
+        ...variants
+        components {
         ...component
-       }
-       children {
-         name
-         path
-         ...variants
-         components {
-          ...component
-         }
-       }
+        }
+      }
     }
   }
 

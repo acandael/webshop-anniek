@@ -3,9 +3,7 @@ export default `
     folder: catalogue(language: $language, path: $path, version: $version) {
       name
       path
-      components {
-        ...component
-       }
+     
        children {
          name
          path
