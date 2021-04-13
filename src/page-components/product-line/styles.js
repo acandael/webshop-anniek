@@ -1,7 +1,18 @@
 import styled from 'styled-components';
 import { Image } from '@crystallize/react-image';
-
+import { Outer as outer, H1 as h1 } from 'ui';
 import { responsive } from 'ui';
+
+export const H1 = styled(h1)`
+  margin-top: 64px;
+  ${responsive.smAndLess} {
+    text-align: center;
+  }
+`;
+
+export const Outer = styled(outer)`
+  margin-top: 64px;
+`;
 
 export const List = styled.div`
   display: grid;
@@ -21,45 +32,6 @@ export const List = styled.div`
 
   ${responsive.lg} {
     grid-template-columns: repeat(12, 1fr);
-  }
-`;
-
-export const BrandHeader = styled.div`
-  display: flex;
-  width: 100vw;
-  margin-top: 111px;
-  margin-bottom: 164px;
-
-  ${responsive.smAndLess} {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    margin-bottom: 64px;
-  }
-
-  h1 {
-    margin-bottom: 72px;
-    text-transform: uppercase;
-  }
-`;
-
-export const Content = styled.div`
-  width: 40vw;
-  padding: 0;
-  padding-right: 24px;
-
-  ${responsive.smAndLess} {
-    max-width: 100%;
-    width: 100vw;
-    padding: 0;
-  }
-
-  h1 {
-    margin-bottom: 24px;
-  }
-
-  p {
-    margin-top: 24px;
   }
 `;
 

@@ -68,6 +68,11 @@ export const Text = styled.div`
     margin: 0;
     margin-bottom: 32px;
     color: var(--color-text-sub);
+
+    ${responsive.smAndLess} {
+      text-align: center;
+      font-size: 1.5em;
+    }
   }
 
   p {

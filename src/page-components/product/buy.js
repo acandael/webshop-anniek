@@ -48,6 +48,7 @@ export default function BuyButton({ product, selectedVariant, pricing }) {
    * been updated
    */
   useEffect(() => {
+    console.log(basket);
     async function drawAttentionToItemInBasket() {
       setBuying(false);
       // Wait for the layout menu to open

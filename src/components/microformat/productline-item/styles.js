@@ -9,7 +9,7 @@ export const Outer = styled.a`
   height: 100%;
   color: var(--color-main-background);
   position: relative;
-  padding: 1em;
+  padding: 0;
   /* background: var(--color-box-background); */
   grid-column-end: span 4;
   ${responsive.xs} {

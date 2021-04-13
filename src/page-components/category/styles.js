@@ -4,6 +4,10 @@ import { responsive, Outer as outer, H1 as h1 } from 'ui';
 
 export const H1 = styled(h1)`
   margin-top: 64px;
+
+  ${responsive.smAndLess} {
+    text-align: center;
+  }
 `;
 
 export const Outer = styled(outer)`
