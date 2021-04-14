@@ -4,9 +4,27 @@ import Layout from 'components/layout';
 import { simplyFetchFromGraph } from 'lib/graph';
 import fragments from 'lib/graph/fragments';
 import { useT } from 'lib/i18n';
-import { Outer, Header, H1, H2, HeroSection, HeroText, HeroImage, Button, SubSection, SectionOne, SectionTwo, SubSectionText, ImageWrapper, SubSectionImage, StyledLink } from './styles';
+import {
+  Outer,
+  Header,
+  H1,
+  H2,
+  HeroSection,
+  HeroText,
+  HeroImage,
+  Button,
+  SubSection,
+  SectionOne,
+  SectionTwo,
+  SubSectionText,
+  ImageWrapper,
+  SubSectionImage,
+  StyledLink
+} from './styles';
 import Link from 'next/link';
 
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 export async function getData({ language, preview = null }) {
   try {
@@ -42,52 +60,100 @@ export default function FrontPage({ catalogue, preview }) {
   return (
     <Layout preview={preview}>
       <Outer>
+        <Popup
+          trigger={<Button> Aandacht</Button>}
+          position="right center"
+          modal
+        >
+          <div>
+            Bestellingen kunnen enkel afgehaald worden na ontvangst van je email
+            dat de bestelling klaar staat voor afhaling. Vanwege de corona
+            maatregelen is er een afhaalmoment op maandag 19 en vrijdag 23 april
+            van 9-12h, tenzij anders afgesproken.
+          </div>
+        </Popup>
         <Header>
           <H1>skincoach anniek lambrecht</H1>
         </Header>
         <HeroSection>
           <HeroText>
-          <p>Hey Beauty!<br />
-          Wil jij een ook mooie gezonde huid? 
-          Dan ben je bij mij aan het juiste adres.  
-          Mijn zaak is geen klassiek schoonheidsinstituut maar een instituut waar de focus vooral op Huidverbetering of Skincare ligt.  Je krijgt een persoonlijke behandeling met professionele opvolging van jouw huidbehandelingen.  
-Volg je mij al op <a href="https://www.facebook.com/annieklambrechtskincoach/?ref=hl">Facebook</a> & <a href="https://www.instagram.com/annieklambrecht/">Instagram</a>?</p>
-          <Link href="https://schoonheidsinstituut-anniek-lambrecht-1.salonized.com/bookings/new?" passHref>
-          <Button
-          width="221px"
-          >
-          Boek Nu
-          </Button>
-          </Link>
+            <p>
+              Hey Beauty!
+              <br />
+              Wil jij een ook mooie gezonde huid? Dan ben je bij mij aan het
+              juiste adres. Mijn zaak is geen klassiek schoonheidsinstituut maar
+              een instituut waar de focus vooral op Huidverbetering of Skincare
+              ligt. Je krijgt een persoonlijke behandeling met professionele
+              opvolging van jouw huidbehandelingen. Volg je mij al op{' '}
+              <a href="https://www.facebook.com/annieklambrechtskincoach/?ref=hl">
+                Facebook
+              </a>{' '}
+              &{' '}
+              <a href="https://www.instagram.com/annieklambrecht/">Instagram</a>
+              ?
+            </p>
+            <Link
+              href="https://schoonheidsinstituut-anniek-lambrecht-1.salonized.com/bookings/new?"
+              passHref
+            >
+              <Button width="221px">Boek Nu</Button>
+            </Link>
           </HeroText>
-          <HeroImage src="/static/homepage.jpg" alt="anniek lambrecht" width="450" height="450" />
+          <HeroImage
+            src="/static/homepage-2.jpg"
+            alt="anniek lambrecht"
+            width="450"
+            height="450"
+          />
         </HeroSection>
         <SubSection>
           <Link href="/behandelingen" passHref>
             <SectionOne>
               <H2>BEHANDELINGEN</H2>
               <ImageWrapper>
-              <SubSectionImage src="/static/subsection-behandelingen.jpg" alt="anniek lambrecht - behandelingen" width="456px" height="304px" />
+                <SubSectionImage
+                  src="/static/subsection-behandelingen.jpg"
+                  alt="anniek lambrecht - behandelingen"
+                  width="456px"
+                  height="304px"
+                />
               </ImageWrapper>
-              <SubSectionText>Op het menu staan niet alleen Huidanalyse, Peeling en Vitamine Gelaatsbehandelingen maar ook Microneedling.  Liften van de huid is mogelijk voor gelaat en lichaam met het LPG apparaat. Ongewenste haren verwijderen we met de Lightsheer Diode Laser. </SubSectionText>
-              <Link href="/behandelingen"><StyledLink>Ontdek alle behandelingen</StyledLink></Link>
+              <SubSectionText>
+                Op het menu staan niet alleen Huidanalyse, Peeling en Vitamine
+                Gelaatsbehandelingen maar ook Microneedling. Liften van de huid
+                is mogelijk voor gelaat en lichaam met het LPG apparaat.
+                Ongewenste haren verwijderen we met de Lightsheer Diode Laser.{' '}
+              </SubSectionText>
+              <Link href="/behandelingen">
+                <StyledLink>Ontdek alle behandelingen</StyledLink>
+              </Link>
             </SectionOne>
           </Link>
           <Link href="/webshop" passHref>
-          <SectionTwo>
-            <H2>WEBSHOP</H2>
-            <ImageWrapper>
-            <SubSectionImage src="/static/subsection-webshop.jpg" alt="anniek lambrecht - webshop" width="456px" height="304px" />
-            </ImageWrapper>
-            <SubSectionText>
-            Met de producten van Advanced Nutricion Programme, Environ Skincare en Jane Iredale houden we het huidverouderingsproces zoveel mogelijk tegen.  Ze zijn op basis van Vitamine A en Antioxidanten en compenseren het chronisch tekort hiervan in de huid.  
-            </SubSectionText>
-            <Link href="/webshop"><StyledLink>Ontdek alle producten</StyledLink></Link>
-          </SectionTwo>
+            <SectionTwo>
+              <H2>WEBSHOP</H2>
+              <ImageWrapper>
+                <SubSectionImage
+                  src="/static/subsection-webshop.jpg"
+                  alt="anniek lambrecht - webshop"
+                  width="456px"
+                  height="304px"
+                />
+              </ImageWrapper>
+              <SubSectionText>
+                Met de producten van Advanced Nutricion Programme, Environ
+                Skincare en Jane Iredale houden we het huidverouderingsproces
+                zoveel mogelijk tegen. Ze zijn op basis van Vitamine A en
+                Antioxidanten en compenseren het chronisch tekort hiervan in de
+                huid.
+              </SubSectionText>
+              <Link href="/webshop">
+                <StyledLink>Ontdek alle producten</StyledLink>
+              </Link>
+            </SectionTwo>
           </Link>
         </SubSection>
       </Outer>
     </Layout>
-
   );
 }
