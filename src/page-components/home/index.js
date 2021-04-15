@@ -22,9 +22,7 @@ import {
   StyledLink
 } from './styles';
 import Link from 'next/link';
-
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+import { Message } from 'ui';
 
 export async function getData({ language, preview = null }) {
   try {
@@ -60,18 +58,12 @@ export default function FrontPage({ catalogue, preview }) {
   return (
     <Layout preview={preview}>
       <Outer>
-        <Popup
-          trigger={<Button> Aandacht</Button>}
-          position="right center"
-          modal
-        >
-          <div>
-            Bestellingen kunnen enkel afgehaald worden na ontvangst van je email
-            dat de bestelling klaar staat voor afhaling. Vanwege de corona
-            maatregelen is er een afhaalmoment op maandag 19 en vrijdag 23 april
-            van 9-12h, tenzij anders afgesproken.
-          </div>
-        </Popup>
+        <Message>
+          Bestellingen kunnen enkel afgehaald worden na ontvangst van je email
+          dat de bestelling klaar staat voor afhaling. Vanwege de corona
+          maatregelen is er een afhaalmoment op maandag 19 en vrijdag 23 april
+          van 9-12h, tenzij anders afgesproken.
+        </Message>
         <Header>
           <H1>skincoach anniek lambrecht</H1>
         </Header>

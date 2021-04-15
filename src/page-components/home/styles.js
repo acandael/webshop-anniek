@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 import Image from 'next/image';
-import { responsive, Outer as outer, Header as H, H1 as h1, H2 as h2, Button as button} from 'ui';
+import {
+  responsive,
+  Outer as outer,
+  Header as H,
+  H1 as h1,
+  H2 as h2,
+  Button as button
+} from 'ui';
 
 export const Outer = styled(outer)`
   margin-bottom: 64px;
@@ -12,7 +19,7 @@ export const Outer = styled(outer)`
     padding-left: 0;
     padding-right: 0;
   }
-`
+`;
 
 export const Header = styled(H)`
   margin: 106px 0;
@@ -20,7 +27,7 @@ export const Header = styled(H)`
   ${responsive.smAndLess} {
     margin: 0;
   }
-`
+`;
 export const H1 = styled(h1)`
   font-size: 39px;
 
@@ -28,11 +35,11 @@ export const H1 = styled(h1)`
     font-size: 25px;
     text-align: center;
   }
-`
+`;
 
 export const H2 = styled(h2)`
   font-size: 25px;
-`
+`;
 
 export const HeroSection = styled.section`
   display: flex;
@@ -40,9 +47,8 @@ export const HeroSection = styled.section`
   margin-top: 84px;
   ${responsive.smAndLess} {
     flex-direction: column-reverse;
-
   }
-`
+`;
 
 export const HeroText = styled.div`
   width: 50%;
@@ -69,20 +75,18 @@ export const Button = styled(button)`
   ${responsive.smAndLess} {
     margin-top: 32px;
   }
-`
-
-export const HeroImage = styled(Image)`
-  
 `;
 
+export const HeroImage = styled(Image)``;
+
 export const CTAText = styled.span`
-  font-size: .9rem;
+  font-size: 0.9rem;
 `;
 
 export const SubSection = styled.section`
   display: flex;
   justify-content: space-between;
-  
+
   margin-top: 189px;
 
   ${responsive.smAndLess} {
@@ -115,21 +119,19 @@ export const SectionTwo = styled.div`
     margin-top: 64px;
   }
 `;
-export const SubSectionText = styled.p`
-  
-`;
+export const SubSectionText = styled.p``;
 
 export const ImageWrapper = styled.div`
   margin-top: 32px;
   margin-bottom: 32px;
-`
+`;
 
 export const SubSectionImage = styled(Image)`
-  border: solid 1px #D4D4D4;
+  border: solid 1px #d4d4d4;
 `;
 
 export const StyledLink = styled.a`
   display: block;
   margin-top: 1rem;
-  color: #DCA090;
+  color: #dca090;
 `;

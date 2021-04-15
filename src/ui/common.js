@@ -7,7 +7,7 @@ export const Outer = styled.div`
   margin: 0 auto;
   display: block;
   min-height: 75vh;
-  
+
   ${responsive.mdPlus} {
     max-width: 1440px;
     padding-left: 100px;
@@ -60,4 +60,9 @@ export const Header = styled.div`
     color: var(--color-text-sub);
     margin: 0;
   }
+`;
+
+export const Message = styled.div`
+  border: 3px solid var(--color-primary);
+  padding: 1em;
 `;
