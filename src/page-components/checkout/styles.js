@@ -84,7 +84,7 @@ export const TextArea = styled.textarea`
   &[value=''] {
     border-bottom: 1px solid var(--color-box-background);
   }
-`
+`;
 
 export const ErrorMessage = styled.p`
   color: var(--color-error);
@@ -163,6 +163,9 @@ export const Container = styled.div`
   margin-bottom: 25px;
   padding: 50px 30px;
   width: 100%;
+  ${responsive.xs} {
+    padding: 30px 16px;
+  }
   ${responsive.smPlus} {
     margin-bottom: 0;
   }

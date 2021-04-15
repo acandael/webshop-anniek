@@ -10,7 +10,7 @@ import ServiceApi from 'lib/service-api';
 import { useT } from 'lib/i18n';
 import { useBasket } from 'components/basket';
 import { Spinner } from 'ui/spinner';
-import {useForm} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import {
   Row,
@@ -72,7 +72,16 @@ export default function Payment() {
     multilingualUrlPrefix = '/' + router.locale;
   }
 
-  const { firstName, lastName, email, message, street, streetNumber, postalCode, city } = state;
+  const {
+    firstName,
+    lastName,
+    email,
+    message,
+    street,
+    streetNumber,
+    postalCode,
+    city
+  } = state;
 
   const basket = useBasket();
 
@@ -81,10 +90,8 @@ export default function Payment() {
   const deliveryMethod = basket.deliveryMethod;
 
   useEffect(() => {
-    
-    setState({...state, delivery: deliveryMethod})
-    
-  }, [deliveryMethod])
+    setState({ ...state, delivery: deliveryMethod });
+  }, [deliveryMethod]);
 
   function getURL(path) {
     return `${location.protocol}//${location.host}${multilingualUrlPrefix}${path}`;
@@ -96,7 +103,7 @@ export default function Payment() {
    * an order
    */
 
-  const { register, errors } = useForm({mode: "onBlur"});
+  const { register, errors } = useForm({ mode: 'onBlur' });
 
   const checkoutModel = {
     basketModel,
@@ -117,7 +124,7 @@ export default function Payment() {
           street,
           streetNumber,
           postalCode,
-          city,
+          city
         }
       ]
     },
@@ -184,35 +191,35 @@ export default function Payment() {
   }
 
   const isValid = () => {
-    if (firstName === "") {
+    if (firstName === '') {
       return false;
     }
 
-    if (lastName === "") {
+    if (lastName === '') {
       return false;
     }
 
-    if (email === "") {
+    if (email === '') {
       return false;
     }
 
     if (deliveryMethod === 'shipping') {
-      if (street === "") {
+      if (street === '') {
         return false;
       }
-      if (streetNumber === "") {
+      if (streetNumber === '') {
         return false;
       }
-      if (postalCode === "") {
+      if (postalCode === '') {
         return false;
       }
-      if (city === "") {
+      if (city === '') {
         return false;
       }
     }
 
     return true;
-  }
+  };
 
   return (
     <Inner>
@@ -225,28 +232,34 @@ export default function Payment() {
               <Label htmlFor="firstname">{t('customer.firstName')}</Label>
               <Input
                 name="firstname"
-                ref={register({required: "Voornaam is verplicht"})}
+                ref={register({ required: 'Voornaam is verplicht' })}
                 type="text"
                 value={firstName}
                 onChange={(e) =>
                   setState({ ...state, firstName: e.target.value })
                 }
               />
-              {errors.firstname && <ErrorMessage>{errors.firstname.message}</ErrorMessage>}
+              {errors.firstname && (
+                <ErrorMessage>{errors.firstname.message}</ErrorMessage>
+              )}
             </InputGroup>
+          </Row>
+          <Row>
             <InputGroup>
               <Label htmlFor="lastname">{t('customer.lastName')}</Label>
               <Input
                 name="lastname"
                 type="text"
-                ref={register({required: "Familienaam is verplicht"})}
+                ref={register({ required: 'Familienaam is verplicht' })}
                 value={lastName}
                 onChange={(e) =>
                   setState({ ...state, lastName: e.target.value })
                 }
                 required
               />
-              {errors.lastname && <ErrorMessage>{errors.lastname.message}</ErrorMessage>}
+              {errors.lastname && (
+                <ErrorMessage>{errors.lastname.message}</ErrorMessage>
+              )}
             </InputGroup>
           </Row>
           <Row>
@@ -255,157 +268,178 @@ export default function Payment() {
               <Input
                 name="email"
                 type="email"
-                ref={register({required: "Email is verplicht", pattern: {
-                  value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                  message: "ongeldig email adres"
-                }})}
+                ref={register({
+                  required: 'Email is verplicht',
+                  pattern: {
+                    value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    message: 'ongeldig email adres'
+                  }
+                })}
                 value={email}
                 onChange={(e) => setState({ ...state, email: e.target.value })}
                 required
               />
-              {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
+              {errors.email && (
+                <ErrorMessage>{errors.email.message}</ErrorMessage>
+              )}
             </InputGroup>
           </Row>
-          {deliveryMethod === 'shipping' && <><Row>
-          <InputGroup>
-              <Label htmlFor="street">{t('customer.street')}</Label>
-              <Input
-                name="street"
-                type="text"
-                ref={register({required: "Straat is verplicht"})}
-                value={street}
-                onChange={(e) =>
-                  setState({ ...state, street: e.target.value })
-                }
-                required
-              />
-              {errors.street && <ErrorMessage>{errors.street.message}</ErrorMessage>}
-            </InputGroup>
-            <InputGroup>
-              <Label htmlFor="streetNumber">{t('customer.streetNumber')}</Label>
-              <Input
-                name="streetNumber"
-                type="number"
-                ref={register({required: "Straatnummer is verplicht"})}
-                value={streetNumber}
-                onChange={(e) =>
-                  setState({ ...state, streetNumber: e.target.value })
-                }
-                required
-              />
-              {errors.streetNumber && <ErrorMessage>{errors.streetNumber.message}</ErrorMessage>}
-            </InputGroup>
-          </Row>
-          <Row>
-          <InputGroup>
-              <Label htmlFor="postalCode">{t('customer.postalCode')}</Label>
-              <Input
-                name="postalCode"
-                type="number"
-                ref={register({required: "Postcode is verplicht"})}
-                value={postalCode}
-                onChange={(e) =>
-                  setState({ ...state, postalCode: e.target.value })
-                }
-                required
-              />
-              {errors.postalCode && <ErrorMessage>{errors.postalCode.message}</ErrorMessage>}
-            </InputGroup>
-          </Row>
-          <Row>
-          <InputGroup>
-              <Label htmlFor="city">{t('customer.city')}</Label>
-              <Input
-                name="city"
-                type="text"
-                ref={register({required: "Stad is verplicht"})}
-                value={city}
-                onChange={(e) =>
-                  setState({ ...state, city: e.target.value })
-                }
-                required
-              />
-              {errors.city && <ErrorMessage>{errors.city.message}</ErrorMessage>}
-            </InputGroup>
-          </Row></> }
-          { Boolean(giftcard) && <>
-            <Row>
-              <InputGroup>
-              <Label htmlFor="message">Extra vragen of info:</Label>
-                <TextArea rows="5"
-                  type="text"
-                  name="message"
-                  onChange={(e) =>
-                  setState({ ...state, message: e.target.value })
-                }
-                />
-              </InputGroup>
-            </Row>
-          </>
-          }
+          {deliveryMethod === 'shipping' && (
+            <>
+              <Row>
+                <InputGroup>
+                  <Label htmlFor="street">{t('customer.street')}</Label>
+                  <Input
+                    name="street"
+                    type="text"
+                    ref={register({ required: 'Straat is verplicht' })}
+                    value={street}
+                    onChange={(e) =>
+                      setState({ ...state, street: e.target.value })
+                    }
+                    required
+                  />
+                  {errors.street && (
+                    <ErrorMessage>{errors.street.message}</ErrorMessage>
+                  )}
+                </InputGroup>
+                <InputGroup>
+                  <Label htmlFor="streetNumber">
+                    {t('customer.streetNumber')}
+                  </Label>
+                  <Input
+                    name="streetNumber"
+                    type="number"
+                    ref={register({ required: 'Straatnummer is verplicht' })}
+                    value={streetNumber}
+                    onChange={(e) =>
+                      setState({ ...state, streetNumber: e.target.value })
+                    }
+                    required
+                  />
+                  {errors.streetNumber && (
+                    <ErrorMessage>{errors.streetNumber.message}</ErrorMessage>
+                  )}
+                </InputGroup>
+              </Row>
+              <Row>
+                <InputGroup>
+                  <Label htmlFor="postalCode">{t('customer.postalCode')}</Label>
+                  <Input
+                    name="postalCode"
+                    type="number"
+                    ref={register({ required: 'Postcode is verplicht' })}
+                    value={postalCode}
+                    onChange={(e) =>
+                      setState({ ...state, postalCode: e.target.value })
+                    }
+                    required
+                  />
+                  {errors.postalCode && (
+                    <ErrorMessage>{errors.postalCode.message}</ErrorMessage>
+                  )}
+                </InputGroup>
+              </Row>
+              <Row>
+                <InputGroup>
+                  <Label htmlFor="city">{t('customer.city')}</Label>
+                  <Input
+                    name="city"
+                    type="text"
+                    ref={register({ required: 'Stad is verplicht' })}
+                    value={city}
+                    onChange={(e) =>
+                      setState({ ...state, city: e.target.value })
+                    }
+                    required
+                  />
+                  {errors.city && (
+                    <ErrorMessage>{errors.city.message}</ErrorMessage>
+                  )}
+                </InputGroup>
+              </Row>
+            </>
+          )}
+          {Boolean(giftcard) && (
+            <>
+              <Row>
+                <InputGroup>
+                  <Label htmlFor="message">Extra vragen of info:</Label>
+                  <TextArea
+                    rows="5"
+                    type="text"
+                    name="message"
+                    onChange={(e) =>
+                      setState({ ...state, message: e.target.value })
+                    }
+                  />
+                </InputGroup>
+              </Row>
+            </>
+          )}
         </form>
       </CheckoutFormGroup>
 
-      
-
-      { isValid(checkoutModel) && <CheckoutFormGroup withUpperMargin>
-        <div>
-          <SectionHeader>{t('checkout.choosePaymentMethod')}</SectionHeader>
-          {paymentConfig.loading ? (
-            <Spinner />
-          ) : (
-            <div>
-              {enabledPaymentProviders.length === 0 ? (
-                <i>{t('checkout.noPaymentProvidersConfigured')}</i>
-              ) : (
-                <PaymentProviders>
-                  <PaymentSelector>
-                    {enabledPaymentProviders.map((paymentProviderName) => {
-                      const paymentProvider = paymentProviders.find(
-                        (p) => p.name === paymentProviderName
-                      );
-                      if (!paymentProvider) {
-                        return (
-                          <small>
-                            {t('checkout.paymentProviderNotConfigured', {
-                              name: paymentProviderName
-                            })}
-                          </small>
+      {isValid(checkoutModel) && (
+        <CheckoutFormGroup withUpperMargin>
+          <div>
+            <SectionHeader>{t('checkout.choosePaymentMethod')}</SectionHeader>
+            {paymentConfig.loading ? (
+              <Spinner />
+            ) : (
+              <div>
+                {enabledPaymentProviders.length === 0 ? (
+                  <i>{t('checkout.noPaymentProvidersConfigured')}</i>
+                ) : (
+                  <PaymentProviders>
+                    <PaymentSelector>
+                      {enabledPaymentProviders.map((paymentProviderName) => {
+                        const paymentProvider = paymentProviders.find(
+                          (p) => p.name === paymentProviderName
                         );
-                      }
+                        if (!paymentProvider) {
+                          return (
+                            <small>
+                              {t('checkout.paymentProviderNotConfigured', {
+                                name: paymentProviderName
+                              })}
+                            </small>
+                          );
+                        }
 
-                      return (
-                        <PaymentButton
-                          key={paymentProvider.name}
-                          color={paymentProvider.color}
-                          type="button"
-                          selected={
-                            selectedPaymentProvider === paymentProvider.name
-                          }
-                          onClick={() =>
-                            setSelectedPaymentProvider(paymentProvider.name)
-                          }
-                        >
-                          <img
-                            src={paymentProvider.logo}
-                            alt={t('checkout.paymentProviderLogoAlt', {
-                              name: paymentProvider.name
-                            })}
-                          />
-                        </PaymentButton>
-                      );
-                    })}
-                  </PaymentSelector>
+                        return (
+                          <PaymentButton
+                            key={paymentProvider.name}
+                            color={paymentProvider.color}
+                            type="button"
+                            selected={
+                              selectedPaymentProvider === paymentProvider.name
+                            }
+                            onClick={() =>
+                              setSelectedPaymentProvider(paymentProvider.name)
+                            }
+                          >
+                            <img
+                              src={paymentProvider.logo}
+                              alt={t('checkout.paymentProviderLogoAlt', {
+                                name: paymentProvider.name
+                              })}
+                            />
+                          </PaymentButton>
+                        );
+                      })}
+                    </PaymentSelector>
 
-                  {paymentProviders
-                    .find((p) => p.name === selectedPaymentProvider)
-                    ?.render()}
-                </PaymentProviders>
-              )}
-            </div>
-          )}
-        </div>
-      </CheckoutFormGroup> }
+                    {paymentProviders
+                      .find((p) => p.name === selectedPaymentProvider)
+                      ?.render()}
+                  </PaymentProviders>
+                )}
+              </div>
+            )}
+          </div>
+        </CheckoutFormGroup>
+      )}
     </Inner>
   );
 }
