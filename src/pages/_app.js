@@ -19,17 +19,12 @@ function MyApp({ Component, pageProps, commonData }) {
    * Read more here: https://github.com/garmeeh/next-seo#default-seo-configuration
    */
   const SEOSettings = {
-    // openGraph: {
-    //   type: 'website',
-    //   locale: locale.appLanguage,
-    //   url: 'https://www.url.ie/',
-    //   site_name: 'SiteName'
-    // },
-    // twitter: {
-    //   handle: '@handle',
-    //   site: '@site',
-    //   cardType: 'summary_large_image'
-    // }
+    openGraph: {
+      type: 'website',
+      locale: locale.appLanguage,
+      url: 'https://www.anniek-lambrecht.be',
+      site_name: 'Skincoach Anniek Lambrecht'
+    }
   };
 
   const theme = extendTheme({

@@ -38,7 +38,7 @@ export default function Layout({
   preview
 }) {
   const router = useRouter();
-  const headTilte = title
+  const headTitel = title
     ? `${title} | ${process.env.NEXT_PUBLIC_CRYSTALLIZE_TENANT_IDENTIFIER}`
     : `${process.env.NEXT_PUBLIC_CRYSTALLIZE_TENANT_IDENTIFIER}`;
 
@@ -47,10 +47,10 @@ export default function Layout({
   return (
     <>
       <Head>
-        <title key="title">{headTilte}</title>
-        <meta name="title" content={headTilte} />
-        <meta property="og:title" content={headTilte} />
-        <meta property="twitter:title" content={headTilte} />
+        <title key="title">{headTitel}</title>
+        <meta name="title" content={headTitel} />
+        <meta property="og:title" content={headTitel} />
+        <meta property="twitter:title" content={headTitel} />
         {siteUrl && (
           <link href={`${siteUrl}${router?.asPath}`} rel="canonical" />
         )}
