@@ -25,7 +25,7 @@ export async function getData({ asPath, language, preview = null }) {
 export default function WebshopPage({ folder, preview }) {
   const { children } = folder;
   const description = folder.components?.find((c) => c.name === 'Beschrijving')
-    ?.content?.json;
+    ?.content?.text;
   const icon = folder.components?.find((c) => c.name === 'Icon');
   const stacks = folder.components?.find((c) => c.name === 'Stackable content')
     ?.content?.items;
@@ -33,7 +33,7 @@ export default function WebshopPage({ folder, preview }) {
   return (
     <Layout
       title={folder.name}
-      description={toText(description)}
+      description={description}
       image={icon?.content?.images?.[0]?.url}
       preview={preview}
     >
