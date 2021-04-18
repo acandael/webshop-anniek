@@ -3,8 +3,8 @@ module.exports = {
   // check out the Next.js docs:
   // https://nextjs.org/docs/advanced-features/i18n-routing
   i18n: {
-    locales: ["en"],
-    defaultLocale: 'en'
+    locales: ['en', 'nl'],
+    defaultLocale: 'nl'
   },
   async redirects() {
     return [
