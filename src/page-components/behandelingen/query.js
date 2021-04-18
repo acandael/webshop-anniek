@@ -2,6 +2,9 @@ export default `
   query FOLDER_PAGE($language: String!, $path: String, $version: VersionLabel!) {
     folder: catalogue(language: $language, path: $path, version: $version) {
       name
+      components {
+        ...component
+      }
       children {
         name
         type

@@ -22,11 +22,10 @@ export async function getData({ asPath, language, preview = null }) {
 
 export default function BehandelingenPage({ folder, preview }) {
   const { children } = folder;
-  
+
   const description = folder.components?.find((c) => c.name === 'Beschrijving')
     ?.content?.text;
   const icon = folder.components?.find((c) => c.name === 'Icon');
-
 
   return (
     <Layout
@@ -40,14 +39,16 @@ export default function BehandelingenPage({ folder, preview }) {
           <H1>{folder.name}</H1>
         </Header>
         {children && (
-              <List>
-                {children.map((item, i) => (
-                  // change type from 'folder' to 'behandelingen'
-                  item.type = 'behandelingen',
-                  <ItemMicroformat item={item} key={i} />
-                ))}
-              </List>
+          <List>
+            {children.map(
+              (item, i) => (
+                // change type from 'folder' to 'behandelingen'
+                (item.type = 'behandelingen'),
+                (<ItemMicroformat item={item} key={i} />)
+              )
             )}
+          </List>
+        )}
       </Outer>
     </Layout>
   );

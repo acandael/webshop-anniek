@@ -23,6 +23,7 @@ import {
 } from './styles';
 import Link from 'next/link';
 import { Message } from 'ui';
+import Head from 'next/head';
 
 export async function getData({ language, preview = null }) {
   try {
@@ -58,6 +59,15 @@ export default function FrontPage({ catalogue, preview }) {
   return (
     <Layout preview={preview}>
       <Outer>
+        <Head>
+          <meta
+            name="description"
+            content="Mijn zaak is geen klassiek schoonheidsinstituut maar
+              een instituut waar de focus vooral op Huidverbetering of Skincare
+              ligt. Je krijgt een persoonlijke behandeling met professionele
+              opvolging van jouw huidbehandelingen."
+          />
+        </Head>
         <Message>
           Bestellingen kunnen enkel afgehaald worden na ontvangst van je email
           dat de bestelling klaar staat voor afhaling. Vanwege de corona
