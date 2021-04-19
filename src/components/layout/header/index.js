@@ -40,7 +40,12 @@ export default function Header({ simple, preview }) {
       <Outer simple={simple}>
         <Link href="/" passHref>
           <Logo>
-            <img src="/static/logo-anniek-lambrecht-header-2.png" alt="" width="240" height="133" />
+            <img
+              src="/static/logo-anniek-lambrecht-header-2.png"
+              alt=""
+              width="240"
+              height="133"
+            />
           </Logo>
         </Link>
         <Nav open={navOpen}>
@@ -53,19 +58,13 @@ export default function Header({ simple, preview }) {
               </NavListItem>
             ))}
             <NavListItem>
-                <Link href="/contact">
-                  <a onClick={() => setNavOpen(false)}>CONTACT</a>
-                </Link>
+              <Link href="/contact">
+                <a onClick={() => setNavOpen(false)}>CONTACT</a>
+              </Link>
             </NavListItem>
           </NavList>
         </Nav>
         <IconBar>
-          <LocaleSwitcher />
-          <Link href="/account">
-            <Btn as="a" aria-label="User area">
-              <IconUser />
-            </Btn>
-          </Link>
           <Search />
           <BasketButton />
         </IconBar>
