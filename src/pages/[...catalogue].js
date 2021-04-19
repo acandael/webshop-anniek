@@ -21,15 +21,29 @@ import DocPage, { getData as getDataDoc } from 'page-components/document';
 import FolderPage, { getData as getDataFolder } from 'page-components/folder';
 import ProdPage, { getData as getDataProd } from 'page-components/product';
 import SearchPage, { getData as getDataSearch } from 'page-components/search';
-import WebshopPage, { getData as getDataWebshop } from 'page-components/webshop';
+import WebshopPage, {
+  getData as getDataWebshop
+} from 'page-components/webshop';
 import BrandPage, { getData as getDataBrand } from 'page-components/brand';
-import ProductLinePage, { getData as getDataProductLine } from 'page-components/product-line';
-import CategoryPage, { getData as getDataCategory } from 'page-components/category';
-import BehandelingenPage, { getData as getDataBehandelingen } from 'page-components/behandelingen';
-import BehandelingPage, { getData as getDataBehandeling } from 'page-components/behandeling';
-import BrandArticlePage, { getData as getDataBrandArticle } from 'page-components/brand-article';
+import ProductLinePage, {
+  getData as getDataProductLine
+} from 'page-components/product-line';
+import CategoryPage, {
+  getData as getDataCategory
+} from 'page-components/category';
+import BehandelingenPage, {
+  getData as getDataBehandelingen
+} from 'page-components/behandelingen';
+import BehandelingPage, {
+  getData as getDataBehandeling
+} from 'page-components/behandeling';
+import BrandArticlePage, {
+  getData as getDataBrandArticle
+} from 'page-components/brand-article';
 import MerkenPage, { getData as getDataMerken } from 'page-components/merken';
-import KadobonnenPage, { getData as getDataKadobonnen } from 'page-components/kadobonnen';
+import KadobonnenPage, {
+  getData as getDataKadobonnen
+} from 'page-components/kadobonnen';
 
 import { shape } from 'prop-types';
 
@@ -125,28 +139,31 @@ export async function getStaticProps(context) {
       }
     });
 
-    const { type, shape: {name: shapeName} } = getItemType.data.catalogue;
+    const {
+      type,
+      shape: { name: shapeName }
+    } = getItemType.data.catalogue;
 
     let renderer = 'folder';
-    
+
     if (shapeName === 'Webshop') {
-      renderer = 'webshop'
+      renderer = 'webshop';
     } else if (shapeName === 'Merk') {
-      renderer = 'brand'
+      renderer = 'brand';
     } else if (shapeName === 'Lijn') {
-      renderer = 'productline'
+      renderer = 'productline';
     } else if (shapeName === 'Categorie') {
-      renderer = 'category'
+      renderer = 'category';
     } else if (shapeName === 'Behandelingen') {
-      renderer = 'behandelingen'
+      renderer = 'behandelingen';
     } else if (shapeName === 'Behandeling') {
-      renderer = 'behandeling'
+      renderer = 'behandeling';
     } else if (shapeName === 'BrandArticle') {
-      renderer = 'brandarticle'
+      renderer = 'brandarticle';
     } else if (shapeName === 'Merken') {
-      renderer = 'merken'
+      renderer = 'merken';
     } else if (shapeName === 'Kadobonnen') {
-      renderer = 'kadobonnen'
+      renderer = 'kadobonnen';
     } else if (type in renderers) {
       renderer = type;
     }
@@ -162,8 +179,6 @@ export async function getStaticProps(context) {
         }
       })
     });
-
-    
 
     return {
       props: {
