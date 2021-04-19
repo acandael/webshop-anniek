@@ -4,7 +4,7 @@ import { useT } from 'lib/i18n';
 import { useLocale } from 'lib/app-config';
 import { screen, H3 } from 'ui';
 
-import { Outer, Text, ImageWrapper, Img, Price } from './styles';
+import { Outer, Text, ImageWrapper, Img, Price, BeforePrice } from './styles';
 import getRelativePriceVariants from 'lib/pricing';
 
 export default function CategoryItem({ data, gridCell }) {

@@ -93,3 +93,12 @@ export const Price = styled.span`
     color:var(--color-discount);
   `}
 `;
+
+export const BeforePrice = styled.div`
+  font-size: 0.8em;
+  opacity: 0.7;
+  padding: 0 15px 0 5px;
+  font-weight: 500;
+  text-decoration: line-through;
+  color: var(--color-price);
+`;

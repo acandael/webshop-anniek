@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useT } from 'lib/i18n';
 import { screen, H3 } from 'ui';
 import { useLocale } from 'lib/app-config';
-import { Outer, Text, ImageWrapper, Img, Price } from './styles';
+import { Outer, Text, ImageWrapper, Img, Price, BeforePrice } from './styles';
 
 import getRelativePriceVariants from 'lib/pricing';
 
