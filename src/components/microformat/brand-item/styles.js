@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import is from 'styled-is';
 import { Image } from '@crystallize/react-image';
 
 import { responsive } from 'ui';
@@ -75,6 +76,24 @@ export const Text = styled.div`
 `;
 
 export const Price = styled.span`
-  color: inherit;
+  color: var(--color-price);
+  position: relative;
+  margin-top: 16px;
   font-weight: bold;
+  display: flex;
+  font-size: var(--font-listing-price-size);
+  padding-bottom: 5px;
+  align-items: center;
+  ${is('discounted')`
+    color:var(--color-discount);
+  `}
+`;
+
+export const BeforePrice = styled.div`
+  font-size: 0.8em;
+  opacity: 0.7;
+  padding: 0 15px 0 5px;
+  font-weight: 500;
+  text-decoration: line-through;
+  color: var(--color-price);
 `;

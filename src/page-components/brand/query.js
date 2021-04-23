@@ -11,6 +11,7 @@ export default `
          name
          path
          type
+         ...variants
          components {
           ...component
          }
@@ -57,6 +58,25 @@ export default `
       ...singleLine
       ...imageContent
       ...paragraphCollection
+    }
+  }
+
+  fragment variants on Product {
+    variants {
+      id
+      name
+      sku
+      priceVariants {
+        identifier
+        price
+        currency
+      }
+      stock
+      isDefault
+      attributes {
+        attribute
+        value
+      }
     }
   }
 `;

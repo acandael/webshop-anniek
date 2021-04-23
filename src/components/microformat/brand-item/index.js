@@ -1,16 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
-
 import { screen, H3 } from 'ui';
-
-import { Outer, Text, ImageWrapper, Img } from './styles';
+import { useT } from 'lib/i18n';
+import { useLocale } from 'lib/app-config';
+import { Outer, Text, ImageWrapper, Img, Price, BeforePrice } from './styles';
+import getRelativePriceVariants from 'lib/pricing';
 
 export default function BrandItem({ data, gridCell }) {
+  const t = useT();
+  const locale = useLocale();
+
   if (!data) {
     return null;
   }
 
-  const { name, path } = data;
+  const { name, path, variants, matchingVariant } = data;
   const imageMdWidth = 100 / (gridCell?.layout?.colspan ?? 1);
 
   let image;
@@ -18,6 +22,16 @@ export default function BrandItem({ data, gridCell }) {
   const images = data.components?.find((c) => c.type === 'images');
   image = images?.content?.images?.[0];
   const samenvatting = data.components?.find((c) => c.name === 'Samenvatting');
+
+  const variant =
+    matchingVariant || variants?.find((variant) => variant.isDefault) || {};
+
+  const pricing = getRelativePriceVariants({
+    variant: variant,
+    locale
+  });
+
+  console.log(pricing);
 
   return (
     <Link href={path} passHref>
@@ -36,6 +50,32 @@ export default function BrandItem({ data, gridCell }) {
         </ImageWrapper>
         <Text>
           <p>{samenvatting && samenvatting.content?.text}</p>
+          {pricing?.discountPrice ? (
+            <Price discounted>
+              <strong>
+                {t('common.price', {
+                  value: pricing?.discountPrice?.price,
+                  currency: pricing?.discountPrice?.currency
+                })}
+              </strong>
+              <BeforePrice>
+                {t('common.price', {
+                  value: pricing?.defaultPrice?.price,
+                  currency: pricing?.defaultPrice?.currency
+                })}
+              </BeforePrice>
+            </Price>
+          ) : (
+            <Price>
+              <strong>
+                {pricing?.defaultPrice.price &&
+                  t('common.price', {
+                    value: pricing?.defaultPrice?.price,
+                    currency: pricing?.defaultPrice?.currency
+                  })}
+              </strong>
+            </Price>
+          )}
         </Text>
       </Outer>
     </Link>
