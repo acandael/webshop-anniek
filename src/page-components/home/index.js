@@ -22,7 +22,6 @@ import {
   StyledLink
 } from './styles';
 import Link from 'next/link';
-import { Message } from 'ui';
 import Head from 'next/head';
 
 export async function getData({ language, preview = null }) {
@@ -68,12 +67,6 @@ export default function FrontPage({ catalogue, preview }) {
               opvolging van jouw huidbehandelingen."
           />
         </Head>
-        <Message>
-          Bestellingen kunnen enkel afgehaald worden na ontvangst van je email
-          dat de bestelling klaar staat voor afhaling. Vanwege de corona
-          maatregelen is er een afhaalmoment op maandag 19 en vrijdag 23 april
-          van 9-12h, tenzij anders afgesproken.
-        </Message>
         <Header>
           <H1>skincoach anniek lambrecht</H1>
         </Header>
@@ -87,11 +80,19 @@ export default function FrontPage({ catalogue, preview }) {
               een instituut waar de focus vooral op Huidverbetering of Skincare
               ligt. Je krijgt een persoonlijke behandeling met professionele
               opvolging van jouw huidbehandelingen. Volg je mij al op{' '}
-              <a href="https://www.facebook.com/annieklambrechtskincoach/?ref=hl">
+              <a
+                href="https://www.facebook.com/annieklambrechtskincoach/?ref=hl"
+                target="_blank"
+              >
                 Facebook
               </a>{' '}
               &{' '}
-              <a href="https://www.instagram.com/annieklambrecht/">Instagram</a>
+              <a
+                href="https://www.instagram.com/annieklambrecht/"
+                target="_blank"
+              >
+                Instagram
+              </a>
               ?
             </p>
             <Link

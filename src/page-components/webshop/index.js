@@ -1,10 +1,9 @@
 import React from 'react';
 
 import { simplyFetchFromGraph } from 'lib/graph';
-import { Outer, Header, H1, Message } from 'ui';
+import { Outer, Header, H1 } from 'ui';
 import Layout from 'components/layout';
 import ItemMicroformat from 'components/microformat';
-import toText from '@crystallize/content-transformer/toText';
 import { List, PromotionWrapper } from './styles';
 import query from './query';
 import Stackable from 'components/stackable';
@@ -38,12 +37,6 @@ export default function WebshopPage({ folder, preview }) {
       preview={preview}
     >
       <Outer>
-        <Message>
-          Bestellingen kunnen enkel afgehaald worden na ontvangst van je email
-          dat de bestelling klaar staat voor afhaling. Vanwege de corona
-          maatregelen is er een afhaalmoment op maandag 19 en vrijdag 23 april
-          van 9-12h, tenzij anders afgesproken.
-        </Message>
         <Header centerContent>
           <H1>{folder.name}</H1>
         </Header>

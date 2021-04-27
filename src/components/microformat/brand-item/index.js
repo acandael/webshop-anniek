@@ -31,8 +31,6 @@ export default function BrandItem({ data, gridCell }) {
     locale
   });
 
-  console.log(pricing);
-
   return (
     <Link href={path} passHref>
       <Outer>
