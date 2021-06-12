@@ -4,7 +4,7 @@ import Layout from 'components/layout';
 import { simplyFetchFromGraph } from 'lib/graph';
 import fragments from 'lib/graph/fragments';
 import { useT } from 'lib/i18n';
-import { Message } from 'UI';
+import { Message } from 'ui';
 import {
   Outer,
   Header,
