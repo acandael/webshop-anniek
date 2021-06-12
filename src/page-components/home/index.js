@@ -4,6 +4,7 @@ import Layout from 'components/layout';
 import { simplyFetchFromGraph } from 'lib/graph';
 import fragments from 'lib/graph/fragments';
 import { useT } from 'lib/i18n';
+import { Message } from 'UI';
 import {
   Outer,
   Header,
@@ -23,6 +24,7 @@ import {
 } from './styles';
 import Link from 'next/link';
 import Head from 'next/head';
+import { fromPairs } from 'lodash';
 
 export async function getData({ language, preview = null }) {
   try {
@@ -67,6 +69,14 @@ export default function FrontPage({ catalogue, preview }) {
               opvolging van jouw huidbehandelingen."
           />
         </Head>
+        <Message>
+          Op woensdag 16 juni uitzonderlijk gesloten! Wacht steeds met het
+          afhalen van je bestelling tot je een mail ontvangen hebt dat je
+          bestelling klaar is voor afhalen. Op vrijdag 25 juni vanaf 14h
+          gesloten. Verlof van 30 juni tem 7 juli. Alle bestellingen in deze
+          periode zullen ten vroegste vanaf 8 juli kunnen afgehaald worden nadat
+          je de mail met klaar voor afhalen ontvangen hebt.
+        </Message>
         <Header>
           <H1>skincoach anniek lambrecht</H1>
         </Header>
