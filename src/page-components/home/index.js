@@ -70,12 +70,9 @@ export default function FrontPage({ catalogue, preview }) {
           />
         </Head>
         <Message>
-          Op woensdag 16 juni uitzonderlijk gesloten! Wacht steeds met het
-          afhalen van je bestelling tot je een mail ontvangen hebt dat je
-          bestelling klaar is voor afhalen. Op vrijdag 25 juni vanaf 14h
-          gesloten. Verlof van 30 juni tem 7 juli. Alle bestellingen in deze
-          periode zullen ten vroegste vanaf 8 juli kunnen afgehaald worden nadat
-          je de mail met klaar voor afhalen ontvangen hebt.
+          Verlof van 30 juni tem 7 juli. Alle bestellingen in deze periode
+          zullen ten vroegste vanaf 8 juli kunnen afgehaald worden nadat je de
+          mail met klaar voor afhalen ontvangen hebt.
         </Message>
         <Header>
           <H1>skincoach anniek lambrecht</H1>
