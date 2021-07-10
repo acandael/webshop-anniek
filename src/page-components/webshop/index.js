@@ -38,8 +38,8 @@ export default function WebshopPage({ folder, preview }) {
     >
       <Outer>
         <Message>
-          Verlof van 30 juni tem 7 juli. Alle bestellingen in deze periode
-          zullen ten vroegste vanaf 8 juli kunnen afgehaald worden nadat je de
+          Verlof van 21 juli tem 27 juli. Alle bestellingen in deze periode
+          zullen ten vroegste vanaf 28 juli kunnen afgehaald worden nadat je de
           mail met klaar voor afhalen ontvangen hebt.
         </Message>
         <Header centerContent>
