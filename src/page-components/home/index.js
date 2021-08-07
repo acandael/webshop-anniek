@@ -70,9 +70,11 @@ export default function FrontPage({ catalogue, preview }) {
           />
         </Head>
         <Message>
-          Verlof van 21 juli tem 27 juli. Alle bestellingen in deze periode
-          zullen ten vroegste vanaf 28 juli kunnen afgehaald worden nadat je de
-          mail met klaar voor afhalen ontvangen hebt.
+          <b>Gesloten op 11 en 19 Augustus!</b>
+          <br></br>
+          Verlof van 25 Augustus tem 1 September. Alle bestellingen in deze
+          periode zullen ten vroegste vanaf 2 September kunnen afgehaald worden
+          nadat je de mail met klaar voor afhalen ontvangen hebt.
         </Message>
         <Header>
           <H1>skincoach anniek lambrecht</H1>
