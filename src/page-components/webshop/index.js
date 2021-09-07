@@ -38,11 +38,7 @@ export default function WebshopPage({ folder, preview }) {
     >
       <Outer>
         <Message>
-          <b>Gesloten op 11 en 19 Augustus!</b>
-          <br></br>
-          Verlof van 25 Augustus tem 1 September. Alle bestellingen in deze
-          periode zullen ten vroegste vanaf 2 September kunnen afgehaald worden
-          nadat je de mail met klaar voor afhalen ontvangen hebt.
+          <b>Gesloten op 30 september en 4 oktober.</b>
         </Message>
         <Header centerContent>
           <H1>{folder.name}</H1>
