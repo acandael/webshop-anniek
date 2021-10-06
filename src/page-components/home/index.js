@@ -70,7 +70,7 @@ export default function FrontPage({ catalogue, preview }) {
           />
         </Head>
         <Message>
-          <b>Gesloten op 30 september en 4 oktober. </b>
+          <b>Gesloten op 1-11 en 12 november!</b>
         </Message>
         <Header>
           <H1>skincoach anniek lambrecht</H1>

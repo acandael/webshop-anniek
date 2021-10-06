@@ -38,7 +38,7 @@ export default function WebshopPage({ folder, preview }) {
     >
       <Outer>
         <Message>
-          <b>Gesloten op 30 september en 4 oktober.</b>
+          <b>Gesloten op 1-11 en 12 november!</b>
         </Message>
         <Header centerContent>
           <H1>{folder.name}</H1>

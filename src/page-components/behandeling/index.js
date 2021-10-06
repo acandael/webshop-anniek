@@ -1,11 +1,20 @@
 import React from 'react';
 
 import { simplyFetchFromGraph } from 'lib/graph';
-import { Outer, H1} from 'ui';
+import { Outer, H1 } from 'ui';
 import Layout from 'components/layout';
 import toText from '@crystallize/content-transformer/toText';
 import query from './query';
-import {BehandelingHeader, H3, Button, HeroSection, HeroText, HeroImage, Img, PriceList} from './styles'
+import {
+  BehandelingHeader,
+  H3,
+  Button,
+  HeroSection,
+  HeroText,
+  HeroImage,
+  Img,
+  PriceList
+} from './styles';
 import BehandelingComponents from 'components/shape/behandeling-components';
 import Breadcrumb from 'components/breadcrumb';
 import PropertiesTable from 'components/shape/behandeling-components/properties-table';
@@ -25,17 +34,23 @@ export async function getData({ asPath, language, preview = null }) {
 }
 
 export default function BehandelingPage({ folder, preview }) {
-  const rest = folder.components?.filter((c) => c.type !== 'gridRelations' && c.name !== 'Samenvatting' && c.type !== 'propertiesTable');
+  const rest = folder.components?.filter(
+    (c) =>
+      c.type !== 'gridRelations' &&
+      c.name !== 'Samenvatting' &&
+      c.type !== 'propertiesTable'
+  );
 
   const icon = folder.components?.find((c) => c.name === 'Icon');
-  const description = folder.components?.find((c) => c.name === 'Beschrijving')?.content?.paragraphs[0].body.json;
-    
-  const images = folder.components?.find((c) => c.type === 'images')
-  const image = images?.content?.images[0]
+  const description = folder.components?.find((c) => c.name === 'Beschrijving')
+    ?.content?.paragraphs[0].body.json;
 
-  const prijslijsten = folder.components?.find((c) => c.type === 'propertiesTable').content
+  const images = folder.components?.find((c) => c.type === 'images');
+  const image = images?.content?.images[0];
 
-
+  const prijslijsten = folder.components?.find(
+    (c) => c.type === 'propertiesTable'
+  ).content;
 
   return (
     <Layout
@@ -49,20 +64,24 @@ export default function BehandelingPage({ folder, preview }) {
         <BehandelingHeader centerContent>
           <H1>{folder.name}</H1>
         </BehandelingHeader>
-      
+
         <HeroSection>
           <HeroText>
-          <Link href="https://schoonheidsinstituut-anniek-lambrecht-1.salonized.com/bookings/new?" passHref>
-            <Button
-            width="221px"
+            <Link
+              href="https://schoonheidsinstituut-anniek-lambrecht-1.salonized.com/bookings/new?"
+              passHref
             >
-            Boek Nu
-            </Button>
-          </Link>
+              <Button width="221px">Boek Nu</Button>
+            </Link>
             <BehandelingComponents components={rest} />
           </HeroText>
           <HeroImage>
-            <Img src={image.url} width={image.width} height={image.height} alt={folder.name} />
+            <Img
+              src={image.url}
+              width={image.width}
+              height={image.height}
+              alt={folder.name}
+            />
           </HeroImage>
         </HeroSection>
         <PriceList>
