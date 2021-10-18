@@ -24,7 +24,6 @@ import {
 } from './styles';
 import Link from 'next/link';
 import Head from 'next/head';
-import { fromPairs } from 'lodash';
 
 export async function getData({ language, preview = null }) {
   try {
@@ -88,6 +87,7 @@ export default function FrontPage({ catalogue, preview }) {
               <a
                 href="https://www.facebook.com/annieklambrechtskincoach/?ref=hl"
                 target="_blank"
+                rel="noreferrer"
               >
                 Facebook
               </a>{' '}
@@ -95,6 +95,7 @@ export default function FrontPage({ catalogue, preview }) {
               <a
                 href="https://www.instagram.com/annieklambrecht/"
                 target="_blank"
+                rel="noreferrer"
               >
                 Instagram
               </a>
