@@ -69,7 +69,14 @@ export default function FrontPage({ catalogue, preview }) {
           />
         </Head>
         <Message>
-          <b>Gesloten op 1-11 en 12 november!</b>
+          <p>
+            <b>Gesloten</b> op 1-3-4-5 november en op 11-12 november.
+            Kerstverlof van 25/12 tem 4 Januari.
+          </p>
+          <p>
+            Alle bestellingen in deze periodes kunnen pas later afgehaald of
+            verstuurd worden.
+          </p>
         </Message>
         <Header>
           <H1>skincoach anniek lambrecht</H1>
