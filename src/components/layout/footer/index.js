@@ -81,15 +81,6 @@ export default function Footer() {
           <a href="mailto:info@anniek-lambrecht.be">info@anniek-lambrecht.be</a>
         </li>
       </NavList>
-      <div
-        className="salonized-booking"
-        data-company="v1knzhc"
-        data-color="#e37d7e"
-        data-language="nl"
-        data-size="normal"
-        data-position="right"
-      ></div>
-      <script src="https://static-widget.salonized.com/loader.js"></script>
     </Outer>
   );
 }
