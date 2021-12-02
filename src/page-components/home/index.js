@@ -70,8 +70,7 @@ export default function FrontPage({ catalogue, preview }) {
         </Head>
         <Message>
           <p>
-            <b>Gesloten</b> op 1-3-4-5 november en op 11-12 november.
-            Kerstverlof van 25/12 tem 4 Januari.
+            <b>Gesloten</b>: Kerstverlof van 25/12 tem 4 Januari.
           </p>
           <p>
             Alle bestellingen in deze periodes kunnen pas later afgehaald of
