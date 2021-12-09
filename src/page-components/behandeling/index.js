@@ -7,7 +7,6 @@ import toText from '@crystallize/content-transformer/toText';
 import query from './query';
 import {
   BehandelingHeader,
-  H3,
   Button,
   HeroSection,
   HeroText,
@@ -75,14 +74,16 @@ export default function BehandelingPage({ folder, preview }) {
             </Link>
             <BehandelingComponents components={rest} />
           </HeroText>
-          <HeroImage>
-            <Img
-              src={image.url}
-              width={image.width}
-              height={image.height}
-              alt={folder.name}
-            />
-          </HeroImage>
+          {image && (
+            <HeroImage>
+              <Img
+                src={image.url}
+                width={image.width}
+                height={image.height}
+                alt={folder.name}
+              />
+            </HeroImage>
+          )}
         </HeroSection>
         <PriceList>
           <PropertiesTable {...prijslijsten} />
