@@ -135,9 +135,10 @@ export default function FrontPage({ catalogue, preview }) {
               </ImageWrapper>
               <SubSectionText>
                 Op het menu staan niet alleen Huidanalyse, Peeling en Vitamine
-                Gelaatsbehandelingen maar ook Microneedling. Liften van de huid
-                is mogelijk voor gelaat en lichaam met het LPG apparaat.
-                Ongewenste haren verwijderen we met de Lightsheer Diode Laser.{' '}
+                Gelaatsbehandelingen maar ook Microneedling en Laserbehandeling.
+                Liften van de huid is mogelijk voor gelaat en lichaam met het
+                LPG apparaat. Ongewenste haren verwijderen we met de Lightsheer
+                Diode Laser.{' '}
               </SubSectionText>
               <Link href="/behandelingen">
                 <StyledLink>Ontdek alle behandelingen</StyledLink>
