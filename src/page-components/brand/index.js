@@ -60,7 +60,7 @@ export default function BrandPage({ folder, preview }) {
               </Link>
             )}
             {brochure && (
-              <Link href={brochure}>
+              <Link href={brochure} passHref>
                 <StyledLink>Brochure</StyledLink>
               </Link>
             )}
