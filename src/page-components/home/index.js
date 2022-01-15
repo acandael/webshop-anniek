@@ -3,8 +3,6 @@ import React from 'react';
 import Layout from 'components/layout';
 import { simplyFetchFromGraph } from 'lib/graph';
 import fragments from 'lib/graph/fragments';
-import { useT } from 'lib/i18n';
-import { Message } from 'ui';
 import {
   Outer,
   Header,
@@ -50,12 +48,7 @@ export async function getData({ language, preview = null }) {
   }
 }
 
-export default function FrontPage({ catalogue, preview }) {
-  const t = useT();
-  const [grid] =
-    catalogue?.components?.find((c) => c.type === 'gridRelations')?.content
-      ?.grids || [];
-
+export default function FrontPage({ preview }) {
   return (
     <Layout preview={preview}>
       <Outer>
@@ -68,15 +61,6 @@ export default function FrontPage({ catalogue, preview }) {
               opvolging van jouw huidbehandelingen."
           />
         </Head>
-        <Message>
-          <p>
-            <b>Gesloten</b>: Kerstverlof van 25/12 tem 4 Januari.
-          </p>
-          <p>
-            Alle bestellingen in deze periodes kunnen pas later afgehaald of
-            verstuurd worden.
-          </p>
-        </Message>
         <Header>
           <H1>skincoach anniek lambrecht</H1>
         </Header>
@@ -150,7 +134,7 @@ export default function FrontPage({ catalogue, preview }) {
               <H2>WEBSHOP</H2>
               <ImageWrapper>
                 <SubSectionImage
-                  src="/static/subsection-webshop.jpg"
+                  src="/static/webshop.jpg"
                   alt="anniek lambrecht - webshop"
                   width="456px"
                   height="304px"

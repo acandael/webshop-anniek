@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { simplyFetchFromGraph } from 'lib/graph';
-import { Outer, Header, H1, Message } from 'ui';
+import { Outer, Header, H1 } from 'ui';
 import Layout from 'components/layout';
 import ItemMicroformat from 'components/microformat';
 import { List, PromotionWrapper } from './styles';
@@ -37,15 +37,6 @@ export default function WebshopPage({ folder, preview }) {
       preview={preview}
     >
       <Outer>
-        <Message>
-          <p>
-            <b>Gesloten</b>: Kerstverlof van 25/12 tem 4 Januari.
-          </p>
-          <p>
-            Alle bestellingen in deze periodes kunnen pas later afgehaald of
-            verstuurd worden.
-          </p>
-        </Message>
         <Header centerContent>
           <H1>{folder.name}</H1>
         </Header>
