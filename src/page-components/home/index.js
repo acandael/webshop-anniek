@@ -99,7 +99,7 @@ export default function FrontPage({ preview }) {
             </Link>
           </HeroText>
           <HeroImage
-            src="/static/homepage-2.jpg"
+            src="/static/anniek.jpg"
             alt="anniek lambrecht"
             width="450"
             height="450"
