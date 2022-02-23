@@ -54,12 +54,6 @@ export default function FrontPage({ preview }) {
     <Layout preview={preview}>
       <Outer>
         <Head>
-          <Message>
-            <p>
-              Verlof van 25 februari tot 7 maart. Bestellingen kunnen pas na 7
-              maart afgehaald of verstuurd worden.{' '}
-            </p>
-          </Message>
           <meta
             name="description"
             content="Mijn zaak is geen klassiek schoonheidsinstituut maar
@@ -68,6 +62,12 @@ export default function FrontPage({ preview }) {
               opvolging van jouw huidbehandelingen."
           />
         </Head>
+        <Message>
+          <p>
+            Verlof van 25 februari tot 7 maart. Bestellingen kunnen pas na 7
+            maart afgehaald of verstuurd worden.{' '}
+          </p>
+        </Message>
         <Header>
           <H1>skincoach anniek lambrecht</H1>
         </Header>
