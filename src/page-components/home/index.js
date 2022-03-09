@@ -3,7 +3,6 @@ import React from 'react';
 import Layout from 'components/layout';
 import { simplyFetchFromGraph } from 'lib/graph';
 import fragments from 'lib/graph/fragments';
-import { Message } from 'ui';
 import {
   Outer,
   Header,
@@ -62,12 +61,6 @@ export default function FrontPage({ preview }) {
               opvolging van jouw huidbehandelingen."
           />
         </Head>
-        <Message>
-          <p>
-            Verlof van 25 februari tot 7 maart. Bestellingen kunnen pas na 7
-            maart afgehaald of verstuurd worden.{' '}
-          </p>
-        </Message>
         <Header>
           <H1>skincoach anniek lambrecht</H1>
         </Header>
@@ -77,10 +70,19 @@ export default function FrontPage({ preview }) {
               Hey Beauty!
               <br />
               Wil jij een ook mooie gezonde huid? Dan ben je bij mij aan het
-              juiste adres. Mijn zaak is geen klassiek schoonheidsinstituut maar
-              een instituut waar de focus vooral op Huidverbetering of Skincare
-              ligt. Je krijgt een persoonlijke behandeling met professionele
-              opvolging van jouw huidbehandelingen. Volg je mij al op{' '}
+              juiste adres.
+            </p>
+            <p>
+              Mijn zaak is geen klassiek schoonheidsinstituut maar een instituut
+              waar de focus vooral op Huidverbetering of Skincare ligt.
+            </p>
+            <p>
+              {' '}
+              Je krijgt een persoonlijke behandeling met professionele opvolging
+              van jouw huidbehandelingen.
+            </p>
+            <p>
+              Volg je mij al op{' '}
               <a
                 href="https://www.facebook.com/annieklambrechtskincoach/?ref=hl"
                 target="_blank"
@@ -88,7 +90,7 @@ export default function FrontPage({ preview }) {
               >
                 Facebook
               </a>{' '}
-              &{' '}
+              &amp;{' '}
               <a
                 href="https://www.instagram.com/annieklambrecht/"
                 target="_blank"
