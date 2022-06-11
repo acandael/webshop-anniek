@@ -112,6 +112,7 @@ export default function FrontPage({ preview }) {
             alt="anniek lambrecht"
             width="450"
             height="450"
+            priority
           />
         </HeroSection>
         <SubSection>

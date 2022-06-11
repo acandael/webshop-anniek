@@ -13,7 +13,6 @@ import {
 } from './styles';
 
 function reduceAttributes(variants) {
-  
   return variants.reduce((acc, variant) => {
     const attrs = acc;
 
@@ -29,7 +28,7 @@ function reduceAttributes(variants) {
         attrs[attribute].push(value);
       }
     });
-    
+
     return attrs;
   }, {});
 }
@@ -43,7 +42,7 @@ function attributesToObject({ attributes }) {
 
 function VariantAttributeValue({ value, images = [] }) {
   const [image] = images || [];
-  
+
   return (
     <div>
       {image && (
@@ -62,7 +61,7 @@ export default function VariantSelector({
   onVariantChange
 }) {
   const attributes = reduceAttributes(variants);
-  
+
   if (!Object.keys(attributes).length) {
     return (
       <Outer>
@@ -135,7 +134,7 @@ export default function VariantSelector({
                 );
 
                 const hasVariantForAttribute = Boolean(mostSuitableVariant);
-                
+
                 return (
                   <AttributeButton
                     key={value}
