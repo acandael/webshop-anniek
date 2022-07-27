@@ -112,7 +112,7 @@ export default function FrontPage({ preview }) {
             alt="anniek lambrecht"
             width="450"
             height="450"
-            priority
+            priority="true"
           />
         </HeroSection>
         <SubSection>
@@ -125,6 +125,7 @@ export default function FrontPage({ preview }) {
                   alt="anniek lambrecht - behandelingen"
                   width="456px"
                   height="304px"
+                  priority="true"
                 />
               </ImageWrapper>
               <SubSectionText>
@@ -148,6 +149,7 @@ export default function FrontPage({ preview }) {
                   alt="anniek lambrecht - webshop"
                   width="456px"
                   height="304px"
+                  priority="true"
                 />
               </ImageWrapper>
               <SubSectionText>

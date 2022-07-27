@@ -1,18 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import { useSettings } from 'components/settings-context';
-import IconUser from 'ui/icons/user';
 
 import BurgerButton from './burger-button';
 import BasketButton from './basket-button';
-import LocaleSwitcher from './locale-switcher';
 import Search from './search';
 import {
   Outer,
   Nav,
-  Btn,
   Logo,
   NavList,
   NavListItem,
@@ -45,6 +42,7 @@ export default function Header({ simple, preview }) {
               alt=""
               width="240"
               height="133"
+              priority="true"
             />
           </Logo>
         </Link>
