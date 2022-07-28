@@ -42,7 +42,6 @@ export default function Header({ simple, preview }) {
               alt=""
               width="240"
               height="133"
-              priority="true"
             />
           </Logo>
         </Link>
