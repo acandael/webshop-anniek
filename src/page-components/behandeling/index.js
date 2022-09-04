@@ -12,7 +12,8 @@ import {
   HeroText,
   HeroImage,
   Img,
-  PriceList
+  PriceList,
+  Policy
 } from './styles';
 import BehandelingComponents from 'components/shape/behandeling-components';
 import Breadcrumb from 'components/breadcrumb';
@@ -88,6 +89,19 @@ export default function BehandelingPage({ folder, preview }) {
         <PriceList>
           <PropertiesTable {...prijslijsten} />
         </PriceList>
+        <Policy>
+          <p>
+            <strong>Annulatie policy</strong>: U kan uw afspraak kosteloos
+            verplaatsen of annuleren tot 72u vooraf. Dit kan 24u/24u via de link
+            in de bevestigingsmail van de afspraak of via onze e-mail:
+            info@anniek-lambrecht.be (zondag uitgesloten) Indien u niet tijdig
+            annuleert, zijn wij genoodzaakt 50% van het bedrag van de gemaakte
+            afspraak aan te rekenen ​voor personeels- en werkingskosten, tenzij
+            u een doktersattest kan voorleggen. Andere redenen aanvaarden wij
+            niet. Deze factuur zullen wij mailen en kan u overschrijven. Dank
+            voor het begrip!
+          </p>
+        </Policy>
       </Outer>
     </Layout>
   );

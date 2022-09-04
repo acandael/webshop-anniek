@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { responsive } from 'ui';
 import { Image } from '@crystallize/react-image';
-import {Header, H3 as h3, Button as button} from 'ui';
+import { Header, Button as button } from 'ui';
 
 export const BehandelingHeader = styled(Header)`
   max-width: 1440px;
@@ -11,7 +11,7 @@ export const BehandelingHeader = styled(Header)`
   h1 {
     text-align: left;
   }
-`
+`;
 
 export const HeroSection = styled.div`
   display: flex;
@@ -22,7 +22,7 @@ export const HeroSection = styled.div`
     flex-direction: column-reverse;
     align-items: center;
   }
-`
+`;
 export const HeroText = styled.div`
   display: flex;
   flex-direction: column;
@@ -58,18 +58,15 @@ export const Button = styled(button)`
   ${responsive.smAndLess} {
     margin-top: 64px;
   }
-`
+`;
 
-export const HeroImage = styled.div`
-  
-`
+export const HeroImage = styled.div``;
 export const Img = styled(Image)`
-  
   > img {
     object-fit: contain;
     object-position: center;
     border: 1px solid var(--color-box-background);
-    
+
     /* overflow: hidden; */
     /* border-radius: 12px; */
   }
@@ -78,4 +75,9 @@ export const Img = styled(Image)`
 export const PriceList = styled.div`
   display: flex;
   justify-content: space-around;
-`
+`;
+
+export const Policy = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
