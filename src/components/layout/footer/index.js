@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Outer, Logo, NavList, Powered } from './styles';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <Outer>
       <Powered>
@@ -18,7 +19,7 @@ export default function Footer() {
           </Logo>
         </a>
         <p>
-          &copy; 2021 Copyright Anniek Lambrecht
+          &copy; {currentYear} Copyright Anniek Lambrecht
           <br />
           Alle rechten voorbehouden
           <br />
