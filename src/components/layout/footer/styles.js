@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import {responsive} from 'ui'
+import { responsive } from 'ui';
 
 export const Outer = styled.footer`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  max-width: 1440px;
+  // max-width: 1440px;
   margin: 0 auto;
   /* border-top: 2px solid var(--color-box-background); */
   padding: 50px 138px;
@@ -36,7 +36,6 @@ export const NavList = styled.footer`
     line-height: 1.6rem;
     font-size: 0.9em;
     color: var(--color-text-sub);
-    
   }
   h3 {
     font-size: 20px;

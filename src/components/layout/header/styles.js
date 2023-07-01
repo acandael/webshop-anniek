@@ -7,7 +7,7 @@ export const Outer = styled.header`
   text-align: center;
   background-color: var(--color-primary);
   padding: 20px 100px;
-  max-width: var(--content-max-width);
+  // max-width: var(--content-max-width);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -96,7 +96,7 @@ export const NavListItem = styled.li`
       color: #fff;
       transition: 0.3s;
       ${responsive.smAndLess} {
-        color: #95908F;
+        color: #95908f;
       }
     }
   }
