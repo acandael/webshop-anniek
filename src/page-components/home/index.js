@@ -80,7 +80,7 @@ export default function FrontPage({ preview }) {
             </p>
             <p>
               Mijn zaak is geen klassiek schoonheidsinstituut maar een instituut
-              waar de focus vooral op Huidverbetering of Skincare ligt.
+              waar de focus op Huidverbetering of Skincare ligt.
             </p>
             <p>
               {' '}
