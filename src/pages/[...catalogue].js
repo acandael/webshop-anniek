@@ -45,8 +45,6 @@ import KadobonnenPage, {
   getData as getDataKadobonnen
 } from 'page-components/kadobonnen';
 
-import { shape } from 'prop-types';
-
 const renderers = {
   document: {
     component: DocPage,
@@ -101,12 +99,6 @@ const renderers = {
     getData: getDataKadobonnen
   }
 };
-
-// Returns true if more than half of the children are products
-function childrenIsMostlyProducts(children) {
-  const productsCount = children.filter((c) => c.type === 'product').length;
-  return productsCount > children.length / 2;
-}
 
 export async function getStaticProps(context) {
   const { params, preview } = context;
