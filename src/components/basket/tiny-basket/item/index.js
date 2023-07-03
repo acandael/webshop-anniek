@@ -27,6 +27,14 @@ export default function TinyBasketItem({ item }) {
 
   const { attributes, images } = item;
 
+  function increment() {
+    actions.incrementItem(item);
+  }
+
+  function decrement() {
+    actions.decrementItem(item);
+  }
+
   // Draw users attention when the item is added to the basket
   useEffect(() => {
     if (attentionCartItem.sku === item.sku) {
@@ -40,14 +48,6 @@ export default function TinyBasketItem({ item }) {
       return () => clearTimeout(timeout);
     }
   }, [attentionCartItem.sku, item.sku]);
-
-  function increment() {
-    actions.incrementItem(item);
-  }
-
-  function decrement() {
-    actions.decrementItem(item);
-  }
 
   function remove() {
     // if shipping product is removed the user should not be able to checkout
