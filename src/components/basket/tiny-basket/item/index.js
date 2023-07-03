@@ -16,8 +16,8 @@ import {
   ItemQuantity,
   ItemDelete,
   PriceWrap,
-  Price,
-  drawAttentionDuration
+  Price
+  //drawAttentionDuration
 } from './styles';
 
 export default function TinyBasketItem({ item }) {
@@ -41,8 +41,8 @@ export default function TinyBasketItem({ item }) {
       setDrawAttention(true);
 
       let timeout = setTimeout(
-        () => setDrawAttention(false),
-        drawAttentionDuration
+        () => setDrawAttention(false)
+        //drawAttentionDuration
       );
 
       return () => clearTimeout(timeout);
