@@ -36,6 +36,7 @@ export default function TinyBasketItem({ item }) {
         () => setDrawAttention(false),
         drawAttentionDuration
       );
+
       return () => clearTimeout(timeout);
     }
   }, [attentionCartItem.sku, item.sku]);
