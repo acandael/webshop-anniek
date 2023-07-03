@@ -51,7 +51,7 @@ export default function TinyBasketItem({ item }) {
   function remove() {
     // if shipping product is removed the user should not be able to checkout
     if (item.name === 'verzenden') {
-      // actions.setCanCheckout(false)
+      actions.setCanCheckout(false);
     }
     actions.removeItem(item);
   }
@@ -89,9 +89,9 @@ export default function TinyBasketItem({ item }) {
             </Price>
           </PriceWrap>
         </PriceWrapper>
-        <ItemDelete onClick={actions.removeVoucherCode}>
+        {/* <ItemDelete onClick={actions.removeVoucherCode}>
           {t('basket.removeItem', item)}
-        </ItemDelete>
+        </ItemDelete> */}
       </Item>
     );
   }
