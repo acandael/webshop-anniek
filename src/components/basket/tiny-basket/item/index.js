@@ -22,8 +22,8 @@ import {
 
 export default function TinyBasketItem({ item }) {
   const t = useT();
-  const [drawAttention, setDrawAttention] = useState(false);
   const { attentionCartItem, actions } = useBasket();
+  const [drawAttention, setDrawAttention] = useState(false);
 
   const { attributes, images } = item;
 
@@ -89,9 +89,9 @@ export default function TinyBasketItem({ item }) {
             </Price>
           </PriceWrap>
         </PriceWrapper>
-        {/* <ItemDelete onClick={actions.removeVoucherCode}>
+        <ItemDelete onClick={actions.removeVoucherCode}>
           {t('basket.removeItem', item)}
-        </ItemDelete> */}
+        </ItemDelete>
       </Item>
     );
   }
