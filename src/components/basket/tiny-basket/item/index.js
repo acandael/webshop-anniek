@@ -50,11 +50,11 @@ export default function TinyBasketItem({ item }) {
   }, [attentionCartItem.sku, item.sku]);
 
   function remove() {
+    actions.removeItem(item);
     // if shipping product is removed the user should not be able to checkout
     if (item.name === 'verzenden') {
       actions.setCanCheckout(false);
     }
-    actions.removeItem(item);
   }
 
   if (item.sku.startsWith('shipping')) {
