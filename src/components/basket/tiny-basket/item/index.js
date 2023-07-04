@@ -9,15 +9,15 @@ import {
   Row,
   ItemInfo,
   PriceWrapper,
-  //ImageImageEmpty,
+  ImageImageEmpty,
   ItemImage,
   ItemName,
   ItemQuantityChanger,
   ItemQuantity,
   ItemDelete,
   PriceWrap,
-  Price
-  //drawAttentionDuration
+  Price,
+  drawAttentionDuration
 } from './styles';
 
 export default function TinyBasketItem({ item }) {
@@ -41,8 +41,8 @@ export default function TinyBasketItem({ item }) {
       setDrawAttention(true);
 
       let timeout = setTimeout(
-        () => setDrawAttention(false)
-        //drawAttentionDuration
+        () => setDrawAttention(false),
+        drawAttentionDuration
       );
 
       return () => clearTimeout(timeout);
@@ -57,45 +57,45 @@ export default function TinyBasketItem({ item }) {
     actions.removeItem(item);
   }
 
-  // if (item.sku.startsWith('shipping')) {
-  //   return (
-  //     <Item>
-  //       <ImageImageEmpty>{item.name}</ImageImageEmpty>
-  //       <PriceWrapper>
-  //         <PriceWrap>
-  //           <Price>
-  //             {t('common.price', {
-  //               value: item.price.gross,
-  //               currency: item.price.currency
-  //             })}
-  //           </Price>
-  //         </PriceWrap>
-  //       </PriceWrapper>
-  //       <ItemDelete onClick={remove}>{t('basket.removeItem', item)}</ItemDelete>
-  //     </Item>
-  //   );
-  // }
+  if (item.sku.startsWith('shipping')) {
+    return (
+      <Item>
+        <ImageImageEmpty>{item.name}</ImageImageEmpty>
+        <PriceWrapper>
+          <PriceWrap>
+            <Price>
+              {t('common.price', {
+                value: item.price.gross,
+                currency: item.price.currency
+              })}
+            </Price>
+          </PriceWrap>
+        </PriceWrapper>
+        <ItemDelete onClick={remove}>{t('basket.removeItem', item)}</ItemDelete>
+      </Item>
+    );
+  }
 
-  // if (item.sku.startsWith('--voucher--')) {
-  //   return (
-  //     <Item>
-  //       <ImageImageEmpty>{item.name}</ImageImageEmpty>
-  //       <PriceWrapper>
-  //         <PriceWrap>
-  //           <Price>
-  //             {t('common.price', {
-  //               value: item.price.gross,
-  //               currency: item.price.currency
-  //             })}
-  //           </Price>
-  //         </PriceWrap>
-  //       </PriceWrapper>
-  //       <ItemDelete onClick={actions.removeVoucherCode}>
-  //         {t('basket.removeItem', item)}
-  //       </ItemDelete>
-  //     </Item>
-  //   );
-  // }
+  if (item.sku.startsWith('--voucher--')) {
+    return (
+      <Item>
+        <ImageImageEmpty>{item.name}</ImageImageEmpty>
+        <PriceWrapper>
+          <PriceWrap>
+            <Price>
+              {t('common.price', {
+                value: item.price.gross,
+                currency: item.price.currency
+              })}
+            </Price>
+          </PriceWrap>
+        </PriceWrapper>
+        <ItemDelete onClick={actions.removeVoucherCode}>
+          {t('basket.removeItem', item)}
+        </ItemDelete>
+      </Item>
+    );
+  }
 
   return (
     <Item animate={drawAttention}>
