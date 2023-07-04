@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pintrest, LinkedIn, Facebook, Twitter } from './icons';
+import { Facebook } from './icons';
 import { Outer, Btn } from './styles';
 
 export default function SocialBar() {
