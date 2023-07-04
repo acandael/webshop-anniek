@@ -76,6 +76,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
+    "@next/eslint-plugin-next": "^13.4.8",
     "babel-eslint": "^10.1.0",
     "babel-plugin-styled-components": "^1.10.7",
     "eslint": "^7.0.0",
