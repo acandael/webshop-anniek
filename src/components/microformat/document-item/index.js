@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 
 import { screen, H3 } from 'ui';
-import VideoPlayer from 'components/video-player';
 import TopicTag from 'components/topic-tag';
 
 import { Outer, Text, MediaWrapper, Img, Tags, Inner } from './styles';
@@ -16,20 +15,10 @@ export default function DocumentItem({ data }) {
   let image;
   const images = data.components?.find((c) => c.type === 'images');
   image = images?.content?.images?.[0];
-  const video = data.components?.find((c) => c.name === 'Video');
 
   let media;
 
-  if (video?.content?.videos?.length) {
-    media = (
-      <VideoPlayer
-        {...video.content.videos[0]}
-        autoplay
-        loop
-        controls={false}
-      />
-    );
-  } else if (image) {
+  if (image) {
     media = (
       <Img
         {...image}

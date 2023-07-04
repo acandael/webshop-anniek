@@ -3,7 +3,6 @@ import { H3 } from 'ui';
 
 import { Outer, Title, Body, Text, Media } from './styles';
 import Images from '../images';
-import Videos from '../videos';
 
 const Paragraph = ({
   body,
@@ -31,7 +30,6 @@ const Paragraph = ({
       {hasMedia && (
         <Media>
           <Images images={images} />
-          <Videos videos={videos} />
         </Media>
       )}
     </Outer>

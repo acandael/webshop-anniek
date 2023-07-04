@@ -3,17 +3,15 @@ import { H3 } from 'ui';
 
 import { Outer, Title, Body, Text, Media } from './styles';
 import Images from '../images';
-import Videos from '../videos';
 
 const Paragraph = ({
   body,
   title,
   images,
-  videos,
   headingComponent: HeadingComponent = H3
 }) => {
   const hasText = !!body?.json?.length;
-  const hasMedia = !!images || !!videos;
+  const hasMedia = !!images;
   return (
     <Outer media={hasMedia} text={hasText}>
       <Text>
@@ -31,7 +29,6 @@ const Paragraph = ({
       {hasMedia && (
         <Media>
           <Images images={images} />
-          <Videos videos={videos} />
         </Media>
       )}
     </Outer>

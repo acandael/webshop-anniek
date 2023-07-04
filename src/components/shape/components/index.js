@@ -8,7 +8,6 @@ import { responsive } from 'ui';
 import ParagraphCollection from './paragraph-collection';
 import PropertiesTable from './properties-table';
 import Images from './images';
-import Videos from './videos';
 import ItemRelations from './item-relations';
 import GridRelations from './grid-relations';
 
@@ -54,13 +53,6 @@ const ShapeComponents = ({ components = [], overrides }) => {
               return null;
             }
             return <Images key={key} images={component.content.images} />;
-          }
-
-          if (type === 'videos') {
-            if (!component.content || !component.content.videos) {
-              return null;
-            }
-            return <Videos key={key} videos={component.content.videos} />;
           }
 
           if (type === 'richText') {
