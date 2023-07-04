@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { useT } from 'lib/i18n';
 import { responsive, H3 } from 'ui';
 
 const Outer = styled.div`
@@ -24,7 +23,7 @@ const Inner = styled.div`
 `;
 
 const DeliveryDetails = ({ order }) => {
-  const t = useT();
+  // const t = useT();
   const address = order.customer.addresses?.[1];
 
   return (
@@ -38,16 +37,10 @@ const DeliveryDetails = ({ order }) => {
           </strong>
         </p>
         <p>
-          Stad:{' '}
-          <strong>
-            {address.city}
-          </strong>
+          Stad: <strong>{address.city}</strong>
         </p>
         <p>
-          Postcode:{' '}
-          <strong>
-            {address.postalCode}
-          </strong>
+          Postcode: <strong>{address.postalCode}</strong>
         </p>
       </Inner>
     </Outer>

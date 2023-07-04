@@ -26,10 +26,10 @@ export default function ProductLinePage({ folder, preview }) {
   const description = folder.components?.find((c) => c.name === 'Beschrijving')
     ?.content?.paragraphs?.[0]?.body?.json;
 
-  const images = folder.components?.find((c) => c.type === 'images');
-  const image = images?.content?.images[0];
+  //const images = folder.components?.find((c) => c.type === 'images');
+  //const image = images?.content?.images[0];
 
-  const subtitle = folder.components?.find((c) => c.name === 'Subtitel');
+  //const subtitle = folder.components?.find((c) => c.name === 'Subtitel');
 
   return (
     <Layout

@@ -16,6 +16,9 @@ import {
 } from './styles';
 
 function Checkout({ redirect_status = null }) {
+  const basket = useBasket();
+  const t = useT();
+
   if (redirect_status === 'failed') {
     return (
       <Outer>
@@ -25,9 +28,6 @@ function Checkout({ redirect_status = null }) {
       </Outer>
     );
   }
-
-  const basket = useBasket();
-  const t = useT();
 
   if (basket.status !== 'ready') {
     return <Outer center>{t('basket.loading')}</Outer>;

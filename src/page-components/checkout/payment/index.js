@@ -36,7 +36,7 @@ const Inner = styled.div``;
 export default function Payment() {
   const t = useT();
   const router = useRouter();
-  const { basketModel, actions } = useBasket();
+  const { basketModel } = useBasket();
   const [selectedPaymentProvider, setSelectedPaymentProvider] = useState(null);
   const [state, setState] = useState({
     firstName: '',
@@ -271,7 +271,8 @@ export default function Payment() {
                 ref={register({
                   required: 'Email is verplicht',
                   pattern: {
-                    value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    value:
+                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                     message: 'ongeldig email adres'
                   }
                 })}
@@ -399,7 +400,7 @@ export default function Payment() {
                         );
                         if (!paymentProvider) {
                           return (
-                            <small>
+                            <small key={paymentProviderName}>
                               {t('checkout.paymentProviderNotConfigured', {
                                 name: paymentProviderName
                               })}
