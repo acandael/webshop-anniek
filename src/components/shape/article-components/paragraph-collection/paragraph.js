@@ -1,7 +1,7 @@
 import ContentTransformer from 'ui/content-transformer';
 import { H3 } from 'ui';
 
-import { Outer, Title, Body, Text, Media, Article } from './styles';
+import { Outer, Title, Body, Text, Media } from './styles';
 import Images from '../images';
 import Videos from '../videos';
 
@@ -16,24 +16,24 @@ const Paragraph = ({
   const hasMedia = !!images || !!videos;
   return (
     <Outer media={hasMedia} text={hasText}>
-        <Text>
-          {!!title && title.text && (
-            <Title>
-              <HeadingComponent>{title.text}</HeadingComponent>
-            </Title>
-          )}
-          {hasText && (
-            <Body>
-              <ContentTransformer {...body.json} />
-            </Body>
-          )}
-        </Text>
-        {hasMedia && (
-          <Media>
-            <Images images={images} />
-            <Videos videos={videos} />
-          </Media>
+      <Text>
+        {!!title && title.text && (
+          <Title>
+            <HeadingComponent>{title.text}</HeadingComponent>
+          </Title>
         )}
+        {hasText && (
+          <Body>
+            <ContentTransformer {...body.json} />
+          </Body>
+        )}
+      </Text>
+      {hasMedia && (
+        <Media>
+          <Images images={images} />
+          <Videos videos={videos} />
+        </Media>
+      )}
     </Outer>
   );
 };
