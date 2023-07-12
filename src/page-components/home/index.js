@@ -22,7 +22,7 @@ import {
 } from './styles';
 import Link from 'next/link';
 import Head from 'next/head';
-import { Message } from 'ui';
+//import { Message } from 'ui';
 
 export async function getData({ language, preview = null }) {
   try {
@@ -62,11 +62,11 @@ export default function FrontPage({ preview }) {
               opvolging van jouw huidbehandelingen."
           />
         </Head>
-        <Message>
+        {/* <Message>
           Verlof van donderdag 29 juni tot woensdag 12 juli. In deze periode
           worden er geen bestellingen verstuurd en is het niet mogelijk deze af
           te halen.
-        </Message>
+        </Message> */}
         <Header>
           <H1>skincoach anniek lambrecht</H1>
         </Header>
