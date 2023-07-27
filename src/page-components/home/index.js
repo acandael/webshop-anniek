@@ -44,7 +44,6 @@ export async function getData({ language, preview = null }) {
     });
     return { ...data, preview };
   } catch (error) {
-    console.log(error);
     return null;
   }
 }
@@ -75,7 +74,7 @@ export default function FrontPage({ preview }) {
             <p>
               Hey Beauty!
               <br />
-              Wil jij een ook mooie gezonde huid? Dan ben je bij mij aan het
+              Wil jij ook een mooie gezonde huid? Dan ben je bij mij aan het
               juiste adres.
             </p>
             <p>
@@ -134,10 +133,10 @@ export default function FrontPage({ preview }) {
                 />
               </ImageWrapper>
               <SubSectionText>
-                Op het menu staan niet alleen Huidanalyse, Peeling en Vitamine
-                Gelaatsbehandelingen maar ook Microneedling en Laserbehandeling.
+                Op het menu staan niet alleen huidanalyse, peeling en vitamine
+                gelaatsbehandelingen maar ook microneedling en laserbehandeling.
                 Liften van de huid is mogelijk voor gelaat en lichaam met het
-                LPG apparaat. Ongewenste haren, Couperose en Pigment behandelen
+                LPG apparaat. Ongewenste haren, couperose en pigment behandelen
                 we met de Clarity 2 Laser.{' '}
               </SubSectionText>
               <Link href="/behandelingen">
@@ -159,8 +158,8 @@ export default function FrontPage({ preview }) {
               <SubSectionText>
                 Met de producten van Advanced Nutricion Programme, Environ
                 Skincare en Jane Iredale houden we het huidverouderingsproces
-                zoveel mogelijk tegen. Ze zijn op basis van Vitamine A en
-                Antioxidanten en compenseren het chronisch tekort hiervan in de
+                zoveel mogelijk tegen. Ze zijn op basis van vitamine A en
+                antioxidanten en compenseren het chronisch tekort hiervan in de
                 huid.
               </SubSectionText>
               <Link href="/webshop">
