@@ -57,9 +57,9 @@ export default function FrontPage({ preview }) {
           <meta
             name="description"
             content="Mijn zaak is geen klassiek schoonheidsinstituut maar
-              een instituut waar de focus vooral op Huidverbetering of Skincare
+              een instituut waar de focus op huidbehandeling of skincare
               ligt. Je krijgt een persoonlijke behandeling met professionele
-              opvolging van jouw huidbehandelingen."
+              opvolging van je huidbehandelingen."
           />
         </Head>
         {/* <Message>
@@ -80,12 +80,12 @@ export default function FrontPage({ preview }) {
             </p>
             <p>
               Mijn zaak is geen klassiek schoonheidsinstituut maar een instituut
-              waar de focus vooral op Huidverbetering of Skincare ligt.
+              waar de focus op huidbehandeling of skincare ligt.
             </p>
             <p>
               {' '}
               Je krijgt een persoonlijke behandeling met professionele opvolging
-              van jouw huidbehandelingen.
+              van je huidbehandelingen.
             </p>
             <p>
               Volg je mij al op{' '}
