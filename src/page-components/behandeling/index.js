@@ -50,7 +50,7 @@ export default function BehandelingPage({ folder, preview }) {
 
   const prijslijsten = folder.components?.find(
     (c) => c.type === 'propertiesTable'
-  ).content;
+  )?.content;
 
   return (
     <Layout
