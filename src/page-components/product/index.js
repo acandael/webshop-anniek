@@ -88,10 +88,7 @@ export default function ProductPage({ product, preview }) {
 
   let tabs;
 
-  if (
-    usage?.content?.paragraphs?.[0]?.body.json?.[0]?.children.length > 0 ||
-    ingredients?.content?.paragraphs?.[0]?.body.json?.[0]?.children.length > 0
-  ) {
+  if (usage || ingredients) {
     tabs = (
       <Usage>
         <Tabs colorScheme="brand" isLazy size="md">
