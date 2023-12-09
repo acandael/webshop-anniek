@@ -102,7 +102,7 @@ export default function ProductPage({ product, preview }) {
 
           <TabPanels>
             <TabPanel>
-              {usage?.content.paragraphs
+              {usage?.content?.paragraphs
                 .filter((paragraph) => paragraph?.body || paragraph?.title)
                 .map((paragraph, index) => (
                   <div key={index}>
