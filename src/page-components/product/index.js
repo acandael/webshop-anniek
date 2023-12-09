@@ -109,7 +109,7 @@ export default function ProductPage({ product, preview }) {
                     {paragraph?.title?.text && (
                       <strong>{paragraph?.title?.text}</strong>
                     )}
-                    <Transformer json={paragraph?.body.json} />
+                    <Transformer json={paragraph?.body?.json} />
                   </div>
                 ))}
             </TabPanel>
