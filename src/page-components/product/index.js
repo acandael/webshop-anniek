@@ -103,12 +103,12 @@ export default function ProductPage({ product, preview }) {
           <TabPanels>
             <TabPanel>
               <ContentTransformer
-                {...usage?.content?.paragraphs?.[0]?.body.json}
+                {...usage?.content?.paragraphs?.[0].body.json}
               />
             </TabPanel>
             <TabPanel>
               <ContentTransformer
-                {...ingredients?.content?.paragraphs?.[0]?.body.json}
+                {...ingredients?.content?.paragraphs?.[0].body.json}
               />
             </TabPanel>
           </TabPanels>
