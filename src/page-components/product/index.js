@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Image as Img } from '@crystallize/react-image';
-import ContentTransformer from 'ui/content-transformer';
+import { ContentTransformer as Transformer } from '@crystallize/reactjs-components';
 import { simplyFetchFromGraph } from 'lib/graph';
 import Layout from 'components/layout';
 import toText from '@crystallize/content-transformer/toText';
@@ -102,21 +102,31 @@ export default function ProductPage({ product, preview }) {
 
           <TabPanels>
             <TabPanel>
-              <ContentTransformer
-                {...usage?.content?.paragraphs?.[0].body.json}
-              />
+              {usage?.content.paragraphs
+                .filter((paragraph) => paragraph?.body)
+                .map((paragraph, index) => (
+                  <div key={index}>
+                    <Transformer text={paragraph?.title?.text} />
+                    <Transformer json={paragraph.body.json} />
+                  </div>
+                ))}
             </TabPanel>
             <TabPanel>
-              <ContentTransformer
-                {...ingredients?.content?.paragraphs?.[0].body.json}
-              />
+              {ingredients?.content.paragraphs
+                .filter((paragraph) => paragraph?.body)
+                .map((paragraph, index) => (
+                  <div key={index}>
+                    <Transformer text={paragraph?.title?.text} />
+                    <Transformer json={paragraph.body.json} />
+                  </div>
+                ))}
             </TabPanel>
           </TabPanels>
         </Tabs>
       </Usage>
     );
   }
-
+  console.log(descriptionComponent);
   return (
     <Layout
       title={name}
@@ -149,9 +159,18 @@ export default function ProductPage({ product, preview }) {
             <Title>{name}</Title>
             {descriptionComponent && (
               <Summary>
-                <ContentTransformer
-                  {...descriptionComponent?.content?.paragraphs?.[0]?.body.json}
-                />
+                {descriptionComponent.content.paragraphs
+                  .filter((paragraph) => paragraph?.body || paragraph?.title)
+                  .map((paragraph, index) => (
+                    <div key={index}>
+                      {paragraph?.title?.text && (
+                        <strong>{paragraph?.title?.text}</strong>
+                      )}
+
+                      <Transformer json={paragraph.body.json} />
+                      <br />
+                    </div>
+                  ))}
               </Summary>
             )}
             {topics?.map((topic) => (
