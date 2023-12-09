@@ -103,20 +103,24 @@ export default function ProductPage({ product, preview }) {
           <TabPanels>
             <TabPanel>
               {usage?.content.paragraphs
-                .filter((paragraph) => paragraph?.body)
+                .filter((paragraph) => paragraph?.body || paragraph?.title)
                 .map((paragraph, index) => (
                   <div key={index}>
-                    <Transformer text={paragraph?.title?.text} />
+                    {paragraph?.title?.text && (
+                      <strong>{paragraph?.title?.text}</strong>
+                    )}
                     <Transformer json={paragraph.body.json} />
                   </div>
                 ))}
             </TabPanel>
             <TabPanel>
               {ingredients?.content.paragraphs
-                .filter((paragraph) => paragraph?.body)
+                .filter((paragraph) => paragraph?.body || paragraph?.title)
                 .map((paragraph, index) => (
                   <div key={index}>
-                    <Transformer text={paragraph?.title?.text} />
+                    {paragraph?.title?.text && (
+                      <strong>{paragraph?.title?.text}</strong>
+                    )}
                     <Transformer json={paragraph.body.json} />
                   </div>
                 ))}
@@ -126,7 +130,7 @@ export default function ProductPage({ product, preview }) {
       </Usage>
     );
   }
-  console.log(descriptionComponent);
+  console.log(usage);
   return (
     <Layout
       title={name}
