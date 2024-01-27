@@ -97,7 +97,7 @@ export default function FrontPage({ preview }) {
               </a>{' '}
               &amp;{' '}
               <a
-                href="https://www.instagram.com/annieklambrecht/"
+                href="https://www.instagram.com/skincenter_anniek_lambrecht/"
                 target="_blank"
                 rel="noreferrer"
               >
