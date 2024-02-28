@@ -67,6 +67,11 @@ export default function Footer() {
             <a>Kadobon</a>
           </Link>
         </li>
+        <li>
+          Artikelen kunnen, ongeopend, tot 14 dagen na aankoop terug gestuurd
+          worden.
+        </li>
+        <li>Betaalmogelijkheden: Bancontact, Visa, Mastercard</li>
       </NavList>
       <NavList>
         <h3>CONTACT</h3>
@@ -77,9 +82,14 @@ export default function Footer() {
           8370 Blankenberge
         </li>
         <li>
-          <a href="tel:050 69.41.65">050 69.41.65</a>
+          tel: <a href="tel:050 69.41.65">050 69.41.65</a>
           <br />
           <a href="mailto:info@anniek-lambrecht.be">info@anniek-lambrecht.be</a>
+        </li>
+        <li>
+          IBAN: BE42731032939454
+          <br />
+          BTW:BE0536204914
         </li>
       </NavList>
     </Outer>
