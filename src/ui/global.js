@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle`
   :root {
     /* Typography */
-    --font-family-main: Open Sans, sans-serif;
+    --font-family-main: "degular", sans-serif;
     --font-size-xl: 40px;
     --font-size-lg: 32px;
     --font-size-md: 26px;
@@ -15,16 +15,18 @@ export default createGlobalStyle`
     --font-listing-price-size: 18px;
     --font-max-width: 800px;
     /* Colors */
-    --color-main-background: #fff;
-    --color-text-main: #56443F;
-    --color-text-sub: #595554;
+    --color-main-background: ##fff;
+    --color-grey: #F2E9E6;
+    --color-dark: #363744;
+    --color-text-main: var(--color-dark);
+    --color-text-sub: #363744;
     --color-box-background: #efefef;
     --color-price: var(--color-text-main);
     --color-error: #EF4836;
     --color-discount:#EE6969;
     --color-blockquote: var(--color-text-main);
   
-    --color-primary: #FAC7B9;
+    --color-primary: #F8C1B3;
     --color-primary-action: #FBDCCE;
     --color-primary-action-content:#080708;
     --color-icon-details: var(--color-primary-action);
@@ -78,7 +80,7 @@ export default createGlobalStyle`
   }
   body {
     margin: 0;
-    font: 16px/1 Open Sans, sans-serif;
+    font: 16px/1 "degular", sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     background: var(--color-main-background);
@@ -112,7 +114,7 @@ export default createGlobalStyle`
   h3,
   h4 {
     font-size: inherit;
-    font-family: 'Playfair Display';
+    font-family: 'degular display bold', sans-serif;
   }
   strong {
     font-weight: bold;

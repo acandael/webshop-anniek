@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps, commonData }) {
   const theme = extendTheme({
     colors: {
       brand: {
-        100: '#FAC7B9',
+        100: '#F8C1B3',
         900: '#DCA090'
       }
     }
