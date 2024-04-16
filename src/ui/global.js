@@ -15,11 +15,11 @@ export default createGlobalStyle`
     --font-listing-price-size: 18px;
     --font-max-width: 800px;
     /* Colors */
-    --color-main-background: ##fff;
+    --color-main-background: #fefdfd;
     --color-grey: #F2E9E6;
     --color-dark: #363744;
     --color-text-main: var(--color-dark);
-    --color-text-sub: #363744;
+    --color-text-sub: var(--color-dark);
     --color-box-background: #efefef;
     --color-price: var(--color-text-main);
     --color-error: #EF4836;
@@ -27,7 +27,7 @@ export default createGlobalStyle`
     --color-blockquote: var(--color-text-main);
   
     --color-primary: #F8C1B3;
-    --color-primary-action: #FBDCCE;
+    --color-primary-action: #F8C1B3;
     --color-primary-action-content:#080708;
     --color-icon-details: var(--color-primary-action);
     --color-ui-details: var(--color-primary-action);
