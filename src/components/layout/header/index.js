@@ -56,7 +56,7 @@ export default function Header({ simple, preview }) {
             ))}
             <NavListItem>
               <Link href="/contact">
-                <a onClick={() => setNavOpen(false)}>CONTACT</a>
+                <a onClick={() => setNavOpen(false)}>Contact</a>
               </Link>
             </NavListItem>
           </NavList>

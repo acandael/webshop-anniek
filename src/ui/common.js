@@ -51,7 +51,7 @@ export const Header = styled.div`
   h1 {
     font-size: 2.4rem;
     margin-bottom: 10px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
   }
   p {
     text-align: ${(p) => (p.centerContent ? 'center !important' : 'left')};

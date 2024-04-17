@@ -15,8 +15,8 @@ export default createGlobalStyle`
     --font-listing-price-size: 18px;
     --font-max-width: 800px;
     /* Colors */
-    --color-main-background: #fefdfd;
-    --color-grey: #F2E9E6;
+    --color-main-background: #faf7f6;
+    --color-grey: #faf7f6;
     --color-dark: #363744;
     --color-text-main: var(--color-dark);
     --color-text-sub: var(--color-dark);

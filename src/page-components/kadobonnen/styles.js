@@ -113,5 +113,5 @@ export const StyledLink = styled.a`
   margin-top: 1rem;
   cursor: pointer;
   font-size: 20px;
-  color: #dca090;
+  color: #f8c1b2;
 `;

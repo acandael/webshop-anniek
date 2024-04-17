@@ -89,11 +89,11 @@ export const NavListItem = styled.li`
     transition: all 100ms;
     font-size: 16px;
     font-weight: 600;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     letter-spacing: 1px;
     &:hover {
       text-decoration: none;
-      color: #fff;
+      color: var(--color-grey);
       transition: 0.3s;
       ${responsive.smAndLess} {
         color: #95908f;
@@ -151,7 +151,7 @@ export const BasketQuantity = styled.div`
 export const NavActions = styled.div`
   margin: 8px 10px 0;
   display: flex;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   align-items: center;
   button,
   a {

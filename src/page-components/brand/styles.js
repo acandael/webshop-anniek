@@ -38,7 +38,7 @@ export const BrandHeader = styled.div`
   }
 
   h1 {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 
     ${responsive.smAndLess} {
       text-align: center;

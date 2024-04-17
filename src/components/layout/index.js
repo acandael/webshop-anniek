@@ -76,6 +76,10 @@ export default function Layout({
         <link rel="mask-icon" href="/static/mask-icon.svg" color="#5bbad5" />
         <link rel="apple-touch-icon" href="/static/apple-touch-icon.png" />
         <link rel="manifest" href="/static/manifest.json" />
+        <link
+          rel="stylesheet"
+          href="https://use.typekit.net/qcw3fmf.css"
+        ></link>
 
         <meta property="og:type" content="website" />
         <meta

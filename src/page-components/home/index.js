@@ -67,7 +67,7 @@ export default function FrontPage({ preview }) {
           te halen.
         </Message> */}
         <Header>
-          <H1>skincoach anniek lambrecht</H1>
+          <H1>Skincoach Anniek Lambrecht</H1>
         </Header>
         <HeroSection>
           <HeroText>
