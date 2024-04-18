@@ -136,7 +136,7 @@ export const ImgContainer = styled.div`
 
 export const Title = styled(H1)`
   font-size: var(--font-size-xl);
-  font-weight: 900;
+  font-weight: 500;
 `;
 
 export const Summary = styled.div`

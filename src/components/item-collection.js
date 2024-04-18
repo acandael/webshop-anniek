@@ -15,7 +15,7 @@ const Outer = styled.div`
 
 const Title = styled(H1)`
   font-size: var(--font-size-lg);
-  font-weight: 600;
+  font-weight: 500;
   margin: 0 4px;
   margin-bottom: 15px;
   max-width: var(--font-max-width);

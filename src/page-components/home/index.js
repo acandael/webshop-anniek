@@ -123,7 +123,7 @@ export default function FrontPage({ preview }) {
         <SubSection>
           <Link href="/behandelingen" passHref>
             <SectionOne>
-              <H2>BEHANDELINGEN</H2>
+              <H2>Behandelingen</H2>
               <ImageWrapper>
                 <SubSectionImage
                   src="/static/subsection-behandelingen.jpg"
@@ -146,7 +146,7 @@ export default function FrontPage({ preview }) {
           </Link>
           <Link href="/webshop" passHref>
             <SectionTwo>
-              <H2>WEBSHOP</H2>
+              <H2>Webshop</H2>
               <ImageWrapper>
                 <SubSectionImage
                   src="/static/webshop.jpg"
@@ -158,7 +158,7 @@ export default function FrontPage({ preview }) {
               <SubSectionText>
                 Met de producten van Advanced Nutricion Programme, Environ
                 Skincare en Jane Iredale houden we het huidverouderingsproces
-                zoveel mogelijk tegen. yZe zijn op basis van vitamine A en
+                zoveel mogelijk tegen. Ze zijn op basis van vitamine A en
                 antioxidanten en compenseren het chronisch tekort hiervan in de
                 huid.
               </SubSectionText>

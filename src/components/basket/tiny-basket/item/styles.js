@@ -88,7 +88,7 @@ export const ImageImageEmpty = styled.div`
 `;
 
 export const ItemName = styled.div`
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-size: 14px;
   font-weight: 600;
 `;

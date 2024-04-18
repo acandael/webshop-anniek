@@ -56,8 +56,7 @@ export const Text = styled.div`
   h3 {
     width: 100%;
     left: 0%;
-    font-size: 1.25em;
-    text-transform: uppercase;
+    font-size: 1.5em;
     margin: 0;
     color: var(--color-text-sub);
     ${responsive.smAndLess} {

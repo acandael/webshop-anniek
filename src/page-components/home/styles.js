@@ -30,6 +30,7 @@ export const Header = styled(H)`
 `;
 export const H1 = styled(h1)`
   font-size: 39px;
+  font-weight: 500;
 
   ${responsive.smAndLess} {
     font-size: 25px;

@@ -49,7 +49,7 @@ export const Header = styled.div`
     padding: 100px 0 50px;
   }
   h1 {
-    font-size: 2.4rem;
+    font-size: 3rem;
     margin-bottom: 10px;
     /* text-transform: uppercase; */
   }

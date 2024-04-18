@@ -8,7 +8,7 @@ export const Label = styled.label`
   display: flex;
   align-items: center;
   font-size: 14px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: 500;
   color: #000;
 `;
