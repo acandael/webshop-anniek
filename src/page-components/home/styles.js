@@ -63,6 +63,8 @@ export const HeroText = styled.div`
 
   p {
     font-size: 20px;
+    font-weight: 400;
+    font-family: var(--font-family-main);
     color: var(--color-text-sub);
 
     ${responsive.smAndLess} {

@@ -42,8 +42,7 @@ export const Byline = styled.div`
 
 export const Title = styled.h1`
   color: var(--color-text-main);
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: 'degular-display', sans-serif;
   font-size: 50px;
   line-height: 1.2em;
   margin-bottom: 15px;

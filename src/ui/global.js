@@ -114,7 +114,7 @@ export default createGlobalStyle`
   h3,
   h4 {
     font-size: inherit;
-    font-family: 'degular display bold', sans-serif;
+    font-family: 'degular-display', sans-serif;
   }
   strong {
     font-weight: bold;

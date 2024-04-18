@@ -33,6 +33,11 @@ function MyApp({ Component, pageProps, commonData }) {
         100: '#fff9f8',
         900: '#f9c8ba'
       }
+    },
+    fonts: {
+      body: 'degular, sans-serif',
+      heading: 'degular-display, sans-serif',
+      mono: 'degular-display, sans-serif'
     }
   });
 

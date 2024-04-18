@@ -5,6 +5,7 @@ import { responsive } from './responsive';
 export const H1 = styled.h1`
   margin: 0 0 15px;
   font-size: 3rem;
+  font-weight: 700;
   color: var(--color-text-main);
 
   ${responsive.smAndLess} {
