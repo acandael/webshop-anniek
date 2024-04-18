@@ -64,7 +64,7 @@ export const Text = styled.div`
 
   h3 {
     font-size: 1.25em;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     margin: 0;
     margin-bottom: 32px;
     color: var(--color-text-sub);

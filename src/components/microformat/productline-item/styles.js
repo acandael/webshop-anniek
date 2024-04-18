@@ -57,7 +57,7 @@ export const Text = styled.div`
   padding: 1em;
   h3 {
     font-size: 1em;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     margin: 0;
     margin-bottom: 32px;
     color: var(--color-text-sub);

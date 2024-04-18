@@ -80,7 +80,6 @@ export default function Layout({
           rel="stylesheet"
           href="https://use.typekit.net/qcw3fmf.css"
         ></link>
-
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
