@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps, commonData }) {
       type: 'website',
       locale: locale.appLanguage,
       url: 'https://www.anniek-lambrecht.be',
-      site_name: 'Skincoach Anniek Lambrecht'
+      site_name: 'Skincenter Anniek Lambrecht'
     }
   };
 
