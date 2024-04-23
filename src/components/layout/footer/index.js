@@ -27,7 +27,7 @@ export default function Footer() {
         </p>
       </Powered>
       <NavList>
-        <h3>MENU</h3>
+        <h3>Menu</h3>
         <li>
           <Link href="/behandelingen">
             <a>Behandelingen</a>
@@ -40,7 +40,7 @@ export default function Footer() {
         </li>
       </NavList>
       <NavList>
-        <h3>WEBSHOP</h3>
+        <h3>Webshop</h3>
 
         <li>
           <Link href="/merken/environ">
@@ -74,7 +74,7 @@ export default function Footer() {
         <li>Betaalmogelijkheden: Bancontact, Visa, Mastercard</li>
       </NavList>
       <NavList>
-        <h3>CONTACT</h3>
+        <h3>Contact</h3>
         <li>
           Schoonheidsinstituut Anniek Lambrecht
           <br />

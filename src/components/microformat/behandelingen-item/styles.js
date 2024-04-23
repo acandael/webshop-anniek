@@ -57,7 +57,7 @@ export const Text = styled.div`
     width: 100%;
     left: 0%;
     font-size: 1.25em;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     margin: 0;
     color: var(--color-text-sub);
     ${responsive.smAndLess} {
