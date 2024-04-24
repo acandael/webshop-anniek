@@ -39,7 +39,7 @@ export default function Layout({
 }) {
   const router = useRouter();
   const headTitel = title
-    ? `${title} | ${process.env.NEXT_PUBLIC_CRYSTALLIZE_TENANT_IDENTIFIER}`
+    ? `${title} | Skincenter`
     : `${process.env.NEXT_PUBLIC_CRYSTALLIZE_TENANT_IDENTIFIER}`;
 
   //@TODO add url to .env
