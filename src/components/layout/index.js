@@ -40,7 +40,7 @@ export default function Layout({
   const router = useRouter();
   const headTitel = title
     ? `${title} | Skincenter`
-    : `${process.env.NEXT_PUBLIC_CRYSTALLIZE_TENANT_IDENTIFIER}`;
+    : `Anniek Lambrecht | Skincenter`;
 
   //@TODO add url to .env
   const siteUrl = null;
