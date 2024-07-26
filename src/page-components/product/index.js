@@ -70,15 +70,15 @@ export default function ProductPage({ product, preview }) {
   const relatedProducts = components.find(isRelatedProductsComponent)?.content
     ?.items;
 
-  const ingredients = product.components?.find(
+  const ingredients = product?.components.find(
     (c) => c.name === 'Ingredienten'
   );
 
-  const usage = product.components?.find(
+  const usage = product?.components.find(
     (c) => c.name === 'Gebruiksaanwijzing'
   );
 
-  const quantity = product.components?.find((c) => c.name === 'Hoeveelheid');
+  const quantity = product?.components?.find((c) => c.name === 'Hoeveelheid');
 
   const ingredientstable = product.components?.find(
     (c) => c.type === 'propertiesTable'
@@ -89,8 +89,8 @@ export default function ProductPage({ product, preview }) {
   let tabs;
 
   if (
-    usage?.content?.paragraphs?.[0]?.body.json?.[0]?.children?.length > 0 ||
-    ingredients?.content?.paragraphs?.[0]?.body.json?.[0]?.children?.length > 0
+    usage?.content?.paragraphs?.length > 0 ||
+    ingredients?.content?.paragraphs?.length > 0
   ) {
     tabs = (
       <Usage>
@@ -130,7 +130,7 @@ export default function ProductPage({ product, preview }) {
       </Usage>
     );
   }
-  console.log(usage);
+
   return (
     <Layout
       title={name}
