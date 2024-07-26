@@ -1,9 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import CrystallizeLayout from '@crystallize/react-layout';
-
 import { Spinner } from 'ui';
 import GlobalStyle from 'ui/global';
+import CrystallizeLayout from '@crystallize/react-layout';
 import { useRouter } from 'next/router';
 import Aside from './aside';
 import Header from './header';
@@ -40,7 +39,7 @@ export default function Layout({
   const router = useRouter();
   const headTitel = title
     ? `${title} | Skincenter`
-    : `Anniek Lambrecht | Skincenter`;
+    : 'Anniek Lambrecht' | 'Skincenter';
 
   //@TODO add url to .env
   const siteUrl = null;
@@ -52,7 +51,7 @@ export default function Layout({
         <meta property="og:title" content={headTitel} />
         <meta property="twitter:title" content={headTitel} />
         {siteUrl && (
-          <link href={`${siteUrl}${router?.asPath}`} rel="canonical" />
+          <link href={`${siteUrl} ${router?.asPath}`} rel="canonical" />
         )}
         {description && (
           <>
