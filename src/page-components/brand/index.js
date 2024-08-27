@@ -6,6 +6,7 @@ import Layout from 'components/layout';
 import Breadcrumb from 'components/breadcrumb';
 import Microformat from 'components/microformat';
 import toText from '@crystallize/content-transformer/toText';
+import { ContentTransformer as Transformer } from '@crystallize/reactjs-components';
 import {
   List,
   BrandHeader,
@@ -32,8 +33,9 @@ export async function getData({ asPath, language, preview = null }) {
 export default function BrandPage({ folder, preview }) {
   const { children, components } = folder;
   const description = components?.find((c) => c.name === 'Beschrijving')
-    ?.content?.paragraphs[0].body.json;
+    ?.content?.paragraphs;
 
+  const descriptionComponent = components.find(isDescriptionComponent);
   const images = components?.find((c) => c.type === 'images');
   const image = images?.content?.images[0];
 
@@ -53,7 +55,19 @@ export default function BrandPage({ folder, preview }) {
         <BrandHeader>
           <Content>
             <H1>{folder.name}</H1>
-            <p>{toText(description)}</p>
+            {descriptionComponent.content.paragraphs
+              .filter((paragraph) => paragraph?.body || paragraph?.title)
+              .map((paragraph, index) => (
+                <div key={index}>
+                  {paragraph?.title?.text && (
+                    <strong>{paragraph?.title?.text}</strong>
+                  )}
+
+                  <Transformer json={paragraph.body.json} />
+                  <br />
+                </div>
+              ))}
+
             {moreinfo && (
               <Link href={moreinfo}>
                 <StyledLink>Meer info</StyledLink>
@@ -86,4 +100,8 @@ export default function BrandPage({ folder, preview }) {
       </Outer>
     </Layout>
   );
+}
+
+function isDescriptionComponent({ name }) {
+  return name === 'Beschrijving';
 }
