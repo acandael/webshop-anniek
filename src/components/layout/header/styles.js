@@ -34,8 +34,9 @@ export const Logo = styled.a`
   }
   ${responsive.xs} {
     height: 56px;
-    width: 200px;
-    margin-left: 25px;
+    width: 180px;
+    margin-left: 4px;
+    margin-right: 0;
   }
 `;
 
