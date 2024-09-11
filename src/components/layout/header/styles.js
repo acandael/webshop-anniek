@@ -33,8 +33,8 @@ export const Logo = styled.a`
     height: 100%;
   }
   ${responsive.xs} {
-    height: 92px;
-    width: 300px;
+    height: 56px;
+    width: 190px;
     margin-left: 25px;
   }
 `;
