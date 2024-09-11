@@ -19,7 +19,7 @@ export const Outer = styled.footer`
 `;
 
 export const Logo = styled.div`
-  width: 100px;
+  width: 300px;
 `;
 
 export const NavList = styled.footer`
@@ -55,7 +55,7 @@ export const Powered = styled.div`
   /* align-items: center; */
   font-size: 0.9em;
   p {
-    margin: 0;
+    margin: 24px 0;
     color: var(--color-text-sub);
   }
   svg {

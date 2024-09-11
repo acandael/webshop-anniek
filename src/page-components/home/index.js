@@ -71,21 +71,31 @@ export default function FrontPage({ preview }) {
         </Header>
         <HeroSection>
           <HeroText>
+            <H2>
+              We zijn verheugd om een tipje van de sluier op te lichten en ons
+              nieuwe logo en huisstijl te presenteren!
+            </H2>
             <p>
-              Hey Beauty!
-              <br />
-              Wil jij ook een mooie gezonde huid? Dan ben je bij mij aan het
-              juiste adres.
+              Naar aanleiding van de uitbreiding en verhuizing van ons
+              Skincenter hebben we gewerkt aan een rebranding, inclusief een
+              nieuw logo en een frisse huisstijl. Ons nieuwe logo vertelt een
+              bijzonder verhaal.
             </p>
             <p>
-              Mijn zaak is geen klassiek schoonheidsinstituut maar een instituut
-              waar de focus op huidbehandeling of skincare ligt.
+              Vaak zien we klanten binnenkomen met het hoofd naar beneden
+              gebogen, onzeker over hun huid of lichaam. Samen starten we een
+              traject van huidverbetering of lichaamscontouring en zien we stap
+              voor stap hun hoofd omhoog gaan. Hun gelaatsuitdrukking en huid
+              beginnen te stralen, en dat stralen nemen ze mee de wereld in.
             </p>
             <p>
-              {' '}
-              Je krijgt een persoonlijke behandeling met professionele opvolging
-              van je huidbehandelingen.
+              Daarom hebben we gekozen voor een moderne lotusbloem als ons
+              nieuwe symbool. De lotus staat voor innerlijke schoonheid en
+              transformeert zich van wortels in de aarde naar een prachtige
+              bloem. Dit logo zal vanaf nu regelmatig terugkomen in onze nieuwe
+              huisstijl.
             </p>
+            <p>We heten je van harte welkom in ons nieuwe Skincenter.</p>
             <p>
               Volg je mij al op{' '}
               <a

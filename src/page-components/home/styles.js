@@ -45,6 +45,7 @@ export const H2 = styled(h2)`
 export const HeroSection = styled.section`
   display: flex;
   justify-content: space-between;
+  align-items: start;
   margin-top: 84px;
   ${responsive.smAndLess} {
     flex-direction: column-reverse;
@@ -65,6 +66,8 @@ export const HeroText = styled.div`
   p {
     font-size: 20px;
     font-weight: 400;
+    margin-top: 24px;
+    margin-bottom: 24px;
     font-family: var(--font-family-main);
     color: var(--color-text-sub);
 
@@ -80,7 +83,9 @@ export const Button = styled(button)`
   }
 `;
 
-export const HeroImage = styled(Image)``;
+export const HeroImage = styled(Image)`
+  object-fit: contain;
+`;
 
 export const CTAText = styled.span`
   font-size: 0.9rem;

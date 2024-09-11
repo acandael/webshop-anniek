@@ -38,10 +38,10 @@ export default function Header({ simple, preview }) {
         <Link href="/" passHref>
           <Logo>
             <img
-              src="/static/logo-anniek-lambrecht-header-2.png"
-              alt=""
-              width="240"
-              height="133"
+              src="/static/logo-header-3.jpg"
+              alt="logo Skincenter Anniek Lambrecht"
+              width="300"
+              height="92"
             />
           </Logo>
         </Link>

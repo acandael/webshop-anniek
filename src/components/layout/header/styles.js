@@ -22,9 +22,9 @@ export const Outer = styled.header`
 `;
 
 export const Logo = styled.a`
-  height: 84px;
+  height: 100%;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
   position: relative;
   z-index: 99;
   img,
@@ -33,8 +33,8 @@ export const Logo = styled.a`
     height: 100%;
   }
   ${responsive.xs} {
-    height: 66px;
-    width: 120px;
+    height: 92px;
+    width: 300px;
     margin-left: 25px;
   }
 `;

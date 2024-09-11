@@ -11,10 +11,10 @@ export default function Footer() {
         <a>
           <Logo>
             <img
-              src="/static/logo-anniek-lambrecht-footer.png"
+              src="/static/logo-header-3.jpg"
               alt="logo anniek lambrecht"
-              width="100"
-              height="100"
+              width="300"
+              height="92"
             />
           </Logo>
         </a>
@@ -24,6 +24,9 @@ export default function Footer() {
           Alle rechten voorbehouden
           <br />
           Voorwaarden - Disclaimer - Privacyverklaring
+        </p>
+        <p>
+          Web development: <a href="https://www.webmoov.be">Webmoov</a>
         </p>
       </Powered>
       <NavList>
