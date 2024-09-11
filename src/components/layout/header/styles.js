@@ -34,7 +34,7 @@ export const Logo = styled.a`
   }
   ${responsive.xs} {
     height: 56px;
-    width: 190px;
+    width: 200px;
     margin-left: 25px;
   }
 `;
