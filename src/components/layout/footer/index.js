@@ -81,7 +81,8 @@ export default function Footer() {
         <li>
           Schoonheidsinstituut Anniek Lambrecht
           <br />
-          L. Dujardinstraat 9<br />
+          De Smet De Naeyerlaan 76
+          <br />
           8370 Blankenberge
         </li>
         <li>
