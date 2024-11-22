@@ -36,7 +36,7 @@ export default function ContactPage() {
               <a href="tel:050694165">050 69.41.65</a>
             </p>
             <p>
-              De Smet De Naeyerlaan 76, 8370
+              De Smet De Naeyerlaan 74, 8370
               <br />
               Blankenberge
             </p>
