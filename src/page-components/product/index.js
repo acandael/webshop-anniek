@@ -78,8 +78,8 @@ export default function ProductPage({ product, preview }) {
     (c) => c.name === 'Gebruiksaanwijzing'
   );
 
-  const gebruiksvoorwaarden = product?.components.find(
-    (c) => c.name === 'Gebruiksvoorwaarden'
+  const voorzorgsmaatregelen = product?.components.find(
+    (c) => c.name === 'Voorzorgsmaatregelen'
   );
 
   const quantity = product?.components?.find((c) => c.name === 'Hoeveelheid');
@@ -102,7 +102,7 @@ export default function ProductPage({ product, preview }) {
           <TabList>
             <Tab>Gebruiksaanwijzing</Tab>
             <Tab>Ingrediënten</Tab>
-            <Tab>Gebruiksvoorwaarden</Tab>
+            <Tab>Voorzorgsmaatregelen</Tab>
           </TabList>
 
           <TabPanels>
@@ -131,7 +131,7 @@ export default function ProductPage({ product, preview }) {
                 ))}
             </TabPanel>
             <TabPanel>
-              {gebruiksvoorwaarden?.content?.paragraphs
+              {voorzorgsmaatregelen?.content?.paragraphs
                 .filter((paragraph) => paragraph?.body || paragraph?.title)
                 .map((paragraph, index) => (
                   <div key={index}>
