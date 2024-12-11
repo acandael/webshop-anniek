@@ -222,7 +222,9 @@ export default function ProductPage({ product, preview }) {
             </p>
             <p>
               EU Responsible Person{' '}
-              <a href="www.biorius.com">www.biorius.com</a>
+              <a target="_blank" href="https://www.biorius.com" rel="noreferrer">
+                www.biorius.com
+              </a>
             </p>
             <p>
               Naam: Biorius
