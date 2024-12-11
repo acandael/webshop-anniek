@@ -78,6 +78,10 @@ export default function ProductPage({ product, preview }) {
     (c) => c.name === 'Gebruiksaanwijzing'
   );
 
+  const gebruiksvoorwaarden = product?.components.find(
+    (c) => c.name === 'Gebruiksvoorwaarden'
+  );
+
   const quantity = product?.components?.find((c) => c.name === 'Hoeveelheid');
 
   const ingredientstable = product.components?.find(
@@ -98,6 +102,7 @@ export default function ProductPage({ product, preview }) {
           <TabList>
             <Tab>Gebruiksaanwijzing</Tab>
             <Tab>Ingrediënten</Tab>
+            <Tab>Gebruiksvoorwaarden</Tab>
           </TabList>
 
           <TabPanels>
@@ -115,6 +120,18 @@ export default function ProductPage({ product, preview }) {
             </TabPanel>
             <TabPanel>
               {ingredients?.content?.paragraphs
+                .filter((paragraph) => paragraph?.body || paragraph?.title)
+                .map((paragraph, index) => (
+                  <div key={index}>
+                    {paragraph?.title?.text && (
+                      <strong>{paragraph?.title?.text}</strong>
+                    )}
+                    <Transformer json={paragraph.body.json} />
+                  </div>
+                ))}
+            </TabPanel>
+            <TabPanel>
+              {gebruiksvoorwaarden?.content?.paragraphs
                 .filter((paragraph) => paragraph?.body || paragraph?.title)
                 .map((paragraph, index) => (
                   <div key={index}>
