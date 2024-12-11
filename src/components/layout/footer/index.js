@@ -79,7 +79,7 @@ export default function Footer() {
       <NavList>
         <h3>Contact</h3>
         <li>
-          Schoonheidsinstituut Anniek Lambrecht
+          Skincenter Anniek Lambrecht
           <br />
           De Smet De Naeyerlaan 74
           <br />
