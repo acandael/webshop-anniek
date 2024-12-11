@@ -215,27 +215,31 @@ export default function ProductPage({ product, preview }) {
               </Quantity>
             )}
             {/* <Stock selectedVariant={selectedVariant} /> */}
+            <Content>
+              <p>
+                <br />
+              </p>
+              <p>
+                EU Responsible Person{' '}
+                <a
+                  target="_blank"
+                  href="https://www.biorius.com"
+                  rel="noreferrer"
+                >
+                  www.biorius.com
+                </a>
+              </p>
+              <p>
+                Naam: Biorius
+                <br />
+                Adres: Avenue Léonard de Vinci 14, 1300 Wavre Belgium
+                <br />
+                Elektronische contactgegevens:{' '}
+                <a href="mailto:info@biorius.com">info@biorius.com</a> /{' '}
+                <a href="tel:+3228884010">+32 2 888 4010</a>
+              </p>
+            </Content>
           </ActionsSticky>
-          <Content>
-            <p>
-              <br />
-            </p>
-            <p>
-              EU Responsible Person{' '}
-              <a target="_blank" href="https://www.biorius.com" rel="noreferrer">
-                www.biorius.com
-              </a>
-            </p>
-            <p>
-              Naam: Biorius
-              <br />
-              Adres: Avenue Léonard de Vinci 14, 1300 Wavre Belgium
-              <br />
-              Elektronische contactgegevens:{' '}
-              <a href="mailto:info@biorius.com">info@biorius.com</a> /{' '}
-              <a href="tel:+3228884010">+32 2 888 4010</a>
-            </p>
-          </Content>
         </Actions>
       </Inner>
 
