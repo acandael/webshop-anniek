@@ -216,6 +216,21 @@ export default function ProductPage({ product, preview }) {
             )}
             {/* <Stock selectedVariant={selectedVariant} /> */}
           </ActionsSticky>
+          <Content>
+            <p>
+              <br />
+            </p>
+            <h3>Contact</h3>
+            <p>
+              Naam: Biorius
+              <br />
+              Adres: Avenue Léonard de Vinci 14, 1300 Wavre Belgium
+              <br />
+              Elektronische contactgegevens:{' '}
+              <a href="mailto:info@biorius.com">info@biorius.com</a> /{' '}
+              <a href="tel:+3228884010">+32 2 888 4010</a>
+            </p>
+          </Content>
         </Actions>
       </Inner>
 
