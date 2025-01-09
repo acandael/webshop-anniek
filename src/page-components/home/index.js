@@ -126,7 +126,7 @@ export default function FrontPage({ preview }) {
             src="/static/anniek.jpg"
             alt="anniek lambrecht"
             width="450"
-            height="450"
+            height="675"
             priority="true"
           />
         </HeroSection>
