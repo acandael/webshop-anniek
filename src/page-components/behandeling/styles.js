@@ -60,17 +60,21 @@ export const Button = styled(button)`
   }
 `;
 
-export const HeroImage = styled.div``;
-export const Img = styled(Image)`
-  > img {
-    object-fit: contain;
-    object-position: center;
-    border: 1px solid var(--color-box-background);
-
-    /* overflow: hidden; */
-    /* border-radius: 12px; */
-  }
+export const HeroImage = styled(Image)`
+  object-fit: contain;
 `;
+
+// export const HeroImage = styled.div``;
+// export const Img = styled(Image)`
+//   > img {
+//     object-fit: contain;
+//     object-position: center;
+//     border: 1px solid var(--color-box-background);
+
+//     /* overflow: hidden; */
+//     /* border-radius: 12px; */
+//   }
+// `;
 
 export const PriceList = styled.div`
   display: flex;

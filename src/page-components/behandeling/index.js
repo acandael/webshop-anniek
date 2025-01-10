@@ -11,7 +11,6 @@ import {
   HeroSection,
   HeroText,
   HeroImage,
-  Img,
   PriceList,
   Policy
 } from './styles';
@@ -76,14 +75,13 @@ export default function BehandelingPage({ folder, preview }) {
             <BehandelingComponents components={rest} />
           </HeroText>
           {image && (
-            <HeroImage>
-              <Img
-                src={image.url}
-                width={image.width}
-                height={image.height}
-                alt={folder.name}
-              />
-            </HeroImage>
+            <HeroImage
+              src={image.url}
+              width={618}
+              height={550}
+              alt={folder.name}
+              style={{ maxWidth: '618px', width: '100%' }}
+            />
           )}
         </HeroSection>
         <PriceList>
