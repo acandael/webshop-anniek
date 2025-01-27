@@ -12,7 +12,7 @@ import ServiceApi from 'lib/service-api';
 import { Button, Spinner } from 'ui';
 import { useT } from 'lib/i18n';
 
-function Form({ stripeClientSecret, checkoutModel, onSuccess, onError }) {
+function Form({ stripeClientSecret, checkoutModel, onError }) {
   const t = useT();
   const stripe = useStripe();
   const elements = useElements();
@@ -36,90 +36,69 @@ function Form({ stripeClientSecret, checkoutModel, onSuccess, onError }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
+
+    if (status === 'confirming') return;
     setStatus('confirming');
 
-    if (!stripe || !elements) {
-      return;
-    }
-
     try {
+      if (!stripe || !elements) {
+        throw new Error('Stripe not loaded');
+      }
+
       const { customer } = checkoutModel;
 
-      // First confirm the card payment
-      const { error, paymentIntent } = await stripe.confirmCardPayment(
-        stripeClientSecret,
-        {
-          payment_method: {
-            card: elements.getElement(CardElement),
-            billing_details: {
-              name: `${customer.firstName} ${customer.lastName}`,
-              email: customer.email
-            }
-          }
-        }
+      // Check if we already processed this payment
+      const storedPaymentIntent = sessionStorage.getItem(
+        'currentPaymentIntent'
       );
-
-      if (error) {
-        console.error('Payment failed:', error);
-        setStatus('error');
-        if (typeof onError === 'function') {
-          onError(error);
-        }
+      if (storedPaymentIntent === stripeClientSecret) {
+        console.log('Preventing duplicate payment submission');
         return;
       }
 
-      // Only if payment is successful, confirm the order
-      if (paymentIntent.status === 'succeeded') {
-        try {
-          const response = await ServiceApi({
-            query: `
-              mutation confirmStripeOrder($checkoutModel: CheckoutModelInput!, $paymentIntentId: String!) {
-                paymentProviders {
-                  stripe {
-                    confirmOrder(
-                      checkoutModel: $checkoutModel, 
-                      paymentIntentId: $paymentIntentId
-                    ) {
-                      success
-                      orderId
-                    }
-                  }
-                }
-              }
-            `,
-            variables: {
-              checkoutModel,
-              paymentIntentId: paymentIntent.id
-            }
-          });
+      // Store current payment intent being processed
+      sessionStorage.setItem('currentPaymentIntent', stripeClientSecret);
 
-          const { success, orderId } =
-            response.data.paymentProviders.stripe.confirmOrder;
-
-          if (success) {
-            setStatus('success');
-            if (typeof onSuccess === 'function') {
-              onSuccess(orderId);
-            }
-          } else {
-            throw new Error('Order confirmation failed');
-          }
-        } catch (err) {
-          console.error('Order confirmation failed:', err);
-          setStatus('error');
-          if (typeof onError === 'function') {
-            onError(err);
+      const result = await stripe.confirmCardPayment(stripeClientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+          billing_details: {
+            name: `${customer.firstName} ${customer.lastName}`,
+            email: customer.email
           }
         }
+      });
+
+      if (result.error) {
+        // Clear stored payment intent on error
+        sessionStorage.removeItem('currentPaymentIntent');
+        throw result.error;
       }
-    } catch (err) {
-      console.error('Payment processing failed:', err);
-      setStatus('error');
+
+      if (result.paymentIntent?.status === 'succeeded') {
+        // Store successful payment intent ID
+        sessionStorage.setItem(
+          'lastSuccessfulPayment',
+          result.paymentIntent.id
+        );
+        window.location.href = `${process.env.NEXT_PUBLIC_STRIPE_RETURN_URL}?payment_intent=${result.paymentIntent.id}`;
+        return;
+      }
+    } catch (error) {
       if (typeof onError === 'function') {
-        onError(err);
+        onError(error);
       }
+    } finally {
+      setStatus('idle');
     }
   }
+
+  // Clear stored payment intent when component unmounts
+  useEffect(() => {
+    return () => {
+      sessionStorage.removeItem('currentPaymentIntent');
+    };
+  }, []);
 
   return (
     <form onSubmit={handleSubmit}>
