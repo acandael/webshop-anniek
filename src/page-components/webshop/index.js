@@ -7,7 +7,7 @@ import ItemMicroformat from 'components/microformat';
 import { List, PromotionWrapper } from './styles';
 import query from './query';
 import Stackable from 'components/stackable';
-import { Message } from 'ui';
+// import { Message } from 'ui';
 
 export async function getData({ asPath, language, preview = null }) {
   const { data } = await simplyFetchFromGraph({
@@ -38,10 +38,10 @@ export default function WebshopPage({ folder, preview }) {
       preview={preview}
     >
       <Outer>
-        <Message>
+        {/* <Message>
           De webshop is momenteel in technisch onderhoud. Er kunnen dus geen
           bestellingen worden geplaatst.
-        </Message>
+        </Message> */}
         <Header centerContent>
           <H1>{folder.name}</H1>
         </Header>
