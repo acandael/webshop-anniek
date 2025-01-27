@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
 import { useQuery } from 'react-query';
 import { loadStripe } from '@stripe/stripe-js';
 import {
@@ -19,49 +18,68 @@ function Form({ stripeClientSecret, checkoutModel, onSuccess, onError }) {
   const elements = useElements();
   const [status, setStatus] = useState('idle');
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  const cardElementOptions = {
+    hidePostalCode: true,
+    style: {
+      base: {
+        fontSize: '16px',
+        color: '#424770',
+        '::placeholder': {
+          color: '#aab7c4'
+        }
+      },
+      invalid: {
+        color: '#9e2146'
+      }
+    }
+  };
 
+  async function handleSubmit(event) {
+    event.preventDefault();
     setStatus('confirming');
 
-    go();
+    if (!stripe || !elements) {
+      return;
+    }
 
-    async function go() {
-      if (!stripe || !elements) {
-        setTimeout(go, 100);
-        return;
-      }
-
+    try {
       const { customer } = checkoutModel;
 
+      // First confirm the card payment
       const { error, paymentIntent } = await stripe.confirmCardPayment(
         stripeClientSecret,
         {
           payment_method: {
             card: elements.getElement(CardElement),
             billing_details: {
-              name: `${customer.firstName} ${customer.lastName}`
+              name: `${customer.firstName} ${customer.lastName}`,
+              email: customer.email
             }
           }
         }
       );
 
       if (error) {
-        setStatus({ error });
-      } else {
-        // The payment has been processed!
-        if (paymentIntent.status === 'succeeded') {
-          // Show a success message to your customer
-          // There's a risk of the customer closing the window before callback
-          // execution. Set up a webhook or plugin to listen for the
-          // payment_intent.succeeded event that handles any business critical
-          // post-payment actions.
+        console.error('Payment failed:', error);
+        setStatus('error');
+        if (typeof onError === 'function') {
+          onError(error);
+        }
+        return;
+      }
+
+      // Only if payment is successful, confirm the order
+      if (paymentIntent.status === 'succeeded') {
+        try {
           const response = await ServiceApi({
             query: `
               mutation confirmStripeOrder($checkoutModel: CheckoutModelInput!, $paymentIntentId: String!) {
                 paymentProviders {
                   stripe {
-                    confirmOrder(checkoutModel: $checkoutModel, paymentIntentId: $paymentIntentId) {
+                    confirmOrder(
+                      checkoutModel: $checkoutModel, 
+                      paymentIntentId: $paymentIntentId
+                    ) {
                       success
                       orderId
                     }
@@ -75,24 +93,37 @@ function Form({ stripeClientSecret, checkoutModel, onSuccess, onError }) {
             }
           });
 
-          const {
-            success,
-            orderId
-          } = response.data.paymentProviders.stripe.confirmOrder;
+          const { success, orderId } =
+            response.data.paymentProviders.stripe.confirmOrder;
 
           if (success) {
-            onSuccess(orderId);
+            setStatus('success');
+            if (typeof onSuccess === 'function') {
+              onSuccess(orderId);
+            }
           } else {
-            onError();
+            throw new Error('Order confirmation failed');
+          }
+        } catch (err) {
+          console.error('Order confirmation failed:', err);
+          setStatus('error');
+          if (typeof onError === 'function') {
+            onError(err);
           }
         }
+      }
+    } catch (err) {
+      console.error('Payment processing failed:', err);
+      setStatus('error');
+      if (typeof onError === 'function') {
+        onError(err);
       }
     }
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <CardElement />
+      <CardElement options={cardElementOptions} />
       <div style={{ marginTop: 25 }}>
         <Button
           type="submit"
@@ -126,13 +157,13 @@ export default function StripeWrapper({ checkoutModel, ...props }) {
     if (stripeConfig.data && !stripeLoader) {
       setStripeLoader(
         loadStripe(
-          stripeConfig.data.data.paymentProviders.stripe.config.publishableKey
+          stripeConfig.data.data.paymentProviders.stripe.config.publishableKey,
+          { locale: 'en' }
         )
       );
     }
   }, [stripeConfig, stripeLoader]);
 
-  // Get new paymentIntent
   const stripePaymentIntent = useQuery('stripePaymentIntent', () =>
     ServiceApi({
       query: `
@@ -158,18 +189,25 @@ export default function StripeWrapper({ checkoutModel, ...props }) {
     return <Spinner />;
   }
 
+  const elementsOptions = {
+    locale: 'en',
+    appearance: {
+      theme: 'stripe'
+    },
+    fields: {
+      postalCode: {
+        enabled: false
+      }
+    }
+  };
+
   return (
-    <>
-      <Head>
-        <script key="stripe-js" src="https://js.stripe.com/v3/" async />
-      </Head>
-      <Elements locale="en" stripe={stripeLoader}>
-        <Form
-          {...props}
-          checkoutModel={checkoutModel}
-          stripeClientSecret={stripeClientSecret}
-        />
-      </Elements>
-    </>
+    <Elements stripe={stripeLoader} options={elementsOptions}>
+      <Form
+        {...props}
+        checkoutModel={checkoutModel}
+        stripeClientSecret={stripeClientSecret}
+      />
+    </Elements>
   );
 }
