@@ -7,7 +7,7 @@ import ItemMicroformat from 'components/microformat';
 import { List, PromotionWrapper } from './styles';
 import query from './query';
 import Stackable from 'components/stackable';
-//import { Message } from 'ui';
+import { Message } from 'ui';
 
 export async function getData({ asPath, language, preview = null }) {
   const { data } = await simplyFetchFromGraph({
@@ -38,11 +38,10 @@ export default function WebshopPage({ folder, preview }) {
       preview={preview}
     >
       <Outer>
-        {/* <Message>
-          Verlof van donderdag 29 juni tot woensdag 12 juli. In deze periode
-          worden er geen bestellingen verstuurd en is het niet mogelijk deze af
-          te halen.
-        </Message> */}
+        <Message>
+          De webshop is momenteel in technisch onderhoud. Er kunnen dus geen
+          bestellingen worden geplaatst.
+        </Message>
         <Header centerContent>
           <H1>{folder.name}</H1>
         </Header>
