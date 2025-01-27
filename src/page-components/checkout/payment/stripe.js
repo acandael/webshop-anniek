@@ -12,7 +12,7 @@ import ServiceApi from 'lib/service-api';
 import { Button, Spinner } from 'ui';
 import { useT } from 'lib/i18n';
 
-function Form({ stripeClientSecret, checkoutModel, onError }) {
+function Form({ stripeClientSecret, checkoutModel, onSuccess, onError }) {
   const t = useT();
   const stripe = useStripe();
   const elements = useElements();
@@ -47,18 +47,6 @@ function Form({ stripeClientSecret, checkoutModel, onError }) {
 
       const { customer } = checkoutModel;
 
-      // Check if we already processed this payment
-      const storedPaymentIntent = sessionStorage.getItem(
-        'currentPaymentIntent'
-      );
-      if (storedPaymentIntent === stripeClientSecret) {
-        console.log('Preventing duplicate payment submission');
-        return;
-      }
-
-      // Store current payment intent being processed
-      sessionStorage.setItem('currentPaymentIntent', stripeClientSecret);
-
       const result = await stripe.confirmCardPayment(stripeClientSecret, {
         payment_method: {
           card: elements.getElement(CardElement),
@@ -70,19 +58,45 @@ function Form({ stripeClientSecret, checkoutModel, onError }) {
       });
 
       if (result.error) {
-        // Clear stored payment intent on error
-        sessionStorage.removeItem('currentPaymentIntent');
         throw result.error;
       }
 
       if (result.paymentIntent?.status === 'succeeded') {
-        // Store successful payment intent ID
-        sessionStorage.setItem(
-          'lastSuccessfulPayment',
-          result.paymentIntent.id
-        );
-        window.location.href = `${process.env.NEXT_PUBLIC_STRIPE_RETURN_URL}?payment_intent=${result.paymentIntent.id}`;
-        return;
+        // Create order through the API
+        const response = await ServiceApi({
+          query: `
+            mutation confirmStripeOrder($checkoutModel: CheckoutModelInput!, $paymentIntentId: String!) {
+              paymentProviders {
+                stripe {
+                  confirmOrder(checkoutModel: $checkoutModel, paymentIntentId: $paymentIntentId) {
+                    success
+                    orderId
+                  }
+                }
+              }
+            }
+          `,
+          variables: {
+            checkoutModel,
+            paymentIntentId: result.paymentIntent.id
+          }
+        });
+
+        const { success, orderId } =
+          response.data.paymentProviders.stripe.confirmOrder;
+
+        if (success) {
+          if (typeof onSuccess === 'function') {
+            onSuccess(orderId);
+          }
+          // Redirect to the order confirmation page
+          window.location.href = checkoutModel.confirmationURL.replace(
+            '{crystallizeOrderId}',
+            orderId
+          );
+        } else {
+          throw new Error('Could not confirm order');
+        }
       }
     } catch (error) {
       if (typeof onError === 'function') {
@@ -92,13 +106,6 @@ function Form({ stripeClientSecret, checkoutModel, onError }) {
       setStatus('idle');
     }
   }
-
-  // Clear stored payment intent when component unmounts
-  useEffect(() => {
-    return () => {
-      sessionStorage.removeItem('currentPaymentIntent');
-    };
-  }, []);
 
   return (
     <form onSubmit={handleSubmit}>
