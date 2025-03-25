@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { H1 } from 'ui';
+import { H1, H2 } from 'ui';
 import Layout from 'components/layout';
 import {
   Outer,
   ContactHeader,
-  H3,
   HeroSection,
   HeroText,
   GoogleMap
@@ -41,13 +40,17 @@ export default function ContactPage() {
               Blankenberge
             </p>
             <p>Ondernemingsnummer: BE0536204914</p>
-            <H3>Openingsuren</H3>
+            <H2>Openingsuren</H2>
+            <p>Behandelingen zijn steeds op afspraak.</p>
             <p>
-              Op afspraak. Tijdens behandelingen wordt er niet opgenomen maar
-              laat uw naam en telefoon na dan bel ik u zeker terug.
+              Voor aankoop producten is de winkel geopend van maandag tot
+              vrijdag van 9-18h doorlopend op de middag met uitzonderding op
+              woensdag van 9-12h30.
             </p>
             <p>
-              <strong>Gesloten op: Zaterdag, Zon- en Feestdagen</strong>
+              Openingsuren kunnen afwijken voor verlof of opleidingen.
+              <br />
+              Dit wordt gemeld via instagram of facebook.
             </p>
           </HeroText>
         </HeroSection>
