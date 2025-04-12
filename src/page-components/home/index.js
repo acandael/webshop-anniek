@@ -71,31 +71,48 @@ export default function FrontPage({ preview }) {
         </Header>
         <HeroSection>
           <HeroText>
-            <H2>
-              We zijn verheugd om een tipje van de sluier op te lichten en ons
-              nieuwe logo en huisstijl te presenteren!
-            </H2>
             <p>
-              Naar aanleiding van de uitbreiding en verhuizing van ons
-              Skincenter hebben we gewerkt aan een rebranding, inclusief een
-              nieuw logo en een frisse huisstijl. Ons nieuwe logo vertelt een
-              bijzonder verhaal.
+              Bij Skincenter draait alles om <strong>transformatie</strong>,
+              niet alleen van je huid maar ook van hoe je jezelf ziet. Met{' '}
+              <strong>actieve cosmeceutische producten</strong> en geavanceerde
+              technologie brengen we jouw huid in topvorm, terwijl jij je
+              zelfvertrouwen herwint. Elk traject begint met een grondige
+              huidanalyse en een aanpak op maat, zodat je niet alleen een
+              stralende huid krijgt, maar ook een goed gevoel van binnenuit.
             </p>
             <p>
-              Vaak zien we klanten binnenkomen met het hoofd naar beneden
-              gebogen, onzeker over hun huid of lichaam. Samen starten we een
-              traject van huidverbetering of lichaamscontouring en zien we stap
-              voor stap hun hoofd omhoog gaan. Hun gelaatsuitdrukking en huid
-              beginnen te stralen, en dat stralen nemen ze mee de wereld in.
+              De lotusbloem, staat voor{' '}
+              <strong>innerlijke kracht en groei</strong>. Net zoals deze bloem
+              zich vanuit haar wortels naar het licht ontvouwt, geloven wij in
+              de kracht van zelfontplooiing.
             </p>
             <p>
-              Daarom hebben we gekozen voor een moderne lotusbloem als ons
-              nieuwe symbool. De lotus staat voor innerlijke schoonheid en
-              transformeert zich van wortels in de aarde naar een prachtige
-              bloem. Dit logo zal vanaf nu regelmatig terugkomen in onze nieuwe
-              huisstijl.
+              Stap voor stap zie je jezelf weer stralen, klaar om
+              volzelfvertrouwen de wereld tegemoet te treden.  
             </p>
-            <p>We heten je van harte welkom in ons nieuwe Skincenter.</p>
+            <p>
+              Anniek is het hart van Skincenter. Met meer dan 10 jaar ervaring
+              en een diepe <strong>passie voor huidverbetering</strong> zorgt ze
+              voor een persoonlijke aanpak die écht werkt. Na zelf lange tijd te
+              hebben geworsteld met huidproblemen, weet ze als geen ander hoe
+              belangrijk het is om je goed in je vel te voelen.
+            </p>
+            <p>
+              Bij <strong>Anniek</strong> ben je geen nummer. Ze{' '}
+              <strong>luistert, analyseert, en creëert</strong>
+              een behandeltraject op maat, altijd met oog voor jouw wensen en
+              verwachtingen. Haar warme, no-nonsense aanpak maakt het makkelijk
+              om je op je gemak te voelen, zodat je samen met haar stappen kunt
+              zetten naar een gezondere, stralende huid.
+            </p>
+            <p>
+              Dankzij haar expertise en opleidingen in binnen- en buitenland
+              stemt Anniek <strong>behandelingen en thuisverzorging</strong>{' '}
+              perfect op elkaar af. Peelings, microneedling en laserinstellingen
+              worden doordacht gecombineerd voor maximale huidverbetering. Elk
+              behandelplan is uniek en gericht op de{' '}
+              <strong>beste, duurzame resultaten</strong>.{' '}
+            </p>
             <p>
               Volg je mij al op{' '}
               <a
