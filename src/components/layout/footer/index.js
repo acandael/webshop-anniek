@@ -46,13 +46,13 @@ export default function Footer() {
         <h3>Webshop</h3>
 
         <li>
+          <li>
+            <Link href="/webshop/zo-skin-health-1">
+              <a>Zo Skin Health</a>
+            </Link>
+          </li>
           <Link href="/merken/environ">
             <a>Environ</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/merken/advanced-nutrition-programme">
-            <a>Advanced Nutrition Programme</a>
           </Link>
         </li>
         <li>
@@ -61,8 +61,18 @@ export default function Footer() {
           </Link>
         </li>
         <li>
-          <Link href="/webshop/skin-by-dings">
-            <a>Skin By Dings</a>
+          <Link href="#">
+            <a>Heliocare</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/merken/advanced-nutrition-programme">
+            <a>Advanced Nutrition Programme</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="#">
+            <a>Insentials</a>
           </Link>
         </li>
         <li>
