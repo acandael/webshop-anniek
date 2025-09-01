@@ -4,7 +4,7 @@ import { Image } from '@crystallize/react-image';
 
 import { responsive } from 'ui';
 
-export const Outer = styled.a`
+export const Outer = styled.div`
   display: block;
   height: 100%;
   color: var(--color-main-background);

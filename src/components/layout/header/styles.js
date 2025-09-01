@@ -21,7 +21,7 @@ export const Outer = styled.header`
   }
 `;
 
-export const Logo = styled.a`
+export const Logo = styled.div`
   height: 100%;
   display: block;
   object-fit: cover;

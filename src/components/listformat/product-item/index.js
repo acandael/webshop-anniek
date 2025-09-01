@@ -27,8 +27,8 @@ export default function ProductItem({ data }) {
   }
 
   const { name, path, type, variants, matchingVariant } = data;
-  
-    const variant =
+
+  const variant =
     matchingVariant || variants?.find((variant) => variant.isDefault) || {};
 
   const pricing = getRelativePriceVariants({
@@ -36,9 +36,9 @@ export default function ProductItem({ data }) {
     locale
   });
   const image = variant?.images?.[0] || variant?.image;
-  
+
   return (
-    <Link href={path} passHref>
+    <Link href={path}>
       <Outer type={type}>
         <Inner>
           <ImageWrapper>

@@ -32,53 +32,37 @@ export default function Footer() {
       <NavList>
         <h3>Menu</h3>
         <li>
-          <Link href="/behandelingen">
-            <a>Behandelingen</a>
-          </Link>
+          <Link href="/behandelingen">Behandelingen</Link>
         </li>
         <li>
-          <Link href="/contact">
-            <a>Contact</a>
-          </Link>
+          <Link href="/contact">Contact</Link>
         </li>
       </NavList>
       <NavList>
         <h3>Webshop</h3>
 
         <li>
-          <li>
-            <Link href="/webshop/zo-skin-health-1">
-              <a>Zo Skin Health</a>
-            </Link>
-          </li>
-          <Link href="/merken/environ">
-            <a>Environ</a>
-          </Link>
+          <Link href="/webshop/zo-skin-health-1">Zo Skin Health</Link>
         </li>
         <li>
-          <Link href="/merken/jane-iredale">
-            <a>Jane Iredale</a>
-          </Link>
+          <Link href="/merken/environ">Environ</Link>
         </li>
         <li>
-          <Link href="#">
-            <a>Heliocare</a>
-          </Link>
+          <Link href="/merken/jane-iredale">Jane Iredale</Link>
+        </li>
+        <li>
+          <Link href="#">Heliocare</Link>
         </li>
         <li>
           <Link href="/merken/advanced-nutrition-programme">
-            <a>Advanced Nutrition Programme</a>
+            Advanced Nutrition Programme
           </Link>
         </li>
         <li>
-          <Link href="#">
-            <a>Insentials</a>
-          </Link>
+          <Link href="#">Insentials</Link>
         </li>
         <li>
-          <Link href="/kadobon">
-            <a>Kadobon</a>
-          </Link>
+          <Link href="/kadobon">Kadobon</Link>
         </li>
         <li>
           Artikelen kunnen, ongeopend, tot 14 dagen na aankoop terug gestuurd

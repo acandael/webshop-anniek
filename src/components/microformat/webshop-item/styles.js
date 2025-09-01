@@ -3,15 +3,17 @@ import { Image } from '@crystallize/react-image';
 
 import { responsive } from 'ui';
 
-export const Outer = styled.a`
+export const Outer = styled.div`
   display: block;
   height: 100%;
   color: var(--color-main-background);
   position: relative;
   padding: 1em;
   /* background: var(--color-box-background); */
-  grid-column-end: span 4;
+  grid-column-end: span 4 !important;
+
   ${responsive.xs} {
+    grid-column-end: span 12;
     margin-bottom: 15px;
   }
 `;
@@ -50,7 +52,7 @@ export const Text = styled.div`
   left: 0;
   width: 100%;
   /* padding: 1em; */
-  
+
   h3 {
     font-size: 1.25em;
     /* text-transform: uppercase; */

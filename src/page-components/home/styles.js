@@ -85,6 +85,14 @@ export const Button = styled(button)`
 
 export const HeroImage = styled(Image)`
   object-fit: contain;
+  max-height: 600px;
+  width: auto;
+
+  ${responsive.smAndLess} {
+    max-height: 450px;
+    width: 100%;
+    object-fit: contain;
+  }
 `;
 
 export const CTAText = styled.span`
@@ -97,11 +105,25 @@ export const SubSection = styled.section`
 
   margin-top: 189px;
 
+  /* Ensure Link components in flex layout work properly */
+  > a {
+    display: flex;
+    max-width: 456px;
+  }
+
   ${responsive.smAndLess} {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 128px 0;
+
+    > a {
+      margin-top: 64px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
   }
 
   h2 {
@@ -138,7 +160,7 @@ export const SubSectionImage = styled(Image)`
   border: solid 1px #d4d4d4;
 `;
 
-export const StyledLink = styled.a`
+export const StyledLink = styled.span`
   display: block;
   margin-top: 1rem;
   color: #dca090;

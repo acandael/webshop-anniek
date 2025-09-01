@@ -35,7 +35,7 @@ export default function ProductItem({ data }) {
   });
   const image = variant?.images?.[0] || variant?.image;
   return (
-    <Link href={path} passHref>
+    <Link href={path}>
       <Outer type={type}>
         <Inner>
           <ImageWrapper>

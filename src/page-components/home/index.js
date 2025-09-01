@@ -132,31 +132,28 @@ export default function FrontPage({ preview }) {
               </a>
               ?
             </p>
-            <Link
-              href="https://schoonheidsinstituut-anniek-lambrecht-1.salonized.com/bookings/new?"
-              passHref
-            >
+            <Link href="https://schoonheidsinstituut-anniek-lambrecht-1.salonized.com/bookings/new?">
               <Button width="221px">Boek Nu</Button>
             </Link>
           </HeroText>
           <HeroImage
             src="/static/anniek.jpg"
             alt="anniek lambrecht"
-            width="450"
-            height="675"
-            priority="true"
+            width={450}
+            height={675}
+            priority
           />
         </HeroSection>
         <SubSection>
-          <Link href="/behandelingen" passHref>
+          <Link href="/behandelingen">
             <SectionOne>
               <H2>Behandelingen</H2>
               <ImageWrapper>
                 <SubSectionImage
                   src="/static/subsection-behandelingen.jpg"
                   alt="anniek lambrecht - behandelingen"
-                  width="456px"
-                  height="304px"
+                  width={456}
+                  height={304}
                 />
               </ImageWrapper>
               <SubSectionText>
@@ -166,20 +163,18 @@ export default function FrontPage({ preview }) {
                 LPG apparaat. Ongewenste haren, couperose en pigment behandelen
                 we met de Clarity 2 Laser.{' '}
               </SubSectionText>
-              <Link href="/behandelingen">
-                <StyledLink>Ontdek alle behandelingen</StyledLink>
-              </Link>
+              <StyledLink>Ontdek alle behandelingen</StyledLink>
             </SectionOne>
           </Link>
-          <Link href="/webshop" passHref>
+          <Link href="/webshop">
             <SectionTwo>
               <H2>Webshop</H2>
               <ImageWrapper>
                 <SubSectionImage
                   src="/static/webshop.jpg"
                   alt="anniek lambrecht - webshop"
-                  width="456px"
-                  height="304px"
+                  width={456}
+                  height={304}
                 />
               </ImageWrapper>
               <SubSectionText>
@@ -189,9 +184,7 @@ export default function FrontPage({ preview }) {
                 antioxidanten en compenseren het chronisch tekort hiervan in de
                 huid.
               </SubSectionText>
-              <Link href="/webshop">
-                <StyledLink>Ontdek alle producten</StyledLink>
-              </Link>
+              <StyledLink>Ontdek alle producten</StyledLink>
             </SectionTwo>
           </Link>
         </SubSection>

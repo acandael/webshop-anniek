@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Outer = styled.a`
+export const Outer = styled.div`
   height: 100%;
   color: var(--color-primary-action-content);
   position: relative;

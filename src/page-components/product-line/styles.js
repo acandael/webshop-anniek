@@ -16,22 +16,22 @@ export const Outer = styled(outer)`
 
 export const List = styled.div`
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 1.5rem;
 
   ${responsive.xs} {
     display: block;
   }
   ${responsive.sm} {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   ${responsive.md} {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   ${responsive.lg} {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 `;
 

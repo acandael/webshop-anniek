@@ -39,7 +39,7 @@ export default function Layout({
   const router = useRouter();
   const headTitel = title
     ? `${title} | Skincenter`
-    : 'Anniek Lambrecht' | 'Skincenter';
+    : 'Anniek Lambrecht | Skincenter';
 
   //@TODO add url to .env
   const siteUrl = null;

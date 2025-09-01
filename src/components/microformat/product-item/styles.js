@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import is from 'styled-is';
 import { Image } from '@crystallize/react-image';
 
-export const Outer = styled.a`
+export const Outer = styled.div`
   height: 100%;
   color: var(--color-main-background);
   border: 4px solid #fff;

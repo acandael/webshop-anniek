@@ -1,5 +1,5 @@
 import { DefaultSeo } from 'next-seo';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { AuthProvider } from 'components/auth';
 import { SettingsProvider } from 'components/settings-context';

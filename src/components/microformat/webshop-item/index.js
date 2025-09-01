@@ -22,7 +22,7 @@ export default function WebshopItem({ data, gridCell }) {
   const paragraphs = data.components?.find((c) => c.name === 'Beschrijving');
 
   return (
-    <Link href={path} passHref>
+    <Link href={path}>
       <Outer>
         <Text>
           <H3>{name}</H3>

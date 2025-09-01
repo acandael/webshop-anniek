@@ -177,7 +177,7 @@ export default function Search() {
                       href={node.path}
                       onClick={() => dispatch({ action: 'blue' })}
                     >
-                      <a>{node.name}</a>
+                      {node.name}
                     </Link>
                   </li>
                 ))}

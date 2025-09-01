@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Outer = styled.a`
+export const Outer = styled.div`
   align-items: center;
   background: var(--color-primary-action);
   border: 4px solid #fff;

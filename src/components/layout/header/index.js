@@ -35,7 +35,7 @@ export default function Header({ simple, preview }) {
         </PreviewBar>
       )}
       <Outer simple={simple}>
-        <Link href="/" passHref>
+        <Link href="/">
           <Logo>
             <img
               src="/static/logo-header-3.jpg"
@@ -49,14 +49,14 @@ export default function Header({ simple, preview }) {
           <NavList>
             {mainNavigation?.map((category) => (
               <NavListItem key={category.path}>
-                <Link href={category.path}>
-                  <a onClick={() => setNavOpen(false)}>{category.name}</a>
+                <Link href={category.path} onClick={() => setNavOpen(false)}>
+                  {category.name}
                 </Link>
               </NavListItem>
             ))}
             <NavListItem>
-              <Link href="/contact">
-                <a onClick={() => setNavOpen(false)}>Contact</a>
+              <Link href="/contact" onClick={() => setNavOpen(false)}>
+                Contact
               </Link>
             </NavListItem>
           </NavList>

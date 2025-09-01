@@ -32,7 +32,7 @@ export default function CategoryItem({ data, gridCell }) {
   });
 
   return (
-    <Link href={path} passHref>
+    <Link href={path}>
       <Outer>
         <Text>
           <H3>{name}</H3>

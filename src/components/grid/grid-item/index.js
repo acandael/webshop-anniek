@@ -57,7 +57,7 @@ export default function GridItem({ data, gridCell }) {
   }
 
   return (
-    <Link href={path} passHref>
+    <Link href={path}>
       <Outer className={cellSize} type={type}>
         <Text>{text}</Text>
         <ImageWrapper>

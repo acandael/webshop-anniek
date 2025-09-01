@@ -51,7 +51,7 @@ export const Price = styled.span`
   font-weight: bold;
 `;
 
-export const Outer = styled.a`
+export const Outer = styled.div`
   position: relative;
   background: var(--color-box-background);
   height: 100%;
