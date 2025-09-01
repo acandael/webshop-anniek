@@ -16,19 +16,19 @@ import {
 
 export default function OrderItems({ cart }) {
   const t = useT();
- 
+
   return (
     <Items>
       {cart.map((item) => (
         <Item key={item.sku}>
           {/* show product image on checkout page */}
-          {item.images && (
+          {item.images && item.name !== 'verzenden' && (
             <ItemImage {...item.images[0]} alt={item.name} sizes="50vw" />
           )}
           {/* show product image on confirmation page */}
           {item.imageUrl && (
             <ItemImage src={item.imageUrl} alt={item.name} sizes="50vw" />
-)}
+          )}
           <ItemInfo>
             <ItemName>{item.name}</ItemName>
             {item.attributes ? (
