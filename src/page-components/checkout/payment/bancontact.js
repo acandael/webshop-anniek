@@ -65,9 +65,11 @@ function Form({ stripeClientSecret, checkoutModel, onError }) {
 
 export default function StripeWrapper({ checkoutModel, ...props }) {
   const [stripeLoader, setStripeLoader] = useState(null);
-  const bancontactConfig = useQuery('bancontactConfig', () =>
-    ServiceApi({
-      query: `
+  const bancontactConfig = useQuery({
+    queryKey: ['bancontactConfig'],
+    queryFn: () =>
+      ServiceApi({
+        query: `
       {
         paymentProviders {
           bancontact {
@@ -76,8 +78,8 @@ export default function StripeWrapper({ checkoutModel, ...props }) {
         }
       }
     `
-    })
-  );
+      })
+  });
 
   useEffect(() => {
     if (bancontactConfig.data && !stripeLoader) {
@@ -91,9 +93,11 @@ export default function StripeWrapper({ checkoutModel, ...props }) {
   }, [bancontactConfig, stripeLoader]);
 
   // Get new paymentIntent
-  const bancontactPaymentIntent = useQuery('stripePaymentIntent', () =>
-    ServiceApi({
-      query: `
+  const bancontactPaymentIntent = useQuery({
+    queryKey: ['bancontactPaymentIntent', checkoutModel],
+    queryFn: () =>
+      ServiceApi({
+        query: `
         mutation BancontactPaymentIntent($checkoutModel: CheckoutModelInput!) {
           paymentProviders {
             bancontact {
@@ -102,17 +106,17 @@ export default function StripeWrapper({ checkoutModel, ...props }) {
           }
         }
       `,
-      variables: {
-        checkoutModel
-      }
-    })
-  );
+        variables: {
+          checkoutModel
+        }
+      })
+  });
 
   const stripeClientSecret =
     bancontactPaymentIntent?.data?.data?.paymentProviders?.bancontact
       ?.createPaymentIntent?.client_secret;
 
-  if (bancontactConfig.loading || !stripeLoader || !stripeClientSecret) {
+  if (bancontactConfig.isLoading || !stripeLoader || !stripeClientSecret) {
     return <Spinner />;
   }
 
@@ -121,7 +125,7 @@ export default function StripeWrapper({ checkoutModel, ...props }) {
       <Head>
         <script key="stripe-js" src="https://js.stripe.com/v3/" async />
       </Head>
-      <Elements locale="en" stripe={stripeLoader}>
+      <Elements stripe={stripeLoader} options={{ locale: 'en' }}>
         <Form
           {...props}
           checkoutModel={checkoutModel}

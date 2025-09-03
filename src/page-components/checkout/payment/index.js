@@ -28,8 +28,12 @@ import {
 } from '../styles';
 import Voucher from '../voucher';
 
-const StripeCheckout = dynamic(() => import('./stripe'));
-const BancontactCheckout = dynamic(() => import('./bancontact'));
+const StripeCheckout = dynamic(() => import('./stripe'), {
+  loading: () => <Spinner />
+});
+const BancontactCheckout = dynamic(() => import('./bancontact'), {
+  loading: () => <Spinner />
+});
 
 const Inner = styled.div``;
 
@@ -50,9 +54,11 @@ export default function Payment() {
     pickup: false
   });
 
-  const paymentConfig = useQuery('paymentConfig', () =>
-    ServiceApi({
-      query: `
+  const paymentConfig = useQuery({
+    queryKey: ['paymentConfig'],
+    queryFn: () =>
+      ServiceApi({
+        query: `
       {
         paymentProviders {
           stripe {
@@ -64,8 +70,8 @@ export default function Payment() {
         }
       }
     `
-    })
-  );
+      })
+  });
   // Handle locale with sub-path routing
   let multilingualUrlPrefix = '';
   if (window.location.pathname.startsWith(`/${router.locale}/`)) {
@@ -179,7 +185,7 @@ export default function Payment() {
   ];
 
   const enabledPaymentProviders = [];
-  if (!paymentConfig.loading && paymentConfig.data) {
+  if (!paymentConfig.isLoading && paymentConfig.data) {
     const { paymentProviders } = paymentConfig.data.data;
 
     if (paymentProviders.bancontact.enabled) {
@@ -385,7 +391,7 @@ export default function Payment() {
         <CheckoutFormGroup withUpperMargin>
           <div>
             <SectionHeader>{t('checkout.choosePaymentMethod')}</SectionHeader>
-            {paymentConfig.loading ? (
+            {paymentConfig.isLoading ? (
               <Spinner />
             ) : (
               <div>

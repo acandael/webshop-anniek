@@ -125,9 +125,11 @@ function Form({ stripeClientSecret, checkoutModel, onSuccess, onError }) {
 
 export default function StripeWrapper({ checkoutModel, ...props }) {
   const [stripeLoader, setStripeLoader] = useState(null);
-  const stripeConfig = useQuery('stripeConfig', () =>
-    ServiceApi({
-      query: `
+  const stripeConfig = useQuery({
+    queryKey: ['stripeConfig'],
+    queryFn: () =>
+      ServiceApi({
+        query: `
       {
         paymentProviders {
           stripe {
@@ -136,8 +138,8 @@ export default function StripeWrapper({ checkoutModel, ...props }) {
         }
       }
     `
-    })
-  );
+      })
+  });
 
   useEffect(() => {
     if (stripeConfig.data && !stripeLoader) {
@@ -150,9 +152,11 @@ export default function StripeWrapper({ checkoutModel, ...props }) {
     }
   }, [stripeConfig, stripeLoader]);
 
-  const stripePaymentIntent = useQuery('stripePaymentIntent', () =>
-    ServiceApi({
-      query: `
+  const stripePaymentIntent = useQuery({
+    queryKey: ['stripePaymentIntent', checkoutModel],
+    queryFn: () =>
+      ServiceApi({
+        query: `
         mutation StripePaymentIntent($checkoutModel: CheckoutModelInput!) {
           paymentProviders {
             stripe {
@@ -161,17 +165,17 @@ export default function StripeWrapper({ checkoutModel, ...props }) {
           }
         }
       `,
-      variables: {
-        checkoutModel
-      }
-    })
-  );
+        variables: {
+          checkoutModel
+        }
+      })
+  });
 
   const stripeClientSecret =
     stripePaymentIntent?.data?.data?.paymentProviders?.stripe
       ?.createPaymentIntent?.client_secret;
 
-  if (stripeConfig.loading || !stripeLoader || !stripeClientSecret) {
+  if (stripeConfig.isLoading || !stripeLoader || !stripeClientSecret) {
     return <Spinner />;
   }
 
