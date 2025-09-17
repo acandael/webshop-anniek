@@ -9,7 +9,7 @@ export const Inner = styled(I)`
   ${responsive.smPlus} {
     display: grid;
     padding: 0 30px;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     column-gap: 30px;
     grid-template-areas: 'content content content content content content content actions actions actions actions actions';
   }

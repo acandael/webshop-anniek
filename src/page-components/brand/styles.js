@@ -12,15 +12,15 @@ export const List = styled.div`
     display: block;
   }
   ${responsive.sm} {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   ${responsive.md} {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   ${responsive.lg} {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 `;
 
