@@ -8,13 +8,11 @@ import ServiceApi from 'lib/service-api';
 import { Button, Spinner } from 'ui';
 import { useT } from 'lib/i18n';
 
-function Form({ stripeClientSecret, checkoutModel, onError }) {
+function Form({ stripeClientSecret, checkoutModel, onError, returnUrl }) {
   const t = useT();
   const stripe = useStripe();
   const elements = useElements();
   const [status, setStatus] = useState('idle');
-
-  const checkoutModelString = JSON.stringify(checkoutModel);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -38,7 +36,7 @@ function Form({ stripeClientSecret, checkoutModel, onError }) {
               name: `${customer.firstName} ${customer.lastName}`
             }
           },
-          return_url: `${process.env.NEXT_PUBLIC_BANCONTACT_RETURN_URL}?checkout_model=${checkoutModelString}`
+          return_url: returnUrl
         })
         .then((response) => {
           if (response.error) {
@@ -112,11 +110,19 @@ export default function StripeWrapper({ checkoutModel, ...props }) {
       })
   });
 
-  const stripeClientSecret =
+  const paymentIntentData =
     bancontactPaymentIntent?.data?.data?.paymentProviders?.bancontact
-      ?.createPaymentIntent?.client_secret;
+      ?.createPaymentIntent;
 
-  if (bancontactConfig.isLoading || !stripeLoader || !stripeClientSecret) {
+  const stripeClientSecret = paymentIntentData?.client_secret;
+  const returnUrl = paymentIntentData?.metadata?.return_url;
+
+  if (
+    bancontactConfig.isLoading ||
+    !stripeLoader ||
+    !stripeClientSecret ||
+    !returnUrl
+  ) {
     return <Spinner />;
   }
 
@@ -130,6 +136,7 @@ export default function StripeWrapper({ checkoutModel, ...props }) {
           {...props}
           checkoutModel={checkoutModel}
           stripeClientSecret={stripeClientSecret}
+          returnUrl={returnUrl}
         />
       </Elements>
     </>
