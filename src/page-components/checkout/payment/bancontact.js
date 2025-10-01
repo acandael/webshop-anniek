@@ -142,6 +142,24 @@ function Form({
 
       const { customer } = checkoutModel;
 
+      // Save checkout state to sessionStorage before redirect
+      if (typeof window !== 'undefined') {
+        const checkoutState = {
+          firstName: customer.firstName,
+          lastName: customer.lastName,
+          email: customer.addresses?.[0]?.email,
+          street: customer.addresses?.[1]?.street,
+          streetNumber: customer.addresses?.[1]?.streetNumber,
+          postalCode: customer.addresses?.[1]?.postalCode,
+          city: customer.addresses?.[1]?.city
+        };
+        sessionStorage.setItem(
+          'bancontactCheckoutState',
+          JSON.stringify(checkoutState)
+        );
+        console.log('Bancontact: Saved checkout state to sessionStorage');
+      }
+
       console.log('Confirming Bancontact payment with return URL:', returnUrl);
 
       const result = await stripe.confirmBancontactPayment(stripeClientSecret, {

@@ -51,20 +51,35 @@ export default function Payment() {
     urlParams && urlParams.has('payment_intent_client_secret');
   const initialPaymentProvider = hasPaymentIntentSecret ? 'bancontact' : null;
 
+  // Restore checkout form data from sessionStorage if returning from payment
+  const getInitialState = () => {
+    if (hasPaymentIntentSecret && typeof window !== 'undefined') {
+      const savedState = sessionStorage.getItem('bancontactCheckoutState');
+      if (savedState) {
+        try {
+          return JSON.parse(savedState);
+        } catch (e) {
+          console.error('Failed to parse saved checkout state:', e);
+        }
+      }
+    }
+    return {
+      firstName: '',
+      lastName: '',
+      email: '',
+      street: '',
+      streetNumber: '',
+      postalCode: '',
+      city: '',
+      shipping: false,
+      pickup: false
+    };
+  };
+
   const [selectedPaymentProvider, setSelectedPaymentProvider] = useState(
     initialPaymentProvider
   );
-  const [state, setState] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    street: '',
-    streetNumber: '',
-    postalCode: '',
-    city: '',
-    shipping: false,
-    pickup: false
-  });
+  const [state, setState] = useState(getInitialState());
 
   // Log for debugging
   useEffect(() => {
@@ -72,6 +87,7 @@ export default function Payment() {
       console.log(
         'Payment: Detected return from Bancontact payment, auto-selecting Bancontact provider'
       );
+      console.log('Payment: Restored checkout state:', state);
     }
   }, []);
 
