@@ -81,16 +81,6 @@ export default function Payment() {
   );
   const [state, setState] = useState(getInitialState());
 
-  // Log for debugging
-  useEffect(() => {
-    if (hasPaymentIntentSecret) {
-      console.log(
-        'Payment: Detected return from Bancontact payment, auto-selecting Bancontact provider'
-      );
-      console.log('Payment: Restored checkout state:', state);
-    }
-  }, []);
-
   const paymentConfig = useQuery({
     queryKey: ['paymentConfig'],
     queryFn: () =>

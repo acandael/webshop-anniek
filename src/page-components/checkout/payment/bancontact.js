@@ -22,25 +22,12 @@ function Form({
 
   const handlePaymentReturn = useCallback(
     async (clientSecret) => {
-      console.log(
-        'Bancontact: handlePaymentReturn called with clientSecret:',
-        clientSecret
-      );
       try {
-        console.log('Bancontact: Retrieving payment intent from Stripe...');
         const { paymentIntent } = await stripe.retrievePaymentIntent(
           clientSecret
         );
 
-        console.log('Bancontact: Payment intent retrieved:', {
-          id: paymentIntent.id,
-          status: paymentIntent.status
-        });
-
         if (paymentIntent.status === 'succeeded') {
-          console.log(
-            'Bancontact: Payment succeeded! Calling confirmOrder mutation...'
-          );
           // Confirm order with backend
           const response = await ServiceApi({
             query: `
@@ -61,27 +48,23 @@ function Form({
             }
           });
 
-          console.log('Bancontact: confirmOrder response:', response);
-
           const { success, orderId } =
             response.data.paymentProviders.bancontact.confirmOrder;
 
-          console.log('Bancontact: Order confirmation result:', {
-            success,
-            orderId
-          });
-
           if (success) {
+            // Clear saved checkout state
+            if (typeof window !== 'undefined') {
+              sessionStorage.removeItem('bancontactCheckoutState');
+            }
+
             if (typeof onSuccess === 'function') {
               onSuccess(orderId);
             }
             // Redirect to confirmation page
-            const confirmationUrl = checkoutModel.confirmationURL.replace(
+            window.location.href = checkoutModel.confirmationURL.replace(
               '{crystallizeOrderId}',
               orderId
             );
-            console.log('Bancontact: Redirecting to:', confirmationUrl);
-            window.location.href = confirmationUrl;
           } else {
             throw new Error('Could not confirm order');
           }
@@ -91,7 +74,7 @@ function Form({
           );
         }
       } catch (error) {
-        console.error('Bancontact: Error in handlePaymentReturn:', error);
+        console.error('Bancontact payment confirmation error:', error);
         if (typeof onError === 'function') {
           onError(error);
         }
@@ -109,15 +92,7 @@ function Form({
       'payment_intent_client_secret'
     );
 
-    console.log('Bancontact: Checking for return from bank redirect');
-    console.log('Bancontact: URL search params:', window.location.search);
-    console.log(
-      'Bancontact: Client secret found:',
-      clientSecret ? 'YES' : 'NO'
-    );
-
     if (clientSecret) {
-      console.log('Bancontact: Starting order confirmation...');
       setStatus('confirming');
       handlePaymentReturn(clientSecret);
     }
@@ -157,10 +132,7 @@ function Form({
           'bancontactCheckoutState',
           JSON.stringify(checkoutState)
         );
-        console.log('Bancontact: Saved checkout state to sessionStorage');
       }
-
-      console.log('Confirming Bancontact payment with return URL:', returnUrl);
 
       const result = await stripe.confirmBancontactPayment(stripeClientSecret, {
         payment_method: {
