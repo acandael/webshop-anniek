@@ -22,12 +22,25 @@ function Form({
 
   const handlePaymentReturn = useCallback(
     async (clientSecret) => {
+      console.log(
+        'Bancontact: handlePaymentReturn called with clientSecret:',
+        clientSecret
+      );
       try {
+        console.log('Bancontact: Retrieving payment intent from Stripe...');
         const { paymentIntent } = await stripe.retrievePaymentIntent(
           clientSecret
         );
 
+        console.log('Bancontact: Payment intent retrieved:', {
+          id: paymentIntent.id,
+          status: paymentIntent.status
+        });
+
         if (paymentIntent.status === 'succeeded') {
+          console.log(
+            'Bancontact: Payment succeeded! Calling confirmOrder mutation...'
+          );
           // Confirm order with backend
           const response = await ServiceApi({
             query: `
@@ -48,25 +61,37 @@ function Form({
             }
           });
 
+          console.log('Bancontact: confirmOrder response:', response);
+
           const { success, orderId } =
             response.data.paymentProviders.bancontact.confirmOrder;
+
+          console.log('Bancontact: Order confirmation result:', {
+            success,
+            orderId
+          });
 
           if (success) {
             if (typeof onSuccess === 'function') {
               onSuccess(orderId);
             }
             // Redirect to confirmation page
-            window.location.href = checkoutModel.confirmationURL.replace(
+            const confirmationUrl = checkoutModel.confirmationURL.replace(
               '{crystallizeOrderId}',
               orderId
             );
+            console.log('Bancontact: Redirecting to:', confirmationUrl);
+            window.location.href = confirmationUrl;
           } else {
             throw new Error('Could not confirm order');
           }
         } else {
-          throw new Error('Payment was not successful');
+          throw new Error(
+            `Payment was not successful. Status: ${paymentIntent.status}`
+          );
         }
       } catch (error) {
+        console.error('Bancontact: Error in handlePaymentReturn:', error);
         if (typeof onError === 'function') {
           onError(error);
         }
@@ -84,49 +109,60 @@ function Form({
       'payment_intent_client_secret'
     );
 
+    console.log('Bancontact: Checking for return from bank redirect');
+    console.log('Bancontact: URL search params:', window.location.search);
+    console.log(
+      'Bancontact: Client secret found:',
+      clientSecret ? 'YES' : 'NO'
+    );
+
     if (clientSecret) {
+      console.log('Bancontact: Starting order confirmation...');
       setStatus('confirming');
       handlePaymentReturn(clientSecret);
     }
   }, [stripe, handlePaymentReturn]);
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
+    if (!returnUrl) {
+      console.error('Return URL is not set');
+      onError(new Error('Return URL is not configured'));
+      return;
+    }
+
+    if (status === 'confirming') return;
     setStatus('confirming');
 
-    go();
-
-    async function go() {
+    try {
       if (!stripe || !elements) {
-        setTimeout(go, 100);
-        return;
+        throw new Error('Stripe not loaded');
       }
 
       const { customer } = checkoutModel;
 
-      try {
-        const result = await stripe.confirmBancontactPayment(
-          stripeClientSecret,
-          {
-            payment_method: {
-              billing_details: {
-                name: `${customer.firstName} ${customer.lastName}`
-              }
-            },
-            return_url: returnUrl
-          }
-        );
+      console.log('Confirming Bancontact payment with return URL:', returnUrl);
 
-        if (result.error) {
-          onError(result.error);
-          setStatus('idle');
-        }
-        // If no error, user will be redirected to bank
-      } catch (error) {
-        onError(error);
+      const result = await stripe.confirmBancontactPayment(stripeClientSecret, {
+        payment_method: {
+          billing_details: {
+            name: `${customer.firstName} ${customer.lastName}`
+          }
+        },
+        return_url: returnUrl
+      });
+
+      if (result.error) {
+        console.error('Bancontact payment error:', result.error);
+        onError(result.error);
         setStatus('idle');
       }
+      // If no error, user will be redirected to bank
+    } catch (error) {
+      console.error('Bancontact payment exception:', error);
+      onError(error);
+      setStatus('idle');
     }
   }
 

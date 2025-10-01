@@ -41,7 +41,19 @@ export default function Payment() {
   const t = useT();
   const router = useRouter();
   const { basketModel } = useBasket();
-  const [selectedPaymentProvider, setSelectedPaymentProvider] = useState(null);
+
+  // Check if returning from Bancontact payment
+  const urlParams =
+    typeof window !== 'undefined'
+      ? new URLSearchParams(window.location.search)
+      : null;
+  const hasPaymentIntentSecret =
+    urlParams && urlParams.has('payment_intent_client_secret');
+  const initialPaymentProvider = hasPaymentIntentSecret ? 'bancontact' : null;
+
+  const [selectedPaymentProvider, setSelectedPaymentProvider] = useState(
+    initialPaymentProvider
+  );
   const [state, setState] = useState({
     firstName: '',
     lastName: '',
@@ -53,6 +65,15 @@ export default function Payment() {
     shipping: false,
     pickup: false
   });
+
+  // Log for debugging
+  useEffect(() => {
+    if (hasPaymentIntentSecret) {
+      console.log(
+        'Payment: Detected return from Bancontact payment, auto-selecting Bancontact provider'
+      );
+    }
+  }, []);
 
   const paymentConfig = useQuery({
     queryKey: ['paymentConfig'],
