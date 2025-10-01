@@ -204,14 +204,15 @@ export default function StripeWrapper({ checkoutModel, ...props }) {
       ?.createPaymentIntent;
 
   const stripeClientSecret = paymentIntentData?.client_secret;
-  const returnUrl = paymentIntentData?.metadata?.return_url;
+  // Construct the return URL - user should come back to checkout page after bank redirect
+  const returnUrl =
+    typeof window !== 'undefined'
+      ? `${window.location.origin}${window.location.pathname}${
+          window.location.search ? window.location.search + '&' : '?'
+        }`
+      : '';
 
-  if (
-    bancontactConfig.isLoading ||
-    !stripeLoader ||
-    !stripeClientSecret ||
-    !returnUrl
-  ) {
+  if (bancontactConfig.isLoading || !stripeLoader || !stripeClientSecret) {
     return <Spinner />;
   }
 
