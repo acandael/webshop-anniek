@@ -233,9 +233,7 @@ export default function StripeWrapper({ checkoutModel, ...props }) {
   // Construct the return URL - user should come back to checkout page after bank redirect
   const returnUrl =
     typeof window !== 'undefined'
-      ? `${window.location.origin}${window.location.pathname}${
-          window.location.search ? window.location.search + '&' : '?'
-        }`
+      ? `${window.location.origin}${window.location.pathname}`
       : '';
 
   if (bancontactConfig.isLoading || !stripeLoader || !stripeClientSecret) {
