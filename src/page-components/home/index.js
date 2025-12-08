@@ -71,6 +71,9 @@ export default function FrontPage({ preview }) {
         </Header>
         <HeroSection>
           <HeroText>
+            <Link href="https://schoonheidsinstituut-anniek-lambrecht-1.salonized.com/bookings/new?">
+              <Button width="221px">Boek Nu</Button>
+            </Link>
             <p>
               Bij Skincenter draait alles om <strong>transformatie</strong>,
               niet alleen van je huid maar ook van hoe je jezelf ziet. Met{' '}
@@ -132,9 +135,6 @@ export default function FrontPage({ preview }) {
               </a>
               ?
             </p>
-            <Link href="https://schoonheidsinstituut-anniek-lambrecht-1.salonized.com/bookings/new?">
-              <Button width="221px">Boek Nu</Button>
-            </Link>
           </HeroText>
           <HeroImage
             src="/static/anniek.jpg"
