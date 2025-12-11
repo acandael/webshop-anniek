@@ -51,10 +51,11 @@ export function BasketProvider({ locale, children }) {
     if (status !== 'not-hydrated') {
       persistToCache({
         ...clientBasket,
-        cart: clientBasket.cart.map(clientCartItemForAPI)
+        cart: clientBasket.cart.map(clientCartItemForAPI),
+        deliveryMethod
       });
     }
-  }, [status, clientBasket]);
+  }, [status, clientBasket, deliveryMethod]);
 
   /**
    * Broadcast this change to anyone listening to the channel
@@ -84,7 +85,7 @@ export function BasketProvider({ locale, children }) {
       cart: clientBasket.cart.map(clientCartItemForAPI),
       voucherCode: clientBasket.voucherCode,
       crystallizeOrderId: clientBasket.crystallizeOrderId,
-      klarnaOrderId: clientBasket.klarnaOrderId,
+      klarnaOrderId: clientBasket.klarnaOrderId
     }),
     [locale, clientBasket]
   );
@@ -92,7 +93,7 @@ export function BasketProvider({ locale, children }) {
   // Get server state on cart change
   useEffect(() => {
     let stale = false;
-    
+
     async function getServerBasket() {
       try {
         const response = await ServiceApi({
@@ -218,8 +219,10 @@ export function BasketProvider({ locale, children }) {
             }),
           setKlarnaOrderId: (klarnaOrderId) =>
             dispatch({ action: 'set-klarna-order-id', klarnaOrderId }),
-          setDeliveryMethod: (deliveryMethod) => dispatch({action: 'set-delivery-method', deliveryMethod}),
-          setCanCheckout: (canCheckout) => dispatch({action: 'set-can-checkout', canCheckout})
+          setDeliveryMethod: (deliveryMethod) =>
+            dispatch({ action: 'set-delivery-method', deliveryMethod }),
+          setCanCheckout: (canCheckout) =>
+            dispatch({ action: 'set-can-checkout', canCheckout })
         }
       }}
     >

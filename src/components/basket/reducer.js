@@ -54,6 +54,10 @@ export default produce(function reducer(draft, { action, ...rest }) {
             draft.clientBasket.cart = initialState.clientBasket.cart;
           }
         }
+        // Restore deliveryMethod from cache
+        if (rest.deliveryMethod) {
+          draft.deliveryMethod = rest.deliveryMethod;
+        }
         draft.status = 'server-basket-is-stale';
       }
       break;
@@ -108,7 +112,6 @@ export default produce(function reducer(draft, { action, ...rest }) {
       if (itemIndex !== -1) {
         if (action === 'remove-item') {
           draft.clientBasket.cart.splice(itemIndex, 1);
-          
         } else {
           const item = draft.clientBasket.cart[itemIndex];
 
@@ -182,12 +185,12 @@ export default produce(function reducer(draft, { action, ...rest }) {
     }
 
     case 'set-can-checkout': {
-      draft.canCheckout = rest.canCheckout
+      draft.canCheckout = rest.canCheckout;
       break;
     }
 
     case 'set-delivery-method': {
-      draft.deliveryMethod = rest.deliveryMethod
+      draft.deliveryMethod = rest.deliveryMethod;
       break;
     }
 
