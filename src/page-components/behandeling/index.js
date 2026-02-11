@@ -10,6 +10,7 @@ import {
   Button,
   HeroSection,
   HeroText,
+  HeroImages,
   HeroImage,
   PriceList,
   Policy
@@ -44,8 +45,8 @@ export default function BehandelingPage({ folder, preview }) {
   const description = folder.components?.find((c) => c.name === 'Beschrijving')
     ?.content?.paragraphs[0].body.json;
 
-  const images = folder.components?.find((c) => c.type === 'images');
-  const image = images?.content?.images[0];
+  const allImages = folder.components?.find((c) => c.type === 'images')?.content
+    ?.images;
 
   const prijslijsten = folder.components?.find(
     (c) => c.type === 'propertiesTable'
@@ -74,14 +75,19 @@ export default function BehandelingPage({ folder, preview }) {
             </Link>
             <BehandelingComponents components={rest} />
           </HeroText>
-          {image && (
-            <HeroImage
-              src={image.url}
-              width={618}
-              height={550}
-              alt={folder.name}
-              style={{ maxWidth: '618px', width: '100%' }}
-            />
+          {allImages?.length > 0 && (
+            <HeroImages count={allImages.length}>
+              {allImages.map((image, index) => (
+                <HeroImage
+                  key={image.url}
+                  src={image.url}
+                  width={618}
+                  height={550}
+                  alt={image.altText || `${folder.name} ${index + 1}`}
+                  style={{ width: '100%' }}
+                />
+              ))}
+            </HeroImages>
           )}
         </HeroSection>
         <PriceList>

@@ -60,6 +60,14 @@ export const Button = styled(button)`
   }
 `;
 
+export const HeroImages = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 618px;
+  width: 100%;
+`;
+
 export const HeroImage = styled(Image)`
   object-fit: contain;
 `;
