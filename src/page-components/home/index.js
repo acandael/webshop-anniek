@@ -135,6 +135,12 @@ export default function FrontPage({ preview }) {
               </a>
               ?
             </p>
+            <script
+              src="https://cdn.salonized.com/widget.js"
+              data-name="salonized"
+              data-microsite-url="https://schoonheidsinstituut-anniek-lambrecht-1.salonized.com"
+            ></script>
+            <div className="salonized-reviews"></div>
           </HeroText>
           <HeroImage
             src="/static/anniek.jpg"
