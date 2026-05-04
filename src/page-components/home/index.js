@@ -22,6 +22,7 @@ import {
 } from './styles';
 import Link from 'next/link';
 import Head from 'next/head';
+import Script from 'next/script';
 //import { Message } from 'ui';
 
 export async function getData({ language, preview = null }) {
@@ -135,11 +136,20 @@ export default function FrontPage({ preview }) {
               </a>
               ?
             </p>
-            <script
+            <Script
               src="https://cdn.salonized.com/widget.js"
               data-name="salonized"
               data-microsite-url="https://schoonheidsinstituut-anniek-lambrecht-1.salonized.com"
-            ></script>
+              strategy="afterInteractive"
+              onLoad={() => {
+                if (
+                  window.Salonized &&
+                  typeof window.Salonized.init === 'function'
+                ) {
+                  window.Salonized.init();
+                }
+              }}
+            />
             <div className="salonized-reviews"></div>
           </HeroText>
           <HeroImage
