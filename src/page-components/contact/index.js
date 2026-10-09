@@ -44,7 +44,7 @@ export default function ContactPage() {
             <p>Behandelingen zijn steeds op afspraak.</p>
             <p>
               Voor aankoop producten is de winkel geopend van maandag tot
-              vrijdag van 9-18h doorlopend op de middag met uitzonderding op
+              vrijdag van 9-18h doorlopend op de middag met uitzondering op
               woensdag van 9-12h30.
             </p>
             <p>

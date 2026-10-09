@@ -85,14 +85,14 @@ export default function FrontPage({ preview }) {
               stralende huid krijgt, maar ook een goed gevoel van binnenuit.
             </p>
             <p>
-              De lotusbloem, staat voor{' '}
+              De lotusbloem staat voor{' '}
               <strong>innerlijke kracht en groei</strong>. Net zoals deze bloem
               zich vanuit haar wortels naar het licht ontvouwt, geloven wij in
               de kracht van zelfontplooiing.
             </p>
             <p>
-              Stap voor stap zie je jezelf weer stralen, klaar om
-              volzelfvertrouwen de wereld tegemoet te treden.  
+              Stap voor stap zie je jezelf weer stralen, klaar om vol
+              zelfvertrouwen de wereld tegemoet te treden.  
             </p>
             <p>
               Anniek is het hart van Skincenter. Met meer dan 10 jaar ervaring
@@ -194,7 +194,7 @@ export default function FrontPage({ preview }) {
                 />
               </ImageWrapper>
               <SubSectionText>
-                Met de producten van Advanced Nutricion Programme, Environ
+                Met de producten van Advanced Nutrition Programme, Environ
                 Skincare en Jane Iredale houden we het huidverouderingsproces
                 zoveel mogelijk tegen. Ze zijn op basis van vitamine A en
                 antioxidanten en compenseren het chronisch tekort hiervan in de
