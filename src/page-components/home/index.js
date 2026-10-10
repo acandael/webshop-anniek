@@ -103,8 +103,8 @@ export default function FrontPage({ preview }) {
             </p>
             <p>
               Bij <strong>Anniek</strong> ben je geen nummer. Ze{' '}
-              <strong>luistert, analyseert, en creëert</strong>
-              een behandeltraject op maat, altijd met oog voor jouw wensen en
+              <strong>luistert, analyseert, en creëert</strong> een
+              behandeltraject op maat, altijd met oog voor jouw wensen en
               verwachtingen. Haar warme, no-nonsense aanpak maakt het makkelijk
               om je op je gemak te voelen, zodat je samen met haar stappen kunt
               zetten naar een gezondere, stralende huid.
