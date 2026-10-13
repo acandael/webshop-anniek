@@ -173,11 +173,20 @@ export default function FrontPage({ preview }) {
                 />
               </ImageWrapper>
               <SubSectionText>
-                Op het menu staan niet alleen huidanalyse, peeling en vitamine
-                gelaatsbehandelingen maar ook microneedling en laserbehandeling.
-                Liften van de huid is mogelijk voor gelaat en lichaam met het
-                LPG apparaat. Ongewenste haren, couperose en pigment behandelen
-                we met de Clarity 2 Laser.{' '}
+                Bij Skincenter Anniek Lambrecht in Blankenberge bieden we
+                professionele huidverbetering met Observ 520 huidanalyse,
+                Hydrafacial, SkinPen microneedling, chemische peelings en
+                gelaatsverzorgingen.
+              </SubSectionText>
+              <SubSectionText>
+                Met de Clarity II laser behandelen we pigmentvlekken, couperose,
+                rosacea en ongewenste haargroei. Voor huidverstrakking en
+                lichaamscontouring bieden we HIFU, LPG Endermologie en
+                cryolipolyse.
+              </SubSectionText>
+              <SubSectionText>
+                Ontdek ook onze esthetische behandelingen: powderbrows, lip
+                blush, wimperextensions en wimperlifting.
               </SubSectionText>
               <StyledLink>Ontdek alle behandelingen</StyledLink>
             </SectionOne>
@@ -194,12 +203,23 @@ export default function FrontPage({ preview }) {
                 />
               </ImageWrapper>
               <SubSectionText>
-                Met de producten van Advanced Nutrition Programme, Environ
-                Skincare en Jane Iredale houden we het huidverouderingsproces
-                zoveel mogelijk tegen. Ze zijn op basis van vitamine A en
-                antioxidanten en compenseren het chronisch tekort hiervan in de
-                huid.
+                Ontdek ons zorgvuldig geselecteerde assortiment van ZO Skin
+                Health, Environ, NeoStrata, Heliocare, Biretix, Advanced
+                Nutrition Programme, Insentials, Jane Iredale en Essential
+                Parfums.
               </SubSectionText>
+              <SubSectionText>
+                Van huidverbetering, anti-aging en acne tot
+                voedingssupplementen, minerale make-up en exclusieve parfums.
+              </SubSectionText>
+              Bekijk een selectie van onze producten in de webshop. Ons
+              volledige assortiment is verkrijgbaar in het instituut of te
+              bestellen via info@anniek-lambrecht.be. Persoonlijk advies geven
+              we je graag!
+              <SubSectionText></SubSectionText>
+              <strong>Nieuw bij ons?</strong> Ontvang eenmalig 15%
+              welkomstkorting op je eerste productaankoop!
+              <SubSectionText></SubSectionText>
               <StyledLink>Ontdek alle producten</StyledLink>
             </SectionTwo>
           </Link>

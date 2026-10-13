@@ -149,7 +149,9 @@ export const SectionTwo = styled.div`
     margin-top: 64px;
   }
 `;
-export const SubSectionText = styled.p``;
+export const SubSectionText = styled.p`
+  margin-bottom: 16px;
+`;
 
 export const ImageWrapper = styled.div`
   margin-top: 32px;
