@@ -94,7 +94,7 @@ export default function BehandelingPage({ folder, preview }) {
           <PropertiesTable {...prijslijsten} />
         </PriceList>
         <Policy>
-          <h3>Annulatievoorwaarden</h3>
+          <h2>Annulatievoorwaarden</h2>
           <p>
             Om iedere klant de nodige tijd en aandacht te kunnen bieden,
             reserveren wij jouw afspraak met de grootste zorg.
