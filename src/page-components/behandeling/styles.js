@@ -90,6 +90,10 @@ export const PriceList = styled.div`
 `;
 
 export const Policy = styled.div`
-  display: flex;
+  display: flex flex-columns;
   justify-content: space-around;
+
+  p {
+    margin-bottom: 16px;
+  }
 `;

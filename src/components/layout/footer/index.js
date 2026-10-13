@@ -64,11 +64,20 @@ export default function Footer() {
         <li>
           <Link href="/kadobon">Kadobon</Link>
         </li>
-        <li>
-          Artikelen kunnen, ongeopend, tot 14 dagen na aankoop terug gestuurd
-          worden.
-        </li>
+
         <li>Betaalmogelijkheden: Bancontact, Visa, Mastercard</li>
+      </NavList>
+      <NavList>
+        <h3>Retourneren</h3>
+        <li>
+          Wil je een product retourneren? Contacteer ons binnen 14 dagen na
+          ontvangst van je bestelling.
+        </li>
+        <li>
+          Producten kunnen enkel worden geretourneerd wanneer ze ongebruikt,
+          ongeopend en in hun originele verpakking verkeren, overeenkomstig de
+          toepasselijke retourvoorwaarden en wettelijke consumentenrechten.
+        </li>
       </NavList>
       <NavList>
         <h3>Contact</h3>

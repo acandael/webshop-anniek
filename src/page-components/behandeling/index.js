@@ -95,15 +95,36 @@ export default function BehandelingPage({ folder, preview }) {
         </PriceList>
         <Policy>
           <p>
-            <strong>Annulatie policy</strong>: U kan uw afspraak kosteloos
-            verplaatsen of annuleren tot 72u vooraf. Dit kan 24u/24u via de link
-            in de bevestigingsmail van de afspraak of via onze e-mail:
-            info@anniek-lambrecht.be (zondag uitgesloten) Indien u niet tijdig
-            annuleert, zijn wij genoodzaakt 50% van het bedrag van de gemaakte
-            afspraak aan te rekenen ​voor personeels- en werkingskosten, tenzij
-            u een doktersattest kan voorleggen. Andere redenen aanvaarden wij
-            niet. Deze factuur zullen wij mailen en kan u overschrijven. Dank
-            voor het begrip!
+            Om iedere klant de nodige tijd en aandacht te kunnen bieden,
+            reserveren wij jouw afspraak met de grootste zorg.
+          </p>
+          <p>
+            Je kunt jouw afspraak kosteloos annuleren of verplaatsen tot 72 uur
+            vooraf. Dit kan 24/24 uur via de link in je bevestigingsmail of per
+            e-mail naar{' '}
+            <a href="mailto:info@anniek-lambrecht.be">
+              info@anniek-lambrecht.be
+            </a>
+            .
+          </p>
+          <p>
+            Bij een laattijdige annulatie of het niet nakomen van je afspraak
+            zijn wij genoodzaakt 50% van het bedrag van de gereserveerde
+            behandeling aan te rekenen ter compensatie van personeels- en
+            werkingskosten.
+          </p>
+          <p>
+            Een uitzondering is uitsluitend mogelijk op vertoon van een geldig
+            doktersattest. Andere redenen geven geen recht op vrijstelling van
+            de annuleringskosten.
+          </p>
+          <p>
+            De eventuele factuur ontvang je per e-mail en kan via overschrijving
+            worden betaald.
+          </p>
+          <p>
+            Bedankt voor je begrip en respect voor onze gereserveerde
+            behandeltijd.
           </p>
         </Policy>
       </Outer>
