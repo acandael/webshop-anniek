@@ -153,10 +153,10 @@ export default function FrontPage({ preview }) {
             <div className="salonized-reviews"></div>
           </HeroText>
           <HeroImage
-            src="/static/anniek.jpg"
-            alt="anniek lambrecht"
-            width={450}
-            height={675}
+            src="/static/homepage-team.jpg"
+            alt="skincenter team"
+            width={1400}
+            height={1050}
             priority
           />
         </HeroSection>
@@ -168,8 +168,8 @@ export default function FrontPage({ preview }) {
                 <SubSectionImage
                   src="/static/subsection-behandelingen.jpg"
                   alt="anniek lambrecht - behandelingen"
-                  width={456}
-                  height={304}
+                  width={800}
+                  height={602}
                 />
               </ImageWrapper>
               <SubSectionText>
@@ -198,8 +198,8 @@ export default function FrontPage({ preview }) {
                 <SubSectionImage
                   src="/static/webshop.jpg"
                   alt="anniek lambrecht - webshop"
-                  width={456}
-                  height={304}
+                  width={800}
+                  height={602}
                 />
               </ImageWrapper>
               <SubSectionText>

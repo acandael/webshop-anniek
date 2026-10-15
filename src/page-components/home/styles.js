@@ -11,8 +11,8 @@ import {
 
 export const Outer = styled(outer)`
   margin-bottom: 64px;
-  padding-left: 138px;
-  padding-right: 138px;
+  /*padding-left: 48px;
+  padding-right: 48px;*/
 
   ${responsive.smAndLess} {
     margin: 0 24px;
@@ -44,6 +44,7 @@ export const H2 = styled(h2)`
 
 export const HeroSection = styled.section`
   display: flex;
+  gap: 24px;
   justify-content: space-between;
   align-items: start;
   margin-top: 84px;
@@ -85,11 +86,11 @@ export const Button = styled(button)`
 
 export const HeroImage = styled(Image)`
   object-fit: contain;
-  max-height: 600px;
+  max-height: 1050px;
   width: auto;
 
   ${responsive.smAndLess} {
-    max-height: 450px;
+    max-height: 1050px;
     width: 100%;
     object-fit: contain;
   }
@@ -101,14 +102,15 @@ export const CTAText = styled.span`
 
 export const SubSection = styled.section`
   display: flex;
+  gap: 24px;
+  max-width: 2400px;
   justify-content: space-between;
-
   margin-top: 189px;
 
   /* Ensure Link components in flex layout work properly */
   > a {
     display: flex;
-    max-width: 456px;
+    /*max-width: 456px;*/
   }
 
   ${responsive.smAndLess} {
@@ -134,13 +136,13 @@ export const SubSection = styled.section`
 `;
 
 export const SectionOne = styled.div`
-  max-width: 456px;
+  max-width: 800px;
   &:hover {
     cursor: pointer;
   }
 `;
 export const SectionTwo = styled.div`
-  max-width: 456px;
+  max-width: 800px;
   &:hover {
     cursor: pointer;
   }
@@ -156,6 +158,7 @@ export const SubSectionText = styled.p`
 export const ImageWrapper = styled.div`
   margin-top: 32px;
   margin-bottom: 32px;
+  width: 100%;
 `;
 
 export const SubSectionImage = styled(Image)`
