@@ -228,7 +228,7 @@ export default function FrontPage({ preview }) {
               we je graag!
               <SubSectionText></SubSectionText>
               <strong>Nieuw bij ons?</strong> Ontvang eenmalig 15%
-              welkomstkorting op je eerste productaankoop!
+              welkomstkorting op je eerste online productaankoop!
               <SubSectionText></SubSectionText>
               <StyledLink>Ontdek alle producten</StyledLink>
             </SectionTwo>
