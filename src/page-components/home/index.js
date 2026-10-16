@@ -137,21 +137,6 @@ export default function FrontPage({ preview }) {
               </a>
               ?
             </p>
-            <Script
-              src="https://cdn.salonized.com/widget.js"
-              data-name="salonized"
-              data-microsite-url="https://schoonheidsinstituut-anniek-lambrecht-1.salonized.com"
-              strategy="afterInteractive"
-              onLoad={() => {
-                if (
-                  window.Salonized &&
-                  typeof window.Salonized.init === 'function'
-                ) {
-                  window.Salonized.init();
-                }
-              }}
-            />
-            <div className="salonized-reviews"></div>
           </HeroText>
           <HeroImageSection>
             <HeroImage
@@ -234,6 +219,21 @@ export default function FrontPage({ preview }) {
             </SectionTwo>
           </Link>
         </SubSection>
+        <div className="salonized-reviews"></div>
+        <Script
+          src="https://cdn.salonized.com/widget.js"
+          data-name="salonized"
+          data-microsite-url="https://schoonheidsinstituut-anniek-lambrecht-1.salonized.com"
+          strategy="afterInteractive"
+          onLoad={() => {
+            if (
+              window.Salonized &&
+              typeof window.Salonized.init === 'function'
+            ) {
+              window.Salonized.init();
+            }
+          }}
+        />
       </Outer>
     </Layout>
   );

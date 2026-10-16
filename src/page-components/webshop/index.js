@@ -7,6 +7,7 @@ import ItemMicroformat from 'components/microformat';
 import { List, PromotionWrapper } from './styles';
 import query from './query';
 import Stackable from 'components/stackable';
+
 // import { Message } from 'ui';
 
 export async function getData({ asPath, language, preview = null }) {

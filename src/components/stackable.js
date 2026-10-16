@@ -3,17 +3,22 @@ import GridCollection from 'components/grid-collection';
 import Banner from 'components/banner';
 
 const StackRenderer = ({ stack }) => {
-  
   switch (stack?.shape?.name) {
     case 'Item collection': {
       const title = stack?.components?.find(isTitleComponent)?.content?.text;
       const description = stack?.components?.find(isDescriptionComponent)
         ?.content?.json;
+      const image = stack.components.find(isImageComponent).content.images[0];
       const items = stack?.components?.find((c) => c.name === 'Items')?.content
         ?.items;
 
       return (
-        <ItemCollection title={title} description={description} items={items} />
+        <ItemCollection
+          title={title}
+          description={description}
+          image={image}
+          items={items}
+        />
       );
     }
 
@@ -32,15 +37,17 @@ const StackRenderer = ({ stack }) => {
       const title = stack?.components?.find(isTitleComponent)?.content?.text;
       const description = stack?.components?.find(isDescriptionComponent)
         ?.content?.json;
-      const choice = stack?.components?.find(isChoiceComponent)?.content
-        ?.selectedComponent;
-      
+      const image = stack?.components?.find(isImageComponent)?.content?.images;
+      const choice =
+        stack?.components?.find(isChoiceComponent)?.content?.selectedComponent;
+
       if (choice?.name === 'Grid') {
         const grids = choice.content?.grids;
         return (
           <GridCollection
             title={title}
             description={description}
+            image={image}
             grids={grids}
           />
         );
@@ -51,6 +58,7 @@ const StackRenderer = ({ stack }) => {
           <ItemCollection
             title={title}
             description={description}
+            image={image}
             items={items}
           />
         );
@@ -62,8 +70,8 @@ const StackRenderer = ({ stack }) => {
       const title = stack?.components?.find(isTitleComponent)?.content?.text;
       const description = stack?.components?.find(isDescriptionComponent)
         ?.content?.json;
-      const linkText = stack?.components?.find(isLinkTextComponent)?.content
-        ?.text;
+      const linkText =
+        stack?.components?.find(isLinkTextComponent)?.content?.text;
       const link = stack?.components?.find(isLinkComponent)?.content?.text;
       const image = stack?.components?.find(isImageComponent)?.content?.images;
       const addTextAsOverlay = stack?.components?.find(
@@ -88,7 +96,6 @@ const StackRenderer = ({ stack }) => {
 };
 
 const Stackable = ({ stacks }) => {
-  
   return (
     <>
       {stacks?.map((stack) => (
