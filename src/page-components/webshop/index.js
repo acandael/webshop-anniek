@@ -4,7 +4,7 @@ import { simplyFetchFromGraph } from 'lib/graph';
 import { Outer, Header, H1 } from 'ui';
 import Layout from 'components/layout';
 import ItemMicroformat from 'components/microformat';
-import { List, PromotionWrapper } from './styles';
+import { List, PromotionWrapper, HeroImage } from './styles';
 import query from './query';
 import Stackable from 'components/stackable';
 
@@ -48,6 +48,13 @@ export default function WebshopPage({ folder, preview }) {
         </Header>
         <PromotionWrapper>
           <Stackable stacks={stacks} />
+          <HeroImage
+            src="/static/pagina-webshop.jpg"
+            alt="skincenter team"
+            width={1000}
+            height={750}
+            priority
+          />
         </PromotionWrapper>
         {children && (
           <List>

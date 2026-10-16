@@ -8,7 +8,7 @@ const StackRenderer = ({ stack }) => {
       const title = stack?.components?.find(isTitleComponent)?.content?.text;
       const description = stack?.components?.find(isDescriptionComponent)
         ?.content?.json;
-      const image = stack.components.find(isImageComponent).content.images[0];
+      const images = stack.components.find(isImageComponent).content.images[0];
       const items = stack?.components?.find((c) => c.name === 'Items')?.content
         ?.items;
 
@@ -16,7 +16,7 @@ const StackRenderer = ({ stack }) => {
         <ItemCollection
           title={title}
           description={description}
-          image={image}
+          images={images}
           items={items}
         />
       );
