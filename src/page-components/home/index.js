@@ -11,6 +11,7 @@ import {
   HeroSection,
   HeroText,
   HeroImage,
+  HeroImageSection,
   Button,
   SubSection,
   SectionOne,
@@ -152,13 +153,22 @@ export default function FrontPage({ preview }) {
             />
             <div className="salonized-reviews"></div>
           </HeroText>
-          <HeroImage
-            src="/static/homepage-team.jpg"
-            alt="skincenter team"
-            width={1400}
-            height={1050}
-            priority
-          />
+          <HeroImageSection>
+            <HeroImage
+              src="/static/homepage-anniek.jpg"
+              alt="skincenter team"
+              width={1000}
+              height={750}
+              priority
+            />
+            <HeroImage
+              src="/static/homepage-team.jpg"
+              alt="skincenter team"
+              width={1000}
+              height={750}
+              priority
+            />
+          </HeroImageSection>
         </HeroSection>
         <SubSection>
           <Link href="/behandelingen">
@@ -198,7 +208,7 @@ export default function FrontPage({ preview }) {
                 <SubSectionImage
                   src="/static/webshop.jpg"
                   alt="anniek lambrecht - webshop"
-                  width={800}
+                  width={700}
                   height={602}
                 />
               </ImageWrapper>

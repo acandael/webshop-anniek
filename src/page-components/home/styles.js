@@ -84,13 +84,25 @@ export const Button = styled(button)`
   }
 `;
 
+export const HeroImageSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
+
 export const HeroImage = styled(Image)`
   object-fit: contain;
-  max-height: 1050px;
+  max-height: 750px;
   width: auto;
 
   ${responsive.smAndLess} {
-    max-height: 1050px;
+    max-height: 900px;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  ${responsive.smAndLess} {
+    max-height: 800px;
     width: 100%;
     object-fit: contain;
   }
