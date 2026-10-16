@@ -155,7 +155,7 @@ export default function FrontPage({ preview }) {
           </HeroText>
           <HeroImageSection>
             <HeroImage
-              src="/static/homepage-anniek.jpg"
+              src="/static/anniek.jpg"
               alt="skincenter team"
               width={1000}
               height={750}
