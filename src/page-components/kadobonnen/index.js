@@ -7,7 +7,7 @@ import Microformat from 'components/microformat';
 import toText from '@crystallize/content-transformer/toText';
 import { List, BrandHeader, Content, ImageWrapper, Img } from './styles';
 import query from './query';
-
+import BehandelingComponents from 'components/shape/behandeling-components';
 export async function getData({ asPath, language, preview = null }) {
   const { data } = await simplyFetchFromGraph({
     query,
@@ -29,6 +29,13 @@ export default function KadobonnenPage({ folder, preview }) {
   const images = components?.find((c) => c.type === 'images');
   const image = images?.content?.images[0];
 
+  const rest = folder.components?.filter(
+    (c) =>
+      c.type !== 'gridRelations' &&
+      c.name !== 'Samenvatting' &&
+      c.type !== 'propertiesTable'
+  );
+
   return (
     <Layout
       title={folder.name}
@@ -40,7 +47,7 @@ export default function KadobonnenPage({ folder, preview }) {
         <BrandHeader>
           <Content>
             <H1>{folder.name}</H1>
-            <p>{toText(description)}</p>
+            <BehandelingComponents components={rest} />
           </Content>
           <ImageWrapper>
             <Img
