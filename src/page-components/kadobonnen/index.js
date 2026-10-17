@@ -23,8 +23,8 @@ export async function getData({ asPath, language, preview = null }) {
 
 export default function KadobonnenPage({ folder, preview }) {
   const { children, components } = folder;
-  const description = components?.find((c) => c.name === 'Beschrijving')
-    ?.content?.paragraphs[0].body.json;
+  const description = components?.find((c) => c.name === 'Description')?.content
+    ?.paragraphs[0].body.json;
 
   const images = components?.find((c) => c.type === 'images');
   const image = images?.content?.images[0];
