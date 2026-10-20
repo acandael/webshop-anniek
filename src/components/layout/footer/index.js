@@ -62,7 +62,7 @@ export default function Footer() {
           <Link href="#">Insentials</Link>
         </li>
         <li>
-          <Link href="/kadobon">Kadobon</Link>
+          <Link href="/cadeaubon">Cadeaubon</Link>
         </li>
 
         <li>Betaalmogelijkheden: Bancontact, Visa, Mastercard</li>
