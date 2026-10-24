@@ -51,7 +51,7 @@ export default function Footer() {
           <Link href="/merken/jane-iredale">Jane Iredale</Link>
         </li>
         <li>
-          <Link href="#">Heliocare</Link>
+          <Link href="/webshop">Heliocare</Link>
         </li>
         <li>
           <Link href="/merken/advanced-nutrition-programme">
@@ -59,7 +59,7 @@ export default function Footer() {
           </Link>
         </li>
         <li>
-          <Link href="#">Insentials</Link>
+          <Link href="/webshop">Insentials</Link>
         </li>
         <li>
           <Link href="/cadeaubon">Cadeaubon</Link>
